@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sass_processor',
     'walkMaps',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -128,4 +129,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SASS_PROCESSOR_ENABLED =  True
-SASS_PROCESSOR_ROOT =  os.path.join(BASE_DIR, 'webPage', 'static')    ## directory 수정 필요!!!
+SASS_PROCESSOR_ROOT =  os.path.join(BASE_DIR, 'walkMaps', 'static')    ## directory 수정 필요!!!
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
