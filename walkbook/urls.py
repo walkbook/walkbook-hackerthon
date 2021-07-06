@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import walkMaps.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', walkMaps.views.index, name='index'),
 ]
