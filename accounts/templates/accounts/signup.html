@@ -1,35 +1,39 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load sass_tags %}
-    <title>워크북 회원가입</title>
-  </head>
-
-  <body>
-    <form id="signup-form" method="POST" action="{%url 'signup' %}">
-      {% csrf_token %}
-      사용자 이름:
-      <br>
-      <input name="username" type="text" value="" placeholder="사용자 이름을 입력해주세요">
-      <br>
-      <br>
-      비밀번호:
-      <br>
-      <input name="password1" type="password" value="" placeholder="비밀번호를 입력해주세요">
-      <br>
-      <br>
-      비밀번호 확인:
-      <br>
-      <input name="password2" type="password" value="" placeholder="비밀번호를 입력해주세요">
-      <br>
-      <br>
-      <input type="submit" value="회원가입">
-    </form>
-  </body>
-</html>
+{% extends 'base.html' %} 
+{% block content %}
+<body>
+  <h1>워크북 회원가입</h1>
+  <form id="signup-form" method="POST" action="{%url 'signup' %}">
+    {% csrf_token %} 사용자 이름:
+    <br />
+    <input
+      name="username"
+      type="text"
+      value=""
+      placeholder="사용자 이름을 입력해주세요"
+    />
+    <br />
+    <br />
+    비밀번호:
+    <br />
+    <input
+      name="password1"
+      type="password"
+      value=""
+      placeholder="비밀번호를 입력해주세요"
+    />
+    <br />
+    <br />
+    비밀번호 확인:
+    <br />
+    <input
+      name="password2"
+      type="password"
+      value=""
+      placeholder="비밀번호를 입력해주세요"
+    />
+    <br />
+    <br />
+    <input type="submit" value="회원가입" />
+  </form>
+</body>
+{%endblock content%}
