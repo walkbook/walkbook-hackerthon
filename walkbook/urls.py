@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', walkMaps.views.index, name='index'),
     path('accounts/', include('django.contrib.auth.urls')),
-    # path('accounts/signup/', accounts.views.signup, name='signup'),
+    path('accounts/signup/', accounts.views.signup, name='signup'),
 ]

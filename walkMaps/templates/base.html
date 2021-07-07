@@ -8,7 +8,7 @@
     {% if user.is_authenticated %}
       <a href="{% url 'logout'%}">로그아웃</a>
     {% else %} 
-      {% comment %}<a href="{% url 'signup' %}">회원가입</a> {% endcomment %}
+      <a href="{% url 'signup' %}">회원가입</a>
       <a href="{% url 'login'%}">로그인</a>
     {% endif %} 
     
