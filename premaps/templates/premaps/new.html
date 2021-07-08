@@ -1,0 +1,10 @@
+{% extends 'walkMaps/../base.html' %}
+
+{% load static %}
+{% block content %}
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1"></script>
+<p>나만의 산책로를 만들어보세요!</p>
+<div id="map" style="width:1000px;height:700px;"></div>
+
+<script src="{% static 'premaps/js/new.js' %}""></script>
+{% endblock content %}

@@ -3,5 +3,5 @@ from walkMaps import views
 
 app_name = 'walkMaps'
 urlpatterns = [
-    path('', views.main_map, name='main_map'),
+    path('', views.index, name='index'),
 ]
