@@ -1,75 +1,86 @@
-{% extends 'base.html' %} 
-{% block content %}
-<body>
-  <h1>워크북 회원가입</h1>
-  <form id="signup-form" method="POST" action="{%url 'signup' %}">
-    {% csrf_token %} 
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="id">아이디</label>
-      </h3>
-      <input name="userid" type="text" value=""/>
-    </div>
+{% load static %}
 
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="password1">비밀번호</label>
-      </h3>
-      <input name="password1" type="password" value=""/>
-    </div>
-    
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="password2">비밀번호 확인</label>
-      </h3>
-      <input name="password2" type="password" value=""/>
-    </div>
-    
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="username">이름</label>
-      </h3>
-      <input name="username" type="text" value=""/>
-    </div>
-    
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="sex">성별</label>
-      </h3>
-      <select name="sex">
-        <option value="" select></option>
-        <option value="M">남자</option>
-        <option value="F">여자</option>
-        <option value="U">선택안함</option>
-      </select>
-    </div>
-    
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="age">나이대</label>
-      </h3>
-      <select name="age">
-        <option value="" select></option>
-        <option value="0">10세 미만</option>
-        <option value="10">10대</option>
-        <option value="20">20대</option>
-        <option value="30">30대</option>
-        <option value="40">40대</option>
-        <option value="50">50대</option>
-        <option value="60">60대 이상</option>
-        <option value="U">선택안함</option>
-      </select>
-    </div>
-    
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="location">내 위치 설정</label>
-      </h3>
-      <input name="location" type="text" value=""/>
-    </div>
-    <div>
-      <input type="submit" value="회원가입"/>
-    </div>
-  </form>
-</body>
-{%endblock content%}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up | WalkBook</title>
+  </head>
+
+  <body>
+    <h1>워크북 회원가입</h1>
+    <form id="signup-form" method="POST" action="{%url 'signup' %}">
+      {% csrf_token %} 
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="id">아이디</label>
+        </h3>
+        <input name="userid" type="text" value=""/>
+      </div>
+
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="password1">비밀번호</label>
+        </h3>
+        <input name="password1" type="password" value=""/>
+      </div>
+      
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="password2">비밀번호 확인</label>
+        </h3>
+        <input name="password2" type="password" value=""/>
+      </div>
+      
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="username">이름</label>
+        </h3>
+        <input name="username" type="text" value=""/>
+      </div>
+      
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="sex">성별</label>
+        </h3>
+        <select name="sex">
+          <option value="" select></option>
+          <option value="M">남자</option>
+          <option value="F">여자</option>
+          <option value="U">선택안함</option>
+        </select>
+      </div>
+      
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="age">나이대</label>
+        </h3>
+        <select name="age">
+          <option value="" select></option>
+          <option value="0">10세 미만</option>
+          <option value="10">10대</option>
+          <option value="20">20대</option>
+          <option value="30">30대</option>
+          <option value="40">40대</option>
+          <option value="50">50대</option>
+          <option value="60">60대 이상</option>
+          <option value="U">선택안함</option>
+        </select>
+      </div>
+      
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="location">내 위치 설정</label>
+        </h3>
+        <input name="location" type="text" value=""/>
+      </div>
+      <div>
+        <input type="submit" value="회원가입"/>
+      </div>
+    </form>
+    <script src="{% static 'accounts/js/signup.js' %}"></script>
+  </body>
+</html>
