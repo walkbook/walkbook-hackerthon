@@ -24,5 +24,6 @@ import walkMaps.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', walkMaps.views.index, name='index'),
-    path('maps/', include('walkMaps.urls')),
+    path('map/', include('walkMaps.urls')),
+    path('premap/', include('premaps.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
