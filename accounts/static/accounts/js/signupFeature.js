@@ -1,17 +1,14 @@
 export const signupFeature = {
 	handleCheckPw(e){
-    validatePasswordMsg = document.getElementById('validate-password');
     if (
-      this.isSamePassword(passwords)
+      this.isSamePassword(this.getPasswords())
     ) {
-      validatePasswordMsg.innerHTML='비밀번호가 일치합니다.'
-      validatePasswordMsg.style.color='blue';
+      document.getElementById('validate-password').innerHTML='비밀번호가 일치합니다.'
+      document.getElementById('validate-password').style.color='blue';
     } else {
-      validatePasswordMsg.innerHTML='비밀번호가 일치하지 않습니다.'
-      validatePasswordMsg.style.color='red';
+      document.getElementById('validate-password').innerHTML='비밀번호가 일치하지 않습니다.'
+      document.getElementById('validate-password').style.color='red';
     }
-
-    
   },
 
 	handleSignup(e) {
@@ -63,7 +60,7 @@ export const signupFeature = {
 	},
 
 	dismissSignup() {
-		
+		//아직 미구현
 	},
 
 };

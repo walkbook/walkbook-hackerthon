@@ -1,8 +1,8 @@
 import { signupFeature } from './signupFeature.js';
 
 (() => {
-	const passwordInput = document.querySelector('input[type=password]');
-	passwordInput.onchange = (e) => signupFeature.handleCheckPw(e);
+	const passwordInput = document.getElementById('password2');
+	passwordInput.onkeyup = (e) => signupFeature.handleCheckPw(e);
 })();
 
 (() => {
