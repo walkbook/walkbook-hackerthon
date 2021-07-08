@@ -4,12 +4,28 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 class Profile(models.Model):
+	SEX_CHOICES = [
+		('M', '남자'),
+		('F', '여자'),
+	]
+	AGE_CHOICES = [
+		('0', '10세 미만'),
+		('10', '10대'),
+		('20', '20대'),
+		('30', '30대'),
+		('40', '40대'),
+		('50', '50대'),
+		('60', '60대이상'),
+	]
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	name = models.CharField(max_length=20, blank=True)
-	# major = models.CharField(max_length=20, blank=True)
-
+	#django에선 문자열 타입은 null이 아닌 빈 문자열이 convention
+	name = models.CharField(max_length=20, blank=True) 
+	sex = models.CharField(max_length=1, choices=SEX_CHOICES, blank=True)
+	age = models.CharField(max_length=2, choices=AGE_CHOICES, blank=True)
+	location = models.TextField(blank=True)
+	
 	def __str__(self):
-		return f'id={self.id}, user_id={self.user.id}, name={self.name}'
+		return f'id={self.id}, user_id={self.user.id}, name={self.name}, sex={self.sex}, age={self.age}, location={self.location}'
 	
 	@receiver(post_save, sender=User) #user가 저장된 이후 signal을 받는 receiver
 	def create_user_profile(sender, instance, created, **kwargs):
