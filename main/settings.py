@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sass_processor',
-    'walkMaps',
+    'maps',
     'premaps',
     'accounts',
 ]
@@ -54,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'walkbook.urls'
+ROOT_URLCONF = 'main.urls'
 
 TEMPLATES = [
     {
@@ -72,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'walkbook.wsgi.application'
+WSGI_APPLICATION = 'main.wsgi.application'
 
 
 # Database
@@ -127,7 +126,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
   os.path.join(BASE_DIR, 'accounts', 'static'),
-  os.path.join(BASE_DIR, 'walkMaps', 'static'),
+  os.path.join(BASE_DIR, 'maps', 'static'),
   os.path.join(BASE_DIR, 'premaps', 'static'),
 ]
 
@@ -137,7 +136,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SASS_PROCESSOR_ENABLED =  True
-SASS_PROCESSOR_ROOT =  os.path.join(BASE_DIR, 'walkMaps', 'static')
+SASS_PROCESSOR_ROOT =  os.path.join(BASE_DIR, 'maps', 'static')
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"

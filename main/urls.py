@@ -19,12 +19,13 @@ from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 
-import walkMaps.views
+import maps.views
 import accounts.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('maps/', include('walkMaps.urls')),
+    path('', maps.views.index, name='index'),
+    path('maps/', include('maps.urls')),
     path('premaps/', include('premaps.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', accounts.views.signup, name='signup'),
