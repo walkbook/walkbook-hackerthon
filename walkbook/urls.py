@@ -15,14 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import walkMaps.views
-import accounts.views
+from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 
+import walkMaps.views
+import accounts.views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', walkMaps.views.index, name='index'),
+    path('maps/', include('walkMaps.urls')),
+    path('premaps/', include('premaps.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', accounts.views.signup, name='signup'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

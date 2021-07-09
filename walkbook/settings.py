@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sass_processor',
     'walkMaps',
+    'premaps',
     'accounts',
 ]
 
@@ -122,17 +123,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
   os.path.join(BASE_DIR, 'accounts', 'static'),
+  os.path.join(BASE_DIR, 'walkMaps', 'static'),
+  os.path.join(BASE_DIR, 'premaps', 'static'),
 ]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SASS_PROCESSOR_ENABLED =  True
-SASS_PROCESSOR_ROOT =  os.path.join(BASE_DIR, 'walkMaps', 'static')    ## directory 수정 필요!!!
+SASS_PROCESSOR_ROOT =  os.path.join(BASE_DIR, 'walkMaps', 'static')
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
