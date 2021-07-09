@@ -125,8 +125,8 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-  os.path.join(BASE_DIR, 'accounts', 'static'),
-  os.path.join(BASE_DIR, 'walkMaps', 'static'),
+  # os.path.join(BASE_DIR, 'accounts', 'static'),
+  # os.path.join(BASE_DIR, 'walkMaps', 'static'),
   os.path.join(BASE_DIR, 'premaps', 'static'),
 ]
 
