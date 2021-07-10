@@ -1,109 +1,109 @@
 export const signupFeature = {
-  async isAvailableID(){
+  async isAvailableID() {
     const userId = document.querySelector('input[name=userid]').value;
     let data = new FormData();
     data.append("userid", userId);
     const response = await axios.post(`/accounts/signup/checkid`, data);
     if (response.data.isAvailable) {
-      document.getElementById('validate-id').innerHTML='사용 가능!'
-      return true;      
+      document.getElementById('validate-id').innerHTML = '사용 가능!'
+      return true;
     } else {
-      document.getElementById('validate-id').innerHTML='ID가 이미 존재합니다.'
+      document.getElementById('validate-id').innerHTML = 'ID가 이미 존재합니다.'
       return false;
-    }  
-  },
-  
-  clearUseridMsg(){
-    document.getElementById('validate-id').innerHTML=''
+    }
   },
 
-  handleSamePw(){
+  clearUseridMsg() {
+    document.getElementById('validate-id').innerHTML = ''
+  },
+
+  handleSamePw() {
     if (
       this.isSamePassword(this.getPasswords())
     ) {
-      document.getElementById('same-password').innerHTML='비밀번호가 일치합니다.'
-      document.getElementById('same-password').style.color='blue';
+      document.getElementById('same-password').innerHTML = '비밀번호가 일치합니다.'
+      document.getElementById('same-password').style.color = 'blue';
     } else {
-      document.getElementById('same-password').innerHTML='비밀번호가 일치하지 않습니다.'
-      document.getElementById('same-password').style.color='red';
+      document.getElementById('same-password').innerHTML = '비밀번호가 일치하지 않습니다.'
+      document.getElementById('same-password').style.color = 'red';
     }
   },
 
-  handleValidatePw(){
-    document.getElementById('same-password').innerHTML=''
+  handleValidatePw() {
+    document.getElementById('same-password').innerHTML = ''
     if (
       this.isValidFormatPassword(this.getPasswords())
     ) {
-      document.getElementById('validate-password').innerHTML='';
+      document.getElementById('validate-password').innerHTML = '';
     } else {
-      document.getElementById('validate-password').innerHTML='비밀번호는 4자리 이상의 대소문자, 숫자여야 합니다.'
-      document.getElementById('validate-password').style.color='red';
+      document.getElementById('validate-password').innerHTML = '비밀번호는 4자리 이상의 대소문자, 숫자여야 합니다.'
+      document.getElementById('validate-password').style.color = 'red';
     }
   },
 
-	async handleSignup(e) {
-		e.preventDefault();
+  async handleSignup(e) {
+    e.preventDefault();
     const isAvailableID = await this.isAvailableID();
-    if (this.validateUserId(this.getUserId()) && isAvailableID){
-      if(this.validatePassword(this.getPasswords())){
+    if (this.validateUserId(this.getUserId()) && isAvailableID) {
+      if (this.validatePassword(this.getPasswords())) {
         this.submitTarget(e);
-      } else{
+      } else {
         this.dismissSignup('비밀번호');
       }
-    } else{
+    } else {
       this.dismissSignup('ID');
     }
-	},
+  },
 
-	getUserId() {
-		return document.querySelector('input[name=userid]').value;
-	},
+  getUserId() {
+    return document.querySelector('input[name=userid]').value;
+  },
 
-	validateUserId(username) {
-		return username !== '';
-	},
+  validateUserId(username) {
+    return username !== '';
+  },
 
-	getPasswords() {
-		return [...document.querySelectorAll('input[type=password]')].map(
-			(input) => input.value
-		);
-	},
+  getPasswords() {
+    return [...document.querySelectorAll('input[type=password]')].map(
+      (input) => input.value
+    );
+  },
 
-	isSamePassword([pw1, pw2]) {
-		return pw1 === pw2;
-	},
+  isSamePassword([pw1, pw2]) {
+    return pw1 === pw2;
+  },
 
-	isValidFormatPassword([pw]) {
+  isValidFormatPassword([pw]) {
     //"4글자 이상"의 "알파벳 대소문자 또는 숫자"
-		const regExp = /^[A-Za-z0-9]{4,}$/;
+    const regExp = /^[A-Za-z0-9]{4,}$/;
 
-		return regExp.test(pw);
-	},
+    return regExp.test(pw);
+  },
 
-	validatePassword(passwords) {
-		return (
-			this.isSamePassword(passwords) && this.isValidFormatPassword(passwords)
-		);
-	},
+  validatePassword(passwords) {
+    return (
+      this.isSamePassword(passwords) && this.isValidFormatPassword(passwords)
+    );
+  },
 
-	submitTarget(e) {
-		e.target.submit();
-	},
+  submitTarget(e) {
+    e.target.submit();
+  },
 
-	dismissSignup(content) {
-		alert(content + '를 확인하십시오!');
-	},
-  
+  dismissSignup(content) {
+    alert(content + '를 확인하십시오!');
+  },
+
   execLocation() {
     new daum.Postcode({
-      oncomplete: function(data) {
-          var addr = '';
-          if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-              addr = data.roadAddress;
-          } else { // 사용자가 지번 주소를 선택했을 경우(J)
-              addr = data.jibunAddress;
-          }
-          document.getElementById("location").value = addr;
+      oncomplete: function (data) {
+        var addr = '';
+        if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+          addr = data.roadAddress;
+        } else { // 사용자가 지번 주소를 선택했을 경우(J)
+          addr = data.jibunAddress;
+        }
+        document.getElementById("location").value = addr;
       }
     }).open();
   },

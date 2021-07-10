@@ -146,14 +146,14 @@ function showResult() {
     const distance = Math.round(line.getLength());
 
     // 도보의 시속은 평균 4km/h 이고 도보의 분속은 67m/min입니다
-    const walkkTime = distance / 67 | 0;
-    const walkHour = '', walkMin = '';
+    let walkkTime = distance / 67 | 0;
+    let walkHour = '', walkMin = '';
 
     // 계산한 도보 시간이 60분 보다 크면 시간으로 표시합니다
     if (walkkTime > 60) {
-        walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 '
+        walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 ';
     }
-    walkMin = '<span class="number">' + walkkTime % 60 + '</span>분'
+    walkMin = '<span class="number">' + walkkTime % 60 + '</span>분';
 
     const totalTime = document.getElementById('total-time');
     const totalDistance = document.getElementById('total-distance');
