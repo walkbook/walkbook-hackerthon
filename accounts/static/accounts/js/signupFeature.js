@@ -1,9 +1,12 @@
 export const signupFeature = {
   async isAvailableID() {
     const userId = document.querySelector('input[name=userid]').value;
+
     let data = new FormData();
     data.append("userid", userId);
+
     const response = await axios.post(`/accounts/signup/checkid`, data);
+
     if (response.data.isAvailable) {
       document.getElementById('validate-id').innerHTML = '사용 가능!'
       return true;
@@ -43,8 +46,8 @@ export const signupFeature = {
 
   async handleSignup(e) {
     e.preventDefault();
-    const isAvailableID = await this.isAvailableID();
-    if (this.validateUserId(this.getUserId()) && isAvailableID) {
+    const isvalidUserid = await this.validateUserId(this.getUserId());
+    if (isvalidUserid) {
       if (this.validatePassword(this.getPasswords())) {
         this.submitTarget(e);
       } else {
@@ -59,8 +62,9 @@ export const signupFeature = {
     return document.querySelector('input[name=userid]').value;
   },
 
-  validateUserId(username) {
-    return username !== '';
+  async validateUserId(username) {
+    const isAvailableID = await this.isAvailableID();
+    return (username !== '') && isAvailableID;
   },
 
   getPasswords() {
