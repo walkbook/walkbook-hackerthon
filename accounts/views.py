@@ -27,5 +27,5 @@ class SignUpView:
         user = None
         print(user)
       return JsonResponse({
-        'isDuplicated': False if user is None else True 
+        'isAvailable': True if user is None else False 
       })

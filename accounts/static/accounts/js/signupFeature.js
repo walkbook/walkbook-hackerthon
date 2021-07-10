@@ -1,42 +1,58 @@
 export const signupFeature = {
-
-  async handleCheckUserid(){
+  async isAvailableID(){
     const userId = document.querySelector('input[name=userid]').value;
     let data = new FormData();
     data.append("userid", userId);
     const response = await axios.post(`/accounts/signup/checkid`, data);
-    console.log(response.data.isDuplicated); 
-    
-    if (response.data.isDuplicated) {
-      document.getElementById('validate-id').innerHTML='ID가 이미 존재합니다.'
-    } else {
+    if (response.data.isAvailable) {
       document.getElementById('validate-id').innerHTML='사용 가능!'
+      return true;      
+    } else {
+      document.getElementById('validate-id').innerHTML='ID가 이미 존재합니다.'
+      return false;
     }  
   },
+  
+  clearUseridMsg(){
+    document.getElementById('validate-id').innerHTML=''
+  },
 
-  handleCheckPw(){
+  handleSamePw(){
     if (
       this.isSamePassword(this.getPasswords())
     ) {
-      document.getElementById('validate-password').innerHTML='비밀번호가 일치합니다.'
-      document.getElementById('validate-password').style.color='blue';
+      document.getElementById('same-password').innerHTML='비밀번호가 일치합니다.'
+      document.getElementById('same-password').style.color='blue';
     } else {
-      document.getElementById('validate-password').innerHTML='비밀번호가 일치하지 않습니다.'
+      document.getElementById('same-password').innerHTML='비밀번호가 일치하지 않습니다.'
+      document.getElementById('same-password').style.color='red';
+    }
+  },
+
+  handleValidatePw(){
+    document.getElementById('same-password').innerHTML=''
+    if (
+      this.isValidFormatPassword(this.getPasswords())
+    ) {
+      document.getElementById('validate-password').innerHTML='';
+    } else {
+      document.getElementById('validate-password').innerHTML='비밀번호는 4자리 이상의 대소문자, 숫자여야 합니다.'
       document.getElementById('validate-password').style.color='red';
     }
   },
 
-	handleSignup(e) {
+	async handleSignup(e) {
 		e.preventDefault();
-
-		if (
-			this.validateUserId(this.getUserId()) &&
-			this.validatePassword(this.getPasswords())
-		) {
-			this.submitTarget(e);
-		} else {
-			this.dismissSignup();
-		}
+    const isAvailableID = await this.isAvailableID();
+    if (this.validateUserId(this.getUserId()) && isAvailableID){
+      if(this.validatePassword(this.getPasswords())){
+        this.submitTarget(e);
+      } else{
+        this.dismissSignup('비밀번호');
+      }
+    } else{
+      this.dismissSignup('ID');
+    }
 	},
 
 	getUserId() {
@@ -74,8 +90,8 @@ export const signupFeature = {
 		e.target.submit();
 	},
 
-	dismissSignup() {
-		//아직 미구현
+	dismissSignup(content) {
+		alert(content + '를 확인하십시오!');
 	},
   
   execLocation() {
