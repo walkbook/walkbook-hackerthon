@@ -7,8 +7,9 @@
 
     <p>현재 위치 주변에서 산책로를 찾아보세요! (현재 위치 허용 눌러주라는 안내 만들자!)</p>
     {% csrf_token %}
-        <input type="text" name="location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
-        <button type="submit" id="location-button">가져오기</button>
+    <input type="text" name="location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
+    <button type="submit" id="location-button">가져오기</button>
+    
     <div id="map" style="width:1000px;height:700px;"></div>
     <script type="module" src="{% static 'maps/js/map.js' %}"></script>
 {% endblock content %}

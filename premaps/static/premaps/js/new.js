@@ -1,245 +1,215 @@
-import { addControl, getCurrentLocation } from "../../../../maps/static/maps/js/mapConfig";
-import { addDrawingTools } from "./mapDrawing";
-
 const container = document.getElementById('map');
-const mapOption = {
+const options = {
     center: new kakao.maps.LatLng(33.450701, 126.570667),
-    level: 5
+    level: 4
 };
 
-const map = new kakao.maps.Map(container, mapOption);
-
-// addControl(map)
-// getCurrentLocation(map);
-// addDrawingTools(map);
-
-// var drawingFlag = false; // 선이 그려지고 있는 상태를 가지고 있을 변수입니다
-// var moveLine; // 선이 그려지고 있을때 마우스 움직임에 따라 그려질 선 객체 입니다
-// var clickLine // 마우스로 클릭한 좌표로 그려질 선 객체입니다
-// var distanceOverlay; // 선의 거리정보를 표시할 커스텀오버레이 입니다
-// var dots = {}; // 선이 그려지고 있을때 클릭할 때마다 클릭 지점과 거리를 표시하는 커스텀 오버레이 배열입니다.
-
-// // 지도에 클릭 이벤트를 등록합니다
-// // 지도를 클릭하면 선 그리기가 시작됩니다 그려진 선이 있으면 지우고 다시 그립니다
-// kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
-
-//     // 마우스로 클릭한 위치입니다 
-//     var clickPosition = mouseEvent.latLng;
-
-//     // 지도 클릭이벤트가 발생했는데 선을 그리고있는 상태가 아니면
-//     if (!drawingFlag) {
-
-//         // 상태를 true로, 선이 그리고있는 상태로 변경합니다
-//         drawingFlag = true;
-
-//         // 지도 위에 선이 표시되고 있다면 지도에서 제거합니다
-//         deleteClickLine();
-
-//         // 지도 위에 커스텀오버레이가 표시되고 있다면 지도에서 제거합니다
-//         deleteDistnce();
-
-//         // 지도 위에 선을 그리기 위해 클릭한 지점과 해당 지점의 거리정보가 표시되고 있다면 지도에서 제거합니다
-//         deleteCircleDot();
-
-//         // 클릭한 위치를 기준으로 선을 생성하고 지도위에 표시합니다
-//         clickLine = new kakao.maps.Polyline({
-//             map: map, // 선을 표시할 지도입니다 
-//             path: [clickPosition], // 선을 구성하는 좌표 배열입니다 클릭한 위치를 넣어줍니다
-//             strokeWeight: 3, // 선의 두께입니다 
-//             strokeColor: '#db4040', // 선의 색깔입니다
-//             strokeOpacity: 1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
-//             strokeStyle: 'solid' // 선의 스타일입니다
-//         });
-
-//         // 선이 그려지고 있을 때 마우스 움직임에 따라 선이 그려질 위치를 표시할 선을 생성합니다
-//         moveLine = new kakao.maps.Polyline({
-//             strokeWeight: 3, // 선의 두께입니다 
-//             strokeColor: '#db4040', // 선의 색깔입니다
-//             strokeOpacity: 0.5, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
-//             strokeStyle: 'solid' // 선의 스타일입니다    
-//         });
-
-//         // 클릭한 지점에 대한 정보를 지도에 표시합니다
-//         displayCircleDot(clickPosition, 0);
+const map = new kakao.maps.Map(container, options);
 
 
-//     } else { // 선이 그려지고 있는 상태이면
+/////////////////////////// Control ////////////////////////////
 
-//         // 그려지고 있는 선의 좌표 배열을 얻어옵니다
-//         var path = clickLine.getPath();
+const mapTypeControl = new kakao.maps.MapTypeControl();
+const zoomControl = new kakao.maps.ZoomControl();
 
-//         // 좌표 배열에 클릭한 위치를 추가합니다
-//         path.push(clickPosition);
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-//         // 다시 선에 좌표 배열을 설정하여 클릭 위치까지 선을 그리도록 설정합니다
-//         clickLine.setPath(path);
 
-//         var distance = Math.round(clickLine.getLength());
-//         displayCircleDot(clickPosition, distance);
+/////////////////////////// Set Current Location  ////////////////////////////
+
+const currentLocationMsg = '<div style="width:180px;text-align:center;padding:6px 0;">여기 계시는군요! :D</div>';
+let currentLocationMarker;
+let currentLocationInfowindow;
+
+if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+
+        const lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+
+        const locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+            message = currentLocationMsg; // 인포윈도우에 표시될 내용입니다
+
+        displayMarker(locPosition, message);
+
+    });
+
+} else {
+
+    const locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
+        message = '현재 위치를 받아올 수 없습니다 :('
+
+    displayMarker(locPosition, message);
+}
+
+function displayMarker(locPosition, message) {
+
+    currentLocationMarker = new kakao.maps.Marker({
+        map: map,
+        position: locPosition
+    });
+
+    currentLocationInfowindow = new kakao.maps.InfoWindow({
+        content: message,
+        removable: true
+    });
+
+    currentLocationInfowindow.open(map, currentLocationMarker);
+
+    map.setCenter(locPosition);
+}
+
+const geocoder = new kakao.maps.services.Geocoder();
+
+const locationBtn = document.getElementById('location-button');
+
+locationBtn.addEventListener('click', () => {
+    const address = document.getElementById('address-location');
+
+    geocoder.addressSearch(address.value, function (result, status) {
+
+        if (status === kakao.maps.services.Status.OK) {
+
+            const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+            currentLocationMarker.setMap(null);
+            currentLocationInfowindow.close();
+
+            currentLocationMarker = new kakao.maps.Marker({
+                map: map,
+                position: coords
+            });
+
+            currentLocationInfowindow = new kakao.maps.InfoWindow({
+                content: currentLocationMsg,
+                removable: true
+            });
+            currentLocationInfowindow.open(map, currentLocationMarker);
+
+            map.setCenter(coords);
+        }
+    });
+});
+
+
+/////////////////////////// Drawing  ////////////////////////////
+
+let curLine;
+
+const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입니다
+    map: map, // Drawing Manager로 그리기 요소를 그릴 map 객체입니다
+    drawingMode: [ // Drawing Manager로 제공할 그리기 요소 모드입니다
+        kakao.maps.Drawing.OverlayType.MARKER,
+        kakao.maps.Drawing.OverlayType.POLYLINE,
+    ],
+    // 사용자에게 제공할 그리기 가이드 툴팁입니다
+    // 사용자에게 도형을 그릴때, 드래그할때, 수정할때 가이드 툴팁을 표시하도록 설정합니다
+    guideTooltip: ['draw', 'drag', 'edit'],
+    markerOptions: { // 마커 옵션입니다 
+        draggable: true, // 마커를 그리고 나서 드래그 가능하게 합니다 
+        removable: true // 마커를 삭제 할 수 있도록 x 버튼이 표시됩니다  
+    },
+    polylineOptions: { // 선 옵션입니다
+        draggable: true, // 그린 후 드래그가 가능하도록 설정합니다
+        removable: true, // 그린 후 삭제 할 수 있도록 x 버튼이 표시됩니다
+        editable: true, // 그린 후 수정할 수 있도록 설정합니다 
+        strokeColor: '#39f', // 선 색
+        hintStrokeStyle: 'dash', // 그리중 마우스를 따라다니는 보조선의 선 스타일
+        hintStrokeOpacity: 0.5  // 그리중 마우스를 따라다니는 보조선의 투명도
+    }
+};
+
+// 위에 작성한 옵션으로 Drawing Manager를 생성합니다
+const manager = new kakao.maps.Drawing.DrawingManager(drawingOptions);
+
+const toolbox = new kakao.maps.Drawing.Toolbox({ drawingManager: manager });
+
+map.addControl(toolbox.getElement(), kakao.maps.ControlPosition.TOPLEFT);
+
+manager.addListener('state_changed', function () {
+    if (manager.getOverlays([kakao.maps.drawing.OverlayType.POLYLINE])["polyline"].length != 0) {
+        showResult();
+    }
+});
+
+manager.addListener('remove', function () {
+    const totalTime = document.getElementById('total-time');
+    const totalDistance = document.getElementById('total-distance');
+    totalTime.innerHTML = `소요 시간 : 0분`;
+    totalDistance.innerHTML = `거리 : 0 m`;
+});
+
+function showResult() {
+    const line = manager.getOverlays([kakao.maps.drawing.OverlayType.POLYLINE])["polyline"][0];
+    const distance = Math.round(line.getLength());
+
+    // 도보의 시속은 평균 4km/h 이고 도보의 분속은 67m/min입니다
+    const walkkTime = distance / 67 | 0;
+    const walkHour = '', walkMin = '';
+
+    // 계산한 도보 시간이 60분 보다 크면 시간으로 표시합니다
+    if (walkkTime > 60) {
+        walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 '
+    }
+    walkMin = '<span class="number">' + walkkTime % 60 + '</span>분'
+
+    const totalTime = document.getElementById('total-time');
+    const totalDistance = document.getElementById('total-distance');
+    totalTime.innerHTML = `소요 시간 : ${walkHour} ${walkMin}`;
+    totalDistance.innerHTML = `거리 : ${distance} m`;
+}
+
+
+/////////////////////////// Undo & Redo  ////////////////////////////
+
+// // undo, redo 버튼의 disabled 속성을 설정하기 위해 엘리먼트를 변수에 설정합니다
+// const undoBtn = document.getElementById('undo');
+// const redoBtn = document.getElementById('redo');
+
+// // Drawing Manager 객체에 state_changed 이벤트를 등록합니다
+// // state_changed 이벤트는 그리기 요소의 생성/수정/이동/삭제 동작 
+// // 또는 Drawing Manager의 undo, redo 메소드가 실행됐을 때 발생합니다
+// manager.addListener('state_changed', function () {
+
+//     // 되돌릴 수 있다면 undo 버튼을 활성화 시킵니다 
+//     if (manager.undoable()) {
+//         undoBtn.disabled = false;
+//         undoBtn.className = "";
+//     } else { // 아니면 undo 버튼을 비활성화 시킵니다 
+//         undoBtn.disabled = true;
+//         undoBtn.className = "disabled";
 //     }
+
+//     // 취소할 수 있다면 redo 버튼을 활성화 시킵니다 
+//     if (manager.redoable()) {
+//         redoBtn.disabled = false;
+//         redoBtn.className = "";
+//     } else { // 아니면 redo 버튼을 비활성화 시킵니다 
+//         redoBtn.disabled = true;
+//         redoBtn.className = "disabled";
+//     }
+
 // });
 
-// // 지도에 마우스무브 이벤트를 등록합니다
-// // 선을 그리고있는 상태에서 마우스무브 이벤트가 발생하면 그려질 선의 위치를 동적으로 보여주도록 합니다
-// kakao.maps.event.addListener(map, 'mousemove', function (mouseEvent) {
+// // 버튼 클릭 시 호출되는 핸들러 입니다
+// function selectOverlay(type) {
+//     // 그리기 중이면 그리기를 취소합니다
+//     manager.cancel();
 
-//     // 지도 마우스무브 이벤트가 발생했는데 선을 그리고있는 상태이면
-//     if (drawingFlag) {
-
-//         // 마우스 커서의 현재 위치를 얻어옵니다 
-//         var mousePosition = mouseEvent.latLng;
-
-//         // 마우스 클릭으로 그려진 선의 좌표 배열을 얻어옵니다
-//         var path = clickLine.getPath();
-
-//         // 마우스 클릭으로 그려진 마지막 좌표와 마우스 커서 위치의 좌표로 선을 표시합니다
-//         var movepath = [path[path.length - 1], mousePosition];
-//         moveLine.setPath(movepath);
-//         moveLine.setMap(map);
-
-//         var distance = Math.round(clickLine.getLength() + moveLine.getLength()), // 선의 총 거리를 계산합니다
-//             content = '<div class="dotOverlay distanceInfo">총거리 <span class="number">' + distance + '</span>m</div>'; // 커스텀오버레이에 추가될 내용입니다
-
-//         // 거리정보를 지도에 표시합니다
-//         // showDistance(content, mousePosition);
-//     }
-// });
-
-// // 지도에 마우스 오른쪽 클릭 이벤트를 등록합니다
-// // 선을 그리고있는 상태에서 마우스 오른쪽 클릭 이벤트가 발생하면 선 그리기를 종료합니다
-// kakao.maps.event.addListener(map, 'rightclick', function (mouseEvent) {
-
-//     // 지도 오른쪽 클릭 이벤트가 발생했는데 선을 그리고있는 상태이면
-//     if (drawingFlag) {
-
-//         // 마우스무브로 그려진 선은 지도에서 제거합니다
-//         moveLine.setMap(null);
-//         moveLine = null;
-
-//         // 마우스 클릭으로 그린 선의 좌표 배열을 얻어옵니다
-//         var path = clickLine.getPath();
-
-//         // 선을 구성하는 좌표의 개수가 2개 이상이면
-//         if (path.length > 1) {
-
-//             // 마지막 클릭 지점에 대한 거리 정보 커스텀 오버레이를 지웁니다
-//             if (dots[dots.length - 1].distance) {
-//                 dots[dots.length - 1].distance.setMap(null);
-//                 dots[dots.length - 1].distance = null;
-//             }
-
-//             var distance = Math.round(clickLine.getLength()); // 선의 총 거리를 계산합니다
-
-//             showResult(distance);
-
-//         } else {
-
-//             // 선을 구성하는 좌표의 개수가 1개 이하이면 
-//             // 지도에 표시되고 있는 선과 정보들을 지도에서 제거합니다.
-//             deleteClickLine();
-//             deleteCircleDot();
-//             deleteDistnce();
-
-//         }
-
-//         // 상태를 false로, 그리지 않고 있는 상태로 변경합니다
-//         drawingFlag = false;
-//     }
-// });
-
-// // 클릭으로 그려진 선을 지도에서 제거하는 함수입니다
-// function deleteClickLine() {
-//     // TODO : x 누르면 지도에서 제거하도록 바꾸기
-
-//     if (clickLine) {
-//         clickLine.setMap(null);
-//         clickLine = null;
-//     }
+//     // 클릭한 그리기 요소 타입을 선택합니다
+//     manager.select(kakao.maps.Drawing.OverlayType[type]);
 // }
 
-// // 마우스 드래그로 그려지고 있는 선의 총거리 정보를 표시하거
-// // 마우스 오른쪽 클릭으로 선 그리가 종료됐을 때 선의 정보를 표시하는 커스텀 오버레이를 생성하고 지도에 표시하는 함수입니다
-// function showDistance(content, position) {
-
-//     if (distanceOverlay) { // 커스텀오버레이가 생성된 상태이면
-
-//         // 커스텀 오버레이의 위치와 표시할 내용을 설정합니다
-//         distanceOverlay.setPosition(position);
-//         distanceOverlay.setContent(content);
-
-//     } else { // 커스텀 오버레이가 생성되지 않은 상태이면
-
-//         // 커스텀 오버레이를 생성하고 지도에 표시합니다
-//         distanceOverlay = new kakao.maps.CustomOverlay({
-//             map: map, // 커스텀오버레이를 표시할 지도입니다
-//             content: content,  // 커스텀오버레이에 표시할 내용입니다
-//             position: position, // 커스텀오버레이를 표시할 위치입니다.
-//             xAnchor: 0,
-//             yAnchor: 0,
-//             zIndex: 3
-//         });
-//     }
+// // undo 버튼 클릭시 호출되는 함수입니다.
+// function undo() {
+//     // 그리기 요소를 이전 상태로 되돌립니다
+//     manager.undo();
 // }
 
-// // 그려지고 있는 선의 총거리 정보와 
-// // 선 그리가 종료됐을 때 선의 정보를 표시하는 커스텀 오버레이를 삭제하는 함수입니다
-// function deleteDistnce() {
-//     if (distanceOverlay) {
-//         distanceOverlay.setMap(null);
-//         distanceOverlay = null;
-//     }
-// }
-
-// // 선이 그려지고 있는 상태일 때 지도를 클릭하면 호출하여 
-// // 클릭 지점에 대한 정보 (동그라미와 클릭 지점까지의 총거리)를 표출하는 함수입니다
-// function displayCircleDot(position, distance) {
-
-//     // 클릭 지점을 표시할 빨간 동그라미 커스텀오버레이를 생성합니다
-//     var circleOverlay = new kakao.maps.CustomOverlay({
-//         content: '<span class="dot"></span>',
-//         position: position,
-//         zIndex: 1
-//     });
-
-//     // 지도에 표시합니다
-//     circleOverlay.setMap(map);
-
-//     // 배열에 추가합니다
-//     dots.push({ circle: circleOverlay, distance: distanceOverlay });
-// }
-
-// // 클릭 지점에 대한 정보 (동그라미와 클릭 지점까지의 총거리)를 지도에서 모두 제거하는 함수입니다
-// function deleteCircleDot() {
-//     var i;
-
-//     for (i = 0; i < dots.length; i++) {
-//         if (dots[i].circle) {
-//             dots[i].circle.setMap(null);
-//         }
-
-//         if (dots[i].distance) {
-//             dots[i].distance.setMap(null);
-//         }
-//     }
-
-//     dots = [];
-// }
-
-
-// function showResult(distance) {
-
-//     // 도보의 시속은 평균 4km/h 이고 도보의 분속은 67m/min입니다
-//     var walkkTime = distance / 67 | 0;
-//     var walkHour = '', walkMin = '';
-
-//     // 계산한 도보 시간이 60분 보다 크면 시간으로 표시합니다
-//     if (walkkTime > 60) {
-//         walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 '
-//     }
-//     walkMin = '<span class="number">' + walkkTime % 60 + '</span>분'
-
-//     const totalTime = document.getElementById('total-time');
-//     const totalDistance = document.getElementById('total-distance');
-//     totalTime.innerHTML = `소요 시간 : ${walkHour} ${walkMin}`;
-//     totalDistance.innerHTML = `거리 : ${distance} m`;
+// // redo 버튼 클릭시 호출되는 함수입니다.
+// function redo() {
+//     // 이전 상태로 되돌린 상태를 취소합니다
+//     manager.redo();
 // }
