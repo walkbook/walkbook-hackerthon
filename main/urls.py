@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', maps.views.index, name='index'),
     path('maps/', include('maps.urls')),
-    path('premaps/', include('premaps.urls')),
+    path('mypage/', include('mypage.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', accounts.views.SignUpView.signup, name='signup'),
     path('accounts/signup/checkid', accounts.views.SignUpView.checkid, name='checkid')

@@ -1,0 +1,28 @@
+{% extends '../base.html' %}
+
+{% load static %}
+{% block content %}
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
+	<p>나만의 산책로를 만들어보세요!</p>
+
+	<span>
+		<button onclick="selectOverlay('MARKER')">마커</button>
+		<button onclick="selectOverlay('POLYLINE')">선</button>
+	</span>
+	{% csrf_token %}
+	<input type="text" name="location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
+	<button type="submit" id="address-location-button">가져오기</button>
+	<button id="current-location-button">현재 위치로 다시 가기</button>
+		
+	<div class="map_wrap">
+		<div id="map" style="width:1000px;height:400px;"></div>
+		{% comment %} <p class="edit">
+			<button id="undo" class="disabled" onclick="undo()" disabled>UNDO</button>
+			<button id="redo" class="disabled" onclick="redo()" disabled>REDO</button>
+		</p> {% endcomment %}
+	</div>
+	<p id="total-distance">거리 : 0 m</p>
+	<p id="total-time">소요 시간 : 0분</p>
+
+	<script src="{% static 'maps/js/new.js' %}"></script>
+{% endblock content %}

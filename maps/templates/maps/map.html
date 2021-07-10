@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
 {% load static %}
-{% block content %}
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1"></script>
-<p>현재 위치 주변에서 산책로를 찾아보세요! (현재 위치 허용 눌러주라는 안내 만들자!)</p>
-<div id="map" style="width:1000px;height:700px;"></div>
 
-<script src="{% static 'maps/js/index.js' %}""></script>
+{% block content %}
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services"></script>
+
+    <p>현재 위치 주변에서 산책로를 찾아보세요! (현재 위치 허용 눌러주라는 안내 만들자!)</p>
+    {% csrf_token %}
+    <input type="text" name="location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
+    <button type="submit" id="address-location-button">가져오기</button>
+	<button id="current-location-button">현재 위치로 다시 가기</button>
+    
+    <div id="map" style="width:1000px;height:700px;"></div>
+    <script type="module" src="{% static 'maps/js/map.js' %}"></script>
 {% endblock content %}

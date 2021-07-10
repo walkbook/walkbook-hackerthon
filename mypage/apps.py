@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PremapsConfig(AppConfig):
+class MypageConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'premaps'
+    name = 'mypage'

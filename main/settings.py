@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sass_processor',
     'maps',
-    'premaps',
     'accounts',
+    'mypage',
 ]
 
 MIDDLEWARE = [
@@ -127,7 +127,7 @@ STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
   os.path.join(BASE_DIR, 'accounts', 'static'),
   os.path.join(BASE_DIR, 'maps', 'static'),
-  os.path.join(BASE_DIR, 'premaps', 'static'),
+  os.path.join(BASE_DIR, 'mypage', 'static'),
 ]
 
 # Default primary key field type
