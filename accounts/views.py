@@ -20,7 +20,6 @@ class SignUpView:
     
   def checkid(request):
     if request.method == 'POST':
-      print(request.POST['userid'])
       try:
         user = User.objects.get(username=request.POST['userid'])
       except Exception as e:

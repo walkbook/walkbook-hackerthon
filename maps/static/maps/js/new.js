@@ -194,6 +194,23 @@ function showResult() {
     totalDistance.innerHTML = `거리 : ${distance} m`;
 }
 
+/////////////////////////// save map ////////////////////////////////
+
+const saveWalkroadBtn = document.getElementById('save-walkroad-button');
+
+saveWalkroadBtn.addEventListener('click', async () => {
+    var walkroad = manager.getData();
+    console.log(JSON.stringify(walkroad));
+
+    let data = new FormData();
+    //example
+    data.append("userid", 4);
+    data.append("username", "김세원");
+    data.append("walkroad_name", "김세원의 산책로");
+    data.append("walkroad_map", JSON.stringify(walkroad));
+    
+    await axios.post(`/maps/new/`, data);
+});
 
 /////////////////////////// Undo & Redo  ////////////////////////////
 
