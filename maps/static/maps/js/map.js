@@ -38,7 +38,7 @@ if (navigator.geolocation) {
 
 } else {
 
-    const locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
+    const locPosition = new kakao.maps.LatLng(33.450701, 126.570667),   // TODO : 회원 정보의 주소를 가져오기
         message = '현재 위치를 받아올 수 없습니다 :('
 
     displayMarker(locPosition, message);
