@@ -63,9 +63,10 @@ function displayMarker(locPosition, message) {
 
 const geocoder = new kakao.maps.services.Geocoder();
 
-const locationBtn = document.getElementById('location-button');
+const addrLocationBtn = document.getElementById('address-location-button');
+const currLocationBtn = document.getElementById('current-location-button');
 
-locationBtn.addEventListener('click', () => {
+addrLocationBtn.addEventListener('click', () => {
     const address = document.getElementById('address-location');
 
     geocoder.addressSearch(address.value, function (result, status) {
@@ -92,6 +93,34 @@ locationBtn.addEventListener('click', () => {
         }
     });
 });
+
+currLocationBtn.addEventListener('click', () => {
+    currentLocationMarker.setMap(null);
+    currentLocationInfowindow.close();
+
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+
+            const lat = position.coords.latitude, // 위도
+                lon = position.coords.longitude; // 경도
+
+            const locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+                message = currentLocationMsg; // 인포윈도우에 표시될 내용입니다
+
+            displayMarker(locPosition, message);
+
+        });
+
+    } else {
+
+        const locPosition = new kakao.maps.LatLng(33.450701, 126.570667),   // TODO : 회원 정보의 주소를 가져오기
+            message = '현재 위치를 받아올 수 없습니다 :('
+
+        displayMarker(locPosition, message);
+    }
+});
+
 
 
 /////////////////////////// Drawing  ////////////////////////////
@@ -124,9 +153,13 @@ const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입
 // 위에 작성한 옵션으로 Drawing Manager를 생성합니다
 const manager = new kakao.maps.Drawing.DrawingManager(drawingOptions);
 
-const toolbox = new kakao.maps.Drawing.Toolbox({ drawingManager: manager });
-
-map.addControl(toolbox.getElement(), kakao.maps.ControlPosition.TOPLEFT);
+// 버튼 클릭 시 호출되는 핸들러 입니다
+function selectOverlay(type) {
+    // 그리기 중이면 그리기를 취소합니다
+    manager.cancel();
+    // 클릭한 그리기 요소 타입을 선택합니다
+    manager.select(kakao.maps.drawing.OverlayType[type]);
+}
 
 manager.addListener('state_changed', function () {
     if (manager.getOverlays([kakao.maps.drawing.OverlayType.POLYLINE])["polyline"].length != 0) {
