@@ -2,11 +2,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="{% static 'accounts/js/axios.js' %}"></script>
     <title>Sign up | WalkBook</title>
   </head>
 
@@ -20,6 +21,8 @@
           <label for="id">아이디</label>
         </h3>
         <input name="userid" type="text" value="" placeholder="필수입력 값 입니다."/>
+        <input id="checkUserid" type="button" value="중복체크"/>
+        <span id="validate-id"></span>
       </div>
 
       <div class="signup">
@@ -77,8 +80,8 @@
         <h3 class="signup_title">
           <label for="location">내 위치 설정</label>
         </h3>
-        <input type="text" name="location" placeholder="위치">
-        <input type="button" name="searchLocation" value="위치 입력">
+        <input id="location" name = "location" type="text" placeholder="위치">
+        <input id="searchLocation" type="button" value="위치 입력">
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       </div>
       <div>

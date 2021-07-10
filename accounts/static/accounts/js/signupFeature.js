@@ -1,5 +1,20 @@
 export const signupFeature = {
-	handleCheckPw(e){
+
+  async handleCheckUserid(){
+    const userId = document.querySelector('input[name=userid]').value;
+    let data = new FormData();
+    data.append("userid", userId);
+    const response = await axios.post(`/accounts/signup/checkid`, data);
+    console.log(response.data.isDuplicated); 
+    
+    if (response.data.isDuplicated) {
+      document.getElementById('validate-id').innerHTML='ID가 이미 존재합니다.'
+    } else {
+      document.getElementById('validate-id').innerHTML='사용 가능!'
+    }  
+  },
+
+  handleCheckPw(){
     if (
       this.isSamePassword(this.getPasswords())
     ) {

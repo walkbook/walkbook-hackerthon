@@ -1,9 +1,14 @@
 import { signupFeature } from './signupFeature.js';
 
 (() => {
+	const checkUserid = document.getElementById('checkUserid');
+	checkUserid.onclick = () => signupFeature.handleCheckUserid();
+})();
+
+(() => {
 	const passwordInput = document.querySelectorAll('input[type=password]');
-	passwordInput[0].onkeyup = (e) => signupFeature.handleCheckPw(e);
-	passwordInput[1].onkeyup = (e) => signupFeature.handleCheckPw(e);
+	passwordInput[0].onkeyup = () => signupFeature.handleCheckPw();
+	passwordInput[1].onkeyup = () => signupFeature.handleCheckPw();
 })();
 
 (() => {
@@ -13,5 +18,5 @@ import { signupFeature } from './signupFeature.js';
 
 (() => {
 	const searchLocation = document.getElementById('searchLocation');
-	searchLocation.onclick = (e) => signupFeature.execLocation(e);
+	searchLocation.onclick = () => signupFeature.execLocation();
 })();
