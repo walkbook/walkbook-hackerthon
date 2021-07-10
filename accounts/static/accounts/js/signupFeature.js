@@ -1,5 +1,20 @@
 export const signupFeature = {
-	handleCheckPw(e){
+
+  async handleCheckUserid(){
+    const userId = document.querySelector('input[name=userid]').value;
+    let data = new FormData();
+    data.append("userid", userId);
+    const response = await axios.post(`/accounts/signup/checkid`, data);
+    console.log(response.data.isDuplicated); 
+    
+    if (response.data.isDuplicated) {
+      document.getElementById('validate-id').innerHTML='ID가 이미 존재합니다.'
+    } else {
+      document.getElementById('validate-id').innerHTML='사용 가능!'
+    }  
+  },
+
+  handleCheckPw(){
     if (
       this.isSamePassword(this.getPasswords())
     ) {
@@ -62,5 +77,18 @@ export const signupFeature = {
 	dismissSignup() {
 		//아직 미구현
 	},
-
+  
+  execLocation() {
+    new daum.Postcode({
+      oncomplete: function(data) {
+          var addr = '';
+          if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+              addr = data.roadAddress;
+          } else { // 사용자가 지번 주소를 선택했을 경우(J)
+              addr = data.jibunAddress;
+          }
+          document.getElementById("location").value = addr;
+      }
+    }).open();
+  },
 };

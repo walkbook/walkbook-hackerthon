@@ -28,5 +28,6 @@ urlpatterns = [
     path('maps/', include('maps.urls')),
     path('premaps/', include('premaps.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/signup/', accounts.views.signup, name='signup'),
+    path('accounts/signup/', accounts.views.SignUpView.signup, name='signup'),
+    path('accounts/signup/checkid', accounts.views.SignUpView.checkid, name='checkid')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
