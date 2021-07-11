@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
+
+    <h1>post</h1>
+
+    {% csrf_token %}
+    <input type="text" name="location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
+    <button type="submit" id="address-location-button">주소로 현재위치 설정</button>
+	<button id="current-location-button">현재 위치로 지도 옮기기</button>
+
+    <div id="map" style="width:800px;height:500px;"></div>
+
+    <p>author : {{ walkroad.author.profile.username }}</p>
+    <p>title : {{ walkroad.title }}</p>
+    <p>description : {{ walkroad.description }}</p>
+    <p>start : {{ walkroad.start }}</p>
+    <p>finish : {{ walkroad.finish }}</p>
+    <p>tmi : {{ walkroad.tmi }}</p>
+
+    <script type="text/javascript">
+        const data = {{ path | safe }};
+    </script>
+    {% if user.is_authenticated %}
+    <script type="text/javascript">
+        const userAddress = "{{ request.user.profile.location | safe }}";
+    </script>
+    {% else %}
+    <script type="text/javascript">
+        const userAddress = "신림로 1";
+    </script>
+    {% endif %}
+    <script src="{% static 'maps/js/show.js' %}"></script>
+{% endblock content %}

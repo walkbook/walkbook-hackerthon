@@ -27,9 +27,9 @@ class Profile(models.Model):
 	location = models.TextField(blank=True)
 	
 	def __str__(self):
-		return f'id={self.id}, user_id={self.user.id}, name={self.username}, sex={self.sex}, age={self.age}, location={self.location}'
+		return f'id={self.id}, user_id={self.user.id}, username={self.username}, sex={self.sex}, age={self.age}, location={self.location}'
 	
-	@receiver(post_save, sender=User) #user가 저장된 이후 signal을 받는 receiver
+	@receiver(post_save, sender=User) #user가 저장된 이후(post) signal을 받는 receiver
 	def create_user_profile(sender, instance, created, **kwargs):
 		if created:
 			Profile.objects.create(user=instance)
