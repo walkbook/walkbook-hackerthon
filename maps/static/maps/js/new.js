@@ -1,3 +1,5 @@
+import { currentLocationMsg } from "./components.js";
+
 const container = document.getElementById('map');
 const options = {
     center: new kakao.maps.LatLng(33.450701, 126.570667),
@@ -20,7 +22,6 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 const geocoder = new kakao.maps.services.Geocoder();
 
-const currentLocationMsg = '<div style="width:180px;text-align:center;padding:6px 0;">여기 계시는군요! :D</div>';
 let currentLocationMarker;
 let currentLocationInfowindow;
 let userAddressX = 126.570667;
@@ -274,15 +275,6 @@ manager.addListener('state_changed', function () {
     }
 
 });
-
-// 버튼 클릭 시 호출되는 핸들러 입니다
-function selectOverlay(type) {
-    // 그리기 중이면 그리기를 취소합니다
-    manager.cancel();
-
-    // 클릭한 그리기 요소 타입을 선택합니다
-    manager.select(kakao.maps.Drawing.OverlayType[type]);
-}
 
 // undo 버튼 클릭시 호출되는 함수입니다.
 function undo() {

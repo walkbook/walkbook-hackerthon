@@ -1,3 +1,5 @@
+import { currentLocationMsg } from "./components.js";
+
 const container = document.getElementById('map');
 const options = {
     center: new kakao.maps.LatLng(33.450701, 126.570667),
@@ -20,7 +22,6 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 const geocoder = new kakao.maps.services.Geocoder();
 
-const currentLocationMsg = '<div style="width:180px;text-align:center;padding:6px 0;">여기 계시는군요! :D</div>';
 let currentLocationMarker;
 let currentLocationInfowindow;
 let userAddressX = 126.570667;
