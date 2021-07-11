@@ -10,7 +10,10 @@ def map(request):
     return render(request, 'maps/map.html')
 
 def post(request):
-    return render(request, 'maps/post.html')
+    walkroads = Walkroad.objects.all()
+    return render(request, 'maps/post.html', {
+        'walkroads': walkroads,
+    })
 
 def show(request, id):
     walkroad = Walkroad.objects.get(id=id)

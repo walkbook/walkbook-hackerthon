@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>post</p>
+<h1>post</h1>
+<div class="post-container">
+  {% for walkroad in walkroads %}
+    <div class="post">
+        <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
+    </div>
+  {% endfor %}
+</div>
+
 {% endblock content %}
