@@ -2,18 +2,30 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+class Tag(models.Model):
+    content = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.content
+
+class MapImage(models.Model):
+    url = models.TextField(blank=True)
+    created_at = models.DateTimeField(default=timezone.now)
+
 class Walkroad(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    username = models.CharField(max_length=20, blank=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     
-    walkroad_name = models.CharField(max_length=100, default=username)
-    walkroad_info = models.TextField(blank=True)
-    walkroad_start = models.TextField(blank=True)
-    walkroad_finish = models.TextField(blank=True)
-    walkroad_tmi = models.TextField(blank=True)
-    walkroad_picpath = models.TextField(blank=True)
-    walkroad_time = models.TextField(blank=True)
-    walkroad_map = models.JSONField(default=dict)
+    title = models.TextField(max_length=100, blank=True)
+    description = models.TextField(blank=True)
+    start = models.TextField(blank=True)
+    finish = models.TextField(blank=True)
+    tmi = models.TextField(blank=True)
+    distance = models.IntegerField(default=0)
+    time = models.IntegerField(default=0)
+    path = models.JSONField(default=dict)
+    like_users = models.ManyToManyField(User, blank=True, related_name='like_walkroads', through='Like')
+    tags = models.ManyToManyField(Tag, blank=True, related_name='walkroads')
+    images = models.ManyToManyField(MapImage, blank=True, related_name='walkroads')
 
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(blank=True, null=True)
@@ -23,4 +35,19 @@ class Walkroad(models.Model):
         self.save()
 
     def __str__(self):
-        return f'walkroad id={self.id}, user_id={self.user.id}, username={self.username}, walkroad_name={self.walkroad_name}, walkroad_info={self.walkroad_info}, walkroad_tmi={self.walkroad_tmi}'
+        return f'walkroad id={self.id}, user_id={self.author.id}, username={self.author.profile.username}, title={self.title}, description={self.description}, tmi={self.tmi}'
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    walkroad = models.ForeignKey(Walkroad, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(default=timezone.now)
+
+class Comment(models.Model):
+    content = models.TextField()
+    walkroad = models.ForeignKey(Walkroad, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(default=timezone.now)
+    author = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'[walkroad: {self.walkroad}] {self.content}'
+

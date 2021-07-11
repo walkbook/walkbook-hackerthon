@@ -18,9 +18,21 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 /////////////////////////// Set Current Location  ////////////////////////////
 
+const geocoder = new kakao.maps.services.Geocoder();
+
 const currentLocationMsg = '<div style="width:180px;text-align:center;padding:6px 0;">여기 계시는군요! :D</div>';
 let currentLocationMarker;
 let currentLocationInfowindow;
+let userAddressX = 126.570667;
+let userAddressY = 33.450701;
+
+geocoder.addressSearch(userAddress, function (result, status) {
+
+    if (status === kakao.maps.services.Status.OK) {
+        userAddressX = result[0].x;
+        userAddressY = result[0].y;
+    }
+});
 
 if (navigator.geolocation) {
 
@@ -38,7 +50,7 @@ if (navigator.geolocation) {
 
 } else {
 
-    const locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
+    let locPosition = new kakao.maps.LatLng(userAddressY, userAddressX),
         message = '현재 위치를 받아올 수 없습니다 :('
 
     displayMarker(locPosition, message);
@@ -61,15 +73,13 @@ function displayMarker(locPosition, message) {
     map.setCenter(locPosition);
 }
 
-const geocoder = new kakao.maps.services.Geocoder();
-
 const addrLocationBtn = document.getElementById('address-location-button');
 const currLocationBtn = document.getElementById('current-location-button');
 
 addrLocationBtn.addEventListener('click', () => {
-    const address = document.getElementById('address-location');
+    const address = document.getElementById('address-location').value;
 
-    geocoder.addressSearch(address.value, function (result, status) {
+    geocoder.addressSearch(address, function (result, status) {
 
         if (status === kakao.maps.services.Status.OK) {
 
@@ -114,7 +124,7 @@ currLocationBtn.addEventListener('click', () => {
 
     } else {
 
-        const locPosition = new kakao.maps.LatLng(33.450701, 126.570667),   // TODO : 회원 정보의 주소를 가져오기
+        const locPosition = new kakao.maps.LatLng(userAddressY, userAddressX),   // TODO : 회원 정보의 주소를 가져오기
             message = '현재 위치를 받아올 수 없습니다 :('
 
         displayMarker(locPosition, message);
@@ -122,10 +132,10 @@ currLocationBtn.addEventListener('click', () => {
 });
 
 
-
 /////////////////////////// Drawing  ////////////////////////////
 
-let curLine;
+let totalTime;
+let totalDistance;
 
 const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입니다
     map: map, // Drawing Manager로 그리기 요소를 그릴 map 객체입니다
@@ -168,10 +178,12 @@ manager.addListener('state_changed', function () {
 });
 
 manager.addListener('remove', function () {
-    const totalTime = document.getElementById('total-time');
-    const totalDistance = document.getElementById('total-distance');
-    totalTime.innerHTML = `소요 시간 : 0분`;
-    totalDistance.innerHTML = `거리 : 0 m`;
+    const totalTimeElement = document.getElementById('total-time');
+    const totalDistanceElement = document.getElementById('total-distance');
+    totalTimeElement.innerHTML = `소요 시간 : 0분`;
+    totalDistanceElement.innerHTML = `거리 : 0 m`;
+    totalTime = 0;
+    totalDistance = 0;
 });
 
 function showResult() {
@@ -182,16 +194,20 @@ function showResult() {
     let walkkTime = distance / 67 | 0;
     let walkHour = '', walkMin = '';
 
+    totalTime = walkkTime;
+    totalDistance = distance;
+
     // 계산한 도보 시간이 60분 보다 크면 시간으로 표시합니다
     if (walkkTime > 60) {
         walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 ';
     }
     walkMin = '<span class="number">' + walkkTime % 60 + '</span>분';
 
-    const totalTime = document.getElementById('total-time');
-    const totalDistance = document.getElementById('total-distance');
-    totalTime.innerHTML = `소요 시간 : ${walkHour} ${walkMin}`;
-    totalDistance.innerHTML = `거리 : ${distance} m`;
+    const totalTimeElement = document.getElementById('total-time');
+    const totalDistanceElement = document.getElementById('total-distance');
+    totalTimeElement.innerHTML = `소요 시간 : ${walkHour} ${walkMin}`;
+    totalDistanceElement.innerHTML = `거리 : ${distance} m`;
+
 }
 
 /////////////////////////// save map ////////////////////////////////
@@ -199,67 +215,83 @@ function showResult() {
 const saveWalkroadBtn = document.getElementById('save-walkroad-button');
 
 saveWalkroadBtn.addEventListener('click', async () => {
-    var walkroad = manager.getData();
-    console.log(JSON.stringify(walkroad));
+    const path = manager.getData();
+    console.log(JSON.stringify(path));
+
+    const title = document.getElementById('title-input');
+    const description = document.getElementById('description-input');
+    const start = document.getElementById('start-input');
+    const finish = document.getElementById('finish-input');
+    const tmi = document.getElementById('tmi-input');
 
     let data = new FormData();
-    //example
-    data.append("userid", 4);
-    data.append("username", "김세원");
-    data.append("walkroad_name", "김세원의 산책로");
-    data.append("walkroad_map", JSON.stringify(walkroad));
-    
-    await axios.post(`/maps/new/`, data);
+    data.append("title", title.value);
+    data.append("description", description.value);
+    data.append("start", start.value);
+    data.append("finish", finish.value);
+    data.append("tmi", tmi.value);
+    data.append("path", JSON.stringify(path));
+    data.append("distance", totalDistance);
+    data.append("time", totalTime);
+
+    await axios.post(`/maps/new/`, data)
+        .then(function (response) {
+            window.location.href = `/maps/${response.data.id}`;
+        })
+        .catch(function (response) {
+            //handle error
+            console.log(response);
+        });
 });
 
 /////////////////////////// Undo & Redo  ////////////////////////////
 
-// // undo, redo 버튼의 disabled 속성을 설정하기 위해 엘리먼트를 변수에 설정합니다
-// const undoBtn = document.getElementById('undo');
-// const redoBtn = document.getElementById('redo');
+// undo, redo 버튼의 disabled 속성을 설정하기 위해 엘리먼트를 변수에 설정합니다
+const undoBtn = document.getElementById('undo');
+const redoBtn = document.getElementById('redo');
 
-// // Drawing Manager 객체에 state_changed 이벤트를 등록합니다
-// // state_changed 이벤트는 그리기 요소의 생성/수정/이동/삭제 동작 
-// // 또는 Drawing Manager의 undo, redo 메소드가 실행됐을 때 발생합니다
-// manager.addListener('state_changed', function () {
+// Drawing Manager 객체에 state_changed 이벤트를 등록합니다
+// state_changed 이벤트는 그리기 요소의 생성/수정/이동/삭제 동작 
+// 또는 Drawing Manager의 undo, redo 메소드가 실행됐을 때 발생합니다
+manager.addListener('state_changed', function () {
 
-//     // 되돌릴 수 있다면 undo 버튼을 활성화 시킵니다 
-//     if (manager.undoable()) {
-//         undoBtn.disabled = false;
-//         undoBtn.className = "";
-//     } else { // 아니면 undo 버튼을 비활성화 시킵니다 
-//         undoBtn.disabled = true;
-//         undoBtn.className = "disabled";
-//     }
+    // 되돌릴 수 있다면 undo 버튼을 활성화 시킵니다 
+    if (manager.undoable()) {
+        undoBtn.disabled = false;
+        undoBtn.className = "";
+    } else { // 아니면 undo 버튼을 비활성화 시킵니다 
+        undoBtn.disabled = true;
+        undoBtn.className = "disabled";
+    }
 
-//     // 취소할 수 있다면 redo 버튼을 활성화 시킵니다 
-//     if (manager.redoable()) {
-//         redoBtn.disabled = false;
-//         redoBtn.className = "";
-//     } else { // 아니면 redo 버튼을 비활성화 시킵니다 
-//         redoBtn.disabled = true;
-//         redoBtn.className = "disabled";
-//     }
+    // 취소할 수 있다면 redo 버튼을 활성화 시킵니다 
+    if (manager.redoable()) {
+        redoBtn.disabled = false;
+        redoBtn.className = "";
+    } else { // 아니면 redo 버튼을 비활성화 시킵니다 
+        redoBtn.disabled = true;
+        redoBtn.className = "disabled";
+    }
 
-// });
+});
 
-// // 버튼 클릭 시 호출되는 핸들러 입니다
-// function selectOverlay(type) {
-//     // 그리기 중이면 그리기를 취소합니다
-//     manager.cancel();
+// 버튼 클릭 시 호출되는 핸들러 입니다
+function selectOverlay(type) {
+    // 그리기 중이면 그리기를 취소합니다
+    manager.cancel();
 
-//     // 클릭한 그리기 요소 타입을 선택합니다
-//     manager.select(kakao.maps.Drawing.OverlayType[type]);
-// }
+    // 클릭한 그리기 요소 타입을 선택합니다
+    manager.select(kakao.maps.Drawing.OverlayType[type]);
+}
 
-// // undo 버튼 클릭시 호출되는 함수입니다.
-// function undo() {
-//     // 그리기 요소를 이전 상태로 되돌립니다
-//     manager.undo();
-// }
+// undo 버튼 클릭시 호출되는 함수입니다.
+function undo() {
+    // 그리기 요소를 이전 상태로 되돌립니다
+    manager.undo();
+}
 
-// // redo 버튼 클릭시 호출되는 함수입니다.
-// function redo() {
-//     // 이전 상태로 되돌린 상태를 취소합니다
-//     manager.redo();
-// }
+// redo 버튼 클릭시 호출되는 함수입니다.
+function redo() {
+    // 이전 상태로 되돌린 상태를 취소합니다
+    manager.redo();
+}

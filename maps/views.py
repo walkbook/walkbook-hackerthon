@@ -1,6 +1,6 @@
 from django.http.response import JsonResponse
 from maps.models import Walkroad
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 # Create your views here.
 def index(request):
@@ -13,19 +13,39 @@ def post(request):
     return render(request, 'maps/post.html')
 
 def show(request, id):
-    return render(request, 'maps/show.html')
+    walkroad = Walkroad.objects.get(id=id)
+    return render(request, 'maps/show.html', { 
+        'walkroad': walkroad,
+        'path': walkroad.path
+        })
 
 def new(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        walkroad_name = request.POST['walkroad_name']
-        walkroad_map = request.POST['walkroad_map']
+        title = request.POST['title']
+        description = request.POST['description']
+        start = request.POST['start']
+        finish = request.POST['finish']
+        tmi = request.POST['tmi']
+        distance = request.POST['distance']
+        time = request.POST['time']
+        path = request.POST['path']
 
-        Walkroad.objects.create(user_id=request.user.id, username=username, walkroad_name=walkroad_name, walkroad_map=walkroad_map)
+        walkroad = Walkroad.objects.create(
+            author = request.user,
+            title = title,
+            description = description,
+            start = start,
+            finish = finish,
+            tmi = tmi,
+            distance = distance,
+            time = time,
+            path = path,
+            )
+        
+        print(walkroad)
         return JsonResponse({
-            'walkRoad': walkroad_map
+            'id': walkroad.id
         })
 
-    if request.method == 'GET':
-        return render(request, 'maps/new.html')
+    return render(request, 'maps/new.html')
         

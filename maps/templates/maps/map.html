@@ -12,5 +12,14 @@
 	<button id="current-location-button">현재 위치로 다시 가기</button>
     
     <div id="map" style="width:1000px;height:700px;"></div>
-    <script type="module" src="{% static 'maps/js/map.js' %}"></script>
+    {% if user.is_authenticated %}
+    <script type="text/javascript">
+        const userAddress = "{{ request.user.profile.location | safe }}";
+    </script>
+    {% else %}
+    <script type="text/javascript">
+        const userAddress = "신림로 1";
+    </script>
+    {% endif %}
+    <script src="{% static 'maps/js/map.js' %}"></script>
 {% endblock content %}

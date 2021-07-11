@@ -8,6 +8,9 @@
 	<span>
 		<button onclick="selectOverlay('MARKER')">마커</button>
 		<button onclick="selectOverlay('POLYLINE')">선</button>
+		<button id="undo" class="disabled" onclick="undo()" disabled>UNDO</button>
+		<button id="redo" class="disabled" onclick="redo()" disabled>REDO</button>
+
 	</span>
 	{% csrf_token %}
 	<input type="text" name="location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
@@ -16,15 +19,28 @@
 		
 	<div class="map_wrap">
 		<div id="map" style="width:1000px;height:400px;"></div>
-		{% comment %} <p class="edit">
-			<button id="undo" class="disabled" onclick="undo()" disabled>UNDO</button>
-			<button id="redo" class="disabled" onclick="redo()" disabled>REDO</button>
-		</p> {% endcomment %}
 	</div>
 	<p id="total-distance">거리 : 0 m</p>
 	<p id="total-time">소요 시간 : 0분</p>
 
+	<input type="text" name="username" id="username" value="{{ request.user.profile.username }}" disabled/>
+	<input type="text" name="title" id="title-input" placeholder="title"/>
+	<input type="text" name="description" id="description-input" placeholder="description"/>
+	<input type="text" name="start" id="start-input" placeholder="start"/>
+	<input type="text" name="finish" id="finish-input" placeholder="finish"/>
+	<input type="text" name="tmi" id="tmi-input" placeholder="tmi"/>
+	
 	<button type="submit" id="save-walkroad-button">저장</button> 
+	
+	{% if user.is_authenticated %}
+    <script type="text/javascript">
+        const userAddress = "{{ request.user.profile.location | safe }}";
+    </script>
+    {% else %}
+    <script type="text/javascript">
+        const userAddress = "신림로 1";
+    </script>
+    {% endif %}
 	<script src="{% static 'maps/js/new.js' %}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 	<script src="{% static 'maps/js/axios.js' %}"></script>
