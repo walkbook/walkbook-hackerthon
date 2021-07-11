@@ -1,3 +1,4 @@
+from django.db import connections
 from django.http.response import JsonResponse
 from maps.models import Walkroad
 from django.shortcuts import redirect, render
@@ -45,10 +46,12 @@ def new(request):
             path = path,
             )
         
-        print(walkroad)
         return JsonResponse({
             'id': walkroad.id
         })
 
-    return render(request, 'maps/new.html')
+    if request.user.is_anonymous:
+        return redirect('login')
+    else:
+        return render(request, 'maps/new.html')
         
