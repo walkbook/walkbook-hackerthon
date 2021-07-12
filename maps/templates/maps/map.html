@@ -12,36 +12,19 @@
 	<button id="current-location-button">현재 위치로 다시 가기</button>
     
     <div id="map" style="width:1000px;height:700px;"></div>
-    
 
-    {% if user.is_authenticated %}
-    <script type="text/javascript">
-        const userAddress = "{{ request.user.profile.location | safe }}";
-    </script>
-    {% else %}
-    <script type="text/javascript">
-        const userAddress = "신림로 1";
-    </script>
-    {% endif %}
-
-    <script src="{% static 'maps/js/components.js' %}"></script>
-    <script>        
+    <script>
+        let userAddress;
+        if ("{{ request.user.is_anonymous }}" == "True") {
+            userAddress = "신림로 1";
+        } else {
+            userAddress = "{{ request.user.profile.location | safe }}";
+        }     
         const geocoder = new kakao.maps.services.Geocoder();
-
-        let userAddressX = 126.570667;
-        let userAddressY = 33.450701;
-
-        geocoder.addressSearch(userAddress, function (result, status) {
-
-            if (status === kakao.maps.services.Status.OK) {
-                userAddressX = result[0].x;
-                userAddressY = result[0].y;
-            }
-        });
 
         const container = document.getElementById('map');
         const options = {
-            center: new kakao.maps.LatLng(userAddressY, userAddressX),
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
             level: 4
         };
 
@@ -49,7 +32,9 @@
 
         let currentLocationMarker;
         let currentLocationInfowindow;
+
+        const setCenterByCurrentLocation = true;
     </script>
-    <script src="{% static 'maps/js/location.js' %}"></script>
+    <script src="{% static 'maps/js/components.js' %}"></script>
     <script src="{% static 'maps/js/initial.js' %}"></script>
 {% endblock content %}

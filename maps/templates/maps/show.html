@@ -21,37 +21,24 @@
     <p>finish : {{ walkroad.finish }}</p>
     <p>tmi : {{ walkroad.tmi }}</p>
 
-    <script type="text/javascript">
-        const data = {{ path | safe }};
-    </script>
-    {% if user.is_authenticated %}
-    <script type="text/javascript">
-        const userAddress = "{{ request.user.profile.location | safe }}";
-    </script>
-    {% else %}
-    <script type="text/javascript">
-        const userAddress = "신림로 1";
-    </script>
-    {% endif %}
-
     <script src="{% static 'maps/js/components.js' %}"></script>
-    <script>        
+    <script>       
+        const data = {{ path | safe }};
+
+        let userAddress;
+        if ("{{ request.user.is_anonymous }}" == "True") {
+            userAddress = "신림로 1";
+        } else {
+            userAddress = "{{ request.user.profile.location | safe }}";
+        }
+
         const geocoder = new kakao.maps.services.Geocoder();
 
-        let userAddressX = 126.570667;
-        let userAddressY = 33.450701;
-
-        geocoder.addressSearch(userAddress, function (result, status) {
-
-            if (status === kakao.maps.services.Status.OK) {
-                userAddressX = result[0].x;
-                userAddressY = result[0].y;
-            }
-        });
+        const startPoint = data[kakao.maps.drawing.OverlayType.POLYLINE][0]["points"][0];
 
         const container = document.getElementById('map');
         const options = {
-            center: new kakao.maps.LatLng(userAddressY, userAddressX),
+            center: new kakao.maps.LatLng(startPoint['y'], startPoint['x']),
             level: 4
         };
 
@@ -59,8 +46,9 @@
 
         let currentLocationMarker;
         let currentLocationInfowindow;
+
+        const setCenterByCurrentLocation = false;
     </script>
-    <script src="{% static 'maps/js/location.js' %}"></script>
     <script src="{% static 'maps/js/initial.js' %}"></script>
-    <script src="{% static 'maps/js/getPath.js' %}"></script>
+    <script src="{% static 'maps/js/show.js' %}"></script>
 {% endblock content %}
