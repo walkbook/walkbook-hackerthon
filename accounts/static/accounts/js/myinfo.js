@@ -1,9 +1,8 @@
-import { myinfoFeature } from './myinfoFeature.js';
 import { signupFeature } from './signupFeature.js';
 
 (() => {
-    myinfoFeature.selectOption('sex', sex);
-    myinfoFeature.selectOption('age', age);
+    signupFeature.selectOption('sex', sex);
+    signupFeature.selectOption('age', age);
 })();
 
 (() => {

@@ -111,4 +111,32 @@ export const signupFeature = {
       }
     }).open();
   },
+
+  selectOption(id, value){
+    var select = document.getElementById(id);
+    var option;
+    for (var i=0; i<select.options.length; i++) {
+        option = select.options[i];
+        if (option.value == value) {
+            option.setAttribute('selected', true);
+        } 
+    }
+  },
+
+  async handleCheckPw(e) {
+    e.preventDefault();
+    const password = document.querySelector('input[name=password]').value;
+
+    let data = new FormData();
+    data.append("password", password);
+
+    const response = await axios.post(`/accounts/checkpw/`, data);
+
+    if (response.data.result) {
+      const res = await axios.get("/accounts/myinfo/");
+      console.log(res);
+      } else {
+        alert('비밀번호가 다릅니다.');
+      }
+  },
 };

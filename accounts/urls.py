@@ -8,6 +8,7 @@ import accounts.views
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('signup/', accounts.views.SignUpView.signup, name='signup'),
-    path('signup/checkid', accounts.views.SignUpView.checkid, name='checkid'),
-    path('myinfo', accounts.views.myinfo, name='myinfo'),
+    path('signup/checkid/', accounts.views.SignUpView.checkid, name='checkid'),
+    path('myinfo/', accounts.views.MyinfoView.myinfo, name='myinfo'),
+    path('checkpw/', accounts.views.MyinfoView.checkpw, name='checkpw'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

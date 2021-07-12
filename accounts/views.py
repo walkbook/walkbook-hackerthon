@@ -28,18 +28,31 @@ class SignUpView:
         'isAvailable': True if user is None else False 
       })
 
-def myinfo(request):
-  if request.method == 'GET':
-    user = User.objects.get(id=request.user.id)
-    return render(request, 'accounts/myinfo.html',{ 'user': user })
+class MyinfoView:
+  def myinfo(request):
+    if request.method == 'GET':
+      user = User.objects.get(id=request.user.id)
+      return render(request, 'accounts/myinfo.html',{ 'user': user })
+    
+    elif request.method == 'POST':
+      user = User.objects.get(id=request.user.id)
+      profile = Profile.objects.filter(user = request.user)
+
+      profile.update(username=request.POST['username'], sex=request.POST['sex'], age=request.POST['age'], location=request.POST['location'])
+
+      user.set_password(request.POST['password1'])
+      user.save()
+      auth.login(request, user)
+      return redirect('/')
   
-  elif request.method == 'POST':
-    user = User.objects.get(id=request.user.id)
-    profile = Profile.objects.filter(user = request.user)
+  def checkpw(request):
+    if request.method == 'GET':
+      user = User.objects.get(id=request.user.id)
+      return render(request, 'accounts/checkpw.html')
 
-    profile.update(username=request.POST['username'], sex=request.POST['sex'], age=request.POST['age'], location=request.POST['location'])
-
-    user.set_password(request.POST['password1'])
-    user.save()
-    auth.login(request, user)
-    return redirect('/')
+    elif request.method == 'POST':
+      user = User.objects.get(id=request.user.id)
+      password = request.POST['password']
+      return JsonResponse({
+        'result': user.check_password(password)
+      })
