@@ -135,8 +135,8 @@ currLocationBtn.addEventListener('click', () => {
 
 /////////////////////////// Drawing  ////////////////////////////
 
-let totalTime;
-let totalDistance;
+let totalTime = 0;
+let totalDistance = 0;
 
 const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입니다
     map: map, // Drawing Manager로 그리기 요소를 그릴 map 객체입니다
@@ -232,7 +232,7 @@ saveWalkroadBtn.addEventListener('click', async () => {
     data.append("finish", finish.value);
     data.append("tmi", tmi.value);
     data.append("path", JSON.stringify(path));
-    data.append("distance", totalDistance);
+    data.append("distance", totalDistance);     // TODO : 0이면 error 처리
     data.append("time", totalTime);
 
     await axios.post(`/maps/new/`, data)
