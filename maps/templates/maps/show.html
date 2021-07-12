@@ -33,5 +33,34 @@
         const userAddress = "신림로 1";
     </script>
     {% endif %}
-    <script type="module" src="{% static 'maps/js/show.js' %}"></script>
+
+    <script src="{% static 'maps/js/components.js' %}"></script>
+    <script>        
+        const geocoder = new kakao.maps.services.Geocoder();
+
+        let userAddressX = 126.570667;
+        let userAddressY = 33.450701;
+
+        geocoder.addressSearch(userAddress, function (result, status) {
+
+            if (status === kakao.maps.services.Status.OK) {
+                userAddressX = result[0].x;
+                userAddressY = result[0].y;
+            }
+        });
+
+        const container = document.getElementById('map');
+        const options = {
+            center: new kakao.maps.LatLng(userAddressY, userAddressX),
+            level: 4
+        };
+
+        const map = new kakao.maps.Map(container, options);
+
+        let currentLocationMarker;
+        let currentLocationInfowindow;
+    </script>
+    <script src="{% static 'maps/js/location.js' %}"></script>
+    <script src="{% static 'maps/js/initial.js' %}"></script>
+    <script src="{% static 'maps/js/getPath.js' %}"></script>
 {% endblock content %}
