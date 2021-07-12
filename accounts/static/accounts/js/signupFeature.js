@@ -20,6 +20,15 @@ export const signupFeature = {
     document.getElementById('validate-id').innerHTML = ''
   },
 
+  getUserId() {
+    return document.querySelector('input[name=userid]').value;
+  },
+
+  async validateUserId(username) {
+    const isAvailableID = await this.isAvailableID();
+    return (username !== '') && isAvailableID;
+  },
+
   handleSamePw() {
     if (
       this.isSamePassword(this.getPasswords())
@@ -44,29 +53,6 @@ export const signupFeature = {
     }
   },
 
-  async handleSignup(e) {
-    e.preventDefault();
-    const isvalidUserid = await this.validateUserId(this.getUserId());
-    if (isvalidUserid) {
-      if (this.validatePassword(this.getPasswords())) {
-        this.submitTarget(e);
-      } else {
-        this.dismissSignup('비밀번호');
-      }
-    } else {
-      this.dismissSignup('ID');
-    }
-  },
-
-  getUserId() {
-    return document.querySelector('input[name=userid]').value;
-  },
-
-  async validateUserId(username) {
-    const isAvailableID = await this.isAvailableID();
-    return (username !== '') && isAvailableID;
-  },
-
   getPasswords() {
     return [...document.querySelectorAll('input[type=password]')].map(
       (input) => input.value
@@ -88,6 +74,20 @@ export const signupFeature = {
     return (
       this.isSamePassword(passwords) && this.isValidFormatPassword(passwords)
     );
+  },
+
+  async handleSignup(e) {
+    e.preventDefault();
+    const isvalidUserid = await this.validateUserId(this.getUserId());
+    if (isvalidUserid) {
+      if (this.validatePassword(this.getPasswords())) {
+        this.submitTarget(e);
+      } else {
+        this.dismissSignup('비밀번호');
+      }
+    } else {
+      this.dismissSignup('ID');
+    }
   },
 
   submitTarget(e) {
