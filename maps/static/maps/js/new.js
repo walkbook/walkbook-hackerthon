@@ -85,7 +85,7 @@ saveWalkroadBtn.addEventListener('click', async () => {
     data.append("finish", finish.value);
     data.append("tmi", tmi.value);
     data.append("path", JSON.stringify(path));
-    data.append("distance", totalDistance);
+    data.append("distance", totalDistance);     // TODO : 0이면 error 처리
     data.append("time", totalTime);
 
     await axios.post(`/maps/new/`, data)

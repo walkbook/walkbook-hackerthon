@@ -54,4 +54,21 @@ def new(request):
         return redirect('login')
     else:
         return render(request, 'maps/new.html')
+
+def update(request, id):
+    if request.method == 'POST':
+        title = request.POST['title']
+        description = request.POST['description']
+        start = request.POST['start']
+        finish = request.POST['finish']
+        tmi = request.POST['tmi']
+        Walkroad.objects.filter(id=id).update(title=title, description=description, start=start, finish=finish, tmi=tmi)
+        return redirect('maps:show', id)
         
+    walkroad = Walkroad.objects.get(id=id)
+    return render(request, 'maps/update.html', { 'walkroad': walkroad })
+
+def delete(request, id):
+    walkroad = Walkroad.objects.get(id=id)
+    walkroad.delete()
+    return redirect('maps:post')
