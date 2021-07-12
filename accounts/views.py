@@ -24,7 +24,6 @@ class SignUpView:
         user = User.objects.get(username=request.POST['userid'])
       except Exception as e:
         user = None
-        print(user)
       return JsonResponse({
         'isAvailable': True if user is None else False 
       })
@@ -36,8 +35,11 @@ def myinfo(request):
   
   elif request.method == 'POST':
     user = User.objects.get(id=request.user.id)
+    profile = Profile.objects.filter(user = request.user)
+
+    profile.update(username=request.POST['username'], sex=request.POST['sex'], age=request.POST['age'], location=request.POST['location'])
+
     user.set_password(request.POST['password1'])
     user.save()
-    profile = Profile.objects.filter(user_id = request.user.id)
-    profile.update(username=request.POST['username'], sex=request.POST['sex'], age=request.POST['age'], location=request.POST['location'])
-    return render(request, '/')
+    auth.login(request, user)
+    return redirect('/')

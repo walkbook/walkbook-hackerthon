@@ -6,10 +6,7 @@ export const myinfoFeature = {
             option = select.options[i];
             if (option.value == value) {
                 option.setAttribute('selected', true);
-                
             } 
         }
     },
-
-    
 };

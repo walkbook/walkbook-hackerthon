@@ -8,6 +8,7 @@
     {% if user.is_authenticated %}
       <div>{{user.profile.username}}님 환영합니다.</div>
       <a href="{% url 'logout'%}?next={{request.path}}">로그아웃</a>
+      <a href="{% url 'myinfo'%}">내정보수정</a>
     {% else %} 
       <a href="{% url 'signup' %}?next={{request.path}}">회원가입</a>
       <a href="{% url 'login'%}?next={{request.path}}">로그인</a>
@@ -17,7 +18,6 @@
     <a href="{% url 'maps:new' %}">new</a>
     <a href="{% url 'mypage:mypage' %}">mypage</a>
     <a href="/">홈</a>
-    <a href="{% url 'myinfo'%}">내정보수정</a>
     {% block content %}
     {% endblock %}
   </body>
