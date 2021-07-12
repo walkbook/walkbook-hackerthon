@@ -55,18 +55,20 @@ def new(request):
     else:
         return render(request, 'maps/new.html')
 
-def edit(request, id):
-    walkroad = Walkroad.objects.get(id=id)
-      
+def update(request, id):
     if request.method == 'POST':
-        walkroad.title = request.POST['title']
-        walkroad.description = request.POST['description']
-        walkroad.start = request.POST['start']
-        walkroad.finish = request.POST['finish']
-        walkroad.tmi = request.POST['tmi']
-        walkroad.save()
-        return redirect('maps/show.html', id)
+        title = request.POST['title']
+        description = request.POST['description']
+        start = request.POST['start']
+        finish = request.POST['finish']
+        tmi = request.POST['tmi']
+        Walkroad.objects.filter(id=id).update(title=title, description=description, start=start, finish=finish, tmi=tmi)
+        return redirect('maps:show', id)
+        
+    walkroad = Walkroad.objects.get(id=id)
+    return render(request, 'maps/update.html', { 'walkroad': walkroad })
 
-    return render(request, 'maps/edit.html', { 
-        'walkroad': walkroad,
-        })
+def delete(request, id):
+    walkroad = Walkroad.objects.get(id=id)
+    walkroad.delete()
+    return redirect('maps:post')
