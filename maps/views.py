@@ -54,4 +54,19 @@ def new(request):
         return redirect('login')
     else:
         return render(request, 'maps/new.html')
-        
+
+def edit(request, id):
+    walkroad = Walkroad.objects.get(id=id)
+      
+    if request.method == 'POST':
+        walkroad.title = request.POST['title']
+        walkroad.description = request.POST['description']
+        walkroad.start = request.POST['start']
+        walkroad.finish = request.POST['finish']
+        walkroad.tmi = request.POST['tmi']
+        walkroad.save()
+        return redirect('maps/show.html', id)
+
+    return render(request, 'maps/edit.html', { 
+        'walkroad': walkroad,
+        })
