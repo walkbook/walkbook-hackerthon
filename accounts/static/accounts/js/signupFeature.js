@@ -133,10 +133,9 @@ export const signupFeature = {
     const response = await axios.post(`/accounts/checkpw/`, data);
 
     if (response.data.result) {
-      const res = await axios.get("/accounts/myinfo/");
-      console.log(res);
-      } else {
-        alert('비밀번호가 다릅니다.');
-      }
+      window.location.href = `/accounts/myinfo`;  
+    } else {
+      alert('비밀번호가 다릅니다.');
+    }
   },
 };
