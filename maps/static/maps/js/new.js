@@ -33,13 +33,15 @@ manager.addListener('state_changed', function () {
     }
 });
 
-manager.addListener('remove', function () {
-    const totalTimeElement = document.getElementById('total-time');
-    const totalDistanceElement = document.getElementById('total-distance');
-    totalTimeElement.innerHTML = `소요 시간 : 0분`;
-    totalDistanceElement.innerHTML = `거리 : 0 m`;
-    totalTime = 0;
-    totalDistance = 0;
+manager.addListener('remove', function (e) {
+    if (e.overlayType == 'POLYLINE') {
+        const totalTimeElement = document.getElementById('total-time');
+        const totalDistanceElement = document.getElementById('total-distance');
+        totalTimeElement.innerHTML = `소요 시간 : 0분`;
+        totalDistanceElement.innerHTML = `거리 : 0 m`;
+        totalTime = 0;
+        totalDistance = 0;
+    }
 });
 
 function showResult() {
@@ -147,4 +149,26 @@ function selectOverlay(type) {
     manager.cancel();
     // 클릭한 그리기 요소 타입을 선택합니다
     manager.select(kakao.maps.drawing.OverlayType[type]);
+}
+
+/////////////////////////// InfoWindow  ////////////////////////////
+
+manager.addListener('drawend', function(data) {
+    console.log(data.target);
+    kakao.maps.event.addListener(data.target, 'click', function() {
+        const overlay = new kakao.maps.CustomOverlay({
+            content: infoWindow,
+            map: map,
+            position: data.target.getPosition()       
+        });
+        console.log(overlay);
+        overlay.setMap(map);
+    });
+});
+
+// overlays를 db에 저장한 후 부를 때 setMap 하면 됨 (or infowindow.open(map, marker) => ㅇㅏ마 커스텀 x,,?)
+
+// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+function closeOverlay() {
+    overlay.setMap(null);     
 }
