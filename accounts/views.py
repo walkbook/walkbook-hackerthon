@@ -14,7 +14,7 @@ class SignUpView:
       user.profile.location=request.POST['location']
       user.save()
       
-      auth.login(request, user)
+      auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
       return redirect('/')
     return render(request, 'accounts/signup.html')
     
@@ -42,7 +42,7 @@ class MyinfoView:
 
       user.set_password(request.POST['password1'])
       user.save()
-      auth.login(request, user)
+      auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
       return redirect('/')
   
   def checkpw(request):
