@@ -4,13 +4,17 @@ drawPolyline(data[kakao.maps.drawing.OverlayType.POLYLINE]);
 
 // Drawing Manager에서 가져온 데이터 중 마커를 아래 지도에 표시하는 함수입니다
 function drawMarker(markers) {
-    var len = markers.length, i = 0;
+    let len = markers.length, i = 0;
 
     for (; i < len; i++) {
-        var marker = new kakao.maps.Marker({
+        const marker = new kakao.maps.Marker({
             map: map,
             position: new kakao.maps.LatLng(markers[i].y, markers[i].x),
             zIndex: markers[i].zIndex
+        });
+
+        kakao.maps.event.addListener(marker, 'click', function () {
+            map.setCenter(marker.getPosition());
         });
     }
 }
