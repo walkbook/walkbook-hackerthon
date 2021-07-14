@@ -38,11 +38,13 @@
 
         const geocoder = new kakao.maps.services.Geocoder();
 
-        const startPoint = data[kakao.maps.drawing.OverlayType.POLYLINE][0]["points"][0];
+        const points = data[kakao.maps.drawing.OverlayType.POLYLINE][0]["points"];
+        const startPoint = points[0];
+        const endPoint = points[points.length - 1];
 
         const container = document.getElementById('map');
         const options = {
-            center: new kakao.maps.LatLng(startPoint['y'], startPoint['x']),
+            center: new kakao.maps.LatLng((startPoint['y'] + endPoint['y']) / 2, (startPoint['x'] + endPoint['x']) / 2),
             level: 4
         };
 
