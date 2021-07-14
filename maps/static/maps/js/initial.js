@@ -74,8 +74,11 @@ addrLocationBtn.addEventListener('click', () => {
 });
 
 currLocationBtn.addEventListener('click', () => {
-    currentLocationMarker.setMap(null);
-    currentLocationInfowindow.close();
+
+    if (currentLocationMarker) {
+        currentLocationMarker.setMap(null);
+        currentLocationInfowindow.close();
+    }
 
     if (navigator.geolocation) {
 
@@ -102,6 +105,7 @@ currLocationBtn.addEventListener('click', () => {
         map.setCenter(locPosition);
 
     }
+
 });
 
 function displayMarker(locPosition, message) {
