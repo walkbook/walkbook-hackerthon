@@ -66,7 +66,10 @@ def update(request, id):
         return redirect('maps:show', id)
         
     walkroad = Walkroad.objects.get(id=id)
-    return render(request, 'maps/update.html', { 'walkroad': walkroad })
+    if request.user == walkroad.author:
+        return render(request, 'maps/update.html', { 'walkroad': walkroad })
+    else:
+        return redirect('maps:show', id)
 
 def delete(request, id):
     walkroad = Walkroad.objects.get(id=id)

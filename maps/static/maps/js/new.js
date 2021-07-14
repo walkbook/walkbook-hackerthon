@@ -34,15 +34,15 @@ const manager = new kakao.maps.Drawing.DrawingManager(drawingOptions);
 const markerBtn = document.getElementById('marker-button');
 const polylineBtn = document.getElementById('polyline-button');
 
-manager.addListener('drawstart', function(data) {
+manager.addListener('drawstart', function (data) {
     if (data.overlayType == "polyline" && polyline) {
         alert('산책로는 한 번에 하나만 추가할 수 있습니다!');
         manager.cancel();
     }
 });
 
-manager.addListener('drawend', function(data) {
-    
+manager.addListener('drawend', function (data) {
+
     if (data.overlayType == "polyline") {
         polyline = data;
     } else {
@@ -58,7 +58,7 @@ manager.addListener('drawend', function(data) {
 
         showInfoInput();
 
-        kakao.maps.event.addListener(marker, 'click', function() {
+        kakao.maps.event.addListener(marker, 'click', function () {
             const infoWindow = mappingData[markerId].infoWindow;
             infoWindow.setPosition(marker.getPosition());
             infoWindow.setMap(map);
@@ -97,17 +97,17 @@ function saveInfo() {
     console.log(mappingData);
     console.log(mappingId);
     mappingData[mappingId].infoWindow = new kakao.maps.InfoWindow({
-        content : infoWindowContent(mappingId, titleInput.value, descriptionInput.value),
+        content: infoWindowContent(mappingId, titleInput.value, descriptionInput.value),
         map: map,
         position: mappingData[mappingId].infoWindow.getPosition()
     })
-    
+
     titleInput.value = "";
     descriptionInput.value = "";
 
     const infoInputBox = document.getElementById('info-input-container');
     infoInputBox.style.display = 'none';
- 
+
     markerBtn.disabled = false;
     polylineBtn.disabled = false;
     mappingId++;
@@ -137,16 +137,21 @@ function showResult() {
     totalTime = walkkTime;
     totalDistance = distance;
 
-    // 계산한 도보 시간이 60분 보다 크면 시간으로 표시합니다
+    walkDistance = `${distance} `;
+
     if (walkkTime > 60) {
-        walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 ';
+        walkHour = `${Math.floor(walkkTime / 60)}시간 `;
     }
-    walkMin = '<span class="number">' + walkkTime % 60 + '</span>분';
+    walkMin = `${walkkTime % 60}분`;
+
+    if (walkDistance >= 1000) {
+        walkDistance = `${Math.round(distance / 100) / 10} k`;
+    }
 
     const totalTimeElement = document.getElementById('total-time');
     const totalDistanceElement = document.getElementById('total-distance');
     totalTimeElement.innerHTML = `소요 시간 : ${walkHour} ${walkMin}`;
-    totalDistanceElement.innerHTML = `거리 : ${distance} m`;
+    totalDistanceElement.innerHTML = `거리 : ${walkDistance}m`;
 
 }
 
@@ -154,7 +159,7 @@ function showResult() {
 /////////////////////////// InfoWindow  ////////////////////////////
 
 function closeOverlay(id) {
-    mappingData[id].infoWindow.setMap(null);     
+    mappingData[id].infoWindow.setMap(null);
 }
 
 
@@ -207,6 +212,12 @@ function redo() {
 const saveWalkroadBtn = document.getElementById('save-walkroad-button');
 
 saveWalkroadBtn.addEventListener('click', async () => {
+
+    if (totalDistance == 0) {
+        alert('산책로를 그려주세요!')
+        return
+    }
+
     const path = manager.getData();
 
     const title = document.getElementById('title-input');
@@ -222,7 +233,7 @@ saveWalkroadBtn.addEventListener('click', async () => {
     data.append("finish", finish.value);
     data.append("tmi", tmi.value);
     data.append("path", JSON.stringify(path));
-    data.append("distance", totalDistance);     // TODO : 0이면 error 처리
+    data.append("distance", totalDistance);
     data.append("time", totalTime);
 
     await axios.post(`/maps/new/`, data)
