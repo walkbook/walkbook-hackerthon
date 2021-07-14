@@ -22,8 +22,8 @@
     <p>tmi : {{ walkroad.tmi }}</p>
 
     {% if request.user == walkroad.author %}
-      <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
-      <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
+        <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
+        <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
     {% endif %}
 
     <script type="text/javascript">

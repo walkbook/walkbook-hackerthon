@@ -1,5 +1,6 @@
 /* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap");
 html,
 body,
 div,
@@ -135,5 +136,49 @@ a {
   --green: #98C794;
   --deepgreen: #49A59A;
   --yellow: #E5C05B; }
+
+body {
+  font-family: 'Nanum Gothic', sans-serif; }
+
+.base-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; }
+  .base-header .wrap-header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 65px; }
+    .base-header .wrap-header .header-search {
+      width: 300px;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .base-header .wrap-header .header-search a {
+        font-size: 14px;
+        color: #6B6B6B;
+        justify-content: center; }
+      .base-header .wrap-header .header-search .logo-img {
+        width: 55px;
+        height: 42px; }
+    .base-header .wrap-header .header-accounts {
+      width: auto;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .base-header .wrap-header .header-accounts a {
+        margin-left: 30px;
+        font-size: 14px;
+        color: #6B6B6B; }
+      .base-header .wrap-header .header-accounts .suggest {
+        font-size: 16px;
+        color: #E5C05B; }
+
+body {
+  width: 100%;
+  height: 100%; }
 
 /*# sourceMappingURL=style.css.map */

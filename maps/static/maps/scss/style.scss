@@ -3,6 +3,12 @@
 @import "variables.scss";
 
 // components import
-
+@import "components/nav_bar/nav_bar.scss";
 
 // screens import 
+
+
+body { 
+    width: 100%;
+    height: 100%;
+}
