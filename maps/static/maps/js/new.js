@@ -64,7 +64,6 @@ manager.addListener('drawend', function(data) {
             infoWindow.setMap(map);
         });
     }
-    
 });
 
 manager.addListener('state_changed', function () {
@@ -82,6 +81,8 @@ manager.addListener('remove', function (data) {
         totalTime = 0;
         totalDistance = 0;
         polyline = null;
+    } else {
+        // marker remove시 mappingData 처리
     }
 });
 
