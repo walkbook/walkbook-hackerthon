@@ -5,7 +5,7 @@ export const signupFeature = {
     let data = new FormData();
     data.append("userid", userId);
 
-    const response = await axios.post(`/accounts/signup/checkid`, data);
+    const response = await axios.post(`/accounts/signup/checkid/`, data);
 
     if (response.data.isAvailable) {
       document.getElementById('validate-id').innerHTML = '사용 가능!'
