@@ -1,3 +1,8 @@
+const mappingData = {};
+let mappingId = 0;
+
+let polyline = null;
+
 let totalTime = 0;
 let totalDistance = 0;
 
@@ -26,6 +31,41 @@ const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입
 
 // 위에 작성한 옵션으로 Drawing Manager를 생성합니다
 const manager = new kakao.maps.Drawing.DrawingManager(drawingOptions);
+const markerBtn = document.getElementById('marker-button');
+const polylineBtn = document.getElementById('polyline-button');
+
+manager.addListener('drawstart', function(data) {
+    if (data.overlayType == "polyline" && polyline) {
+        alert('산책로는 한 번에 하나만 추가할 수 있습니다!');
+        manager.cancel();
+    }
+});
+
+manager.addListener('drawend', function(data) {
+    
+    if (data.overlayType == "polyline") {
+        polyline = data;
+    } else {
+        const markerId = mappingId;
+        const marker = data.target;
+        const infoWindow = new kakao.maps.InfoWindow({
+            content: "",
+            map: null,
+            position: marker.getPosition()
+        })
+
+        mappingData[markerId] = { marker, infoWindow };
+
+        showInfoInput();
+
+        kakao.maps.event.addListener(marker, 'click', function() {
+            const infoWindow = mappingData[markerId].infoWindow;
+            infoWindow.setPosition(marker.getPosition());
+            infoWindow.setMap(map);
+        });
+    }
+    
+});
 
 manager.addListener('state_changed', function () {
     if (manager.getOverlays([kakao.maps.drawing.OverlayType.POLYLINE])["polyline"].length != 0) {
@@ -33,16 +73,57 @@ manager.addListener('state_changed', function () {
     }
 });
 
-manager.addListener('remove', function (e) {
-    if (e.overlayType == 'POLYLINE') {
+manager.addListener('remove', function (data) {
+    if (data.overlayType == 'polyline') {
         const totalTimeElement = document.getElementById('total-time');
         const totalDistanceElement = document.getElementById('total-distance');
         totalTimeElement.innerHTML = `소요 시간 : 0분`;
         totalDistanceElement.innerHTML = `거리 : 0 m`;
         totalTime = 0;
         totalDistance = 0;
+        polyline = null;
     }
 });
+
+function showInfoInput() {
+    const infoInputBox = document.getElementById('info-input-container');
+    infoInputBox.style.display = 'block';
+}
+
+function saveInfo() {
+    const titleInput = document.getElementById('info-title-input');
+    const descriptionInput = document.getElementById('info-description-input');
+    console.log(mappingData);
+    console.log(mappingId);
+    mappingData[mappingId].infoWindow = new kakao.maps.InfoWindow({
+        content : infoWindowContent(mappingId, titleInput.value, descriptionInput.value),
+        map: map,
+        position: mappingData[mappingId].infoWindow.getPosition()
+    })
+    
+    titleInput.value = "";
+    descriptionInput.value = "";
+
+    const infoInputBox = document.getElementById('info-input-container');
+    infoInputBox.style.display = 'none';
+ 
+    markerBtn.disabled = false;
+    polylineBtn.disabled = false;
+    mappingId++;
+}
+
+function selectMarker() {
+    manager.cancel();
+    manager.select("marker");
+
+    markerBtn.disabled = true;
+    polylineBtn.disabled = true;
+}
+
+function selectPolyline() {
+    manager.cancel();
+    manager.select("polyline");
+}
 
 function showResult() {
     const line = manager.getOverlays([kakao.maps.drawing.OverlayType.POLYLINE])["polyline"][0];
@@ -68,37 +149,13 @@ function showResult() {
 
 }
 
-const saveWalkroadBtn = document.getElementById('save-walkroad-button');
 
-saveWalkroadBtn.addEventListener('click', async () => {
-    const path = manager.getData();
-    console.log(JSON.stringify(path));
+/////////////////////////// InfoWindow  ////////////////////////////
 
-    const title = document.getElementById('title-input');
-    const description = document.getElementById('description-input');
-    const start = document.getElementById('start-input');
-    const finish = document.getElementById('finish-input');
-    const tmi = document.getElementById('tmi-input');
+function closeOverlay(id) {
+    mappingData[id].infoWindow.setMap(null);     
+}
 
-    let data = new FormData();
-    data.append("title", title.value);
-    data.append("description", description.value);
-    data.append("start", start.value);
-    data.append("finish", finish.value);
-    data.append("tmi", tmi.value);
-    data.append("path", JSON.stringify(path));
-    data.append("distance", totalDistance);     // TODO : 0이면 error 처리
-    data.append("time", totalTime);
-
-    await axios.post(`/maps/new/`, data)
-        .then(function (response) {
-            window.location.href = `/maps/${response.data.id}`;
-        })
-        .catch(function (response) {
-            //handle error
-            console.log(response);
-        });
-});
 
 /////////////////////////// Undo & Redo  ////////////////////////////
 
@@ -143,32 +200,36 @@ function redo() {
     manager.redo();
 }
 
-// 버튼 클릭 시 호출되는 핸들러 입니다
-function selectOverlay(type) {
-    // 그리기 중이면 그리기를 취소합니다
-    manager.cancel();
-    // 클릭한 그리기 요소 타입을 선택합니다
-    manager.select(kakao.maps.drawing.OverlayType[type]);
-}
 
-/////////////////////////// InfoWindow  ////////////////////////////
+/////////////////////////// Save Walkroad  ////////////////////////////
 
-manager.addListener('drawend', function(data) {
-    console.log(data.target);
-    kakao.maps.event.addListener(data.target, 'click', function() {
-        const overlay = new kakao.maps.CustomOverlay({
-            content: infoWindow,
-            map: map,
-            position: data.target.getPosition()       
+const saveWalkroadBtn = document.getElementById('save-walkroad-button');
+
+saveWalkroadBtn.addEventListener('click', async () => {
+    const path = manager.getData();
+
+    const title = document.getElementById('title-input');
+    const description = document.getElementById('description-input');
+    const start = document.getElementById('start-input');
+    const finish = document.getElementById('finish-input');
+    const tmi = document.getElementById('tmi-input');
+
+    let data = new FormData();
+    data.append("title", title.value);
+    data.append("description", description.value);
+    data.append("start", start.value);
+    data.append("finish", finish.value);
+    data.append("tmi", tmi.value);
+    data.append("path", JSON.stringify(path));
+    data.append("distance", totalDistance);     // TODO : 0이면 error 처리
+    data.append("time", totalTime);
+
+    await axios.post(`/maps/new/`, data)
+        .then(function (response) {
+            window.location.href = `/maps/${response.data.id}`;
+        })
+        .catch(function (response) {
+            //handle error
+            console.log(response);
         });
-        console.log(overlay);
-        overlay.setMap(map);
-    });
 });
-
-// overlays를 db에 저장한 후 부를 때 setMap 하면 됨 (or infowindow.open(map, marker) => ㅇㅏ마 커스텀 x,,?)
-
-// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-function closeOverlay() {
-    overlay.setMap(null);     
-}

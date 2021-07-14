@@ -6,8 +6,8 @@
 	<p>나만의 산책로를 만들어보세요!</p>
 
 	<span>
-		<button onclick="selectOverlay('MARKER')">마커</button>
-		<button onclick="selectOverlay('POLYLINE')">선</button>
+		<button id="marker-button" onclick="selectMarker()">마커</button>
+		<button id="polyline-button" onclick="selectPolyline()">선</button>
 		<button id="undo" class="disabled" onclick="undo()" disabled>UNDO</button>
 		<button id="redo" class="disabled" onclick="redo()" disabled>REDO</button>
 
@@ -18,7 +18,12 @@
 	<button id="current-location-button">현재 위치로 다시 가기</button>
 		
 	<div class="map_wrap">
-		<div id="map" style="width:300px;height:200px;"></div>
+		<div id="map" style="width:400px;height:300px;"></div>
+        <div id="info-input-container" style="display: none">
+            <input type="text" name="info-title" id="info-title-input" placeholder="마커 이름을 달아주세요!"/>
+	        <input type="text" name="info-description" id="info-description-input" placeholder="마커 설명을 달아주세요!"/>
+            <button type="submit" id="save-info-button" onclick="saveInfo()">저장</button> 
+        </div>
 	</div>
 	<p id="total-distance">거리 : 0 m</p>
 	<p id="total-time">소요 시간 : 0분</p>
