@@ -1,142 +1,5 @@
-import { currentLocationMsg } from "./components.js";
-
-const container = document.getElementById('map');
-const options = {
-    center: new kakao.maps.LatLng(33.450701, 126.570667),
-    level: 4
-};
-
-const map = new kakao.maps.Map(container, options);
-
-
-/////////////////////////// Control ////////////////////////////
-
-const mapTypeControl = new kakao.maps.MapTypeControl();
-const zoomControl = new kakao.maps.ZoomControl();
-
-map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-
-/////////////////////////// Set Current Location  ////////////////////////////
-
-const geocoder = new kakao.maps.services.Geocoder();
-
-let currentLocationMarker;
-let currentLocationInfowindow;
-let userAddressX = 126.570667;
-let userAddressY = 33.450701;
-
-geocoder.addressSearch(userAddress, function (result, status) {
-
-    if (status === kakao.maps.services.Status.OK) {
-        userAddressX = result[0].x;
-        userAddressY = result[0].y;
-    }
-});
-
-if (navigator.geolocation) {
-
-    navigator.geolocation.getCurrentPosition(function (position) {
-
-        const lat = position.coords.latitude, // 위도
-            lon = position.coords.longitude; // 경도
-
-        const locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-            message = currentLocationMsg; // 인포윈도우에 표시될 내용입니다
-
-        displayMarker(locPosition, message);
-
-    });
-
-} else {
-
-    let locPosition = new kakao.maps.LatLng(userAddressY, userAddressX),
-        message = '현재 위치를 받아올 수 없습니다 :('
-
-    displayMarker(locPosition, message);
-}
-
-function displayMarker(locPosition, message) {
-
-    currentLocationMarker = new kakao.maps.Marker({
-        map: map,
-        position: locPosition
-    });
-
-    currentLocationInfowindow = new kakao.maps.InfoWindow({
-        content: message,
-        removable: true
-    });
-
-    currentLocationInfowindow.open(map, currentLocationMarker);
-
-    map.setCenter(locPosition);
-}
-
-const addrLocationBtn = document.getElementById('address-location-button');
-const currLocationBtn = document.getElementById('current-location-button');
-
-addrLocationBtn.addEventListener('click', () => {
-    const address = document.getElementById('address-location').value;
-
-    geocoder.addressSearch(address, function (result, status) {
-
-        if (status === kakao.maps.services.Status.OK) {
-
-            const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-            currentLocationMarker.setMap(null);
-            currentLocationInfowindow.close();
-
-            currentLocationMarker = new kakao.maps.Marker({
-                map: map,
-                position: coords
-            });
-
-            currentLocationInfowindow = new kakao.maps.InfoWindow({
-                content: currentLocationMsg,
-                removable: true
-            });
-            currentLocationInfowindow.open(map, currentLocationMarker);
-
-            map.setCenter(coords);
-        }
-    });
-});
-
-currLocationBtn.addEventListener('click', () => {
-    currentLocationMarker.setMap(null);
-    currentLocationInfowindow.close();
-
-    if (navigator.geolocation) {
-
-        navigator.geolocation.getCurrentPosition(function (position) {
-
-            const lat = position.coords.latitude, // 위도
-                lon = position.coords.longitude; // 경도
-
-            const locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                message = currentLocationMsg; // 인포윈도우에 표시될 내용입니다
-
-            displayMarker(locPosition, message);
-
-        });
-
-    } else {
-
-        const locPosition = new kakao.maps.LatLng(userAddressY, userAddressX),   // TODO : 회원 정보의 주소를 가져오기
-            message = '현재 위치를 받아올 수 없습니다 :('
-
-        displayMarker(locPosition, message);
-    }
-});
-
-
-/////////////////////////// Drawing  ////////////////////////////
-
-let totalTime;
-let totalDistance;
+let totalTime = 0;
+let totalDistance = 0;
 
 const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입니다
     map: map, // Drawing Manager로 그리기 요소를 그릴 map 객체입니다
@@ -163,14 +26,6 @@ const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입
 
 // 위에 작성한 옵션으로 Drawing Manager를 생성합니다
 const manager = new kakao.maps.Drawing.DrawingManager(drawingOptions);
-
-// 버튼 클릭 시 호출되는 핸들러 입니다
-function selectOverlay(type) {
-    // 그리기 중이면 그리기를 취소합니다
-    manager.cancel();
-    // 클릭한 그리기 요소 타입을 선택합니다
-    manager.select(kakao.maps.drawing.OverlayType[type]);
-}
 
 manager.addListener('state_changed', function () {
     if (manager.getOverlays([kakao.maps.drawing.OverlayType.POLYLINE])["polyline"].length != 0) {
@@ -211,8 +66,6 @@ function showResult() {
 
 }
 
-/////////////////////////// save map ////////////////////////////////
-
 const saveWalkroadBtn = document.getElementById('save-walkroad-button');
 
 saveWalkroadBtn.addEventListener('click', async () => {
@@ -232,7 +85,7 @@ saveWalkroadBtn.addEventListener('click', async () => {
     data.append("finish", finish.value);
     data.append("tmi", tmi.value);
     data.append("path", JSON.stringify(path));
-    data.append("distance", totalDistance);
+    data.append("distance", totalDistance);     // TODO : 0이면 error 처리
     data.append("time", totalTime);
 
     await axios.post(`/maps/new/`, data)
@@ -286,4 +139,12 @@ function undo() {
 function redo() {
     // 이전 상태로 되돌린 상태를 취소합니다
     manager.redo();
+}
+
+// 버튼 클릭 시 호출되는 핸들러 입니다
+function selectOverlay(type) {
+    // 그리기 중이면 그리기를 취소합니다
+    manager.cancel();
+    // 클릭한 그리기 요소 타입을 선택합니다
+    manager.select(kakao.maps.drawing.OverlayType[type]);
 }

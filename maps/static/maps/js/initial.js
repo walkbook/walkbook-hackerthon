@@ -1,31 +1,11 @@
-import { currentLocationMsg } from "./components.js";
-
-const container = document.getElementById('map');
-const options = {
-    center: new kakao.maps.LatLng(33.450701, 126.570667),
-    level: 4
-};
-
-const map = new kakao.maps.Map(container, options);
-
-
-/////////////////////////// Control ////////////////////////////
+let userAddressX = 126.570667;
+let userAddressY = 33.450701;
 
 const mapTypeControl = new kakao.maps.MapTypeControl();
 const zoomControl = new kakao.maps.ZoomControl();
 
 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-
-/////////////////////////// Set Current Location  ////////////////////////////
-
-const geocoder = new kakao.maps.services.Geocoder();
-
-let currentLocationMarker;
-let currentLocationInfowindow;
-let userAddressX = 126.570667;
-let userAddressY = 33.450701;
 
 geocoder.addressSearch(userAddress, function (result, status) {
 
@@ -43,44 +23,30 @@ if (navigator.geolocation) {
             lon = position.coords.longitude; // 경도
 
         const locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-            message = currentLocationMsg; // 인포윈도우에 표시될 내용입니다
+            message = geoSuccessMsg; // 인포윈도우에 표시될 내용입니다
 
         displayMarker(locPosition, message);
 
+        if (setCenterByCurrentLocation) map.setCenter(locPosition);
     });
 
 } else {
 
     let locPosition = new kakao.maps.LatLng(userAddressY, userAddressX),
-        message = '현재 위치를 받아올 수 없습니다 :('
+        message = geoFailMsg;
 
     displayMarker(locPosition, message);
-}
 
-function displayMarker(locPosition, message) {
-
-    currentLocationMarker = new kakao.maps.Marker({
-        map: map,
-        position: locPosition
-    });
-
-    currentLocationInfowindow = new kakao.maps.InfoWindow({
-        content: message,
-        removable: true
-    });
-
-    currentLocationInfowindow.open(map, currentLocationMarker);
-
-    map.setCenter(locPosition);
+    if (setCenterByCurrentLocation) map.setCenter(locPosition);
 }
 
 const addrLocationBtn = document.getElementById('address-location-button');
 const currLocationBtn = document.getElementById('current-location-button');
 
 addrLocationBtn.addEventListener('click', () => {
-    const address = document.getElementById('address-location').value;
+    const addressInput = document.getElementById('address-location');
 
-    geocoder.addressSearch(address, function (result, status) {
+    geocoder.addressSearch(addressInput.value, function (result, status) {
 
         if (status === kakao.maps.services.Status.OK) {
 
@@ -95,7 +61,7 @@ addrLocationBtn.addEventListener('click', () => {
             });
 
             currentLocationInfowindow = new kakao.maps.InfoWindow({
-                content: currentLocationMsg,
+                content: geoSuccessMsg,
                 removable: true
             });
             currentLocationInfowindow.open(map, currentLocationMarker);
@@ -103,6 +69,8 @@ addrLocationBtn.addEventListener('click', () => {
             map.setCenter(coords);
         }
     });
+
+    addressInput.value = '';
 });
 
 currLocationBtn.addEventListener('click', () => {
@@ -117,17 +85,36 @@ currLocationBtn.addEventListener('click', () => {
                 lon = position.coords.longitude; // 경도
 
             const locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                message = currentLocationMsg; // 인포윈도우에 표시될 내용입니다
+                message = geoSuccessMsg; // 인포윈도우에 표시될 내용입니다
 
             displayMarker(locPosition, message);
 
+            map.setCenter(locPosition);
         });
 
     } else {
 
-        const locPosition = new kakao.maps.LatLng(userAddressY, userAddressX),   // TODO : 회원 정보의 주소를 가져오기
+        const locPosition = new kakao.maps.LatLng(userAddressY, userAddressX),
             message = '현재 위치를 받아올 수 없습니다 :('
 
         displayMarker(locPosition, message);
+
+        map.setCenter(locPosition);
+
     }
 });
+
+function displayMarker(locPosition, message) {
+
+    currentLocationMarker = new kakao.maps.Marker({
+        map: map,
+        position: locPosition
+    });
+
+    currentLocationInfowindow = new kakao.maps.InfoWindow({
+        content: message,
+        removable: true
+    });
+
+    currentLocationInfowindow.open(map, currentLocationMarker);
+}

@@ -21,17 +21,38 @@
     <p>finish : {{ walkroad.finish }}</p>
     <p>tmi : {{ walkroad.tmi }}</p>
 
+    {% if request.user == walkroad.author %}
+      <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
+      <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
+    {% endif %}
+
     <script type="text/javascript">
         const data = {{ path | safe }};
+
+        let userAddress;
+        if ("{{ request.user.is_anonymous }}" == "True") {
+            userAddress = "신림로 1";
+        } else {
+            userAddress = "{{ request.user.profile.location | safe }}";
+        }
+
+        const geocoder = new kakao.maps.services.Geocoder();
+
+        const startPoint = data[kakao.maps.drawing.OverlayType.POLYLINE][0]["points"][0];
+
+        const container = document.getElementById('map');
+        const options = {
+            center: new kakao.maps.LatLng(startPoint['y'], startPoint['x']),
+            level: 4
+        };
+
+        const map = new kakao.maps.Map(container, options);
+
+        let currentLocationMarker;
+        let currentLocationInfowindow;
+
+        const setCenterByCurrentLocation = false;
     </script>
-    {% if user.is_authenticated %}
-    <script type="text/javascript">
-        const userAddress = "{{ request.user.profile.location | safe }}";
-    </script>
-    {% else %}
-    <script type="text/javascript">
-        const userAddress = "신림로 1";
-    </script>
-    {% endif %}
-    <script type="module" src="{% static 'maps/js/show.js' %}"></script>
+    <script src="{% static 'maps/js/initial.js' %}"></script>
+    <script src="{% static 'maps/js/show.js' %}"></script>
 {% endblock content %}

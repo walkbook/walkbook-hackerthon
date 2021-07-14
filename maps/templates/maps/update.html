@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1>Post Edit</h1>
+    <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}">
+        {% csrf_token %}
+        <input type="text" name="username" id="username" value="{{ request.user.profile.username }}" disabled/>
+        <input type="text" name="title" id="title-input" value="{{ walkroad.title }}"/>
+        <input type="text" name="description" id="description-input" value="{{ walkroad.description }}"/>
+        <input type="text" name="start" id="start-input" value="{{ walkroad.start }}"/>
+        <input type="text" name="finish" id="finish-input" value="{{ walkroad.finish }}"/>
+        <input type="text" name="tmi" id="tmi-input" value="{{ walkroad.tmi }}"/>
+        
+        <button type="submit" id="save-walkroad-button">수정하기</button> 
+    </form>
+{% endblock content %}
