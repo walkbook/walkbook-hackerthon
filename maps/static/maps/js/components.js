@@ -9,13 +9,8 @@ function infoWindowContent(id, title, description) {
         `            <div class="close" onclick="closeOverlay(${id})" title="닫기">X</div>` + 
         '        </div>' + 
         '        <div class="body">' + 
-        '            <div class="img">' +
-        '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-        '           </div>' + 
-        '            <div class="desc">' + 
-        `                <div class="ellipsis">${description}</div>` + 
-        '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
-        '            </div>' + 
+        `            <div class="ellipsis">${description}</div>` + 
+        '            <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
         '        </div>' + 
         '    </div>' +    
         '</div>';

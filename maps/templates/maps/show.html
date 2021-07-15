@@ -27,7 +27,10 @@
     {% endif %}
 
     <script>
-        const data = {{ path | safe }};
+        const path = {{ walkroad.path | safe }};
+        const infowindow = {{ walkroad.infowindow | safe }};
+
+        let mappingData = {};
 
         let userAddress;
         if ("{{ request.user.is_anonymous }}" == "True") {
@@ -38,7 +41,7 @@
 
         const geocoder = new kakao.maps.services.Geocoder();
 
-        const points = data[kakao.maps.drawing.OverlayType.POLYLINE][0]["points"];
+        const points = path[kakao.maps.drawing.OverlayType.POLYLINE][0]["points"];
         const startPoint = points[0];
         const endPoint = points[points.length - 1];
 

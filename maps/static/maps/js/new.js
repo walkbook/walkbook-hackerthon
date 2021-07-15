@@ -1,7 +1,8 @@
-const mappingData = {};
+let mappingData = {};
 let mappingId = 0;
 
-let polyline = null;
+let polylineExist = false;
+let marking = false;
 
 let totalTime = 0;
 let totalDistance = 0;
@@ -35,7 +36,7 @@ const markerBtn = document.getElementById('marker-button');
 const polylineBtn = document.getElementById('polyline-button');
 
 manager.addListener('drawstart', function (data) {
-    if (data.overlayType == "polyline" && polyline) {
+    if (data.overlayType == "polyline" && polylineExist) {
         alert('산책로는 한 번에 하나만 추가할 수 있습니다!');
         manager.cancel();
     }
@@ -44,7 +45,7 @@ manager.addListener('drawstart', function (data) {
 manager.addListener('drawend', function (data) {
 
     if (data.overlayType == "polyline") {
-        polyline = data;
+        polylineExist = true;
     } else {
         const markerId = mappingId;
         const marker = data.target;
@@ -80,7 +81,7 @@ manager.addListener('remove', function (data) {
         totalDistanceElement.innerHTML = `거리 : 0 m`;
         totalTime = 0;
         totalDistance = 0;
-        polyline = null;
+        polylineExist = false;
     } else {
         // marker remove시 mappingData 처리
     }
@@ -94,13 +95,15 @@ function showInfoInput() {
 function saveInfo() {
     const titleInput = document.getElementById('info-title-input');
     const descriptionInput = document.getElementById('info-description-input');
-    console.log(mappingData);
-    console.log(mappingId);
+
     mappingData[mappingId].infoWindow = new kakao.maps.InfoWindow({
         content: infoWindowContent(mappingId, titleInput.value, descriptionInput.value),
         map: map,
         position: mappingData[mappingId].infoWindow.getPosition()
     })
+
+    mappingData[mappingId].title = titleInput.value;
+    mappingData[mappingId].description = descriptionInput.value;
 
     titleInput.value = "";
     descriptionInput.value = "";
@@ -110,6 +113,8 @@ function saveInfo() {
 
     markerBtn.disabled = false;
     polylineBtn.disabled = false;
+    marking = false;
+
     mappingId++;
 }
 
@@ -119,6 +124,7 @@ function selectMarker() {
 
     markerBtn.disabled = true;
     polylineBtn.disabled = true;
+    marking = true;
 }
 
 function selectPolyline() {
@@ -175,7 +181,7 @@ const redoBtn = document.getElementById('redo');
 manager.addListener('state_changed', function () {
 
     // 되돌릴 수 있다면 undo 버튼을 활성화 시킵니다 
-    if (manager.undoable()) {
+    if (manager.undoable() && !marking) {
         undoBtn.disabled = false;
         undoBtn.className = "";
     } else { // 아니면 undo 버튼을 비활성화 시킵니다 
@@ -218,13 +224,26 @@ saveWalkroadBtn.addEventListener('click', async () => {
         return
     }
 
-    const path = manager.getData();
+    const path = manager.getData();     // TODO : do not save markers info
+    // const marker = [];
+    const infowindow = [];
 
     const title = document.getElementById('title-input');
     const description = document.getElementById('description-input');
     const start = document.getElementById('start-input');
     const finish = document.getElementById('finish-input');
     const tmi = document.getElementById('tmi-input');
+
+    for (let i = 0; i < mappingId; i++) {
+        if (mappingData[i].marker.getMap()) {
+            mappingData[i].marker.setMap(null);
+            infowindow.push({
+                title: mappingData[i].title,
+                description: mappingData[i].description,
+                position: mappingData[i].marker.getPosition()
+            })
+        }
+    }
 
     let data = new FormData();
     data.append("title", title.value);
@@ -233,6 +252,8 @@ saveWalkroadBtn.addEventListener('click', async () => {
     data.append("finish", finish.value);
     data.append("tmi", tmi.value);
     data.append("path", JSON.stringify(path));
+    // data.append("marker", JSON.stringify(marker));
+    data.append("infowindow", JSON.stringify(infowindow));
     data.append("distance", totalDistance);
     data.append("time", totalTime);
 
