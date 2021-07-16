@@ -7,16 +7,65 @@
     <div class="index-message">함께 길을 읽다, <span>워크북<span></div>
     <div class="index-img">
         <img class="main-img" src="{% static 'maps/img/book.png' %}" />
-        <a href="{% url 'maps:map' %}"><img class="main-search_map" src="{% static 'maps/img/mapsearch.png' %}" /></a>
-        <a href="{% url 'maps:post' %}"><img class="main-search_post" src="{% static 'maps/img/posts.png' %}" /></a>
+        <a href="{% url 'maps:map' %}">
+            <img class="icons main-search_map" src="{% static 'maps/img/mapsearch.png' %}" />
+            <p class="arrow-box main-search_map-box">
+                📜 지도에서 찾기
+                <br>
+                <br> 
+                지도에서 다양한 산책로를 살펴보세요.
+            </p>
+        </a>
+        <a href="{% url 'maps:post' %}">
+            <img class="icons main-search_post" src="{% static 'maps/img/posts.png' %}" />
+            <p class="arrow-box main-search_post-box">
+                🔍 게시판에서 찾기
+                <br>
+                <br>
+                게시판에서 여러 산책로를 살펴보세요.
+
+            </p>
+        </a>
         {% if user.is_authenticated %}
             {% comment %} <div>{{user.profile.username}}님 환영합니다.</div> {% endcomment %}
-            <a class="suggest" href="{% url 'maps:new' %}"><img class="main-suggest" src="{% static 'maps/img/suggest.png' %}" /></a>
-            <a class="mypage" href="{% url 'mypage:mypage' %}"><img class="main-mypage" src="{% static 'maps/img/mypage_img.png' %}" /></a>
+            <a class="suggest" href="{% url 'maps:new' %}">
+                <img class="icons main-suggest" src="{% static 'maps/img/suggest.png' %}" />
+                <p class="arrow-box main-suggest-box">
+                    🌱 산책로 등록하기
+                    <br>
+                    <br>
+                    나만의 산책로를 개척해보세요.
+                </p>
+            </a>
+            <a class="mypage" href="{% url 'mypage:mypage' %}">
+                <img class="icons main-mypage" src="{% static 'maps/img/mypage_img.png' %}" />
+                <p class="arrow-box main-mypage-box">
+                    📒 마이페이지
+                    <br>
+                    <br>
+                    나만의 산책 이야기를 꾸며보세요.
+                </p>
+            </a>
             {% comment %} <a href="{% url 'checkpw'%}">내 정보수정</a> {% endcomment %}
         {% else %}
-            <img class="main-suggest" src="{% static 'maps/img/suggest.png' %}" />
-            <img class="main-mypage" src="{% static 'maps/img/mypage_img.png' %}" />
+            <div>
+                <img class="icons main-suggest" src="{% static 'maps/img/suggest.png' %}" />
+                <p class="arrow-box main-suggest-box">
+                    🌱 산책로 등록하기
+                    <br>
+                    <br>
+                    나만의 산책로를 개척해보세요.
+                </p>
+            </div>
+            <div>
+                <img class="icons main-mypage" src="{% static 'maps/img/mypage_img.png' %}" />
+                <p class="arrow-box main-mypage-box">
+                    📒 마이페이지
+                    <br>
+                    <br>
+                    나만의 산책 이야기를 꾸며보세요.
+                </p>
+            </div>
         {% endif %}
     </div>
 </div>

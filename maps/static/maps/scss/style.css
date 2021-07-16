@@ -272,19 +272,19 @@ body {
   position: relative;
   width: auto;
   height: 100vh;
-  background: linear-gradient(172.14deg, rgba(73, 165, 154, 0.04) 23.42%, rgba(152, 199, 147, 0.71) 108.17%), #FFFFFF; }
+  background: linear-gradient(172.14deg, rgba(73, 165, 154, 0.04) 23.42%, rgba(152, 199, 147, 0.774) 108.17%), #FFFFFF; }
   .green-box .index-message {
     position: absolute;
-    top: 25%;
-    right: 62%;
+    top: 22%;
+    right: 66%;
     color: var(--green);
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 20px;
+    font-size: 23px;
     animation: move 3s infinite;
-    -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.212));
+    -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.151));
     color: var(--green); }
     .green-box .index-message span {
-      font-size: 27px;
+      font-size: 30px;
       font-weight: 700; }
   .green-box .index-img {
     display: relative;
@@ -292,15 +292,15 @@ body {
     height: 50vh; }
     .green-box .index-img .main-img {
       position: absolute;
-      top: 52%;
-      left: 53%;
+      top: 53%;
+      left: 52%;
       transform: translate(-50%, -50%);
-      width: 750px;
-      height: 560px; }
+      width: 900px;
+      height: 700px; }
     .green-box .index-img .main-search_map {
       position: absolute;
-      width: 230px;
-      height: 160px;
+      width: 265px;
+      height: 190px;
       top: 43%;
       left: 52%;
       z-index: 1; }
@@ -310,9 +310,9 @@ body {
       transition: transform 0.5s ease 0s; }
     .green-box .index-img .main-search_post {
       position: absolute;
-      width: 200px;
-      height: 150px;
-      bottom: 58%;
+      width: 220px;
+      height: 170px;
+      bottom: 60%;
       left: 57%;
       z-index: 1; }
     .green-box .index-img .main-search_post:hover {
@@ -320,24 +320,64 @@ body {
       transition: transform 0.5s ease 0s; }
     .green-box .index-img .main-mypage {
       position: absolute;
-      width: 190px;
-      height: 145px;
-      bottom: 64%;
-      right: 44%;
+      width: 210px;
+      height: 157px;
+      bottom: 67%;
+      right: 46%;
       z-index: 1; }
     .green-box .index-img .main-mypage:hover {
       transform: scale(1.1);
       transition: transform 0.5s ease 0s; }
     .green-box .index-img .main-suggest {
       position: absolute;
-      width: 250px;
-      height: 190px;
+      width: 270px;
+      height: 210px;
       bottom: 44%;
-      right: 49vw;
+      right: 52vw;
       z-index: 1; }
     .green-box .index-img .main-suggest:hover {
       transform: scale(1.1);
       transition: transform 0.5s ease 0s; }
+
+.main-search_map-box {
+  position: absolute;
+  top: 60%;
+  left: 65%;
+  z-index: 1; }
+
+.main-search_post-box {
+  position: absolute;
+  bottom: 79%;
+  left: 67%;
+  z-index: 1; }
+
+.main-mypage-box {
+  position: absolute;
+  bottom: 84%;
+  right: 54%;
+  z-index: 1; }
+
+.main-suggest-box {
+  position: absolute;
+  bottom: 42%;
+  right: 65vw;
+  z-index: 1; }
+
+.arrow-box {
+  display: none;
+  justify-content: flex-start;
+  width: 179px;
+  height: auto;
+  padding: 15px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 5px;
+  background: rgba(243, 250, 207, 0.753);
+  color: #2c2c2c;
+  font-size: 11px; }
+
+.icons:hover + p.arrow-box {
+  display: block; }
 
 .body-layout .enroll-announce {
   color: var(--yellow);
