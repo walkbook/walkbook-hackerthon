@@ -1,8 +1,9 @@
 from django.db import connections
+from django.http import request
 from django.http.response import JsonResponse
-from maps.models import Walkroad
+from maps.models import Walkroad, Like
 from django.shortcuts import redirect, render
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.views.generic import ListView
 
 # Create your views here.
@@ -17,20 +18,22 @@ class PostView(ListView):
     template_name = 'maps/post.html'
     context_object_name = 'walkroads'
     def get_queryset(self):
-        walkroads = Walkroad.objects.all().order_by('-created_at') #like순으로 할지 디폴트 아직 안정함
         type = self.request.GET.get('type', '')
         keyword = self.request.GET.get('keyword', '')
         sort = self.request.GET.get('sort', '')
 
+        if sort == 'date':
+            walkroads = Walkroad.objects.all().annotate(count=Count('like_users')).order_by('-created_at', '-count')
+        else :
+            walkroads = Walkroad.objects.all().annotate(count=Count('like_users')).order_by('-count', '-created_at')
+        
         if type == 'all':
             walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword))
         elif type == 'title':
             walkroads = walkroads.filter(Q(title__icontains=keyword))
         elif type == 'titlecontent':
             walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword))
-        if sort == 'date':
-            walkroads.order_by('-created_at')
-
+        
         return walkroads
 
     def get_context_data(self, **kwargs):
@@ -102,3 +105,16 @@ def delete(request, id):
     walkroad = Walkroad.objects.get(id=id)
     walkroad.delete()
     return redirect('maps:post')
+
+class LikeView:
+    def create(request, id):
+        walkroad = Walkroad.objects.get(id=id)
+        like_list = walkroad.like_set.filter(user_id=request.user.id)
+        if like_list.count() > 0:
+            walkroad.like_set.get(user=request.user).delete()
+        else:
+            Like.objects.create(user=request.user, walkroad=walkroad)
+        return JsonResponse({
+            'walkroadLikeOfUser': like_list.count(), 
+            'walkroadLikeCount': walkroad.like_set.count(),
+		})

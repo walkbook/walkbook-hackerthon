@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <h1>post</h1>
 <form action="{%url 'maps:post' %}" method="GET" class="search-post">
@@ -10,29 +11,54 @@
     <input name="keyword" id="keyword" type=text />
     <button name="search-btn" id="search-btn" type="submit">검색</button>
     <select name="sort" onchange="form.submit();">
-        <option value="">정렬</option>
         <option value="like">좋아요순</option>
         <option value="date">최신순</option>
-    </select>    
-</div>
+    </select>
+</form>
 <div class="post-container">
     {% for walkroad in walkroads %}
     <div class="post">
         <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
+        {% if user.is_authenticated %}
+            <a id="{{walkroad.id}}-like-button" onclick="onClickLikeBtn({{walkroad.id}})">
+                {{ walkroad.like_users.count }} Likes
+            </a>
+            <span id="{{walkroad.id}}-userlike">
+                {% if user in walkroad.like_users.all %}
+                    하트
+                {% else %}
+                    빈하트
+                {% endif %}
+            </span>
+        {% else %}
+            <span>{{ walkroad.like_users.count }} Likes </span>
+        {% endif %}
+        
     </div>
     {% endfor %}
 </div>
 <script type="text/javascript">
-    type = window.location.search.split('&')[0].split('=')[1]
-    keyword = decodeURI(window.location.search.split('&')[1].split('=')[1])
-    sort = window.location.search.split('&')[2].split('=')[1]
-    const option = document.getElementsByTagName('option')
-    for (var i = 0; i < 6; i++) {
-        if (option[i].value === type || option[i].value === sort ) {
-            option[i].setAttribute('selected', 'selected')
+    var type = '';
+    var keyword = '';
+    var sort = '';
+    
+    if (window.location.search != ''){
+        if (window.location.search.indexOf('type') != -1)
+            type = window.location.search.substring(window.location.search.indexOf('type')).split('=')[1].split('&')[0];
+        if (window.location.search.indexOf('keyword') != -1)
+            keyword = decodeURI(window.location.search.substring(window.location.search.indexOf('keyword')).split('=')[1].split('&')[0]);
+        if (window.location.search.indexOf('sort') != -1)
+            sort = window.location.search.substring(window.location.search.indexOf('sort')).split('=')[1].split('&')[0];
+        
+        const option = document.getElementsByTagName('option')
+        for (var i = 0; i < option.length; i++) {
+            if (option[i].value === type || option[i].value === sort ) {
+                option[i].setAttribute('selected', 'selected')
+            }
         }
+        const input = document.getElementById('keyword')
+        input.value = keyword
     }
-    const input = document.getElementById('keyword')
-    input.value = keyword
 </script>
+<script src="{% static 'maps/js/post.js' %}"></script>
 {% endblock content %}
