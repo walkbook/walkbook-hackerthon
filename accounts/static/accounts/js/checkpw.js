@@ -1,6 +1,6 @@
-import { signupFeature } from './signupFeature.js';
+import { feature } from './feature.js';
 
 (() => {
     const checkpwForm = document.getElementById('checkpw-form');
-    checkpwForm.onsubmit = (e) => signupFeature.handleCheckPw(e);
+    checkpwForm.onsubmit = (e) => feature.handleCheckPw(e);
 })();

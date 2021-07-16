@@ -2,6 +2,8 @@ from django.db import connections
 from django.http.response import JsonResponse
 from maps.models import Walkroad
 from django.shortcuts import redirect, render
+from django.db.models import Q
+from django.views.generic import ListView
 
 # Create your views here.
 def index(request):
@@ -10,11 +12,39 @@ def index(request):
 def map(request):
     return render(request, 'maps/map.html')
 
-def post(request):
-    walkroads = Walkroad.objects.all()
-    return render(request, 'maps/post.html', {
-        'walkroads': walkroads,
-    })
+class PostView(ListView):
+    model = Walkroad
+    template_name = 'maps/post.html'
+    context_object_name = 'walkroads'
+    def get_queryset(self):
+        walkroads = Walkroad.objects.all().order_by('-created_at') #like순으로 할지 디폴트 아직 안정함
+        type = self.request.GET.get('type', '')
+        keyword = self.request.GET.get('keyword', '')
+        sort = self.request.GET.get('sort', '')
+
+        if type == 'all':
+            walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword))
+        elif type == 'title':
+            walkroads = walkroads.filter(Q(title__icontains=keyword))
+        elif type == 'titlecontent':
+            walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword))
+        if sort == 'date':
+            walkroads.order_by('-created_at')
+
+        return walkroads
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        type = self.request.GET.get('type', '')
+        keyword = self.request.GET.get('keyword', '')
+        sort = self.request.GET.get('sort', '')
+
+        context['keyword'] = keyword
+        context['type'] = type
+        context['sort'] = sort
+        
+        return context
 
 def show(request, id):
     walkroad = Walkroad.objects.get(id=id)

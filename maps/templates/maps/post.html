@@ -1,13 +1,38 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <h1>post</h1>
+<form action="{%url 'maps:post' %}" method="GET" class="search-post">
+    <select name="type">
+        <option value="all">전체</option>
+        <option value="title">제목</option>
+        <option value="titlecontent">제목+내용</option>
+    </select>
+    <input name="keyword" id="keyword" type=text />
+    <button name="search-btn" id="search-btn" type="submit">검색</button>
+    <select name="sort" onchange="form.submit();">
+        <option value="">정렬</option>
+        <option value="like">좋아요순</option>
+        <option value="date">최신순</option>
+    </select>    
+</div>
 <div class="post-container">
-  {% for walkroad in walkroads %}
+    {% for walkroad in walkroads %}
     <div class="post">
         <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
     </div>
-  {% endfor %}
+    {% endfor %}
 </div>
-
+<script type="text/javascript">
+    type = window.location.search.split('&')[0].split('=')[1]
+    keyword = decodeURI(window.location.search.split('&')[1].split('=')[1])
+    sort = window.location.search.split('&')[2].split('=')[1]
+    const option = document.getElementsByTagName('option')
+    for (var i = 0; i < 6; i++) {
+        if (option[i].value === type || option[i].value === sort ) {
+            option[i].setAttribute('selected', 'selected')
+        }
+    }
+    const input = document.getElementById('keyword')
+    input.value = keyword
+</script>
 {% endblock content %}

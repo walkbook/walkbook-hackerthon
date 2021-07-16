@@ -4,7 +4,7 @@ from maps import views
 app_name = 'maps'
 urlpatterns = [
     path('map/', views.map, name='map'),
-    path('post/', views.post, name='post'),
+    path('post/', views.PostView.as_view(), name='post'),
     path('new/', views.new, name='new'),
     path('<int:id>/', views.show, name='show'),
     path('<int:id>/update', views.update, name='update'),
