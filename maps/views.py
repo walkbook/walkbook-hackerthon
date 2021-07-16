@@ -3,7 +3,6 @@ from django.http.response import JsonResponse
 from maps.models import Walkroad
 from django.shortcuts import redirect, render
 from django.db.models import Q
-from django.contrib import messages
 from django.views.generic import ListView
 
 # Create your views here.
@@ -22,18 +21,30 @@ class PostView(ListView):
         type = self.request.GET.get('type', '')
         keyword = self.request.GET.get('keyword', '')
         sort = self.request.GET.get('sort', '')
-        if len(keyword) > 1 :
-            if type == 'all':
-                walkroads = Walkroad.objects.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword))
-            elif type == 'title':
-                walkroads = Walkroad.objects.filter(Q(title__icontains=keyword))
-            elif type == 'title+content':
-                walkroads = Walkroad.objects.filter(Q(description__icontains=keyword))
-        # else :
-        #     return messages.error(self.request, '검색어는 2글자 이상 입력해주세요')
+
+        if type == 'all':
+            walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword))
+        elif type == 'title':
+            walkroads = walkroads.filter(Q(title__icontains=keyword))
+        elif type == 'titlecontent':
+            walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword))
         if sort == 'date':
             walkroads.order_by('-created_at')
+
         return walkroads
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        type = self.request.GET.get('type', '')
+        keyword = self.request.GET.get('keyword', '')
+        sort = self.request.GET.get('sort', '')
+
+        context['keyword'] = keyword
+        context['type'] = type
+        context['sort'] = sort
+        
+        return context
 
 def show(request, id):
     walkroad = Walkroad.objects.get(id=id)
