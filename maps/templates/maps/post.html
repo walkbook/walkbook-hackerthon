@@ -1,13 +1,27 @@
 {% extends 'base.html' %}
-
+<!-- {% load static %} -->
 {% block content %}
 <h1>post</h1>
+<form action="{%url 'maps:post' %}" method="GET" class="search-post">
+    <select name="type">
+        <option value="all" selected>전체</option>
+        <option value="title">제목</option>
+        <option value="title+content">제목+내용</option>
+    </select>
+    <input name="keyword" id="keyword" type=text />
+    <button name="search-btn" id="search-btn" type="submit">검색</button>
+    <select name="sort">
+        <option value="" selected>정렬</option>
+        <option value="like">좋아요순</option>
+        <option value="date">최신순</option>
+    </select>    
+</div>
 <div class="post-container">
-  {% for walkroad in walkroads %}
+    {% for walkroad in walkroads %}
     <div class="post">
         <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
     </div>
-  {% endfor %}
+    {% endfor %}
 </div>
-
+<!-- <script type="module" src="{% static 'maps/js/post.js' %}"></script> -->
 {% endblock content %}

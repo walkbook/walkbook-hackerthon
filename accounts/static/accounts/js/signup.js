@@ -1,27 +1,27 @@
-import { signupFeature } from './signupFeature.js';
+import { feature } from './feature.js';
 
 (() => {
 	const checkUserid = document.getElementById('checkUserid');
-	checkUserid.onclick = () => signupFeature.isAvailableID();
+	checkUserid.onclick = () => feature.isAvailableID();
 })();
 
 (() => {
 	const inputUserid = document.getElementById('userid');
-	inputUserid.onkeyup = () => signupFeature.clearUseridMsg();
+	inputUserid.onkeyup = () => feature.clearUseridMsg();
 })();
 
 (() => {
 	const passwordInput = document.querySelectorAll('input[type=password]');
-	passwordInput[0].onkeyup = () => signupFeature.handleValidatePw();
-	passwordInput[1].onkeyup = () => signupFeature.handleSamePw();
+	passwordInput[0].onkeyup = () => feature.handleValidatePw();
+	passwordInput[1].onkeyup = () => feature.handleSamePw();
 })();
 
 (() => {
 	const signupForm = document.getElementById('signup-form');
-	signupForm.onsubmit = (e) => signupFeature.handleSignup(e);
+	signupForm.onsubmit = (e) => feature.handleSignup(e);
 })();
 
 (() => {
 	const searchLocation = document.getElementById('searchLocation');
-	searchLocation.onclick = () => signupFeature.execLocation();
+	searchLocation.onclick = () => feature.execLocation();
 })();
