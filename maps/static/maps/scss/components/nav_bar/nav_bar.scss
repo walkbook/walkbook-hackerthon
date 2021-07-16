@@ -9,6 +9,8 @@ body {
     width: 100%;
     //fixed, background-color 수정 예정
     position: fixed;
+    background: linear-gradient(180deg, #FFFFFF 0%, #98C794 1213.94%);
+    z-index: 1;
 
 
     .wrap-header {
