@@ -16,9 +16,9 @@
             <div class="map-input">
                 <div class="map-input_wrap">
                     <input type="text" name="location" class ="map-input_location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
-                    <button type="submit" id="address-location-button">설정</button>
+                    <button type="submit" id="address-location-button" class="address-location-button">설정</button>
                 </div>
-                <button id="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
+                <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
             </div>
             <div id="map" style="width:100%;height:600px;"></div>
         </div>

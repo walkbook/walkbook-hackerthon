@@ -29,7 +29,7 @@
                 color: #D6D6D6;
             }
             
-            #address-location-button {
+            .address-location-button {
                 position: absolute;
                 display: flex;
                 justify-content: center;
@@ -44,13 +44,13 @@
                 border-radius: 5px;
                 font-size: 12px;
             }
-            #address-location-button:hover {
+            .address-location-button:hover {
                 cursor: pointer;
                 background-color: var(--yellow);
             }
         }
         
-        #current-location-button {
+        .current-location-button {
             display: flex;
             align-items: center;
             justify-content: center;

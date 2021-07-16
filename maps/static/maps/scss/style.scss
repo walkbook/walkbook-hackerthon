@@ -2,12 +2,15 @@
 @import "reset.scss";
 @import "variables.scss";
 
+
 // components import
 @import "components/nav_bar/nav_bar.scss";
+@import "components/line/line-long.scss";
 
 // screens import 
 @import "screens/map.scss";
 @import "screens/index.scss";
+@import "screens/new.scss";
 
 body { 
     width: 100%;
@@ -17,4 +20,5 @@ body {
 .body-layout {
     margin-right: 13%;
     margin-left: 13%;
+    padding-top: 130px;
 }

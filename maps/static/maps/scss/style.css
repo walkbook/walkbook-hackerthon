@@ -1,6 +1,7 @@
 /* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
 */
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
 html,
 body,
 div,
@@ -144,7 +145,9 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  position: fixed; }
+  position: fixed;
+  background: linear-gradient(180deg, #FFFFFF 0%, #98C794 1213.94%);
+  z-index: 1; }
   .base-header .wrap-header {
     width: 100%;
     height: 40px;
@@ -183,6 +186,11 @@ body {
         font-size: 16px;
         color: #E5C05B; }
 
+.line-long {
+  width: 74vw;
+  height: 50px;
+  margin-bottom: 20px; }
+
 .map-search {
   height: 120px; }
 
@@ -207,7 +215,7 @@ body {
         padding-left: 7px; }
       .mapbox .map-input .map-input_wrap .map-input_location::placeholder {
         color: #D6D6D6; }
-      .mapbox .map-input .map-input_wrap #address-location-button {
+      .mapbox .map-input .map-input_wrap .address-location-button {
         position: absolute;
         display: flex;
         justify-content: center;
@@ -221,10 +229,10 @@ body {
         color: white;
         border-radius: 5px;
         font-size: 12px; }
-      .mapbox .map-input .map-input_wrap #address-location-button:hover {
+      .mapbox .map-input .map-input_wrap .address-location-button:hover {
         cursor: pointer;
         background-color: var(--yellow); }
-    .mapbox .map-input #current-location-button {
+    .mapbox .map-input .current-location-button {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -235,26 +243,120 @@ body {
       border-radius: 10px;
       background-color: white;
       filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); }
-      .mapbox .map-input #current-location-button :hover {
+      .mapbox .map-input .current-location-button :hover {
         cursor: pointer; }
-      .mapbox .map-input #current-location-button .current-location-img {
+      .mapbox .map-input .current-location-button .current-location-img {
         height: 25px; }
   .mapbox #map {
     border-radius: 5px; }
 
-.index-box {
-  width: 100vw;
+@keyframes shake {
+  0% {
+    transform: rotate(2deg); }
+  33% {
+    transform: rotate(-2deg); }
+  66% {
+    transform: rotate(2deg); }
+  100% {
+    transform: rotate(2deg); } }
+
+@keyframes move {
+  from {
+    transform: translateY(0px); }
+  50% {
+    transform: translateY(-10px); }
+  to {
+    transform: translateY(0px); } }
+
+.green-box {
+  position: relative;
+  width: auto;
   height: 100vh;
-  display: flex; }
-  .index-box .white-box {
-    background-color: white;
-    width: 50vw;
-    height: 100vh; }
-  .index-box .green-box {
-    background: linear-gradient(172.14deg, #98C794 23.42%, #49A59A 108.17%), #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    width: 50vw;
-    height: 100vh; }
+  background: linear-gradient(172.14deg, rgba(73, 165, 154, 0.04) 23.42%, rgba(152, 199, 147, 0.71) 108.17%), #FFFFFF; }
+  .green-box .index-message {
+    position: absolute;
+    top: 25%;
+    right: 62%;
+    color: var(--green);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 20px;
+    animation: move 3s infinite;
+    -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.212));
+    color: var(--green); }
+    .green-box .index-message span {
+      font-size: 27px;
+      font-weight: 700; }
+  .green-box .index-img {
+    display: relative;
+    width: 100vw;
+    height: 50vh; }
+    .green-box .index-img .main-img {
+      position: absolute;
+      top: 52%;
+      left: 53%;
+      transform: translate(-50%, -50%);
+      width: 750px;
+      height: 560px; }
+    .green-box .index-img .main-search_map {
+      position: absolute;
+      width: 230px;
+      height: 160px;
+      top: 43%;
+      left: 52%;
+      z-index: 1; }
+    .green-box .index-img .main-search_map:hover {
+      animation: none;
+      transform: scale(1.1);
+      transition: transform 0.5s ease 0s; }
+    .green-box .index-img .main-search_post {
+      position: absolute;
+      width: 200px;
+      height: 150px;
+      bottom: 58%;
+      left: 57%;
+      z-index: 1; }
+    .green-box .index-img .main-search_post:hover {
+      transform: scale(1.1);
+      transition: transform 0.5s ease 0s; }
+    .green-box .index-img .main-mypage {
+      position: absolute;
+      width: 190px;
+      height: 145px;
+      bottom: 64%;
+      right: 44%;
+      z-index: 1; }
+    .green-box .index-img .main-mypage:hover {
+      transform: scale(1.1);
+      transition: transform 0.5s ease 0s; }
+    .green-box .index-img .main-suggest {
+      position: absolute;
+      width: 250px;
+      height: 190px;
+      bottom: 44%;
+      right: 49vw;
+      z-index: 1; }
+    .green-box .index-img .main-suggest:hover {
+      transform: scale(1.1);
+      transition: transform 0.5s ease 0s; }
+
+.body-layout .enroll-announce {
+  color: var(--yellow);
+  font-size: 24px; }
+
+.announcement {
+  display: block;
+  color: var(--green);
+  font-size: 14px; }
+
+.new-announce_announce {
+  width: 100%;
+  height: 80px;
+  left: 169px;
+  top: 357px;
+  margin: 10px 0;
+  background: #FFFFFF;
+  border: 1px dashed rgba(0, 0, 0, 0.5);
+  border-radius: 10px; }
 
 body {
   width: 100%;
@@ -262,6 +364,7 @@ body {
 
 .body-layout {
   margin-right: 13%;
-  margin-left: 13%; }
+  margin-left: 13%;
+  padding-top: 130px; }
 
 /*# sourceMappingURL=style.css.map */
