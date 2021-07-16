@@ -2,8 +2,22 @@
 
 {% load static %}
 {% block content %}
-<div class="index-box">
-    <div class="white-box"></div>
-    <div class="green-box"></div>
+
+<div class="green-box">
+    <div class="index-message">함께 길을 읽다, <span>워크북<span></div>
+    <div class="index-img">
+        <img class="main-img" src="{% static 'maps/img/book.png' %}" />
+        <a href="{% url 'maps:map' %}"><img class="main-search_map" src="{% static 'maps/img/mapsearch.png' %}" /></a>
+        <a href="{% url 'maps:post' %}"><img class="main-search_post" src="{% static 'maps/img/posts.png' %}" /></a>
+        {% if user.is_authenticated %}
+            {% comment %} <div>{{user.profile.username}}님 환영합니다.</div> {% endcomment %}
+            <a class="suggest" href="{% url 'maps:new' %}"><img class="main-suggest" src="{% static 'maps/img/suggest.png' %}" /></a>
+            <a class="mypage" href="{% url 'mypage:mypage' %}"><img class="main-mypage" src="{% static 'maps/img/mypage_img.png' %}" /></a>
+            {% comment %} <a href="{% url 'checkpw'%}">내 정보수정</a> {% endcomment %}
+        {% else %}
+            <img class="main-suggest" src="{% static 'maps/img/suggest.png' %}" />
+            <img class="main-mypage" src="{% static 'maps/img/mypage_img.png' %}" />
+        {% endif %}
+    </div>
 </div>
 {% endblock content %}

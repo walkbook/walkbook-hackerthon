@@ -1,19 +1,109 @@
-.index-box {
-    width: 100vw;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
+@keyframes shake {
+    0% {transform: rotate(2deg);}
+    33% {transform: rotate(-2deg);}
+    66% {transform: rotate(2deg);}
+    100% {transform: rotate(2deg);}
+}
+@keyframes move { 
+    from { transform : translateY(0px); } 
+    50% { transform : translateY(-10px); } 
+    to { transform : translateY(0px); } }
+
+.green-box {
+    position: relative;
+    width: auto;
     height: 100vh;
-    display: flex;
+    background: linear-gradient(172.14deg, rgba(73, 165, 154, 0.04) 23.42%, rgba(152, 199, 147, 0.71) 108.17%), #FFFFFF;
 
+    .index-message {
+        position: absolute;
+        top: 25%;
+        right: 62%;
+        color: var(--green);
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 20px;
+        animation : move 3s infinite;
+        -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.212)); color: var(--green);
 
-    .white-box {
-        background-color: white;
-        width: 50vw;
-        height: 100vh;
+        span {
+            font-size: 27px;
+            font-weight: 700;
+        }
+
     }
+    .index-img {
+        display: relative;
+        width: 100vw;
+        height: 50vh;
 
-    .green-box {
-        background: linear-gradient(172.14deg, #98C794 23.42%, #49A59A 108.17%), #FFFFFF;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        width: 50vw;
-        height: 100vh;
+        .main-img {
+            position: absolute;
+            top: 52%;
+            left: 53%;
+            transform: translate(-50%, -50%);
+            width: 750px;
+            height: 560px;
+        }
+    
+        .main-search_map {
+            position: absolute;
+            width: 230px;
+            height: 160px;
+            top: 43%;
+            left: 52%;
+            z-index: 1;
+            // transform: rotate(2deg);
+            // animation-name: shake;
+            // animation-duration: 0.5s;
+            // animation-iteration-count: infinite;
+            // animation-direction: alternate;
+            // animation-timing-function: linear;
+        }
+        .main-search_map:hover {
+            animation: none;
+            transform: scale(1.1);
+            transition: transform 0.5s ease 0s;
+        }
+    
+        .main-search_post {
+            position: absolute;
+            width: 200px;
+            height: 150px;
+            bottom: 58%;
+            left: 57%;
+            z-index: 1;
+        }
+        .main-search_post:hover {
+            transform: scale(1.1);
+            transition: transform 0.5s ease 0s;
+        }
+    
+        .main-mypage {
+            position: absolute;
+            width: 190px;
+            height: 145px;
+            bottom: 64%;
+            right: 44%;
+            z-index: 1;
+        }
+        .main-mypage:hover {
+            transform: scale(1.1);
+            transition: transform 0.5s ease 0s;
+        }
+
+        .main-suggest {
+            position: absolute;
+            width: 250px;
+            height: 190px;
+            bottom: 44%;
+            right: 49vw;
+            z-index: 1;
+        }
+        .main-suggest:hover {
+            transform: scale(1.1);
+            transition: transform 0.5s ease 0s;
+        }
     }
 }
