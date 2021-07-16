@@ -1,13 +1,26 @@
 import { feature } from './feature.js';
 
 (() => {
+	document.onkeypress =(e) =>{
+		if (e.key === 'Enter') {
+			e.preventDefault();
+		}
+	}
+})();
+
+(() => {
 	const checkUserid = document.getElementById('checkUserid');
 	checkUserid.onclick = () => feature.isAvailableID();
 })();
 
 (() => {
 	const inputUserid = document.getElementById('userid');
-	inputUserid.onkeyup = () => feature.clearUseridMsg();
+	inputUserid.onkeyup = (e) => {
+		if (e.key === 'Enter') {
+			feature.isAvailableID(e.target.value);
+		}
+		else feature.clearUseridMsg(e.target.value);
+	}
 })();
 
 (() => {
