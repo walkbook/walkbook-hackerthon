@@ -3,10 +3,10 @@
 {% load socialaccount %}
 {% load static %}
 {% providers_media_js %}
-{% block style %}
-  {% load sass_tags%}
-  <link rel="stylesheet" type="text/css" href="{% sass_src 'accounts/scss/login.scss' %}"/>
-{% endblock style %}
+
+{% load sass_tags%}
+<link rel="stylesheet" type="text/css" href="{% sass_src 'accounts/scss/login.scss' %}"/>
+
 <h1>
 <img class="logo" src="{% static 'accounts/img/logo.png' %}">
 <img class="line" src="{% static 'maps/img/line.png' %}">

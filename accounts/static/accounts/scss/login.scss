@@ -8,3 +8,21 @@
     background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
     border-radius: 30px;
 }
+
+h1 {
+    .logo {
+        position: absolute;
+        width: 128px;
+        height: 133px;
+        left: 656px;
+        top: 179px;
+    }
+
+    .line {
+        position: absolute;
+        width: 653px;
+        height: 37px;
+        left: 392.8px;
+        top: 328.96px;
+    }
+}
