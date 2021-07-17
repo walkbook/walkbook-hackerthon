@@ -23,6 +23,7 @@ class Walkroad(models.Model):
     distance = models.IntegerField(default=0)
     time = models.IntegerField(default=0)
     path = models.JSONField(default=dict)
+    infowindow = models.JSONField(default=dict)
     like_users = models.ManyToManyField(User, blank=True, related_name='like_walkroads', through='Like')
     tags = models.ManyToManyField(Tag, blank=True, related_name='walkroads')
     images = models.ManyToManyField(MapImage, blank=True, related_name='walkroads')

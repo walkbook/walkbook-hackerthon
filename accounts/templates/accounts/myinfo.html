@@ -5,9 +5,11 @@
 <link rel="stylesheet" type="text/css" href={% sass_src 'accounts/scss/myinfo.scss' %}/>
 
 {% block content %}
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
   <script src="{% static 'accounts/js/axios.js' %}"></script>
   <h1>MY INFO</h1>
+
   <form id="myinfo-form" method="POST" action="{%url 'myinfo' %}">
     {% csrf_token %}
     <div class="myinfo">
@@ -75,7 +77,7 @@
       </h3>
       <input id="location" name="location" type="text" value="{{user.profile.location}}">
       <input id="searchLocation" type="button" value="위치 입력">
-      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+      <script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     </div>
     <div>
       <input type="submit" value="정보 수정"/>
@@ -85,6 +87,7 @@
   <script type="text/javascript">
     const sex = "{{user.profile.sex}}";
     const age = "{{user.profile.age}}";
+    const is_social = "{{is_social}}";
   </script>
-  <script type="module" src="{% static 'accounts/js/myinfo.js' %}"></script>
+  <script type="text/javascript" type="module" src="{% static 'accounts/js/myinfo.js' %}"></script>
 {% endblock content %}

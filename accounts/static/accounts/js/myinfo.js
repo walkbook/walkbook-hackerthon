@@ -1,30 +1,38 @@
-import { signupFeature } from './signupFeature.js';
+import { feature } from "./feature.js";
 
 (() => {
-    signupFeature.selectOption('sex', sex);
-    signupFeature.selectOption('age', age);
+  feature.selectOption("sex", sex);
+  feature.selectOption("age", age);
+  if (is_social) {
+    const passwordInput = document.querySelectorAll("input[type=password]");
+    passwordInput[0].setAttribute("disabled", "True");
+    passwordInput[1].setAttribute("disabled", "True");
+  }
 })();
 
 (() => {
-	const passwordInput = document.querySelectorAll('input[type=password]');
-	passwordInput[0].onkeyup = () => signupFeature.handleValidatePw();
-	passwordInput[1].onkeyup = () => signupFeature.handleSamePw();
+  const passwordInput = document.querySelectorAll("input[type=password]");
+  passwordInput[0].onkeyup = () => feature.handleValidatePw();
+  passwordInput[1].onkeyup = () => feature.handleSamePw();
 })();
 
 (() => {
-	const searchLocation = document.getElementById('searchLocation');
-	searchLocation.onclick = () => signupFeature.execLocation();
+  const searchLocation = document.getElementById("searchLocation");
+  searchLocation.onclick = () => feature.execLocation();
 })();
 
 (() => {
-	const myinfoForm = document.getElementById('myinfo-form');
-	myinfoForm.onsubmit = (e) => {
-        e.preventDefault();
-        if (signupFeature.validatePassword(signupFeature.getPasswords())){
-            e.target.submit();
-        }
-        else {
-            signupFeature.dismissSignup('비밀번호');
-        }
+  const myinfoForm = document.getElementById("myinfo-form");
+  myinfoForm.onsubmit = (e) => {
+    e.preventDefault();
+    if (is_social) {
+      e.target.submit();
+    } else {
+      if (feature.validatePassword(feature.getPasswords())) {
+        e.target.submit();
+      } else {
+        feature.dismissSignup("비밀번호");
+      }
     }
+  };
 })();

@@ -1,4 +1,4 @@
-export const signupFeature = {
+export const feature = {
   async isAvailableID() {
     const userId = document.querySelector('input[name=userid]').value;
 

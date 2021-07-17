@@ -1,16 +1,34 @@
 // 지도에 가져온 데이터로 도형들을 그립니다
-drawMarker(data[kakao.maps.drawing.OverlayType.MARKER]);
-drawPolyline(data[kakao.maps.drawing.OverlayType.POLYLINE]);
+drawMarker(path[kakao.maps.drawing.OverlayType.MARKER], infowindow);
+drawPolyline(path[kakao.maps.drawing.OverlayType.POLYLINE]);
 
-// Drawing Manager에서 가져온 데이터 중 마커를 아래 지도에 표시하는 함수입니다
-function drawMarker(markers) {
-    var len = markers.length, i = 0;
+kakao.maps.event.addListener(map, 'zoom_changed', function () {
+    for (let i = 0; i < infowindow.length; i++) {
+        closeOverlay(i);
+    }
+});
 
-    for (; i < len; i++) {
-        var marker = new kakao.maps.Marker({
+// // Drawing Manager에서 가져온 데이터 중 마커를 아래 지도에 표시하는 함수입니다
+function drawMarker(markers, infowindows) {
+
+    for (let i = 0; i < markers.length; i++) {
+        const marker = new kakao.maps.Marker({
             map: map,
             position: new kakao.maps.LatLng(markers[i].y, markers[i].x),
             zIndex: markers[i].zIndex
+        });
+
+        const infowindow = new kakao.maps.InfoWindow({
+            content: infoWindowContent(i, infowindows[i].title, infowindows[i].description),
+            map: null,
+            position: marker.getPosition(),
+        });
+
+        mappingData[i] = { marker, infowindow }
+
+        kakao.maps.event.addListener(marker, 'click', function () {
+            console.log('marker', marker);
+            infowindow.setMap(map);
         });
     }
 }
@@ -47,4 +65,8 @@ function pointsToPath(points) {
     }
 
     return path;
+}
+
+function closeOverlay(id) {
+    mappingData[id].infowindow.setMap(null);
 }
