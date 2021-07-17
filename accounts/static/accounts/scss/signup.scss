@@ -1,0 +1,65 @@
+h1 {
+    .logo {
+        position: absolute;
+        width: 128px;
+        height: 133px;
+        left: 656px;
+        top: 179px;
+    }
+
+    .line {
+        position: absolute;
+        width: 653px;
+        height: 37px;
+        left: 392.8px;
+        top: 328.96px;
+    }
+}
+
+label[for=id],
+label[for=password1],
+label[for=password2],
+label[for=username],
+label[for=sex],
+label[for=age],
+label[for=location] {
+    position: absolute;
+    width: 378px;
+    height: 43px;
+    left: 531px;
+    top: 399px;
+
+    background: #FFFFFF;
+    border: 1px dashed rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.signup_title {
+    position: absolute;
+    width: 46.89px;
+    height: 40px;
+    left: 505.04px;
+    top: 230px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 36px;
+    /* or 225% */
+
+    letter-spacing: -0.015em;
+
+    color: #98C794;
+}
+
+.signupbtn {
+    position: absolute;
+    width: 377px;
+    height: 55px;
+    left: 532px;
+    top: 541px;
+
+    background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
+    border-radius: 30px;
+}

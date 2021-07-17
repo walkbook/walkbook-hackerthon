@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load socialaccount %}
+{% load static %}
 {% providers_media_js %}
-<h1>로그인</h1>
+{% block style %}
+  {% load sass_tags%}
+  <link rel="stylesheet" type="text/css" href="{% sass_src 'accounts/scss/login.scss' %}"/>
+{% endblock style %}
+<h1>
+<img class="logo" src="{% static 'accounts/img/logo.png' %}">
+<img class="line" src="{% static 'maps/img/line.png' %}">
+</h1>
 <form method="post" action="{% url 'login' %}">
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit" value="로그인" />
+  <input class="loginbtn" type="submit" value="로그인" />
 </form>
-<a class="mdl-navigation__link" href="{% provider_login_url 'google' %}">구글 로그인</a>
+<a class="mdl-navigation__link" href="{% provider_login_url 'google' %}">
+<img src="{% static 'accounts/img/googlelogin.png' %}" style="width: 184px; height: auto;"/>
+</a>
 {% endblock content %}
