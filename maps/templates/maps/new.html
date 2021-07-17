@@ -44,8 +44,11 @@
 			<div class="map_wrap">
 				<div id="map" style="width:100%;height:400px;"></div>
 			</div>
-			<p id="total-distance">거리 : 0 m</p>
-			<p id="total-time">소요 시간 : 0 분</p>
+
+			<div class="map-info">
+				<p id="total-time">소요 시간 : <span>0 분</span></p>
+				<p id="total-distance">총 거리 : <span>0 m</span></p>
+			</div>
 
 			<input type="text" name="username" id="username" value="{{ request.user.profile.username }}" disabled/>
 			<input type="text" name="title" id="title-input" placeholder="title"/>

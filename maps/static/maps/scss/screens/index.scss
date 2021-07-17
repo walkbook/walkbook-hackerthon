@@ -25,7 +25,7 @@
         font-family: 'Noto Sans KR', sans-serif;
         font-size: 23px;
         animation : move 3s infinite;
-        -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.151)); color: var(--green);
+        -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.226)); color: var(--green);
 
         span {
             font-size: 30px;
@@ -54,12 +54,6 @@
             top: 43%;
             left: 52%;
             z-index: 1;
-            // transform: rotate(2deg);
-            // animation-name: shake;
-            // animation-duration: 0.5s;
-            // animation-iteration-count: infinite;
-            // animation-direction: alternate;
-            // animation-timing-function: linear;
         }
         .main-search_map:hover {
             animation: none;

@@ -2,6 +2,7 @@
 */
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 html,
 body,
 div,
@@ -281,7 +282,7 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 23px;
     animation: move 3s infinite;
-    -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.151));
+    -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.226));
     color: var(--green); }
     .green-box .index-message span {
       font-size: 30px;
@@ -398,6 +399,26 @@ body {
   border: 1px dashed rgba(0, 0, 0, 0.5);
   border-radius: 10px; }
 
+.map-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px 0 0 10px;
+  font-family: 'Montserrat', sans-serif; }
+  .map-info p {
+    font-size: 16px;
+    color: #49A59A;
+    margin: 5px 0 0 5px; }
+    .map-info p span {
+      font-size: 14px;
+      color: rgba(135, 135, 135, 0.8); }
+
+#map {
+  border-radius: 5px; }
+
+.mapbox_wrap {
+  width: 60%; }
+
 body {
   width: 100%;
   height: 100%; }
@@ -405,6 +426,7 @@ body {
 .body-layout {
   margin-right: 13%;
   margin-left: 13%;
-  padding-top: 130px; }
+  padding-top: 150px;
+  padding-bottom: 50px; }
 
 /*# sourceMappingURL=style.css.map */
