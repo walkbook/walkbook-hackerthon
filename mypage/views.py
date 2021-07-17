@@ -7,18 +7,18 @@ from maps.models import Walkroad
 def mypage(request):
     if request.user.is_authenticated == False:
         return redirect('login')    
-    user = User.objects.get(id=request.user.id)      
-    user.likecount = user.like_walkroads.count()     
-    return render(request, 'mypage/mypage.html', {'user': user})
+    if request.method == 'GET':
+        user = User.objects.get(id=request.user.id)      
+        registeredWalkroads = Walkroad.objects.filter(author=user)
+        likedWalkroads = user.like_walkroads.all()
+        return render(request, 'mypage/mypage.html', {'user': user, 'registeredWalkroads': registeredWalkroads, 'likedWalkroads': likedWalkroads})
 
 def profile(request):
     if request.user.is_authenticated == False:
         return redirect('login')
     if request.method =='GET':    
         user = User.objects.get(id=request.user.id) 
-        registered = Walkroad.objects.filter(author=user)
-        liked = Walkroad.like_set.filter(user_id=request.user.id)
-        return render(request, 'mypage/profile.html', {'user': user, 'registered': registered})
+        return render(request, 'mypage/profile.html', {'user': user})
 
     elif request.method =='POST':
         user = User.objects.get(id=request.user.id)     
@@ -29,5 +29,4 @@ def profile(request):
         introduce = request.POST['introduce']
         profile.update(feature=feature, likehour=likehour, introduce=introduce)
 
-        user.likecount = user.like_walkroads.count()     
-        return render(request, 'mypage/mypage.html', {'user': user})
+        return redirect('mypage:mypage')

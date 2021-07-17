@@ -1,11 +1,15 @@
 {% extends '../base.html' %}
-
+{% load static %}
+{% block style %}
+{% load sass_tags %}
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'mypage/scss/mypage.scss' %}"/>
+{% endblock style %}
 {% block content %}
 <div class="profile">
 	<h1>{{user.username}}의 워크북</h1>
 	<div class="profile-box">
 		<div id="walkroad-count">
-			총 {{user.likecount}} 개의 산책로를 등록했네요!
+			총 {{registeredWalkroads.count}} 개의 산책로를 등록했네요!
 		</div>
 		<div id="">
 			{% if user.profile.feature == ''%}
@@ -33,15 +37,29 @@
 	</div>
 </div>
 <div class="walkroad-posts">
-	<a id="registered" onclick="">등록한 산책로</a>
-	<a id="liked" onclick="">좋아하는 산책로</a>
-	{% for walkroad in walkroads %}
-	<div class="walkroad-post">
-		<a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
-		{{ walkroad.description}}
+	<a id="registered-posts">등록한 산책로</a>
+	<a id="liked-posts">좋아하는 산책로</a>
+	<input id="search-posts" type="text">
+	<button id="search-posts-btn">검색</button>
+
+	<div class="registered-posts">
+		{% for walkroad in registeredWalkroads %}
+			<div class="registered-post">
+				<a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
+				{{ walkroad.description}}
+			</div>
 		{% endfor %}
 	</div>
 
+	<div class="liked-posts">
+		{% for walkroad in likedWalkroads %}
+			<div class="liked-post hide">
+				<a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
+				{{ walkroad.description}}
+				{{ walkroad.author }}
+			</div>
+		{% endfor %}
+	</div>
 </div>
-
+<script type="module" src="{% static 'mypage/js/mypage.js' %}"></script>
 {% endblock content %}
