@@ -49,4 +49,100 @@
 
 #map {
     border-radius: 5px;
+    z-index: 0;
+}
+
+.map_wrap {
+    position: relative;
+}
+
+.marker-line_box {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 202px;
+    height: 38px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    z-index: 1;
+
+    button {
+        margin-top: 3px;
+        background: linear-gradient(180deg, #98C794 -26.67%, #49A59A 100%);
+        border-radius: 3px;
+        border: none;
+        width: auto;
+        height: 32px;
+        padding: 8.5px;
+        color: white;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+
+    button:first-child {
+        margin-left: 4px;
+    }
+}
+
+#loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.loading-background {
+    margin-top: 19px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+
+#loading-bar-spinner.spinner {
+    left: 50%;
+    margin-left: -20px;
+    top: 50%;
+    margin-top: -20px;
+    position: absolute;
+    z-index: 19 !important;
+    -webkit-animation: loading-bar-spinner 400ms linear infinite;
+    animation: loading-bar-spinner 400ms linear infinite;
+    z-index: 5;
+}
+
+#loading-bar-spinner.spinner .spinner-icon {
+    width: 40px;
+    height: 40px;
+    border:  solid 4px transparent;
+    border-top-color:  #00C8B1 !important;
+    border-left-color: #00C8B1 !important;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+@-webkit-keyframes loading-bar-spinner {
+    0%   { -webkit-transform: rotate(0deg); transform: rotate(0deg);   transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@keyframes loading-bar-spinner {
+    0%   { -webkit-transform: rotate(0deg); transform: rotate(0deg);   transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+.loading-msg {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    padding-top: 220px;
+    color: rgb(255, 255, 255);
+    z-index: 5;
+    font-family: 'Montserrat', sans-serif;
 }

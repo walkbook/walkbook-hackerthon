@@ -23,6 +23,7 @@
                 border-radius: 5px;
                 border: 0.3px solid #dddddd;
                 padding-left: 7px;
+                font-size: 11px;
             }
             
             .map-input_location::placeholder {
@@ -42,7 +43,7 @@
                 background-color: var(--green);
                 color: white;
                 border-radius: 5px;
-                font-size: 12px;
+                font-size: 10px;
             }
             .address-location-button:hover {
                 cursor: pointer;
