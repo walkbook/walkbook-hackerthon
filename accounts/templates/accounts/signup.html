@@ -11,7 +11,7 @@
   <h1>
     SIGN UP <img class="line" src="{% static 'maps/img/line.png' %}">
   </h1>
-  <form id="signup-form" method="POST" action="{%url 'signup' %}">
+  <form class="signupinput" id="signup-form" method="POST" action="{%url 'signup' %}">
     {% csrf_token %}
     <div class="signup">
       <h3 class="signup_title">

@@ -11,10 +11,10 @@
 <img class="logo" src="{% static 'accounts/img/logo.png' %}">
 <img class="line" src="{% static 'maps/img/line.png' %}">
 </h1>
-<form method="post" action="{% url 'login' %}">
+<form class="logininput" method="post" action="{% url 'login' %}">
   {% csrf_token %}
   {{ form.as_p }}
-  <input class="loginbtn" type="submit" value="로그인" />
+  <input class="loginbtn" type="submit" value="로그인"/>
 </form>
 <a class="mdl-navigation__link" href="{% provider_login_url 'google' %}">
 <img src="{% static 'accounts/img/googlelogin.png' %}" style="width: 184px; height: auto;"/>

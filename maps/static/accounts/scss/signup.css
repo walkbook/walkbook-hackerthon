@@ -1,0 +1,11 @@
+h1 { position: absolute; width: 543px; height: 39.86px; left: 674px; top: 95px; /* Body H4 */ font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 24px; line-height: 36px; /* or 150% */ letter-spacing: -0.015em; color: #98C794; }
+
+h1 .line { position: absolute; width: 653px; height: 37px; left: 392.8px; top: 328.96px; }
+
+.signupbtn { position: absolute; width: 377px; height: 55px; left: 532px; top: 541px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); border-radius: 30px; }
+
+.signupinput .signup { position: absolute; width: 378px; height: 43px; left: 531px; top: 399px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+
+.signupinput .signup .signup_title label[for=id], .signupinput .signup .signup_title label[for=password1], .signupinput .signup .signup_title label[for=password2], .signupinput .signup .signup_title label[for=username], .signupinput .signup .signup_title label[for=sex], .signupinput .signup .signup_title label[for=age], .signupinput .signup .signup_title label[for=location] { width: 378px; height: 43px; left: 531px; top: 399px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+
+/*# sourceMappingURL=signup.css.map */
