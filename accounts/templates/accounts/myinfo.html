@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load sass_tags%}
+<link rel="stylesheet" type="text/css" href={% sass_src 'accounts/scss/myinfo.scss' %}/>
 
 {% block content %}
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-  <script type="text/javascript" src="{% static 'accounts/js/axios.js' %}"></script>
-  <h1>내 정보 수정하기</h1>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <script src="{% static 'accounts/js/axios.js' %}"></script>
+  <h1>MY INFO</h1>
+
   <form id="myinfo-form" method="POST" action="{%url 'myinfo' %}">
     {% csrf_token %}
     <div class="myinfo">

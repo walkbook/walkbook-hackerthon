@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
+{% block style %}
+{% load sass_tags%}
+<link rel="stylesheet" type="text/css" href="{% sass_src 'accounts/scss/signup.scss' %}"/>
+{% endblock style %}
 {% block content %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
   <script src="{% static 'accounts/js/axios.js' %}"></script>
-  <h1>워크북 회원가입</h1>
+  <h1>
+    SIGN UP <img class="line" src="{% static 'maps/img/line.png' %}">
+  </h1>
   <form id="signup-form" method="POST" action="{%url 'signup' %}">
     {% csrf_token %}
     <div class="signup">
@@ -78,7 +83,7 @@
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     </div>
     <div>
-      <input type="submit" value="회원가입"/>
+      <input class="signupbtn" type="submit" value="회원가입"/>
     </div>
   </form>
   <script type="module" src="{% static 'accounts/js/signup.js' %}"></script>
