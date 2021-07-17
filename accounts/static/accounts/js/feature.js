@@ -1,11 +1,11 @@
-export const signupFeature = {
+export const feature = {
   async isAvailableID() {
     const userId = document.querySelector('input[name=userid]').value;
 
     let data = new FormData();
     data.append("userid", userId);
 
-    const response = await axios.post(`/accounts/signup/checkid`, data);
+    const response = await axios.post(`/accounts/signup/checkid/`, data);
 
     if (response.data.isAvailable) {
       document.getElementById('validate-id').innerHTML = '사용 가능!'
@@ -18,6 +18,15 @@ export const signupFeature = {
 
   clearUseridMsg() {
     document.getElementById('validate-id').innerHTML = ''
+  },
+
+  getUserId() {
+    return document.querySelector('input[name=userid]').value;
+  },
+
+  async validateUserId(username) {
+    const isAvailableID = await this.isAvailableID();
+    return (username !== '') && isAvailableID;
   },
 
   handleSamePw() {
@@ -44,29 +53,6 @@ export const signupFeature = {
     }
   },
 
-  async handleSignup(e) {
-    e.preventDefault();
-    const isvalidUserid = await this.validateUserId(this.getUserId());
-    if (isvalidUserid) {
-      if (this.validatePassword(this.getPasswords())) {
-        this.submitTarget(e);
-      } else {
-        this.dismissSignup('비밀번호');
-      }
-    } else {
-      this.dismissSignup('ID');
-    }
-  },
-
-  getUserId() {
-    return document.querySelector('input[name=userid]').value;
-  },
-
-  async validateUserId(username) {
-    const isAvailableID = await this.isAvailableID();
-    return (username !== '') && isAvailableID;
-  },
-
   getPasswords() {
     return [...document.querySelectorAll('input[type=password]')].map(
       (input) => input.value
@@ -90,6 +76,20 @@ export const signupFeature = {
     );
   },
 
+  async handleSignup(e) {
+    e.preventDefault();
+    const isvalidUserid = await this.validateUserId(this.getUserId());
+    if (isvalidUserid) {
+      if (this.validatePassword(this.getPasswords())) {
+        this.submitTarget(e);
+      } else {
+        this.dismissSignup('비밀번호');
+      }
+    } else {
+      this.dismissSignup('ID');
+    }
+  },
+
   submitTarget(e) {
     e.target.submit();
   },
@@ -110,5 +110,32 @@ export const signupFeature = {
         document.getElementById("location").value = addr;
       }
     }).open();
+  },
+
+  selectOption(id, value){
+    var select = document.getElementById(id);
+    var option;
+    for (var i=0; i<select.options.length; i++) {
+        option = select.options[i];
+        if (option.value == value) {
+            option.setAttribute('selected', true);
+        } 
+    }
+  },
+
+  async handleCheckPw(e) {
+    e.preventDefault();
+    const password = document.querySelector('input[name=password]').value;
+
+    let data = new FormData();
+    data.append("password", password);
+
+    const response = await axios.post(`/accounts/checkpw/`, data);
+
+    if (response.data.result) {
+      window.location.href = `/accounts/myinfo`;  
+    } else {
+      alert('비밀번호가 다릅니다.');
+    }
   },
 };

@@ -26,6 +26,10 @@ SECRET_KEY = 'django-insecure-2s2ud-b-($1l21l65xfl!rnq&9i5edw*#i4^*np%x6!n=-hqd7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("application/javascript", ".js", True)
+
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -37,10 +41,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'sass_processor',
     'maps',
     'accounts',
     'mypage',
+
+    #allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #provider
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +153,12 @@ SASS_PROCESSOR_ROOT =  os.path.join(BASE_DIR, 'maps', 'static')
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+
+ACCOUNT_LOGOUT_ON_GET = True

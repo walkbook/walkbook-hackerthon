@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load socialaccount %}
+{% providers_media_js %}
 <h1>로그인</h1>
 <form method="post" action="{% url 'login' %}">
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="로그인" />
 </form>
+<a class="mdl-navigation__link" href="{% provider_login_url 'google' %}">구글 로그인</a>
 {% endblock content %}
