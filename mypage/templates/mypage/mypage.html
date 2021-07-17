@@ -1,7 +1,7 @@
 {% extends '../base.html' %}
 
 {% block content %}
-<div class="profile" style=>
+<div class="profile">
 	<h1>{{user.username}}의 워크북</h1>
 	<div class="profile-box">
 		<div id="walkroad-count">
@@ -31,6 +31,17 @@
 		<a href="{% url 'mypage:profile'%}">프로필 수정하기</a>
 		<a href="{% url 'checkpw'%}">내정보 수정하기</a>
 	</div>
+</div>
+<div class="walkroad-posts">
+	<a id="registered" onclick="">등록한 산책로</a>
+	<a id="liked" onclick="">좋아하는 산책로</a>
+	{% for walkroad in walkroads %}
+	<div class="walkroad-post">
+		<a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
+		{{ walkroad.description}}
+		{% endfor %}
+	</div>
+
 </div>
 
 {% endblock content %}
