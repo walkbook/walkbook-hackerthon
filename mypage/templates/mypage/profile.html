@@ -1,0 +1,29 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<p> profile 수정</p> 
+<form id="profile-form" method="POST" action="{%url 'mypage:profile' %}">
+    {% csrf_token %}
+    <div class="profile-feature">
+        <h3 class="profile-feature">
+          <label for="feature">선호하는 산책로 특징</label>
+        </h3>
+        <input name="feature" type="text" value="{{user.profile.feature}}">
+    </div>
+    <div class="profile-likehour">
+        <h3 class="profile-likehour">
+          <label for="likehour">선호하는 시간대</label>
+        </h3>
+        <input name="likehour" type="text" value="{{user.profile.likehour}}">
+    </div>
+    <div class="profile-introduce">
+        <h3 class="profile-introduce">
+          <label for="introduce">소개글</label>
+        </h3>
+        <input name="introduce" type="text" value="{{user.profile.introduce}}">
+    </div>  
+    <div>
+        <input type="submit" value="정보 수정"/>
+    </div>
+</form>
+{% endblock content %}

@@ -25,6 +25,10 @@ class Profile(models.Model):
 	sex = models.CharField(max_length=1, choices=SEX_CHOICES, blank=True)
 	age = models.CharField(max_length=2, choices=AGE_CHOICES, blank=True)
 	location = models.TextField(blank=True)
+
+	feature = models.TextField(blank=True)
+	likehour = models.TextField(blank=True)
+	introduce = models.TextField(blank=True)
 	
 	def __str__(self):
 		return f'id={self.id}, user_id={self.user.id}, username={self.username}, sex={self.sex}, age={self.age}, location={self.location}'
