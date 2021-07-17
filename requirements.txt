@@ -35,13 +35,10 @@ selenium==3.141.0
 six==1.15.0
 soupsieve==2.2.1
 sqlparse==0.4.1
-<<<<<<< HEAD
 Twiggy==0.4.7
 twiggy-goodies==0.12.0
 typing-extensions==3.7.4.3
 urllib3==1.26.5
-=======
 typing-extensions==3.10.0.0
 urllib3==1.26.6
->>>>>>> 04d7a6784627e64d418877fef85e11e6e42b8703
 yapf==0.31.0
