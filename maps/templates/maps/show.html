@@ -13,6 +13,8 @@
             <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
         {% endif %}
 
+        <h3 id="loading">현재 위치 불러오는 중...</h3>
+
         <img class="line-long" src="{% static 'maps/img/line.png' %}" />
 
         {% csrf_token %}
@@ -32,16 +34,18 @@
         <div>
             <p>author : {{ walkroad.author.profile.username }}</p>
             <p id="total-time">소요 시간</p>
-			<p id="total-distance">총 거리</p>
+			      <p id="total-distance">총 거리</p>
             <p>start : {{ walkroad.start }}</p>
             <p>finish : {{ walkroad.finish }}</p>
             <p>tmi : {{ walkroad.tmi }}</p>
         </div>
+      </div>
 
-        
-    </div>
-    <script type="text/javascript">
-        const data = {{ path | safe }};
+    <script>
+        const path = {{ walkroad.path | safe }};
+        const infowindow = {{ walkroad.infowindow | safe }};
+
+        let mappingData = {};
 
         let userAddress;
         if ("{{ request.user.is_anonymous }}" == "True") {
@@ -52,11 +56,13 @@
 
         const geocoder = new kakao.maps.services.Geocoder();
 
-        const startPoint = data[kakao.maps.drawing.OverlayType.POLYLINE][0]["points"][0];
+        const points = path[kakao.maps.drawing.OverlayType.POLYLINE][0]["points"];
+        const startPoint = points[0];
+        const endPoint = points[points.length - 1];
 
         const container = document.getElementById('map');
         const options = {
-            center: new kakao.maps.LatLng(startPoint['y'], startPoint['x']),
+            center: new kakao.maps.LatLng((startPoint['y'] + endPoint['y']) / 2, (startPoint['x'] + endPoint['x']) / 2),
             level: 4
         };
 
@@ -67,6 +73,7 @@
 
         const setCenterByCurrentLocation = false;
     </script>
+    <script src="{% static 'maps/js/components.js' %}"></script>
     <script src="{% static 'maps/js/initial.js' %}"></script>
     <script src="{% static 'maps/js/show.js' %}"></script>
 {% endblock content %}
