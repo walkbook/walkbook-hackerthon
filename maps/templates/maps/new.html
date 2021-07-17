@@ -5,6 +5,8 @@
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
 	<p>나만의 산책로를 만들어보세요!</p>
 
+    <h3 id="loading">현재 위치 불러오는 중...</h3>
+
 	<span>
 		<button id="marker-button" onclick="selectMarker()">마커</button>
 		<button id="polyline-button" onclick="selectPolyline()">선</button>
@@ -18,7 +20,7 @@
 	<button id="current-location-button">현재 위치로 다시 가기</button>
 		
 	<div class="map_wrap">
-		<div id="map" style="width:400px;height:300px;"></div>
+		<div id="map" style="width:1000px;height:500px;"></div>
         <div id="info-input-container" style="display: none">
             <input type="text" name="info-title" id="info-title-input" placeholder="마커 이름을 달아주세요!"/>
 	        <input type="text" name="info-description" id="info-description-input" placeholder="마커 설명을 달아주세요!"/>

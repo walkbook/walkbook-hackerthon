@@ -2,6 +2,11 @@
 drawMarker(path[kakao.maps.drawing.OverlayType.MARKER], infowindow);
 drawPolyline(path[kakao.maps.drawing.OverlayType.POLYLINE]);
 
+kakao.maps.event.addListener(map, 'zoom_changed', function () {
+    for (let i = 0; i < infowindow.length; i++) {
+        closeOverlay(i);
+    }
+});
 
 // // Drawing Manager에서 가져온 데이터 중 마커를 아래 지도에 표시하는 함수입니다
 function drawMarker(markers, infowindows) {
@@ -13,23 +18,16 @@ function drawMarker(markers, infowindows) {
             zIndex: markers[i].zIndex
         });
 
-        let infowindow;
+        const infowindow = new kakao.maps.InfoWindow({
+            content: infoWindowContent(i, infowindows[i].title, infowindows[i].description),
+            map: null,
+            position: marker.getPosition(),
+        });
 
-        for (let j = 0; j < infowindows.length; j++) {
-            if (marker.getPosition().equals(infowindows[j].position)) {
-                infowindow = new kakao.maps.InfoWindow({
-                    content: infoWindowContent(j, infowindows[j].title, infowindows[j].description),
-                    map: null,
-                    position: marker.getPosition(),
-                });
-
-                mappingData[j] = { marker, infowindow }
-                
-                break;
-            }
-        }
+        mappingData[i] = { marker, infowindow }
 
         kakao.maps.event.addListener(marker, 'click', function () {
+            console.log('marker', marker);
             infowindow.setMap(map);
         });
     }

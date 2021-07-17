@@ -7,6 +7,8 @@ const zoomControl = new kakao.maps.ZoomControl();
 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
+const loading = document.getElementById('loading');
+
 geocoder.addressSearch(userAddress, function (result, status) {
 
     if (status === kakao.maps.services.Status.OK) {
@@ -28,6 +30,8 @@ if (navigator.geolocation) {
         displayMarker(locPosition, message);
 
         if (setCenterByCurrentLocation) map.setCenter(locPosition);
+
+        loading.style.display = 'none';
     });
 
 } else {
@@ -38,10 +42,13 @@ if (navigator.geolocation) {
     displayMarker(locPosition, message);
 
     if (setCenterByCurrentLocation) map.setCenter(locPosition);
+
+    loading.style.display = 'none';
 }
 
 const addrLocationBtn = document.getElementById('address-location-button');
 const currLocationBtn = document.getElementById('current-location-button');
+
 
 addrLocationBtn.addEventListener('click', () => {
     const addressInput = document.getElementById('address-location');
@@ -75,6 +82,8 @@ addrLocationBtn.addEventListener('click', () => {
 
 currLocationBtn.addEventListener('click', () => {
 
+    loading.style.display = 'block';
+
     if (currentLocationMarker) {
         currentLocationMarker.setMap(null);
         currentLocationInfowindow.close();
@@ -93,6 +102,8 @@ currLocationBtn.addEventListener('click', () => {
             displayMarker(locPosition, message);
 
             map.setCenter(locPosition);
+
+            loading.style.display = 'none';
         });
 
     } else {
