@@ -4,28 +4,42 @@
 
 {% block content %}
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
+    <div class="body-layout">
+        <p>{{ walkroad.title }}</p>
+        <p>{{ walkroad.description }}</p>
 
-    <h1>post</h1>
+        {% if request.user == walkroad.author %}
+            <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
+            <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
+        {% endif %}
 
-    {% csrf_token %}
-    <input type="text" name="location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
-    <button type="submit" id="address-location-button">주소로 현재위치 설정</button>
-	<button id="current-location-button">현재 위치로 지도 옮기기</button>
+        <img class="line-long" src="{% static 'maps/img/line.png' %}" />
 
-    <div id="map" style="width:800px;height:500px;"></div>
+        {% csrf_token %}
+        <div class="mapbox_wrap">
+            <div class="mapbox">
+                <div class="map-input">
+                    <div class="map-input_wrap">
+                        <input type="text" name="location" class ="map-input_location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
+                        <button type="submit" id="address-location-button" class="address-location-button">설정</button>
+                    </div>
+                    <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
+                </div>
+            </div>
+            <div id="map" style="width:100%;height:580px;"></div>
+        </div>
 
-    <p>author : {{ walkroad.author.profile.username }}</p>
-    <p>title : {{ walkroad.title }}</p>
-    <p>description : {{ walkroad.description }}</p>
-    <p>start : {{ walkroad.start }}</p>
-    <p>finish : {{ walkroad.finish }}</p>
-    <p>tmi : {{ walkroad.tmi }}</p>
+        <div>
+            <p>author : {{ walkroad.author.profile.username }}</p>
+            <p id="total-time">소요 시간</p>
+			<p id="total-distance">총 거리</p>
+            <p>start : {{ walkroad.start }}</p>
+            <p>finish : {{ walkroad.finish }}</p>
+            <p>tmi : {{ walkroad.tmi }}</p>
+        </div>
 
-    {% if request.user == walkroad.author %}
-      <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
-      <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
-    {% endif %}
-
+        
+    </div>
     <script type="text/javascript">
         const data = {{ path | safe }};
 
