@@ -20,7 +20,6 @@
     left: 169px;
     top: 357px;
     margin: 10px 0;
-
     background: #FFFFFF;
     border: 1px dashed rgba(0, 0, 0, 0.5);
     border-radius: 10px;
@@ -140,9 +139,65 @@
 .loading-msg {
     font-size: 20px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     padding-top: 220px;
     color: rgb(255, 255, 255);
     z-index: 5;
     font-family: 'Montserrat', sans-serif;
+}
+
+.new-announce_announce {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-announce_first {
+    margin-left: 12px;
+    display: flex;
+    height: 50%;
+    padding-top: 5px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.new-announce_second {
+    margin-left: 12px;
+    display: flex;
+    height: 50%;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.announce-marker, .announce-polyline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #98C794 -26.67%, #49A59A 100%);
+    border-radius: 5px;
+    border: none;
+    width: 42px;
+    height: 27px;
+    padding: 8.5px;
+    color: white;
+}
+
+.new-announce_img {
+    padding: 10px;
+    width: 20px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.new-announce_desc {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: rgba(45, 45, 45, 0.8);
 }
