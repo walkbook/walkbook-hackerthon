@@ -1,40 +1,45 @@
-.loginbtn {
-    position: absolute;
-    width: 377px;
-    height: 55px;
-    left: 532px;
-    top: 541px;
-
-    background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
-    border-radius: 30px;
-}
-
 h1 {
     .logo {
-        position: absolute;
+        position: relative;
         width: 128px;
         height: 133px;
-        left: 656px;
+        display: flex;
+        margin: auto;
         top: 179px;
     }
 
     .line {
-        position: absolute;
+        position: relative;
         width: 653px;
         height: 37px;
-        left: 392.8px;
-        top: 328.96px;
+        display: flex;
+        margin: auto;
+        top: 200px;
     }
 }
 
-.logininput {
-    position: absolute;
-    width: 378px;
-    height: 43px;
-    left: 531px;
-    top: 399px;
-
+.form-group {
+    position: relative;
+    height: 28px;
+    width: 183px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+    top: 250px;
     background: #FFFFFF;
-    border: 1px dashed rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    border-radius: 5px;
+}
+
+.loginbtn {
+    @import '../../../../maps/static/maps/scss/components/btn/btn-long.scss';
+}
+
+.mdl-navigation__link {
+    position: relative;
+    display: flex;
+    margin: auto;
+    width: 184px;
+    height: 44px;
+    top: 330px;
 }

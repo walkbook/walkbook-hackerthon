@@ -1,73 +1,121 @@
-h1 {
-    position: absolute;
-    width: 543px;
-    height: 39.86px;
-    left: 674px;
-    top: 95px;
-
-    /* Body H4 */
-
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 36px;
-    /* or 150% */
-
-    letter-spacing: -0.015em;
-
-    color: #98C794;
-
-    .line {
+.signup_container {
+    h1 {
         position: absolute;
-        width: 653px;
-        height: 37px;
-        left: 392.8px;
-        top: 328.96px;
+        width: 100px;
+        height: 39.86px;
+        left: 50%;
+        top: 110px;
+        margin-left: -50px;
+        padding-top: 40px;
+
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+
+        letter-spacing: -0.015em;
+
+        color: #98C794;
+
+        .line {
+            position: relative;
+            width: 653px;
+            height: 37px;
+            left: 50%;
+            top: 25px;
+            margin-left: -326px;
+
+            background: url(image.png);
+            transform: rotate(-0.69deg);
+        }
     }
-}
 
-.signupbtn {
-    position: absolute;
-    width: 377px;
-    height: 55px;
-    left: 532px;
-    top: 541px;
+    .signupbtn {
+        position: relative;
+        width: 400px;
+        height: 55px;
+        left: 50%;
+        top: 300px;
+        margin-left: -200px;
+        bottom: 30px;
 
-    background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
-    border-radius: 30px;
-}
+        background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
+        border-radius: 30px;
+    }
 
-.signupinput {
-    .signup {
-        position: absolute;
-        width: 378px;
-        height: 43px;
-        left: 531px;
-        top: 399px;
+    label {
+        position: relative;
+        width: 46.89px;
+        height: 40px;
+        left: 37%;
+        top: 260px;
 
-        background: #FFFFFF;
-        border: 1px dashed rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 36px;
+        /* or 225% */
 
-        .signup_title {
+        letter-spacing: -0.015em;
 
-            label[for=id],
-            label[for=password1],
-            label[for=password2],
-            label[for=username],
-            label[for=sex],
-            label[for=age],
-            label[for=location] {
-                position: absolute;
-                width: 378px;
-                height: 43px;
-                left: 531px;
-                top: 399px;
+        color: #98C794;
+    }
+
+    #signup-form {
+        .signup {
+
+            #userid,
+            #password1,
+            #password2,
+            #username,
+            #sex,
+            #age,
+            #location {
+                position: relative;
+                width: 380px;
+                height: 40px;
+                left: 50%;
+                top: 250px;
+                margin-left: -190px;
+                margin-top: 10px;
 
                 background: #FFFFFF;
                 border: 1px dashed rgba(0, 0, 0, 0.5);
                 border-radius: 10px;
+            }
+
+            #checkUserid,
+            #searchLocation {
+                position: relative;
+                width: 70px;
+                height: 30px;
+                top: 250px;
+                left: 44%;
+
+
+                background: #98C794;
+                border-radius: 10px;
+            }
+
+            #validate-id,
+            #validate-password,
+            #same-password {
+                display: flex;
+                align-items: flex-end;
+                width: 40px;
+                height: 30px;
+                top: 250px;
+
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 36px;
+                /* or 225% */
+
+                letter-spacing: -0.015em;
             }
         }
     }
