@@ -259,7 +259,7 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .info_wrap { width: 95%; }
 
-.info_wrap p { font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 18px; line-height: 36px; letter-spacing: -0.015em; color: #49A59A; }
+.info_wrap p { font-family: Montserrat; font-style: normal; font-size: 18px; line-height: 36px; letter-spacing: -0.015em; color: #49A59A; }
 
 .enroll-title { color: var(--deepgreen); margin-left: 30px; font-family: Montserrat; }
 
