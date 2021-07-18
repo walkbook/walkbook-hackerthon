@@ -13,33 +13,48 @@
             <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
         {% endif %}
 
-        <h3 id="loading">현재 위치 불러오는 중...</h3>
+        {% comment %} <div id="loading">
+            <div class="loading-background">
+                <div id="loading-bar-spinner" class="spinner">
+                    <div class="spinner-icon"></div>
+                </div>
+                <div class="loading-msg">📍현 위치 파악 중!</div>
+            </div>
+        </div> {% endcomment %}
 
         <img class="line-long" src="{% static 'maps/img/line.png' %}" />
 
         {% csrf_token %}
-        <div class="mapbox_wrap">
-            <div class="mapbox">
-                <div class="map-input">
-                    <div class="map-input_wrap">
-                        <input type="text" name="location" class ="map-input_location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
-                        <button type="submit" id="address-location-button" class="address-location-button">설정</button>
+        <div class="post_wrap">
+            <div class="mapbox_wrap">
+                <div class="mapbox">
+                    <div class="map-input">
+                        <div class="map-input_wrap">
+                            <input type="text" name="location" class ="map-input_location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
+                            <button type="submit" id="address-location-button" class="address-location-button">설정</button>
+                        </div>
+                        <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
                     </div>
-                    <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
                 </div>
+                <div id="map" style="width:100%;height:580px;"></div>
             </div>
-            <div id="map" style="width:100%;height:580px;"></div>
-        </div>
 
-        <div>
-            <p>author : {{ walkroad.author.profile.username }}</p>
-            <p id="total-time">소요 시간</p>
-			<p id="total-distance">총 거리</p>
-            <p>start : {{ walkroad.start }}</p>
-            <p>finish : {{ walkroad.finish }}</p>
-            <p>tmi : {{ walkroad.tmi }}</p>
+            <div>
+                <p>author : {{ walkroad.author.profile.username }}</p>
+                <img class="line-short" src="{% static 'maps/img/line.png' %}">
+                <p id="total-time">소요 시간</p>
+                <img class="line-short" src="{% static 'maps/img/line.png' %}">
+                <p id="total-distance">총 거리</p>
+                <img class="line-short" src="{% static 'maps/img/line.png' %}">
+                <p>start : {{ walkroad.start }}</p>
+                <img class="line-short" src="{% static 'maps/img/line.png' %}">
+                <p>finish : {{ walkroad.finish }}</p>
+                <img class="line-short" src="{% static 'maps/img/line.png' %}">
+                <p>tmi : {{ walkroad.tmi }}</p>
+                <img class="line-short" src="{% static 'maps/img/line.png' %}">
+            </div>
         </div>
-      </div>
+    </div>
 
     <script>
         const path = {{ walkroad.path | safe }};
