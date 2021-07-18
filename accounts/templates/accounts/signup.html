@@ -8,8 +8,10 @@
 {% block content %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
   <script src="{% static 'accounts/js/axios.js' %}"></script>
+  
+<div class="signup_container">  
   <h1>
-    SIGN UP <img class="line" src="{% static 'maps/img/line.png' %}">
+    SIGN UP<img class="line" src="{% static 'maps/img/line.png' %}">
   </h1>
   <form id="signup-form" method="POST" action="{%url 'signup' %}">
     {% csrf_token %}
@@ -17,7 +19,7 @@
       <h3 class="signup_title">
         <label for="id">아이디</label>
       </h3>
-      <input id="userid" name="userid" type="text" value="" placeholder="필수입력 값 입니다."/>
+      <input id="userid" name="userid" type="text" value="" placeholder="  필수입력 값 입니다."/>
       <input id="checkUserid" type="button" value="중복체크"/>
       <span id="validate-id"></span>
     </div>
@@ -26,7 +28,7 @@
       <h3 class="signup_title">
         <label for="password1">비밀번호</label>
       </h3>
-      <input name="password1" type="password" value="" placeholder="4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
+      <input id="password1" name="password1" type="password" value="" placeholder="  4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
       <span id="validate-password"></span>
     </div>
 
@@ -34,7 +36,7 @@
       <h3 class="signup_title">
         <label for="password2">비밀번호 확인</label>
       </h3>
-      <input id="password2" name="password2" type="password" value="" placeholder="4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
+      <input id="password2" name="password2" type="password" value="" placeholder="  4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
       <span id="same-password"></span>
     </div>
 
@@ -42,14 +44,14 @@
       <h3 class="signup_title">
         <label for="username">닉네임</label>
       </h3>
-      <input name="username" type="text" value=""/>
+      <input id="username" name="username" type="text" value=""/>
     </div>
 
     <div class="signup">
       <h3 class="signup_title">
         <label for="sex">성별</label>
       </h3>
-      <select name="sex">
+      <select id="sex" name="sex">
         <option value="" selected></option>
         <option value="M">남자</option>
         <option value="F">여자</option>
@@ -61,7 +63,7 @@
       <h3 class="signup_title">
         <label for="age">나이대</label>
       </h3>
-      <select name="age">
+      <select id="age" name="age">
         <option value="" selected></option>
         <option value="0">10세 미만</option>
         <option value="10">10대</option>
@@ -87,4 +89,5 @@
     </div>
   </form>
   <script type="module" src="{% static 'accounts/js/signup.js' %}"></script>
+</div>
 {% endblock content %}

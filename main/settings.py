@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'maps',
     'accounts',
     'mypage',
+    'widget_tweaks',
 
     #allauth
     'allauth',
