@@ -1,22 +1,29 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% block style %}
+{% load sass_tags %}
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'accounts/scss/checkpw.scss' %}"/>
+{% endblock style %}
 
 {% block content %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 <script src="{% static 'accounts/js/axios.js' %}"></script>
-<h1>내 정보 수정하기</h1>
+<center><div class="checkpw-container">
+<h1>CHECK PASSWORD</h1>
+<img class="line-mid" src="{% static 'maps/img/line.png' %}">
 <form id="checkpw-form" method="POST" action="{%url 'checkpw' %}">
 {% csrf_token %}
 <div class="checkpw">
     <h3 class="checkpw-title">
     <label for="password">비밀번호 확인</label>
     </h3>
-    <input name="password" type="password" value="" placeholder="4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
+    <input id="password" name="password" type="password" value="" placeholder="4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
 </div>
 <div>
-    <input type="submit" value="입력"/>
+    <input class="input-btn" type="submit" value="입력"/>
 </div>
 </form>
+</div></center>
 <script type="module" src="{% static 'accounts/js/checkpw.js' %}"></script>
 {% endblock content %}

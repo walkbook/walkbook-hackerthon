@@ -1,29 +1,40 @@
 {% extends '../base.html' %}
+{% load static %}
+{% block style %}
+{% load sass_tags %}
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'mypage/scss/profile.scss' %}"/>
+{% endblock style %}
+
 
 {% block content %}
-<p> profile 수정</p> 
+<center>
+<div class="profile-container">
+<p> PROFILE </p>
+<img class="line-mid" src="{% static 'maps/img/line.png' %}">
 <form id="profile-form" method="POST" action="{%url 'mypage:profile' %}">
     {% csrf_token %}
     <div class="profile-feature">
         <h3 class="profile-feature">
           <label for="feature">선호하는 산책로 특징</label>
         </h3>
-        <input name="feature" type="text" value="{{user.profile.feature}}">
+        <input id="profile-feature" name="feature" type="text" value="{{user.profile.feature}}" placeholder="  선호하는 산책로의 특징을 적어보세요.">
     </div>
     <div class="profile-likehour">
         <h3 class="profile-likehour">
           <label for="likehour">선호하는 시간대</label>
         </h3>
-        <input name="likehour" type="text" value="{{user.profile.likehour}}">
+        <input id="profile-likehour" name="likehour" type="text" value="{{user.profile.likehour}}" placeholder="  선호하는 산책 시간대를 적어보세요.">
     </div>
     <div class="profile-introduce">
         <h3 class="profile-introduce">
           <label for="introduce">소개글</label>
         </h3>
-        <input name="introduce" type="text" value="{{user.profile.introduce}}">
+        <input id="profile-introduce" name="introduce" type="text" value="{{user.profile.introduce}}" placeholder="  자유롭게 자신을 소개해보세요.">
     </div>  
     <div>
-        <input type="submit" value="정보 수정"/>
+        <input class="edit-btn" type="submit" value="정보 수정"/>
     </div>
 </form>
+</div>
+<center>
 {% endblock content %}

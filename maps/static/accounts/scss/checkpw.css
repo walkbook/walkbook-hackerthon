@@ -1,0 +1,15 @@
+.line-mid { width: 653px; height: 37px; }
+
+.checkpw-container { padding-top: 150px; }
+
+.checkpw-container h1 { width: 543px; height: 39.86px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 24px; line-height: 36px; letter-spacing: -0.015em; color: #98C794; }
+
+.checkpw-container label { width: 46.89px; height: 40px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 16px; line-height: 36px; letter-spacing: -0.015em; color: #98C794; }
+
+.checkpw-container .input-btn { width: 80px; height: 40px; margin-top: 50px; margin-bottom: 30px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); border-radius: 30px; }
+
+.checkpw-container #password { width: 380px; height: 40px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+
+.checkpw-container .checkpw-title { margin: 5px; margin-top: 50px; }
+
+/*# sourceMappingURL=checkpw.css.map */

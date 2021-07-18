@@ -59,11 +59,11 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .mapbox .map-input .map-input_wrap { position: relative; width: 234px; }
 
-.mapbox .map-input .map-input_wrap .map-input_location { height: 29px; width: 234px; border-radius: 5px; border: 0.3px solid #dddddd; padding-left: 7px; }
+.mapbox .map-input .map-input_wrap .map-input_location { height: 29px; width: 234px; border-radius: 5px; border: 0.3px solid #dddddd; padding-left: 7px; font-size: 11px; }
 
 .mapbox .map-input .map-input_wrap .map-input_location::placeholder { color: #D6D6D6; }
 
-.mapbox .map-input .map-input_wrap .address-location-button { position: absolute; display: flex; justify-content: center; align-items: center; left: 208px; top: 3px; height: 27px; width: 34px; border: none; background-color: var(--green); color: white; border-radius: 5px; font-size: 12px; }
+.mapbox .map-input .map-input_wrap .address-location-button { position: absolute; display: flex; justify-content: center; align-items: center; left: 208px; top: 3px; height: 27px; width: 34px; border: none; background-color: var(--green); color: white; border-radius: 5px; font-size: 10px; }
 
 .mapbox .map-input .map-input_wrap .address-location-button:hover { cursor: pointer; background-color: var(--yellow); }
 
@@ -187,5 +187,9 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 body { width: 100%; height: 100%; }
 
 .body-layout { margin-right: 13%; margin-left: 13%; padding-top: 160px; padding-bottom: 50px; }
+
+.mdl-layout__content { padding: 16px; }
+
+a { text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */
