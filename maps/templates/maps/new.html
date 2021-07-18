@@ -76,13 +76,36 @@
 				<p id="total-distance">총 거리 : <span>0 m</span></p>
 			</div>
 
-			<input type="text" name="username" id="username" value="{{ request.user.profile.username }}" disabled/>
-			<input type="text" name="title" id="title-input" placeholder="title"/>
-			<input type="text" name="description" id="description-input" placeholder="description"/>
-			<input type="text" name="start" id="start-input" placeholder="start"/>
-			<input type="text" name="finish" id="finish-input" placeholder="finish"/>
-			<input type="text" name="tmi" id="tmi-input" placeholder="tmi"/>
+			<div class="name-box">
+				<div class="title-name">작성자</div>
+				<input type="text" name="username" id="username" class="input-mid" value="{{ request.user.profile.username }}" disabled/>
+			</div>
+			<div class="title-desc-box">
+
+				<div class="title-box">
+					<div class="title-title">산책로 이름</div>
+					<input type="text" name="title" id="title-input" placeholder="title"/>
+				</div>
+				<div class="desc-box">
+					<div class="title-desc">산책로 한 줄 소개</div>
+					<input type="text" name="description" id="description-input" placeholder="description"/>
+				</div>
+			</div>
+			<div class="start-finish-box">
+				<div class="start-box">
+					<div class="title-start">출발위치</div>
+					<input type="text" name="start" id="start-input" placeholder="start"/>
+				</div>
+				<div class="finish-box">
+					<div class="title-finish">도착위치</div>
+					<input type="text" name="finish" id="finish-input" placeholder="finish"/>
+				</div>
+			</div>
 			
+			<div class="tmi">
+				<div class="title-tmi">TMI</div>
+				<input type="text" name="tmi" id="tmi-input" placeholder="tmi"/>
+			</div>
 			<button type="submit" id="save-walkroad-button">저장</button> 
 		</div>
 	</div>
