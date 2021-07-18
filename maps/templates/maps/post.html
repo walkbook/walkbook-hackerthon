@@ -19,6 +19,7 @@
     {% for walkroad in walkroads %}
     <div class="post">
         <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
+        {{ walkroad.description}}
         {% if user.is_authenticated %}
             <a id="{{walkroad.id}}-like-button" onclick="onClickLikeBtn({{walkroad.id}})">
                 {{ walkroad.like_users.count }} Likes
