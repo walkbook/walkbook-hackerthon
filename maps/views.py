@@ -53,7 +53,6 @@ def show(request, id):
     walkroad = Walkroad.objects.get(id=id)
     return render(request, 'maps/show.html', { 
         'walkroad': walkroad,
-        'path': walkroad.path
         })
 
 def new(request):
@@ -66,6 +65,7 @@ def new(request):
         distance = request.POST['distance']
         time = request.POST['time']
         path = request.POST['path']
+        infowindow = request.POST['infowindow']
 
         walkroad = Walkroad.objects.create(
             author = request.user,
@@ -77,6 +77,7 @@ def new(request):
             distance = distance,
             time = time,
             path = path,
+            infowindow = infowindow
             )
         
         return JsonResponse({
@@ -99,7 +100,10 @@ def update(request, id):
         return redirect('maps:show', id)
         
     walkroad = Walkroad.objects.get(id=id)
-    return render(request, 'maps/update.html', { 'walkroad': walkroad })
+    if request.user == walkroad.author:
+        return render(request, 'maps/update.html', { 'walkroad': walkroad })
+    else:
+        return redirect('maps:show', id)
 
 def delete(request, id):
     walkroad = Walkroad.objects.get(id=id)

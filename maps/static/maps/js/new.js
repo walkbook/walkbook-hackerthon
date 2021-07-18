@@ -1,3 +1,9 @@
+let mappingData = {};
+let mappingId = 0;
+
+let polylineExist = false;
+let marking = false;
+
 let totalTime = 0;
 let totalDistance = 0;
 
@@ -26,6 +32,40 @@ const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입
 
 // 위에 작성한 옵션으로 Drawing Manager를 생성합니다
 const manager = new kakao.maps.Drawing.DrawingManager(drawingOptions);
+const markerBtn = document.getElementById('marker-button');
+const polylineBtn = document.getElementById('polyline-button');
+
+manager.addListener('drawstart', function (data) {
+    if (data.overlayType == "polyline" && polylineExist) {
+        alert('산책로는 한 번에 하나만 추가할 수 있습니다!');
+        manager.cancel();
+    }
+});
+
+manager.addListener('drawend', function (data) {
+
+    if (data.overlayType == "polyline") {
+        polylineExist = true;
+    } else {
+        const markerId = mappingId;
+        const marker = data.target;
+        const infoWindow = new kakao.maps.InfoWindow({
+            content: "",
+            map: null,
+            position: marker.getPosition()
+        })
+
+        mappingData[markerId] = { marker, infoWindow };
+
+        showInfoInput();
+
+        kakao.maps.event.addListener(marker, 'click', function () {
+            const infoWindow = mappingData[markerId].infoWindow;
+            infoWindow.setPosition(marker.getPosition());
+            infoWindow.setMap(map);
+        });
+    }
+});
 
 manager.addListener('state_changed', function () {
     if (manager.getOverlays([kakao.maps.drawing.OverlayType.POLYLINE])["polyline"].length != 0) {
@@ -33,14 +73,62 @@ manager.addListener('state_changed', function () {
     }
 });
 
-manager.addListener('remove', function () {
-    const totalTimeElement = document.getElementById('total-time');
-    const totalDistanceElement = document.getElementById('total-distance');
-    totalTimeElement.innerHTML = `소요 시간 : 0분`;
-    totalDistanceElement.innerHTML = `거리 : 0 m`;
-    totalTime = 0;
-    totalDistance = 0;
+manager.addListener('remove', function (data) {
+    if (data.overlayType == 'polyline') {
+        const totalTimeElement = document.getElementById('total-time');
+        const totalDistanceElement = document.getElementById('total-distance');
+        totalTimeElement.innerHTML = `소요 시간 : 0분`;
+        totalDistanceElement.innerHTML = `거리 : 0 m`;
+        totalTime = 0;
+        totalDistance = 0;
+        polylineExist = false;
+    }
 });
+
+function showInfoInput() {
+    const infoInputBox = document.getElementById('info-input-container');
+    infoInputBox.style.display = 'block';
+}
+
+function saveInfo() {
+    const titleInput = document.getElementById('info-title-input');
+    const descriptionInput = document.getElementById('info-description-input');
+
+    mappingData[mappingId].infoWindow = new kakao.maps.InfoWindow({
+        content: infoWindowContent(mappingId, titleInput.value, descriptionInput.value),
+        map: map,
+        position: mappingData[mappingId].infoWindow.getPosition()
+    })
+
+    mappingData[mappingId].title = titleInput.value;
+    mappingData[mappingId].description = descriptionInput.value;
+
+    titleInput.value = "";
+    descriptionInput.value = "";
+
+    const infoInputBox = document.getElementById('info-input-container');
+    infoInputBox.style.display = 'none';
+
+    markerBtn.disabled = false;
+    polylineBtn.disabled = false;
+    marking = false;
+
+    mappingId++;
+}
+
+function selectMarker() {
+    manager.cancel();
+    manager.select("marker");
+
+    markerBtn.disabled = true;
+    polylineBtn.disabled = true;
+    marking = true;
+}
+
+function selectPolyline() {
+    manager.cancel();
+    manager.select("polyline");
+}
 
 function showResult() {
     const line = manager.getOverlays([kakao.maps.drawing.OverlayType.POLYLINE])["polyline"][0];
@@ -53,50 +141,31 @@ function showResult() {
     totalTime = walkkTime;
     totalDistance = distance;
 
-    // 계산한 도보 시간이 60분 보다 크면 시간으로 표시합니다
+    walkDistance = `${distance} `;
+
     if (walkkTime > 60) {
-        walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 ';
+        walkHour = `${Math.floor(walkkTime / 60)}시간 `;
     }
-    walkMin = '<span class="number">' + walkkTime % 60 + '</span>분';
+    walkMin = `${walkkTime % 60}분`;
+
+    if (walkDistance >= 1000) {
+        walkDistance = `${Math.round(distance / 100) / 10} k`;
+    }
 
     const totalTimeElement = document.getElementById('total-time');
     const totalDistanceElement = document.getElementById('total-distance');
     totalTimeElement.innerHTML = `소요 시간 : ${walkHour} ${walkMin}`;
-    totalDistanceElement.innerHTML = `거리 : ${distance} m`;
+    totalDistanceElement.innerHTML = `거리 : ${walkDistance}m`;
 
 }
 
-const saveWalkroadBtn = document.getElementById('save-walkroad-button');
 
-saveWalkroadBtn.addEventListener('click', async () => {
-    const path = manager.getData();
-    console.log(JSON.stringify(path));
+/////////////////////////// InfoWindow  ////////////////////////////
 
-    const title = document.getElementById('title-input');
-    const description = document.getElementById('description-input');
-    const start = document.getElementById('start-input');
-    const finish = document.getElementById('finish-input');
-    const tmi = document.getElementById('tmi-input');
+function closeOverlay(id) {
+    mappingData[id].infoWindow.setMap(null);
+}
 
-    let data = new FormData();
-    data.append("title", title.value);
-    data.append("description", description.value);
-    data.append("start", start.value);
-    data.append("finish", finish.value);
-    data.append("tmi", tmi.value);
-    data.append("path", JSON.stringify(path));
-    data.append("distance", totalDistance);     // TODO : 0이면 error 처리
-    data.append("time", totalTime);
-
-    await axios.post(`/maps/new/`, data)
-        .then(function (response) {
-            window.location.href = `/maps/${response.data.id}`;
-        })
-        .catch(function (response) {
-            //handle error
-            console.log(response);
-        });
-});
 
 /////////////////////////// Undo & Redo  ////////////////////////////
 
@@ -110,7 +179,7 @@ const redoBtn = document.getElementById('redo');
 manager.addListener('state_changed', function () {
 
     // 되돌릴 수 있다면 undo 버튼을 활성화 시킵니다 
-    if (manager.undoable()) {
+    if (manager.undoable() && !marking) {
         undoBtn.disabled = false;
         undoBtn.className = "";
     } else { // 아니면 undo 버튼을 비활성화 시킵니다 
@@ -141,10 +210,55 @@ function redo() {
     manager.redo();
 }
 
-// 버튼 클릭 시 호출되는 핸들러 입니다
-function selectOverlay(type) {
-    // 그리기 중이면 그리기를 취소합니다
-    manager.cancel();
-    // 클릭한 그리기 요소 타입을 선택합니다
-    manager.select(kakao.maps.drawing.OverlayType[type]);
-}
+
+/////////////////////////// Save Walkroad  ////////////////////////////
+
+const saveWalkroadBtn = document.getElementById('save-walkroad-button');
+
+saveWalkroadBtn.addEventListener('click', async () => {
+
+    if (totalDistance == 0) {
+        alert('산책로를 그려주세요!')
+        return
+    }
+
+    const path = manager.getData();
+    const infowindow = [];
+
+    const title = document.getElementById('title-input');
+    const description = document.getElementById('description-input');
+    const start = document.getElementById('start-input');
+    const finish = document.getElementById('finish-input');
+    const tmi = document.getElementById('tmi-input');
+
+    for (let i = 0; i < mappingId; i++) {
+        if (mappingData[i].marker.getMap()) {
+            mappingData[i].marker.setMap(null);
+            infowindow.push({
+                title: mappingData[i].title,
+                description: mappingData[i].description,
+                position: mappingData[i].marker.getPosition()
+            })
+        }
+    }
+
+    let data = new FormData();
+    data.append("title", title.value);
+    data.append("description", description.value);
+    data.append("start", start.value);
+    data.append("finish", finish.value);
+    data.append("tmi", tmi.value);
+    data.append("path", JSON.stringify(path));
+    data.append("infowindow", JSON.stringify(infowindow));
+    data.append("distance", totalDistance);
+    data.append("time", totalTime);
+
+    await axios.post(`/maps/new/`, data)
+        .then(function (response) {
+            window.location.href = `/maps/${response.data.id}`;
+        })
+        .catch(function (response) {
+            //handle error
+            console.log(response);
+        });
+});
