@@ -5,13 +5,19 @@
 {% block content %}
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
     <div class="body-layout">
-        <p>{{ walkroad.title }}</p>
-        <p>{{ walkroad.description }}</p>
-
-        {% if request.user == walkroad.author %}
-            <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
-            <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
-        {% endif %}
+        <div class="title-ud">
+            <div class="show-title">
+                <p class="enroll-announce enroll-title">🌱 {{ walkroad.title }}</p>
+                <p class="enroll-desc">{{ walkroad.description }}</p>
+            </div>
+        
+            {% if request.user == walkroad.author %}
+            <div class="ud-btn">
+                <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
+                <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
+            </div>
+            {% endif %}
+        </div>
 
         {% comment %} <div id="loading">
             <div class="loading-background">
@@ -39,21 +45,24 @@
                 <div id="map" style="width:100%;height:580px;"></div>
             </div>
 
-            <div>
-                <p>author : {{ walkroad.author.profile.username }}</p>
-                <img class="line-short" src="{% static 'maps/img/line.png' %}">
-                <p id="total-time">소요 시간</p>
-                <img class="line-short" src="{% static 'maps/img/line.png' %}">
-                <p id="total-distance">총 거리</p>
-                <img class="line-short" src="{% static 'maps/img/line.png' %}">
-                <p>start : {{ walkroad.start }}</p>
-                <img class="line-short" src="{% static 'maps/img/line.png' %}">
-                <p>finish : {{ walkroad.finish }}</p>
-                <img class="line-short" src="{% static 'maps/img/line.png' %}">
-                <p>tmi : {{ walkroad.tmi }}</p>
-                <img class="line-short" src="{% static 'maps/img/line.png' %}">
+            <div class="info-box">
+                <div class="info_wrap">
+                    <p>authorㅤㅤㅤㅤ<span>{{ walkroad.author.profile.username }}</span></p>
+                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
+                    <p id="total-time">소요 시간</p>
+                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
+                    <p id="total-distance">총 거리</p>
+                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
+                    <p>startㅤㅤㅤㅤ<span>{{ walkroad.start }}</span></p>
+                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
+                    <p>finishㅤㅤㅤ<span>{{ walkroad.finish }}</span></p>
+                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
+                    <p>tmiㅤㅤㅤㅤ<span>{{ walkroad.tmi }}</span></p>
+                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
+                </div>
             </div>
         </div>
+        <img class="line-long-m" src="{% static 'maps/img/line.png' %}">
     </div>
 
     <script>

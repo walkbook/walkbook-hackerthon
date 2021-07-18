@@ -1,6 +1,6 @@
-.map-search {
-    height: 120px;
-}
+// .map-search {
+//     height: 120px;
+// }
 .mapbox {
     display: flex;
     flex-direction: column;
@@ -87,7 +87,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
+    margin-top: 30px !important;
 }
 
-
-
+.loading-msg {
+    height: 80px;
+}
