@@ -1,6 +1,7 @@
 /* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
 */
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
@@ -47,6 +48,8 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 .base-header .wrap-header .header-accounts .suggest { font-size: 16px; color: #E5C05B; }
 
 .line-long { width: 74vw; height: 50px; margin-bottom: 20px; margin-top: 10px; }
+
+.geoSuccessMsg-class { display: flex; justify-content: center; align-items: center; width: 160px; height: 25px; text-align: center; padding: 6px 0; background: linear-gradient(180deg, #98c79470 -26.67%, #49a59a80 100%); color: white; border-radius: 20px; border: none; font-size: 15px; font-family: 'Montserrat', sans-serif; }
 
 .map-search { height: 120px; }
 
