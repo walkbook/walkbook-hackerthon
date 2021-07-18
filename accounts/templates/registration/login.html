@@ -19,7 +19,7 @@
   {% comment %} {% load widget_tweaks%}
   {{ form.as_p|add_class:"form-group"}}  {% endcomment %}
   {{ form.as_p }}
-  <input class="loginbtn" type="submit" value="로그인">
+  <input class="loginbtn btn-long" type="submit" value="로그인">
 </form>
 
 <a class="mdl-navigation__link" href="{% provider_login_url 'google' %}">
