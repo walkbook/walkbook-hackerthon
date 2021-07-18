@@ -19,7 +19,7 @@
 							<img src="{% static 'maps/img/marker.png' %}" />
 						</div>
 						<div class="new-announce_desc">
-							<span>지도 위 마커 버튼을 이용해 특이한 스팟을 찍어주세요! 클릭하면 핀이 추가되고 설명을 입력할 수 있습니다. </span>
+							<span>지도 위 마커를 이용해 특이한 스팟을 찍어주세요! 클릭하면 핀이 추가되고 설명을 입력할 수 있습니다. </span>
 						</div>
 					</div>
 					<div class="new-announce_second">
@@ -30,7 +30,7 @@
 							<img src="{% static 'maps/img/polyline.png' %}" />
 						</div>
 						<div class="new-announce_desc">
-							<span>지도 위 선 버튼을 이용해 경로를 표시해주세요! 클릭하여 선 그리기를 시작합니다.</span>
+							<span>지도 위 선을 이용해 경로를 표시해주세요! 클릭하여 선 그리기를 시작합니다.</span>
 						</div>
 					</div>
 				</div>
@@ -75,38 +75,41 @@
 				<p id="total-time">소요 시간 : <span>0 분</span></p>
 				<p id="total-distance">총 거리 : <span>0 m</span></p>
 			</div>
-
-			<div class="name-box">
-				<div class="title-name">작성자</div>
-				<input type="text" name="username" id="username" class="input-mid" value="{{ request.user.profile.username }}" disabled/>
-			</div>
-			<div class="title-desc-box">
-
-				<div class="title-box">
-					<div class="title-title">산책로 이름</div>
-					<input type="text" name="title" id="title-input" placeholder="title"/>
+			<div class="input-box">
+				<div class="input-box_wrap">
+					<div class="name-box">
+						<h4 class="title-name">작성자</h4>
+						<input type="text" name="username" id="username" class="input-mid-m input-name" value="{{ request.user.profile.username }}" disabled/>
+					</div>
+					<div class="title-desc-box">
+						<div class="title-box">
+							<h4 class="title-title">산책로 이름</h4>
+							<input type="text" name="title" id="title-input" class="input-mid-ml" placeholder="산책로의 특징을 담은 이름을 입력해주세요."/>
+						</div>
+						<div class="desc-box">
+							<h4 class="title-desc">산책로 한 줄 소개</h4>
+							<input type="text" name="description" id="description-input" class="input-mid-ml" placeholder="해당 산책로의 특징을 소개해주세요."/>
+						</div>
+					</div>
+					<div class="start-fin-box">
+						<div class="start-box">
+							<h4 class="title-start">출발위치</h4>
+							<input type="text" name="start" id="start-input" class="input-mid-ml" placeholder="출발위치를 입력해주세요. ex) 서울대입구역 5번출구 앞"/>
+						</div>
+						<div class="fin-box">
+							<h4 class="title-fin">도착위치</h4>
+							<input type="text" name="finish" id="finish-input" class="input-mid-ml" placeholder="도착위치를 입력해주세요. ex) 서울대학교 정문 앞"/>
+						</div>
+					</div>
+					<div class="tmi-box">
+						<h4 class="title-tmi">TMI</h4>
+						<input type="text" name="tmi" id="tmi-input" class="input-long input-long-m" placeholder="해당 산책로에 대해 하고 싶은 말을 자유롭게 작성해주세요!"/>
+					</div>
+					<div class="enroll-btn">
+						<button type="submit" id="save-walkroad-button">등록하기</button> 
+					</div>
 				</div>
-				<div class="desc-box">
-					<div class="title-desc">산책로 한 줄 소개</div>
-					<input type="text" name="description" id="description-input" placeholder="description"/>
-				</div>
 			</div>
-			<div class="start-finish-box">
-				<div class="start-box">
-					<div class="title-start">출발위치</div>
-					<input type="text" name="start" id="start-input" placeholder="start"/>
-				</div>
-				<div class="finish-box">
-					<div class="title-finish">도착위치</div>
-					<input type="text" name="finish" id="finish-input" placeholder="finish"/>
-				</div>
-			</div>
-			
-			<div class="tmi">
-				<div class="title-tmi">TMI</div>
-				<input type="text" name="tmi" id="tmi-input" placeholder="tmi"/>
-			</div>
-			<button type="submit" id="save-walkroad-button">저장</button> 
 		</div>
 	</div>
 		
