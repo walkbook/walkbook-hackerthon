@@ -28,10 +28,8 @@
       
     <script>
         const walkroads = {{ walkroads | safe }};
-        console.log('walkroads', walkroads);
 
         const walkroad_paths = {{ walkroad_paths | safe }};
-        console.log(walkroad_paths);
 
         let userAddress;
         if ("{{ request.user.is_anonymous }}" == "True") {
