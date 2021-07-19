@@ -1,11 +1,17 @@
-.btn-long { width: 377px; height: 55px; left: 532px; top: 541px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); border-radius: 30px; }
+.btn-long { width: 400px; height: 55px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); border-radius: 30px; }
 
-h1 .logo { position: relative; width: 128px; height: 133px; display: flex; margin: auto; top: 179px; }
+h1 .logo { width: 128px; height: 133px; display: flex; padding-top: 200px; }
 
-h1 .line { position: relative; width: 653px; height: 37px; display: flex; margin: auto; top: 200px; }
+h1 .line { width: 653px; height: 37px; display: flex; margin: auto; top: 200px; }
 
-.form-group { position: relative; height: 28px; width: 183px; display: flex; flex-direction: column; justify-content: space-around; margin: auto; top: 250px; background: #FFFFFF; border-radius: 5px; }
+p { text-align: center; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 16px; line-height: 36px; letter-spacing: -0.015em; color: #98C794; }
 
-.mdl-navigation__link { position: relative; display: flex; margin: auto; width: 184px; height: 44px; top: 330px; }
+.login-container { height: 28px; width: 183px; display: flex; flex-direction: column; justify-content: space-around; margin: auto; margin-top: 120px; background: #FFFFFF; border-radius: 5px; }
+
+.login-container .loginbtn { width: 400px; height: 55px; margin-top: 50px; margin-bottom: 50px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); border-radius: 30px; position: relative; left: 50%; margin-left: -200px; }
+
+.login-container .form-group .form-control { top: 30px; position: relative; left: 50%; width: 380px; height: 40px; margin: 5px; margin-left: -190px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+
+.login-container .mdl-navigation__link { width: 184px; height: 44px; }
 
 /*# sourceMappingURL=login.css.map */

@@ -32,55 +32,48 @@
     }
 
     .signupbtn {
-        position: relative;
         width: 400px;
         height: 55px;
-        left: 50%;
-        top: 300px;
-        margin-left: -200px;
-        bottom: 30px;
-
+        margin-top: 30px;
+        margin-bottom: 30px;
         background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
         border-radius: 30px;
     }
 
     label {
-        position: relative;
+        margin-top: 15px;
         width: 46.89px;
         height: 40px;
-        left: 37%;
-        top: 260px;
-
         font-family: Montserrat;
         font-style: normal;
         font-weight: bold;
         font-size: 16px;
         line-height: 36px;
-        /* or 225% */
-
         letter-spacing: -0.015em;
-
         color: #98C794;
     }
 
     #signup-form {
+        padding-top: 280px;
         .signup {
 
             #userid,
+            #location {
+                width: 300px;
+                height: 40px;
+                margin-bottom: 5px;
+                background: #FFFFFF;
+                border: 1px dashed rgba(0, 0, 0, 0.5);
+                border-radius: 10px;
+            }
             #password1,
             #password2,
             #username,
             #sex,
-            #age,
-            #location {
-                position: relative;
+            #age {
                 width: 380px;
                 height: 40px;
-                left: 50%;
-                top: 250px;
-                margin-left: -190px;
-                margin-top: 10px;
-
+                margin-bottom: 5px;
                 background: #FFFFFF;
                 border: 1px dashed rgba(0, 0, 0, 0.5);
                 border-radius: 10px;
@@ -88,13 +81,8 @@
 
             #checkUserid,
             #searchLocation {
-                position: relative;
                 width: 70px;
                 height: 30px;
-                top: 250px;
-                left: 44%;
-
-
                 background: #98C794;
                 border-radius: 10px;
             }
@@ -102,21 +90,17 @@
             #validate-id,
             #validate-password,
             #same-password {
-                display: flex;
-                align-items: flex-end;
-                width: 40px;
-                height: 30px;
-                top: 250px;
-
                 font-family: Montserrat;
                 font-style: normal;
                 font-weight: bold;
-                font-size: 16px;
+                font-size: 15px;
                 line-height: 36px;
-                /* or 225% */
-
                 letter-spacing: -0.015em;
             }
         }
     }
+}
+
+.signup_title {
+    margin: 5px;
 }

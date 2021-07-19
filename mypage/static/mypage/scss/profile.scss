@@ -1,0 +1,58 @@
+@import '../../../../maps/static/maps/scss/components/line/line-mid.scss';
+
+.profile-container {
+    padding-top: 150px;
+
+    p {
+        width: 543px;
+        height: 39.86px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+        letter-spacing: -0.015em;
+        color: #98C794;
+    }
+
+    #profile-form {
+        display: flex;
+        flex-direction: column;
+        #profile-feature,
+        #profile-likehour,
+        #profile-introduce {
+            width: 380px;
+            height: 40px;
+            background: #FFFFFF;
+            border: 1px dashed rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        .profile-feature,
+        .profile-likehour,
+        .profile-introduce {
+            margin: 5px;
+        }
+    }
+    label {
+        width: 46.89px;
+        height: 40px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 36px;
+        letter-spacing: -0.015em;
+        color: #98C794;
+    }
+
+    .edit-btn {
+    width: 200px;
+    height: 55px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
+    border-radius: 30px;
+}
+}
+
+

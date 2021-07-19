@@ -6,34 +6,34 @@
 {% endblock style %}
 {% block content %}
 <div class="profile">
-	<h1>{{user.username}}의 워크북</h1>
+	<h1 class="workbook">{{user.username}}의 워크북</h1>
 	<div class="profile-box">
 		<div id="walkroad-count">
 			총 {{registeredWalkroads.count}} 개의 산책로를 등록했네요!
 		</div>
-		<div id="">
+		<div id="profile1">
 			{% if user.profile.feature == ''%}
 				아직 선호하는 산책로 특징을 등록하지 않으셨네요! 
 			{% else %}
 			선호하는 산책로 : {{user.profile.feature}}
 			{% endif %}
 		</div>
-		<div id="">			
+		<div id="profile2">			
 			{% if user.profile.likehour == ''%}
 				선호 시간대를 등록해주세요!
 			{% else %}
 				선호 시간대 : {{user.profile.likehour}}
 			{% endif %}
 		</div>
-		<div id="">
+		<div id="profile3">
 			{% if user.profile.introduce == ''%}
 				소개글을 등록해서 자기자신을 소개해주세요!
 			{% else %}
 				소개 : {{user.profile.introduce}}
 			{% endif %}
 		</div>
-		<a href="{% url 'mypage:profile'%}">프로필 수정하기</a>
-		<a href="{% url 'checkpw'%}">내정보 수정하기</a>
+		<a id="edit-profile" href="{% url 'mypage:profile'%}">프로필 수정하기</a>
+		<a id="edit-myinfo" href="{% url 'checkpw'%}">내정보 수정하기</a>
 	</div>
 </div>
 <div class="walkroad-posts">

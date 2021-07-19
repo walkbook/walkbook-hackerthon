@@ -9,20 +9,38 @@
 <link rel="stylesheet" type="text/css" href="{% sass_src 'accounts/scss/login.scss' %}"/>
 {%endblock style%}
 
+<center>
 <h1>
 <img class="logo" src="{% static 'accounts/img/logo.png' %}">
 <img class="line" src="{% static 'maps/img/line.png' %}">
 </h1>
+</center>
 
-<form class="form-group" method="post" action="{% url 'login' %}">
+
+<form method="post" action="{% url 'login' %}">
 {% csrf_token %}
-  {% comment %} {% load widget_tweaks%}
-  {{ form.as_p|add_class:"form-group"}}  {% endcomment %}
-  {{ form.as_p }}
-  <input class="loginbtn btn-long" type="submit" value="로그인">
+  {% if form.errors %}
+    <p>아이디와 비밀번호가 일치하지 않습니다.</p>
+  {% endif %}
+  {% if next %}
+    <p>로그인이 필요합니다.</p>
+  {% endif %}
+<div class="login-container">
+<center>
+  <div class="form-group">
+    <input class="form-control" id="{{ form.username.id_for_label }}" placeholder="  아이디를 입력해주세요" maxlength="15" name="{{ form.username.html_name }}" type="text" />
+  </div>
+  <div class="form-group">
+    <input class="form-control" id="{{ form.password.id_for_label }}" placeholder="  비밀번호를 입력해주세요" maxlength="120" name="{{ form.password.html_name }}" type="password" />
+  </div>
+  <input class="loginbtn" type="submit" value="로그인">
+</center>
 </form>
 
+<center>
 <a class="mdl-navigation__link" href="{% provider_login_url 'google' %}">
 <img src="{% static 'accounts/img/googlelogin.png' %}" style="width: 184px; height: auto;"/>
 </a>
+</div>
+</center>
 {% endblock content %}

@@ -82,8 +82,6 @@ manager.addListener('remove', function (data) {
         totalTime = 0;
         totalDistance = 0;
         polylineExist = false;
-    } else {
-        // marker remove시 mappingData 처리
     }
 });
 
@@ -224,8 +222,7 @@ saveWalkroadBtn.addEventListener('click', async () => {
         return
     }
 
-    const path = manager.getData();     // TODO : do not save markers info
-    // const marker = [];
+    const path = manager.getData();
     const infowindow = [];
 
     const title = document.getElementById('title-input');
@@ -252,7 +249,6 @@ saveWalkroadBtn.addEventListener('click', async () => {
     data.append("finish", finish.value);
     data.append("tmi", tmi.value);
     data.append("path", JSON.stringify(path));
-    // data.append("marker", JSON.stringify(marker));
     data.append("infowindow", JSON.stringify(infowindow));
     data.append("distance", totalDistance);
     data.append("time", totalTime);
