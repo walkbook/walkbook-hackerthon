@@ -25,3 +25,5 @@ six==1.16.0
 sqlparse==0.4.1
 typing-extensions==3.10.0.0
 urllib3==1.26.6
+yapf==0.31.0
+gunicorn==20.1.0
