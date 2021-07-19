@@ -7,6 +7,13 @@
 @import "components/nav_bar/nav_bar.scss";
 @import "components/line/line-long.scss";
 @import "components/components.scss";
+@import "components/line/line-short.scss";
+@import "components/line/line-mid.scss";
+@import "components/line/line-long.scss";
+@import "components/input/input-short.scss";
+@import "components/input/input-mid.scss";
+@import "components/input/input-long.scss";
+
 
 // screens import  
 @import "screens/map.scss";
@@ -22,7 +29,7 @@ body {
 .body-layout {
     margin-right: 13%;
     margin-left: 13%;
-    padding-top: 160px;
+    padding-top: 180px;
     padding-bottom: 50px;
 }
 

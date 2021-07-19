@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
 
 /* HTML5 display-role reset for older browsers */
@@ -27,7 +28,7 @@ a { color: inherit; text-decoration: none; }
 
 body { font-family: 'Nanum Gothic', sans-serif; }
 
-.base-header { display: flex; justify-content: space-between; width: 100%; position: fixed; background: linear-gradient(180deg, #FFFFFF 0%, #98C794 1213.94%); z-index: 1; }
+.base-header { display: flex; justify-content: space-between; width: 100%; position: fixed; background: linear-gradient(180deg, #FFFFFF 0%, #98C794 1213.94%); z-index: 9; }
 
 .base-header .wrap-header { width: 100%; height: 40px; display: flex; justify-content: space-between; margin: 30px 65px; }
 
@@ -49,9 +50,31 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .line-long { width: 74vw; height: 50px; margin-bottom: 20px; margin-top: 10px; }
 
-.geoSuccessMsg-class { display: flex; justify-content: center; align-items: center; width: 160px; height: 25px; text-align: center; padding: 6px 0; background: linear-gradient(180deg, #98c79470 -26.67%, #49a59a80 100%); color: white; border-radius: 20px; border: none; font-size: 15px; font-family: 'Montserrat', sans-serif; }
+.line-long-m { width: 100%; height: 50px; margin-bottom: 20px; margin-top: 70px; }
 
-.map-search { height: 120px; }
+.geoSuccessMsg-class { display: flex; justify-content: center; align-items: center; width: 160px; height: 25px; text-align: center; padding: 6px 0; background-color: var(--green); border-radius: 30px; color: #3b3b3b; border: none; font-size: 15px; font-family: 'Montserrat', sans-serif; }
+
+.line-short { width: 300px; height: 35.92px; }
+
+.line-short-m { width: 100%; height: 35.92px; }
+
+.line-mid { width: 653px; height: 37px; }
+
+.line-long { width: 74vw; height: 50px; margin-bottom: 20px; margin-top: 10px; }
+
+.line-long-m { width: 100%; height: 50px; margin-bottom: 20px; margin-top: 70px; }
+
+.input-short { height: 28px; width: 183px; background: #FFFFFF; border-radius: 5px; }
+
+.input-mid { width: 380px; height: 40px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+
+.input-mid-m { width: 45%; height: 40px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+
+.input-mid-ml { width: 90%; height: 40px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+
+.input-long { width: 1085px; height: 44px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+
+.input-long-m { width: 95%; height: 100px; }
 
 .mapbox { display: flex; flex-direction: column; align-items: center; }
 
@@ -74,6 +97,10 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 .mapbox .map-input .current-location-button .current-location-img { height: 25px; }
 
 .mapbox #map { border-radius: 5px; }
+
+.loading-background_map { position: absolute; width: 100%; height: 110%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; margin-top: 30px !important; }
+
+.loading-msg { height: 80px; }
 
 @keyframes shake { 0% { transform: rotate(2deg); }
   33% { transform: rotate(-2deg); }
@@ -128,7 +155,7 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .new-announce_announce { width: 100%; height: 80px; left: 169px; top: 357px; margin: 10px 0; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
 
-.map-info { display: flex; flex-direction: column; align-items: flex-end; padding: 10px 0 0 10px; font-family: 'Montserrat', sans-serif; }
+.map-info { display: flex; flex-direction: column; align-items: flex-end; padding: 10px 0 0 10px; font-family: 'Montserrat', sans-serif; font-weight: 600; }
 
 .map-info p { font-size: 16px; color: #49A59A; margin: 5px 0 0 5px; }
 
@@ -168,7 +195,7 @@ body { font-family: 'Nanum Gothic', sans-serif; }
     transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-.loading-msg { font-size: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 220px; color: white; z-index: 5; font-family: 'Montserrat', sans-serif; }
+.loading-msg { font-size: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 195px; color: white; z-index: 5; font-family: 'Montserrat', sans-serif; }
 
 .new-announce_announce { display: flex; flex-direction: column; }
 
@@ -182,11 +209,65 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .new-announce_desc { font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 12px; line-height: 24px; letter-spacing: -0.015em; color: rgba(45, 45, 45, 0.8); }
 
+.input-box { width: 100%; display: flex; justify-content: center; }
+
+.input-box h4 { margin-left: 23px; font-size: 14px; color: var(--deepgreen); font-family: 'Montserrat', sans-serif; font-weight: 600; }
+
+.input-box input { margin: 10px; padding-left: 15px; color: #777777; display: flex; align-items: flex-start; }
+
+.input-box_wrap { width: 100%; }
+
+.input-name { background-color: rgba(146, 146, 146, 0.301); }
+
+.name-box { margin-bottom: 30px; }
+
+.title-desc-box { display: flex; margin-bottom: 20px; width: auto; }
+
+.title-desc-box .title-box { width: 100%; }
+
+.title-desc-box .desc-box { width: 100%; }
+
+.start-fin-box { display: flex; margin-bottom: 20px; width: auto; }
+
+.start-fin-box .start-box { width: 100%; }
+
+.start-fin-box .fin-box { width: 100%; }
+
+.start-fin-box { display: flex; margin-bottom: 20px; }
+
+.tmi-box { margin-bottom: 60px; }
+
+#save-walkroad-button { width: 130px; height: 40px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 40px; border: none; color: white; font-family: 'Montserrat', sans-serif; font-style: normal; font-size: 15px; line-height: 21px; letter-spacing: -0.035em; }
+
+.enroll-btn { margin-top: 80px; margin-bottom: 30px; width: 100%; display: flex; justify-content: center; }
+
+.enroll-btn:hover { cursor: pointer; }
+
+.title-ud { display: flex; justify-content: space-between; }
+
+.ud-btn { display: flex; align-items: flex-end; justify-content: center; font-size: 13px; font-family: Montserrat; }
+
+.ud-btn a { display: flex; justify-content: center; align-items: center; padding: 8px; background: #B8B8B8; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 30px; margin-left: 6px; color: white; width: 36px; }
+
+.post_wrap { display: flex; }
+
 .mapbox_wrap { width: 60%; }
+
+.info-box { padding-top: 70px; display: flex; justify-content: flex-end; width: 40%; font-family: Montserrat; }
+
+.info-box p { margin-left: 25px; }
+
+.info_wrap { width: 95%; }
+
+.info_wrap p { font-family: Montserrat; font-style: normal; font-size: 18px; line-height: 36px; letter-spacing: -0.015em; color: #49A59A; }
+
+.enroll-title { color: var(--deepgreen); margin-left: 30px; font-family: Montserrat; }
+
+.enroll-desc { margin-left: 65px; margin-top: 20px; font-size: 15px; color: #818181; font-family: Montserrat; }
 
 body { width: 100%; height: 100%; }
 
-.body-layout { margin-right: 13%; margin-left: 13%; padding-top: 160px; padding-bottom: 50px; }
+.body-layout { margin-right: 13%; margin-left: 13%; padding-top: 180px; padding-bottom: 50px; }
 
 .mdl-layout__content { padding: 16px; }
 

@@ -1,3 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+.title-ud {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ud-btn {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 13px;
+    font-family: Montserrat;
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        background: #B8B8B8;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 30px;
+        margin-left: 6px;
+        color: white;
+        width: 36px;
+    }
+}
+.post_wrap {
+    display: flex;
+}
 .mapbox_wrap {
     width: 60%;
+}
+
+.info-box{
+    padding-top: 70px;
+    display: flex;
+    justify-content: flex-end;
+    width: 40%;
+    font-family: Montserrat;
+
+    p {
+        margin-left: 25px;
+    }
+}
+
+.info_wrap {
+
+    width: 95%;
+    p {
+        font-family: Montserrat;
+        font-style: normal;
+        font-size: 18px;
+        line-height: 36px;
+        letter-spacing: -0.015em;
+        color: #49A59A;
+    }
+
+    .author_wrap {
+        
+    }
+}
+
+.enroll-title {
+    color: var(--deepgreen);
+    margin-left: 30px;
+    font-family: Montserrat;
+
+}
+
+.enroll-desc {
+    margin-left: 65px;
+    margin-top: 20px;
+    font-size: 15px;
+    color: #818181;
+    font-family: Montserrat;
 }

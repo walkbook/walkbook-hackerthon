@@ -7,12 +7,10 @@
 
     <div class="body-layout">
         {% comment %} 검색박스 위치 {% endcomment %}
-        <div class="map-search"> 
-        
-        </div>
+        <div class="map-search">     
+    </div>
 
-        <p>현재 위치 주변에서 산책로를 찾아보세요! (현재 위치 허용 눌러주라는 안내 만들자!)</p>
-        <h3 id="loading">현재 위치 불러오는 중...</h3>
+        {% comment %} <p>현재 위치 주변에서 산책로를 찾아보세요! (현재 위치 허용 눌러주라는 안내 만들자!)</p> {% endcomment %}
         {% csrf_token %}
         <div class="mapbox">
             <div class="map-input">
@@ -22,10 +20,19 @@
                 </div>
                 <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
             </div>
-            <div id="map" style="width:100%;height:600px;"></div>
+            <div id="map" style="width:100%;height:600px;">
+                <div id="loading" class="loading-class">
+					<div class="loading-background loading-background_map">
+						<div id="loading-bar-spinner" class="spinner">
+							<div class="spinner-icon"></div>
+						</div>
+						<div class="loading-msg loading-msg_map">📍현 위치 파악 중!</div>
+					</div>
+				</div>
+            </div>
         </div>
     <div class="body-layout">
-      
+
     <script>
         let userAddress;
         if ("{{ request.user.is_anonymous }}" == "True") {
