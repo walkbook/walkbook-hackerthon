@@ -11,6 +11,7 @@
 <div class="profile-container">
 <p> PROFILE </p>
 <img class="line-mid" src="{% static 'maps/img/line.png' %}">
+
 <form id="profile-form" method="POST" action="{%url 'mypage:profile' %}">
     {% csrf_token %}
     <div class="profile-feature">
