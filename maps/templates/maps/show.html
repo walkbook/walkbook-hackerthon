@@ -52,9 +52,9 @@
                         <div>{{ walkroad.author.profile.username }}</div>
                     </div>
                     <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
-                    <p id="total-time">소요 시간</p>
+                    <p id="total-time">소요 시간 : {{ walkroad.time }}</p>
                     <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
-                    <p id="total-distance">총 거리</p>
+                    <p id="total-distance">총 거리 : {{ walkroad.distance }}</p>
                     <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
                     <p>startㅤㅤㅤㅤ<span>{{ walkroad.start }}</span></p>
                     <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
