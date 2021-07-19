@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+// current location css
+.geoSuccessMsg-class {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 25px;
+    text-align: center;
+    padding: 6px 0;
+    // background: linear-gradient(180deg, #98c794 -26.67%, #49a59a 100%);
+    background-color: var(--green);
+    border-radius: 30px;
+    color: rgb(59, 59, 59);
+    border: none;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+

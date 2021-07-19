@@ -1,0 +1,73 @@
+@import '../../../../maps/static/maps/scss/components/btn/btn-long.scss';
+
+h1 {
+    .logo {
+        width: 128px;
+        height: 133px;
+        display: flex;
+        padding-top: 200px;
+    }
+
+    .line {
+        width: 653px;
+        height: 37px;
+        display: flex;
+        margin: auto;
+        top: 200px;
+    }
+}
+
+p {
+    text-align: center;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 36px;
+    letter-spacing: -0.015em;
+    color: #98C794;
+}
+
+.login-container {
+    height: 28px;
+    width: 183px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+    margin-top: 120px;
+    background: #FFFFFF;
+    border-radius: 5px;
+
+    .loginbtn {
+        width: 400px;
+        height: 55px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
+        border-radius: 30px;
+        position: relative;
+        left: 50%;
+        margin-left: -200px;
+    }
+
+    .form-group {
+        .form-control {
+            top: 30px;
+            position: relative;
+            left: 50%;
+            width: 380px;
+            height: 40px;
+            margin: 5px;
+            margin-left: -190px;
+            background: #FFFFFF;
+            border: 1px dashed rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+    }
+
+    .mdl-navigation__link {
+        width: 184px;
+        height: 44px;
+    }
+}

@@ -1,0 +1,122 @@
+.post-all {
+    padding-top: 200px;
+
+    .search-post {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: baseline;
+
+        .type-select {
+            margin: auto;
+            width: 171px;
+            height: 50px;
+            background: #EBEBEB;
+            border-radius: 30px 0px 0px 30px;
+        }
+
+        #keyword {
+            width: 500px;
+            height: 44.5px;
+            background: #EBEBEB;
+            border-radius: 0px 30px 30px 0px;
+        }
+
+        #search-btn {
+            margin: 5px;
+            width: 50px;
+            height: 40px;
+            background: linear-gradient(180deg, #98C794 -26.67%, #49A59A 100%);
+            border-radius: 13px;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 13px;
+            line-height: 24px;
+            /* identical to box height, or 240% */
+            letter-spacing: -0.015em;
+            color: #FFFFFF;
+        }
+    }
+
+    .sort-post {
+        position: relative;
+        left: 80%;
+        margin-top: 30px;
+    }
+}
+
+.post-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    justify-content: flex-start;
+
+    .demo-card-square.mdl-card.mdl-shadow--2dp {
+        width: 320px;
+        margin-right: 15px;
+        margin-bottom: 15px;
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            height: 60px;
+
+            .author-container {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 15px;
+                letter-spacing: -0.015em;
+                color: #000000;
+            }
+        }
+
+        
+    }
+}
+
+.mdl-card__title-text {
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            letter-spacing: -0.015em;
+            color: #000000 !important;
+        }
+select {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -webkit-padding-end: 20px;
+    -moz-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -moz-padding-start: 2px;
+    background-color: #F07575;
+    /* Fallback color if gradients are not supported */
+    background-image: url(../images/select-arrow.png), -webkit-linear-gradient(top, #E5E5E5, #F4F4F4);
+    /* For Chrome and Safari */
+    background-image: url(../images/select-arrow.png), -moz-linear-gradient(top, #E5E5E5, #F4F4F4);
+    /* For old Firefox (3.6 to 15) */
+    background-image: url(../images/select-arrow.png), -ms-linear-gradient(top, #E5E5E5, #F4F4F4);
+    /* For pre-releases of Internet Explorer  10*/
+    background-image: url(../images/select-arrow.png), -o-linear-gradient(top, #E5E5E5, #F4F4F4);
+    /* For old Opera (11.1 to 12.0) */
+    background-image: url(../images/select-arrow.png), linear-gradient(to bottom, #E5E5E5, #F4F4F4);
+    /* Standard syntax; must be last */
+    background-position: center right;
+    background-repeat: no-repeat;
+    border: 1px solid #AAA;
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: 15px;
+    margin: 0;
+    overflow: hidden;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -1,0 +1,106 @@
+.signup_container {
+    h1 {
+        position: absolute;
+        width: 100px;
+        height: 39.86px;
+        left: 50%;
+        top: 110px;
+        margin-left: -50px;
+        padding-top: 40px;
+
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+
+        letter-spacing: -0.015em;
+
+        color: #98C794;
+
+        .line {
+            position: relative;
+            width: 653px;
+            height: 37px;
+            left: 50%;
+            top: 25px;
+            margin-left: -326px;
+
+            background: url(image.png);
+            transform: rotate(-0.69deg);
+        }
+    }
+
+    .signupbtn {
+        width: 400px;
+        height: 55px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
+        border-radius: 30px;
+    }
+
+    label {
+        margin-top: 15px;
+        width: 46.89px;
+        height: 40px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 36px;
+        letter-spacing: -0.015em;
+        color: #98C794;
+    }
+
+    #signup-form {
+        padding-top: 280px;
+        .signup {
+
+            #userid,
+            #location {
+                width: 300px;
+                height: 40px;
+                margin-bottom: 5px;
+                background: #FFFFFF;
+                border: 1px dashed rgba(0, 0, 0, 0.5);
+                border-radius: 10px;
+            }
+            #password1,
+            #password2,
+            #username,
+            #sex,
+            #age {
+                width: 380px;
+                height: 40px;
+                margin-bottom: 5px;
+                background: #FFFFFF;
+                border: 1px dashed rgba(0, 0, 0, 0.5);
+                border-radius: 10px;
+            }
+
+            #checkUserid,
+            #searchLocation {
+                width: 70px;
+                height: 30px;
+                background: #98C794;
+                border-radius: 10px;
+            }
+
+            #validate-id,
+            #validate-password,
+            #same-password {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 15px;
+                line-height: 36px;
+                letter-spacing: -0.015em;
+            }
+        }
+    }
+}
+
+.signup_title {
+    margin: 5px;
+}

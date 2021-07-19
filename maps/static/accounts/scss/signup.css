@@ -1,0 +1,21 @@
+.signup_container h1 { position: absolute; width: 100px; height: 39.86px; left: 50%; top: 110px; margin-left: -50px; padding-top: 40px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 24px; line-height: 36px; letter-spacing: -0.015em; color: #98C794; }
+
+.signup_container h1 .line { position: relative; width: 653px; height: 37px; left: 50%; top: 25px; margin-left: -326px; background: url(image.png); transform: rotate(-0.69deg); }
+
+.signup_container .signupbtn { width: 400px; height: 55px; margin-top: 30px; margin-bottom: 30px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); border-radius: 30px; }
+
+.signup_container label { margin-top: 15px; width: 46.89px; height: 40px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 16px; line-height: 36px; letter-spacing: -0.015em; color: #98C794; }
+
+.signup_container #signup-form { padding-top: 280px; }
+
+.signup_container #signup-form .signup #userid, .signup_container #signup-form .signup #location { width: 300px; height: 40px; margin-bottom: 5px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+
+.signup_container #signup-form .signup #password1, .signup_container #signup-form .signup #password2, .signup_container #signup-form .signup #username, .signup_container #signup-form .signup #sex, .signup_container #signup-form .signup #age { width: 380px; height: 40px; margin-bottom: 5px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+
+.signup_container #signup-form .signup #checkUserid, .signup_container #signup-form .signup #searchLocation { width: 70px; height: 30px; background: #98C794; border-radius: 10px; }
+
+.signup_container #signup-form .signup #validate-id, .signup_container #signup-form .signup #validate-password, .signup_container #signup-form .signup #same-password { font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 15px; line-height: 36px; letter-spacing: -0.015em; }
+
+.signup_title { margin: 5px; }
+
+/*# sourceMappingURL=signup.css.map */

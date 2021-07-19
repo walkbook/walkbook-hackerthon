@@ -1,0 +1,73 @@
+@import '../../../../maps/static/maps/scss/components/btn/btn-mid.scss';
+@import '../../../../maps/static/maps/scss/components/line/line-mid.scss';
+.myinfo-container {
+    padding-top: 150px;
+    h1 {
+        width: 200px;
+        height: 39.86px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+        letter-spacing: -0.015em;
+        color: #98C794;
+    }
+
+    label {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 36px;
+        letter-spacing: -0.015em;
+        color: #98C794;
+    }
+
+    #myinfo-form {
+        .myinfo {
+            #location {
+                width: 300px;
+                height: 40px;
+                background: #FFFFFF;
+                border: 1px dashed rgba(0, 0, 0, 0.5);
+                border-radius: 10px;
+            }
+            #password1,
+            #password2,
+            #username,
+            #sex,
+            #age {
+                width: 380px;
+                height: 40px;
+                background: #FFFFFF;
+                border: 1px dashed rgba(0, 0, 0, 0.5);
+                border-radius: 10px;
+            }
+
+            #searchLocation {
+                width: 70px;
+                height: 30px;
+                background: #98C794;
+                border-radius: 10px;
+            }
+
+            #validate-password,
+            #same-password {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 15px;
+                line-height: 36px;
+                letter-spacing: -0.015em;
+            }
+        }
+    }
+    .btn-mid {
+        margin: 30px;
+    }
+}
+
+.myinfo_title {
+    margin: 0;
+}

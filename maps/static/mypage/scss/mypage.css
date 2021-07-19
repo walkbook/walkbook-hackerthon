@@ -1,4 +1,12 @@
-.hide {
-  display: none; }
+.hide { display: none; }
 
+.profile { padding-top: 150px; display: flex; flex-direction: column; }
+
+.profile .workbook { width: 157px; height: 35px; left: 82px; top: 137px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 16px; line-height: 36px; letter-spacing: -0.015em; color: #49A59A; }
+
+.profile .profile-box { width: 556px; height: 192.84px; left: 75px; top: 177px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+
+.profile .profile-box #walkroad-count { width: 249px; height: 35px; left: 263px; top: 194px; font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 12px; line-height: 36px; letter-spacing: -0.015em; color: #49A59A; }
+
+.profile .profile-box #profile1, .profile .profile-box #profile2, .profile .profile-box #profile3 { font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 10px; line-height: 36px; letter-spacing: -0.015em; color: #98C794; }
 /*# sourceMappingURL=mypage.css.map */
