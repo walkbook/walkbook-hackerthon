@@ -27,6 +27,10 @@
     <div class="body-layout">
       
     <script>
+        const walkroads = {{ walkroads | safe }};
+
+        console.log(walkroads);
+
         let userAddress;
         if ("{{ request.user.is_anonymous }}" == "True") {
             userAddress = "신림로 1";

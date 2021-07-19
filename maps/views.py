@@ -11,7 +11,10 @@ def index(request):
     return render(request, 'maps/index.html')
 
 def map(request):
-    return render(request, 'maps/map.html')
+    walkroads = Walkroad.objects.all()
+    return render(request, 'maps/map.html', { 
+        'walkroads': list(walkroads)
+    })
 
 class PostView(ListView):
     model = Walkroad
