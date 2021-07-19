@@ -7,7 +7,8 @@ for (let i = 0; i < walkroad_paths.length; i++) {
 function drawPolyline(id, lines) {
     let len = lines.length, i = 0;
 
-    walkroad = walkroads.find(x => x.id === id)
+    const walkroad = walkroads.find(x => x.id === id)
+    const like_count = walkroad.like_users ? walkroad.like_users : 0;
 
     for (; i < len; i++) {
         const path = pointsToPath(lines[i].points);
@@ -22,17 +23,21 @@ function drawPolyline(id, lines) {
         });
 
         const infowindow = new kakao.maps.InfoWindow({
-            content: pathInfoContent(id, walkroad.title, walkroad.description, walkroad.time, walkroad.like, `/maps/${id}`),
+            content: pathInfoContent(id, walkroad.title, walkroad.description, walkroad.time, like_count),
             map: null,
             position: new kakao.maps.LatLng(lines[0].points[0].y, lines[0].points[0].x)
         })
 
-        kakao.maps.event.addListener(polyline, 'mouseover', function(mouseEvent) {  
+        kakao.maps.event.addListener(polyline, 'click', function (mouseEvent) {
+            window.location.href = `/maps/${id}`;
+        });
+
+        kakao.maps.event.addListener(polyline, 'mouseover', function (mouseEvent) {
             infowindow.setMap(map);
         });
 
-        kakao.maps.event.addListener(polyline, 'mouseout', function(mouseEvent) {  
-            infowindow.setMap(null);        
+        kakao.maps.event.addListener(polyline, 'mouseout', function (mouseEvent) {
+            infowindow.setMap(null);
         });
     }
 }
