@@ -5,15 +5,18 @@ from maps.models import Walkroad, Like
 from django.shortcuts import redirect, render
 from django.db.models import Q, Count
 from django.views.generic import ListView
+import json
 
 # Create your views here.
 def index(request):
     return render(request, 'maps/index.html')
 
 def map(request):
-    walkroads = Walkroad.objects.all()
+    walkroads = list(Walkroad.objects.all().values('author', 'title', 'description', 'distance', 'time', 'like_users', 'id'))
+    walkroad_paths = list(Walkroad.objects.all().values('id', 'path'))
     return render(request, 'maps/map.html', { 
-        'walkroads': list(walkroads)
+        'walkroads': json.dumps(walkroads),
+        'walkroad_paths': walkroad_paths
     })
 
 class PostView(ListView):

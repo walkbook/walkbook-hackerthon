@@ -15,4 +15,3 @@ function infoWindowContent(id, title, description) {
         '    </div>' +    
         '</div>';
 }
-             

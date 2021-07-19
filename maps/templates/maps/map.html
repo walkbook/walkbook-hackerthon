@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
 
     <div class="body-layout">
         {% comment %} 검색박스 위치 {% endcomment %}
@@ -28,8 +28,12 @@
       
     <script>
         const walkroads = {{ walkroads | safe }};
+        console.log('walkroads', walkroads);
 
-        console.log(walkroads);
+        const walkroad_paths = {{ walkroad_paths | safe }};
+        console.log(walkroad_paths);
+
+        let mappingData = {}
 
         let userAddress;
         if ("{{ request.user.is_anonymous }}" == "True") {
@@ -54,4 +58,5 @@
     </script>
     <script src="{% static 'maps/js/components.js' %}"></script>
     <script src="{% static 'maps/js/initial.js' %}"></script>
+    <script src="{% static 'maps/js/map.js' %}"></script>
 {% endblock content %}
