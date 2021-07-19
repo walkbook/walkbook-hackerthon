@@ -47,7 +47,10 @@
 
             <div class="info-box">
                 <div class="info_wrap">
-                    <p>authorㅤㅤㅤㅤ<span>{{ walkroad.author.profile.username }}</span></p>
+                    <div class="author_wrap">
+                        <p>author</p>
+                        <div>{{ walkroad.author.profile.username }}</div>
+                    </div>
                     <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
                     <p id="total-time">소요 시간</p>
                     <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
@@ -55,7 +58,7 @@
                     <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
                     <p>startㅤㅤㅤㅤ<span>{{ walkroad.start }}</span></p>
                     <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
-                    <p>finishㅤㅤㅤ<span>{{ walkroad.finish }}</span></p>
+                    <p>finishㅤㅤㅤㅤ<span>{{ walkroad.finish }}</span></p>
                     <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
                     <p>tmiㅤㅤㅤㅤ<span>{{ walkroad.tmi }}</span></p>
                     <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
