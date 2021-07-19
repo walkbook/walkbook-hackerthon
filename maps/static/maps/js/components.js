@@ -15,3 +15,19 @@ function infoWindowContent(id, title, description) {
         '    </div>' +    
         '</div>';
 }
+
+function pathInfoContent(id, title, description, time, like, link) {
+    return `<div class="wrap" id=${id}>` + 
+        '    <div class="info">' + 
+        '        <div class="title">' + 
+        `            ${id} ${title}` + 
+        '        </div>' + 
+        '        <div class="body">' + 
+        `            <div class="ellipsis">${description}</div>` + 
+        `            <div class="ellipsis">${time}</div>` + 
+        `            <div class="ellipsis">${like} Likes</div>` + 
+        `            <div><a href=${link} target="_blank" class="link">더 보기</a></div>` + 
+        '        </div>' + 
+        '    </div>' +    
+        '</div>';
+}
