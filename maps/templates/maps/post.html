@@ -1,65 +1,114 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-<h1>post</h1>
-<form action="{%url 'maps:post' %}" method="GET" class="search-post">
-    <select name="type">
-        <option value="all">전체</option>
-        <option value="title">제목</option>
-        <option value="titlecontent">제목+내용</option>
+{% extends 'base.html' %} {% load static %} {% block content %} 
+{% load sass_tags %} {% block style %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% sass_src 'maps/scss/screens/post.scss' %}"
+/>
+{% endblock style %}
+
+<div class="post-all">
+  <form action="{%url 'maps:post' %}" method="GET">
+    <center>
+      <div class="search-post">
+        <select class="type-select" name="type">
+          <option value="all">전체</option>
+          <option value="title">제목</option>
+          <option value="titlecontent">제목+내용</option>
+        </select>
+        <input name="keyword" id="keyword" type="text" />
+        <button name="search-btn" id="search-btn" type="submit">검색</button>
+      </div>
+    </center>
+    <select class="sort-post" name="sort" onchange="form.submit();">
+      <option value="like">좋아요순</option>
+      <option value="date">최신순</option>
     </select>
-    <input name="keyword" id="keyword" type=text />
-    <button name="search-btn" id="search-btn" type="submit">검색</button>
-    <select name="sort" onchange="form.submit();">
-        <option value="like">좋아요순</option>
-        <option value="date">최신순</option>
-    </select>
-</form>
-<div class="post-container">
-    {% for walkroad in walkroads %}
-    <div class="post">
-        <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
-        {{ walkroad.description}}
-        {% if user.is_authenticated %}
-            <a id="{{walkroad.id}}-like-button" onclick="onClickLikeBtn({{walkroad.id}})">
-                {{ walkroad.like_users.count }} Likes
-            </a>
-            <span id="{{walkroad.id}}-userlike">
-                {% if user in walkroad.like_users.all %}
-                    하트
-                {% else %}
-                    빈하트
-                {% endif %}
-            </span>
-        {% else %}
-            <span>{{ walkroad.like_users.count }} Likes </span>
-        {% endif %}
-        
-    </div>
-    {% endfor %}
+  </form>
 </div>
+
+<div class="post-container">
+  {% for walkroad in walkroads %}
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="post-header">
+      <div class="author-container">
+        <span>{{walkroad.author}}</span>
+      </div>
+      <div class="like-container">
+        {% if user.is_authenticated %}
+        <a
+          id="{{walkroad.id}}-like-button"
+          onclick="onClickLikeBtn({{walkroad.id}})"
+          class="material-icons mdl-badge mdl-badge--overlap"
+          data-badge="{{ walkroad.like_users.count }}"
+        >
+          {% if user in walkroad.like_users.all %} favorite {% else %}
+          favorite_border {% endif %}
+        </a>
+        {% else %}
+        <div
+          class="material-icons mdl-badge mdl-badge--overlap"
+          data-badge="{{ walkroad.like_users.count }}"
+        >
+          favorite_border
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">
+        <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
+      </h2>
+    </div>
+    <div class="mdl-card__supporting-text">{{ walkroad.description}}</div>
+    <div class="mdl-card__actions mdl-card--border">
+      <a
+        href="{% url 'maps:show' walkroad.id %}"
+        class="
+          mdl-button mdl-button--colored
+          mdl-js-button mdl-js-ripple-effect
+        "
+      >
+        상세보기
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
 <script type="text/javascript">
-    var type = '';
-    var keyword = '';
-    var sort = '';
-    
-    if (window.location.search != ''){
-        if (window.location.search.indexOf('type') != -1)
-            type = window.location.search.substring(window.location.search.indexOf('type')).split('=')[1].split('&')[0];
-        if (window.location.search.indexOf('keyword') != -1)
-            keyword = decodeURI(window.location.search.substring(window.location.search.indexOf('keyword')).split('=')[1].split('&')[0]);
-        if (window.location.search.indexOf('sort') != -1)
-            sort = window.location.search.substring(window.location.search.indexOf('sort')).split('=')[1].split('&')[0];
-        
-        const option = document.getElementsByTagName('option')
-        for (var i = 0; i < option.length; i++) {
-            if (option[i].value === type || option[i].value === sort ) {
-                option[i].setAttribute('selected', 'selected')
-            }
-        }
-        const input = document.getElementById('keyword')
-        input.value = keyword
+  var type = "";
+  var keyword = "";
+  var sort = "";
+
+  if (window.location.search != "") {
+    if (window.location.search.indexOf("type") != -1)
+      type = window.location.search
+        .substring(window.location.search.indexOf("type"))
+        .split("=")[1]
+        .split("&")[0];
+    if (window.location.search.indexOf("keyword") != -1)
+      keyword = decodeURI(
+        window.location.search
+          .substring(window.location.search.indexOf("keyword"))
+          .split("=")[1]
+          .split("&")[0]
+      );
+    if (window.location.search.indexOf("sort") != -1)
+      sort = window.location.search
+        .substring(window.location.search.indexOf("sort"))
+        .split("=")[1]
+        .split("&")[0];
+
+    const option = document.getElementsByTagName("option");
+    for (var i = 0; i < option.length; i++) {
+      if (option[i].value === type || option[i].value === sort) {
+        option[i].setAttribute("selected", "selected");
+      }
     }
+    const input = document.getElementById("keyword");
+    input.value = keyword;
+  }
 </script>
 <script src="{% static 'maps/js/post.js' %}"></script>
 {% endblock content %}

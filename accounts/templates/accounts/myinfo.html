@@ -1,25 +1,31 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
+{% block style %}
+{% load sass_tags %}
+<link rel="stylesheet" type="text/css" href={% sass_src 'accounts/scss/myinfo.scss' %}/>
+{% endblock style %}
 {% block content %}
+
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
   <script type="text/javascript" src="{% static 'accounts/js/axios.js' %}"></script>
-  <h1>내 정보 수정하기</h1>
+<center><div class="myinfo-container">
+  <center><h1>MY INFO</h1>
+  <img class="line-mid" src="{% static 'maps/img/line.png' %}"></center>
+
   <form id="myinfo-form" method="POST" action="{%url 'myinfo' %}">
     {% csrf_token %}
     <div class="myinfo">
       <h3 class="myinfo_title">
         <label for="id">아이디</label>
-      </h3>
-      <span>{{ user.username }}</span>
+      </h3><span>{{ user.username }}</span>
     </div>
 
     <div class="myinfo">
       <h3 class="myinfo_title">
         <label for="password1">새 비밀번호</label>
       </h3>
-      <input name="password1" type="password" value="" placeholder="4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
+      <center><input id="password1" name="password1" type="password" value="" placeholder="4자리 이상의 숫자 또는 대소문자를 입력하세요."/></center>      
       <span id="validate-password"></span>
     </div>
 
@@ -27,7 +33,7 @@
       <h3 class="myinfo_title">
         <label for="password2">새 비밀번호 확인</label>
       </h3>
-      <input id="password2" name="password2" type="password" value="" placeholder="4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
+      <center><input id="password2" name="password2" type="password" value="" placeholder="4자리 이상의 숫자 또는 대소문자를 입력하세요."/></center>
       <span id="same-password"></span>
     </div>
 
@@ -35,26 +41,26 @@
       <h3 class="myinfo_title">
         <label for="username">닉네임</label>
       </h3>
-      <input name="username" type="text" value="{{user.profile.username}}">
+      <center><input id="username" name="username" type="text" value="{{user.profile.username}}"></center>
     </div>
 
     <div class="myinfo">
       <h3 class="myinfo_title">
         <label for="sex">성별</label>
       </h3>
-      <select id="sex" name="sex"> 
+      <center><select id="sex" name="sex"> 
         <option value="" selected></option>
         <option value="M">남자</option>
         <option value="F">여자</option>
         <option value="U">선택안함</option>
-      </select>
+      </select></center>
     </div>
 
     <div class="myinfo">
       <h3 class="myinfo_title">
         <label for="age">나이대</label>
       </h3>
-      <select id="age" name="age" >
+      <center><select id="age" name="age" >
         <option value=""></option>
         <option value="0">10세 미만</option>
         <option value="10">10대</option>
@@ -64,21 +70,22 @@
         <option value="50">50대</option>
         <option value="60">60대 이상</option>
         <option value="U">선택안함</option>
-      </select>
+      </select></center>
     </div>
 
     <div class="myinfo">
       <h3 class="myinfo_title">
         <label for="location">내 위치 변경</label>
       </h3>
-      <input id="location" name="location" type="text" value="{{user.profile.location}}">
-      <input id="searchLocation" type="button" value="위치 입력">
+      <center><input id="location" name="location" type="text" value="{{user.profile.location}}">
+      <input id="searchLocation" type="button" value="위치 입력"></center>
       <script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     </div>
     <div>
-      <input type="submit" value="정보 수정"/>
+      <center><input class="btn-mid" type="submit" value="정보 수정"/><center>
     </div>
   </form>
+</div></center>
 
   <script type="text/javascript">
     const sex = "{{user.profile.sex}}";

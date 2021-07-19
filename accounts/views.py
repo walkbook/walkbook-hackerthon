@@ -4,7 +4,8 @@ from django.contrib import auth
 from django.http import JsonResponse
 from .models import Profile
 from allauth.socialaccount.models import SocialAccount
-
+from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
 class SignUpView:
     def signup(request):
