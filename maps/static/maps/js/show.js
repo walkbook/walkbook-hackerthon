@@ -27,7 +27,6 @@ function drawMarker(markers, infowindows) {
         mappingData[i] = { marker, infowindow }
 
         kakao.maps.event.addListener(marker, 'click', function () {
-            console.log('marker', marker);
             infowindow.setMap(map);
         });
     }
