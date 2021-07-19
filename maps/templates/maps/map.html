@@ -33,8 +33,6 @@
         const walkroad_paths = {{ walkroad_paths | safe }};
         console.log(walkroad_paths);
 
-        let mappingData = {}
-
         let userAddress;
         if ("{{ request.user.is_anonymous }}" == "True") {
             userAddress = "신림로 1";
