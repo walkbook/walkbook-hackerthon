@@ -8,7 +8,9 @@
 
 .login-container { height: 28px; width: 183px; display: flex; flex-direction: column; justify-content: space-around; align-items: center; margin: auto; margin-top: 120px; background: #FFFFFF; border-radius: 5px; }
 
-.login-container .loginbtn { width: 95%; height: 55px; margin-top: 50px; margin-bottom: 50px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); border-radius: 30px; border: none; color: white; justify-content: center; font-weight: 600; font-family: 'Montserrat', sans-serif; }
+.login-container .loginbtn { width: 90%; height: 55px; margin-top: 50px; margin-bottom: 50px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); border-radius: 30px; border: none; color: white; justify-content: center; font-weight: 600; font-family: 'Montserrat', sans-serif; cursor: pointer; }
+
+.login-container .loginbtn:hover { background-color: white; cursor: pointer; }
 
 .login-container .form-group .form-control { top: 30px; padding-left: 15px; box-sizing: border-box; width: 380px; height: 40px; margin: 8px; background: #FFFFFF; border: none; background: #F3F1F2; border-radius: 10px; }
 

@@ -46,7 +46,7 @@
     
 
     .loginbtn {
-        width: 95%;
+        width: 90%;
         height: 55px;
         margin-top: 50px;
         margin-bottom: 50px;
@@ -57,6 +57,12 @@
         justify-content: center;
         font-weight: 600;
         font-family: 'Montserrat', sans-serif;
+        cursor: pointer;
+    }
+
+    .loginbtn:hover {
+        background-color: white;
+        cursor: pointer;
     }
 
     .form-group {
@@ -97,3 +103,4 @@ h1.login-h1 {
 a {
     color: rgb(179, 179, 179);
 }
+
