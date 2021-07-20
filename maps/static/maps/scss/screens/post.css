@@ -2,17 +2,19 @@
 
 .post-all .search-post { display: inline-flex; flex-wrap: nowrap; align-items: baseline; }
 
-.post-all .search-post .type-select { margin: auto; width: 171px; height: 50px; background: #EBEBEB; border-radius: 30px 0px 0px 30px; }
+.post-all .search-post .type-select { display: flex; margin: auto; width: 130px; height: 44px; background: #00000004; border-radius: 30px 0px 0px 30px; border: none; padding: 0 20px; font-family: 'Nanum Gothic', sans-serif; box-sizing: border-box; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25); z-index: 2; }
 
-.post-all .search-post #keyword { width: 500px; height: 44.5px; background: #EBEBEB; border-radius: 0px 30px 30px 0px; }
+.post-all .search-post select::-ms-expand { display: none; }
 
-.post-all .search-post #search-btn { margin: 5px; width: 50px; height: 40px; background: linear-gradient(180deg, #98C794 -26.67%, #49A59A 100%); border-radius: 13px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 13px; line-height: 24px; /* identical to box height, or 240% */ letter-spacing: -0.015em; color: #FFFFFF; }
+.post-all .search-post #keyword { width: 500px; height: 44px; background: #EBEBEB; border-radius: 0px 30px 30px 0px; border: none; box-sizing: border-box; padding-left: 10px; }
+
+.post-all .search-post #search-btn { margin-left: 5px; width: 44px; height: 35px; background: linear-gradient(180deg, #98C794 -26.67%, #49A59A 100%); border-radius: 5px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 11px; line-height: 24px; /* identical to box height, or 240% */ letter-spacing: -0.015em; color: #FFFFFF; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-family: 'Nanum Gothic', sans-serif; }
 
 .post-all .sort-post { position: relative; left: 80%; margin-top: 30px; }
 
-.post-container { display: flex; flex-wrap: wrap; margin: 20px; justify-content: flex-start; }
+.post-container { display: flex; flex-wrap: wrap; margin: 20px 14%; justify-content: flex-start; }
 
-.post-container .demo-card-square.mdl-card.mdl-shadow--2dp { width: 320px; margin-right: 15px; margin-bottom: 15px; }
+.post-container .demo-card-square.mdl-card.mdl-shadow--2dp { width: 320px; margin-right: 20px; margin-bottom: 20px; }
 
 .post-container .demo-card-square.mdl-card.mdl-shadow--2dp .post-header { display: flex; align-items: center; justify-content: space-between; padding: 0 10px; height: 60px; }
 
@@ -21,5 +23,47 @@
 .mdl-card__title-text { font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 20px; letter-spacing: -0.015em; color: #000000 !important; }
 
 select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-select: none; -moz-user-select: none; -webkit-padding-end: 20px; -moz-padding-end: 20px; -webkit-padding-start: 2px; -moz-padding-start: 2px; background-color: #F07575; /* Fallback color if gradients are not supported */ background-image: url(../images/select-arrow.png), -webkit-linear-gradient(top, #E5E5E5, #F4F4F4); /* For Chrome and Safari */ background-image: url(../images/select-arrow.png), -moz-linear-gradient(top, #E5E5E5, #F4F4F4); /* For old Firefox (3.6 to 15) */ background-image: url(../images/select-arrow.png), -ms-linear-gradient(top, #E5E5E5, #F4F4F4); /* For pre-releases of Internet Explorer  10*/ background-image: url(../images/select-arrow.png), -o-linear-gradient(top, #E5E5E5, #F4F4F4); /* For old Opera (11.1 to 12.0) */ background-image: url(../images/select-arrow.png), linear-gradient(to bottom, #E5E5E5, #F4F4F4); /* Standard syntax; must be last */ background-position: center right; background-repeat: no-repeat; border: 1px solid #AAA; border-radius: 2px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); color: #555; font-size: 15px; margin: 0; overflow: hidden; padding-top: 2px; padding-bottom: 2px; text-overflow: ellipsis; white-space: nowrap; }
+
+.demo-card-square, .mdl-card, .mdl-shadow--2dp { border-radius: 10px; padding: 0 14px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); width: 345px; height: 250px; }
+
+.post-box { display: flex; }
+
+.post-img { width: 156px; display: flex; justify-content: center; align-items: center; background-color: #d1d1d1; border-radius: 6px; box-sizing: border-box; margin: 10px 0; }
+
+.post-img .post-img-basic { width: 30%; height: 23%; }
+
+.mdl-card__actions, .mdl-card--border, .post-box { height: 100%; }
+
+.mdl-card__title, .mdl-card--expand { padding: 24px 0 20px 3px; }
+
+.mdl-card__title a, .mdl-card--expand a { color: black; font-family: 'Nanum Gothic', sans-serif; font-size: 15px; }
+
+.mdl-card__title a:hover, .mdl-card--expand a:hover { color: var(--deepgreen); }
+
+.author-container span { font-size: 12px; color: #B8B8B8; margin: 25px 0 0 0; box-sizing: border-box; }
+
+.post-others { width: 70%; padding: 10px 0 10px 15px; display: flex; justify-content: space-between; flex-direction: column; }
+
+.post-others .total-time-class { margin: 5px 0 0 0; color: var(--green); font-weight: 600; font-size: 14px; }
+
+.post-others .total-time-class span { color: gray; font-weight: 400; font-size: 12px; }
+
+.post-others .mdl-card__supporting-text { width: 100%; height: auto; padding: 0 0 5px 0; color: var(--green); font-weight: 600; font-size: 14px; }
+
+.post-others .mdl-card__supporting-text span { color: gray; font-weight: 400; font-size: 12px; }
+
+.post-others .more-btn { color: gray; font-size: 12px; width: 60px; text-decoration: underline; }
+
+.post-others .more-btn:hover { text-decoration: underline; color: var(--deepgreen); }
+
+.more-container { display: flex; justify-content: flex-end; margin: 7px 0; }
+
+.like-container { display: flex; justify-content: flex-end; }
+
+.like-inner { display: flex; width: 54px; height: 25px; border: 0.5px solid #8B8B8B; box-sizing: border-box; border-radius: 30px; box-sizing: border-box; justify-content: flex-start; align-items: center; padding-left: 10px; }
+
+.material-icons mdl-badge, .mdl-badge--overlap { color: #F44337; font-size: 19px; }
+
+.mdl-badge[data-badge]:after { background: none; color: #5E5E5E; top: -1px; left: 18px; }
 
 /*# sourceMappingURL=post.css.map */
