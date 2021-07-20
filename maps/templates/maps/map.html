@@ -35,7 +35,6 @@
 
     <script>
         const walkroads = {{ walkroads | safe }};
-
         const walkroad_paths = {{ walkroad_paths | safe }};
 
         let userAddress;
@@ -58,6 +57,9 @@
         let currentLocationInfowindow;
 
         const setCenterByCurrentLocation = true;
+
+        let overlays = [];
+
     </script>
     <script src="{% static 'maps/js/components.js' %}"></script>
     <script src="{% static 'maps/js/initial.js' %}"></script>
