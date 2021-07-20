@@ -2,6 +2,7 @@
 
 body {
     font-family: 'Nanum Gothic', sans-serif;
+    
 }
 .base-header {
     display: flex;
@@ -9,7 +10,7 @@ body {
     width: 100%;
     //fixed, background-color 수정 예정
     position: fixed;
-    background: linear-gradient(180deg, #FFFFFF 0%, #98C794 1213.94%);
+    background: linear-gradient(180deg, #FFFFFF 0%, #98c79400 1213.94%);
     z-index: 9;
 
 
@@ -18,10 +19,10 @@ body {
         height: 40px;
         display: flex;
         justify-content: space-between;
-        margin: 30px 65px;
+        margin: 25px 65px 0 65px;
 
         .header-search {
-            width: 300px;
+            width: 280px;
             height: 40px;
             display: flex;
             justify-content: space-between;
@@ -31,6 +32,8 @@ body {
                 font-size: 14px;
                 color: #6B6B6B;
                 justify-content: center;
+                font-family: 'Nanum Gothic', sans-serif;
+                
             }
 
             a:hover {
@@ -47,13 +50,16 @@ body {
             height: 50px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            margin-top: 10px;
+            box-sizing: border-box;
     
             a {
                 margin-left: 30px;
                 font-size: 14px;
                 color: #6B6B6B;
                 text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
+                font-family: 'Nanum Gothic', sans-serif;
 
             }
 

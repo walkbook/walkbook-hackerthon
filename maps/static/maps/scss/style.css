@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&display=swap");
 /* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
 */
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap");
@@ -28,21 +30,21 @@ a { color: inherit; text-decoration: none; }
 
 body { font-family: 'Nanum Gothic', sans-serif; }
 
-.base-header { display: flex; justify-content: space-between; width: 100%; position: fixed; background: linear-gradient(180deg, #FFFFFF 0%, #98C794 1213.94%); z-index: 9; }
+.base-header { display: flex; justify-content: space-between; width: 100%; position: fixed; background: linear-gradient(180deg, #FFFFFF 0%, #98c79400 1213.94%); z-index: 9; }
 
-.base-header .wrap-header { width: 100%; height: 40px; display: flex; justify-content: space-between; margin: 30px 65px; }
+.base-header .wrap-header { width: 100%; height: 40px; display: flex; justify-content: space-between; margin: 25px 65px 0 65px; }
 
-.base-header .wrap-header .header-search { width: 300px; height: 40px; display: flex; justify-content: space-between; align-items: center; }
+.base-header .wrap-header .header-search { width: 280px; height: 40px; display: flex; justify-content: space-between; align-items: center; }
 
-.base-header .wrap-header .header-search a { font-size: 14px; color: #6B6B6B; justify-content: center; }
+.base-header .wrap-header .header-search a { font-size: 14px; color: #6B6B6B; justify-content: center; font-family: 'Nanum Gothic', sans-serif; }
 
 .base-header .wrap-header .header-search a:hover { color: var(--deepgreen); }
 
 .base-header .wrap-header .header-search .logo-img { width: 55px; height: 42px; }
 
-.base-header .wrap-header .header-accounts { width: auto; height: 50px; display: flex; justify-content: space-between; align-items: center; }
+.base-header .wrap-header .header-accounts { width: auto; height: 50px; display: flex; justify-content: space-between; align-items: flex-start; margin-top: 10px; box-sizing: border-box; }
 
-.base-header .wrap-header .header-accounts a { margin-left: 30px; font-size: 14px; color: #6B6B6B; text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; }
+.base-header .wrap-header .header-accounts a { margin-left: 30px; font-size: 14px; color: #6B6B6B; text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; font-family: 'Nanum Gothic', sans-serif; }
 
 .base-header .wrap-header .header-accounts a:hover { color: var(--deepgreen); }
 
@@ -111,7 +113,7 @@ body { font-family: 'Nanum Gothic', sans-serif; }
   50% { transform: translateY(-10px); }
   to { transform: translateY(0px); } }
 
-.green-box { position: relative; width: auto; height: 100vh; background: linear-gradient(172.14deg, rgba(73, 165, 154, 0.04) 23.42%, rgba(152, 199, 147, 0.774) 108.17%), #FFFFFF; }
+.green-box { position: relative; width: auto; height: 100vh; background: linear-gradient(180deg, #FFFFFF 14.44%, #98C794 193.5%), #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
 
 .green-box .index-message { position: absolute; top: 22%; right: 66%; color: var(--green); font-family: 'Noto Sans KR', sans-serif; font-size: 23px; animation: move 3s infinite; -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.226)); color: var(--green); }
 
@@ -267,7 +269,7 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 body { width: 100%; height: 100%; }
 
-.body-layout { margin-right: 13%; margin-left: 13%; padding-top: 180px; padding-bottom: 50px; }
+.body-layout { margin-right: 13%; margin-left: 13%; padding-top: 100px; padding-bottom: 50px; }
 
 .mdl-layout__content { padding: 16px; }
 

@@ -1,11 +1,13 @@
 @import '../../../../maps/static/maps/scss/components/btn/btn-long.scss';
 
-h1 {
+.login-h1 {
     .logo {
-        width: 128px;
-        height: 133px;
+        width: 195px;
+        height: 83px;
         display: flex;
-        padding-top: 200px;
+        padding-top: 150px;
+        padding-bottom: 20px;
+        margin: 0;
     }
 
     .line {
@@ -17,7 +19,7 @@ h1 {
     }
 }
 
-p {
+.login-announce {
     text-align: center;
     font-family: Montserrat;
     font-style: normal;
@@ -26,6 +28,8 @@ p {
     line-height: 36px;
     letter-spacing: -0.015em;
     color: #98C794;
+    padding: 20px;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .login-container {
@@ -34,34 +38,38 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     margin: auto;
     margin-top: 120px;
     background: #FFFFFF;
     border-radius: 5px;
+    
 
     .loginbtn {
-        width: 400px;
+        width: 95%;
         height: 55px;
         margin-top: 50px;
         margin-bottom: 50px;
         background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
         border-radius: 30px;
-        position: relative;
-        left: 50%;
-        margin-left: -200px;
+        border: none;
+        color: white;
+        justify-content: center;
+        font-weight: 600;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .form-group {
         .form-control {
             top: 30px;
-            position: relative;
-            left: 50%;
+            padding-left: 15px;
+            box-sizing: border-box;
             width: 380px;
             height: 40px;
-            margin: 5px;
-            margin-left: -190px;
+            margin: 8px;
             background: #FFFFFF;
-            border: 1px dashed rgba(0, 0, 0, 0.5);
+            border: none;
+            background: #F3F1F2;
             border-radius: 10px;
         }
     }
@@ -70,4 +78,22 @@ p {
         width: 184px;
         height: 44px;
     }
+}
+
+h1.login-h1 {
+    margin: 0;
+}
+
+.login-signup {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    color: grey;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+a {
+    color: rgb(179, 179, 179);
 }
