@@ -1,7 +1,7 @@
 from django.db import connections
 from django.http import request
 from django.http.response import JsonResponse
-from maps.models import Walkroad, Like
+from maps.models import Walkroad, Like, Comment, CommentLike
 from django.shortcuts import redirect, render
 from django.db.models import Q, Count
 from django.views.generic import ListView
@@ -128,3 +128,33 @@ class LikeView:
             'walkroadLikeOfUser': like_list.count(), 
             'walkroadLikeCount': walkroad.like_set.count(),
 		})
+
+class CommentView:
+    def create(request, id):
+        content = request.POST['content']
+        comment = Comment.objects.create(walkroad_id=id, content=content, author=request.user)
+        current_time = comment.created_at.strftime('%Y년 %m월 %d일 %-H:%M')
+        walkroad = Walkroad.objects.get(id=id)
+        return JsonResponse({
+            'commentId': comment.id,
+            'commentCount': walkroad.comment_set.count(),
+            'commentLikeCount': comment.like_users.count(), 
+            'createdTime': current_time,
+            'author': request.user.username 
+        })
+        
+    def delete(request, id, cid):
+        comment = Comment.objects.get(id=cid)
+        comment.delete()
+        walkroad = Walkroad.objects.get(id=id)
+        return JsonResponse({'commentCount': walkroad.comment_set.count()})
+
+class CommentLikeView:
+    def create(request, cid):
+        comment = Comment.objects.get(id=cid)
+        like_list = comment.commentlike_set.filter(user_id=request.user.id)
+        if like_list.count() > 0:
+            comment.commentlike_set.get(user=request.user).delete()
+        else:
+            CommentLike.objects.create(user=request.user, comment=comment)
+        return JsonResponse({'commentLikeCount': comment.commentlike_set.count()})
