@@ -157,7 +157,7 @@ select {
 }
 
 .post-img {
-    width: 156px;
+    width: 166px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -276,6 +276,32 @@ select {
     justify-content: flex-start;
     align-items: center;
     padding-left: 10px;
+}
+
+.comment-inner {
+    margin-left: 5px;
+    display: flex;
+    width: 54px;
+    height: 25px;
+    border: 0.5px solid #8B8B8B;
+    color: gray;
+    box-sizing: border-box;
+    border-radius: 30px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 14px;
+
+    img {
+        width: 17px;
+    }
+
+    span{
+        margin-left: 7px;
+        font-size: 13px;
+        color: gray;
+    }
 }
 
 // 좋아요 하트

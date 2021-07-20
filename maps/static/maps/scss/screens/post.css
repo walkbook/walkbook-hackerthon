@@ -28,7 +28,7 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 
 .post-box { display: flex; }
 
-.post-img { width: 156px; display: flex; justify-content: center; align-items: center; background-color: #d1d1d1; border-radius: 6px; box-sizing: border-box; margin: 10px 0; }
+.post-img { width: 166px; display: flex; justify-content: center; align-items: center; background-color: #d1d1d1; border-radius: 6px; box-sizing: border-box; margin: 10px 0; }
 
 .post-img .post-img-basic { width: 30%; height: 23%; }
 
@@ -61,6 +61,12 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 .like-container { display: flex; justify-content: flex-end; }
 
 .like-inner { display: flex; width: 54px; height: 25px; border: 0.5px solid #8B8B8B; box-sizing: border-box; border-radius: 30px; box-sizing: border-box; justify-content: flex-start; align-items: center; padding-left: 10px; }
+
+.comment-inner { margin-left: 5px; display: flex; width: 54px; height: 25px; border: 0.5px solid #8B8B8B; color: gray; box-sizing: border-box; border-radius: 30px; box-sizing: border-box; justify-content: flex-start; align-items: center; padding-left: 10px; font-size: 14px; }
+
+.comment-inner img { width: 17px; }
+
+.comment-inner span { margin-left: 7px; font-size: 13px; color: gray; }
 
 .material-icons mdl-badge, .mdl-badge--overlap { color: #F44337; font-size: 19px; }
 
