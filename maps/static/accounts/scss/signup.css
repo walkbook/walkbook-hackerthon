@@ -20,7 +20,7 @@
 
 .signup_container #signup-form .signup #validate-id, .signup_container #signup-form .signup #validate-password, .signup_container #signup-form .signup #same-password { font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 15px; line-height: 36px; letter-spacing: -0.015em; }
 
-.signup_title { display: flex; width: 360px; margin: 5px; }
+.signup_title { display: flex; flex-direction: column; width: 360px; margin: 5px; }
 
 .signup_title label { width: 100%; display: flex; justify-content: flex-start; }
 
@@ -31,5 +31,7 @@
 .signupbtn:hover { background-color: var(--deepgreen); cursor: pointer; }
 
 .validate-id { position: absolute; left: 400px; }
+
+.signup_container label.password-desc { display: flex; font-size: 3px; color: var(--yellow); justify-content: flex-start; height: 20px; }
 
 /*# sourceMappingURL=signup.css.map */

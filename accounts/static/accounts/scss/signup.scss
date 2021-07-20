@@ -115,6 +115,7 @@
 
 .signup_title {
     display: flex;
+    flex-direction: column;
     width: 360px;
     margin: 5px;
 
@@ -152,4 +153,13 @@
 .validate-id {
     position: absolute;
     left: 400px;
+}
+
+.signup_container label.password-desc {
+    display: flex;
+    font-size: 3px;
+    color: var(--yellow);
+    justify-content: flex-start;
+    height: 20px;
+
 }
