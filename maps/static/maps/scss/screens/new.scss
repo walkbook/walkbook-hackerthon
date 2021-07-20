@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
 .body-layout {
+    font-family: 'Nanum Gothic', sans-serif;
     .enroll-announce {
         color: var(--yellow);
         font-size: 24px;
@@ -60,7 +61,7 @@
     position: absolute;
     top: 4px;
     left: 4px;
-    width: 202px;
+    width: 220px;
     height: 38px;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -72,10 +73,12 @@
         background: linear-gradient(180deg, #98C794 -26.67%, #49A59A 100%);
         border-radius: 3px;
         border: none;
-        width: auto;
+        width: 50px;
         height: 32px;
         padding: 8.5px;
         color: white;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-size: 10px;
     }
     button:hover {
         cursor: pointer;
@@ -97,7 +100,7 @@
 }
 
 .loading-background {
-    margin-top: 19px;
+    margin-top: 25px;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     width: 100%;
@@ -138,15 +141,15 @@
 }
 
 .loading-msg {
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 195px;
+    padding-top: 230px;
     color: rgb(255, 255, 255);
     z-index: 5;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .new-announce_announce {
@@ -161,6 +164,7 @@
     padding-top: 5px;
     box-sizing: border-box;
     align-items: center;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .new-announce_second {
@@ -170,6 +174,7 @@
     padding-bottom: 5px;
     box-sizing: border-box;
     align-items: center;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .announce-marker, .announce-polyline {
@@ -183,6 +188,7 @@
     height: 27px;
     padding: 8.5px;
     color: white;
+    font-size: 10px;
 }
 
 .new-announce_img {
@@ -209,19 +215,24 @@
     justify-content: center;
 
     h4 {
-        margin-left: 23px;
+        margin-left: 20px;
         font-size: 14px;
         color: var(--deepgreen);
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Nanum Gothic', sans-serif;
         font-weight: 600;
     }
 
     input {
-        margin: 10px;
+        margin: 0px 10px 10px 10px;
         padding-left: 15px;
         color: rgb(119, 119, 119);
         display: flex;
         align-items: flex-start;
+        font-family: 'Nanum Gothic', sans-serif;
+    }
+
+    input::placeholder {
+        color: rgb(173, 173, 173);
     }
 }
 
@@ -231,16 +242,16 @@
 
 
 .input-name {
-    background-color: rgba(146, 146, 146, 0.301);
+    background-color: rgba(131, 131, 131, 0.301);
 }
 
 .name-box {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .title-desc-box {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: auto;
 
     .title-box {
@@ -254,7 +265,7 @@
 
 .start-fin-box {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: auto;
 
     .start-box {
@@ -267,7 +278,7 @@
 
 .start-fin-box {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .tmi-box {
@@ -282,9 +293,9 @@
     border-radius: 40px;
     border: none;
     color: white;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
     font-style: normal;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 21px;
     letter-spacing: -0.035em;
 }
@@ -299,4 +310,13 @@
 
 .enroll-btn:hover {
     cursor: pointer;
+}
+
+h4.title-name,
+h4.title-title,
+h4.title-desc,
+h4.title-start,
+h4.title-fin,
+h4.title-tmi {
+    margin: 20px 0 0 18px;
 }
