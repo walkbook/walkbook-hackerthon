@@ -6,21 +6,23 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
 
     <div class="body-layout">
-        <div class="map-search">
-            <form action="{%url 'maps:map' %}" method="GET">
-                <center>
-                <div class="search-map">
-                    <select class="type-select" name="type">
-                    <option value="all">전체</option>
-                    <option value="title">제목</option>
-                    <option value="titlecontent">제목+내용</option>
-                    </select>
-                    <input name="keyword" id="keyword" type="text" />
-                    <button name="search-btn" id="search-btn" type="submit">검색</button>
-                </div>
-                </center>
-            </form>
-        </div> 
+        <div class="map-all">
+            <div class="map-search">
+                <form action="{%url 'maps:map' %}" method="GET">
+                    <center>
+                    <div class="search-map">
+                        <select class="type-select" name="type">
+                            <option value="all">전체</option>
+                            <option value="title">제목</option>
+                            <option value="titlecontent">제목+내용</option>
+                        </select>
+                        <input name="keyword" id="keyword" type="text" />
+                        <button name="search-btn" id="search-btn" type="submit">검색</button>
+                    </div>
+                    </center>
+                </form>
+            </div>
+        </div>
         
         {% comment %} <p>현재 위치 주변에서 산책로를 찾아보세요! (현재 위치 허용 눌러주라는 안내 만들자!)</p> {% endcomment %}
         {% csrf_token %}
