@@ -26,17 +26,17 @@
 
             </p>
         </a>
-            {% comment %} <div>{{user.profile.username}}님 환영합니다.</div> {% endcomment %}
-            <a class="suggest" href="{% url 'maps:new' %}">
-                <img class="icons main-suggest" src="{% static 'maps/img/suggest.png' %}" />
-                <p class="arrow-box main-suggest-box">
-                    🌱 산책로 등록하기
-                    <br>
-                    <br>
-                    나만의 산책로를 개척해보세요.
-                </p>
-            </a>
-            <a class="mypage" href="{% url 'mypage:mypage' %}">
+        <a class="suggest" href="{% url 'maps:new' %}">
+            <img class="icons main-suggest" src="{% static 'maps/img/suggest.png' %}" />
+            <p class="arrow-box main-suggest-box">
+                🌱 산책로 등록하기
+                <br>
+                <br>
+                나만의 산책로를 개척해보세요.
+            </p>
+        </a>
+        {% if user.is_authenticated %}
+            <a class="mypage" href="{% url 'mypage:mypage' user.id %}">
                 <img class="icons main-mypage" src="{% static 'maps/img/mypage_img.png' %}" />
                 <p class="arrow-box main-mypage-box">
                     📒 마이페이지
@@ -45,7 +45,17 @@
                     나만의 산책 이야기를 꾸며보세요.
                 </p>
             </a>
-            {% comment %} <a href="{% url 'checkpw'%}">내 정보수정</a> {% endcomment %}
+        {% else %}
+            <a class="mypage" href="{% url 'login' %}">
+                <img class="icons main-mypage" src="{% static 'maps/img/mypage_img.png' %}" />
+                <p class="arrow-box main-mypage-box">
+                    📒 마이페이지
+                    <br>
+                    <br>
+                    나만의 산책 이야기를 꾸며보세요.
+                </p>
+            </a>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}

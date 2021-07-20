@@ -35,8 +35,10 @@
                 소개 : {{user.profile.introduce}}
             {% endif %}
         </div>
-        <a id="edit-profile" href="{% url 'mypage:profile'%}">프로필 수정하기</a>
-        <a id="edit-myinfo" href="{% url 'checkpw'%}">내정보 수정하기</a>
+        {% if user.id == request.user.id %}
+            <a id="edit-profile" href="{% url 'mypage:profile' user.id %}">프로필 수정하기</a>
+            <a id="edit-myinfo" href="{% url 'checkpw'%}">내정보 수정하기</a>
+        {% endif %}
     </div>
 </div>
 <div class="walkroad-posts">

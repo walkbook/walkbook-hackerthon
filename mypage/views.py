@@ -5,11 +5,11 @@ from maps.models import Walkroad
 import json
 
 # Create your views here.
-def mypage(request):
-    if request.user.is_authenticated == False:
+def mypage(request, id):
+    user = User.objects.get(id=id)      
+    if (user is None) :
         return redirect('login')    
     if request.method == 'GET':
-        user = User.objects.get(id=request.user.id)      
         registeredWalkroads = Walkroad.objects.filter(author=user)
         likedWalkroads = user.like_walkroads.all()
         
@@ -29,15 +29,15 @@ def mypage(request):
           'like_walkroad_paths': like_walkroad_paths
         })
 
-def profile(request):
+def profile(request, id):
     if request.user.is_authenticated == False:
         return redirect('login')
     if request.method =='GET':    
-        user = User.objects.get(id=request.user.id) 
+        user = User.objects.get(id=id) 
         return render(request, 'mypage/profile.html', {'user': user})
 
     elif request.method =='POST':
-        user = User.objects.get(id=request.user.id)     
+        user = User.objects.get(id=id)     
         profile = Profile.objects.filter(user = user) 
         
         feature = request.POST['feature']
@@ -45,4 +45,4 @@ def profile(request):
         introduce = request.POST['introduce']
         profile.update(feature=feature, likehour=likehour, introduce=introduce)
 
-        return redirect('mypage:mypage')
+        return redirect('mypage:mypage', id=user.id)
