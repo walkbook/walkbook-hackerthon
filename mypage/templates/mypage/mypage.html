@@ -4,62 +4,128 @@
 {% load sass_tags %}
     <link rel="stylesheet" type="text/css" href="{% sass_src 'mypage/scss/mypage.scss' %}"/>
 {% endblock style %}
+
 {% block content %}
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
+
 <div class="profile">
-	<h1 class="workbook">{{user.username}}의 워크북</h1>
-	<div class="profile-box">
-		<div id="walkroad-count">
-			총 {{registeredWalkroads.count}} 개의 산책로를 등록했네요!
-		</div>
-		<div id="profile1">
-			{% if user.profile.feature == ''%}
-				아직 선호하는 산책로 특징을 등록하지 않으셨네요! 
-			{% else %}
-			선호하는 산책로 : {{user.profile.feature}}
-			{% endif %}
-		</div>
-		<div id="profile2">			
-			{% if user.profile.likehour == ''%}
-				선호 시간대를 등록해주세요!
-			{% else %}
-				선호 시간대 : {{user.profile.likehour}}
-			{% endif %}
-		</div>
-		<div id="profile3">
-			{% if user.profile.introduce == ''%}
-				소개글을 등록해서 자기자신을 소개해주세요!
-			{% else %}
-				소개 : {{user.profile.introduce}}
-			{% endif %}
-		</div>
-		<a id="edit-profile" href="{% url 'mypage:profile'%}">프로필 수정하기</a>
-		<a id="edit-myinfo" href="{% url 'checkpw'%}">내정보 수정하기</a>
-	</div>
+    <h1 class="workbook">{{user.username}}의 워크북</h1>
+    <div class="profile-box">
+        <div id="walkroad-count">
+            총 {{registeredWalkroads.count}} 개의 산책로를 등록했네요!
+        </div>
+        <div id="profile1">
+            {% if user.profile.feature == ''%}
+                아직 선호하는 산책로 특징을 등록하지 않으셨네요! 
+            {% else %}
+            선호하는 산책로 : {{user.profile.feature}}
+            {% endif %}
+        </div>
+        <div id="profile2">			
+            {% if user.profile.likehour == ''%}
+                선호 시간대를 등록해주세요!
+            {% else %}
+                선호 시간대 : {{user.profile.likehour}}
+            {% endif %}
+        </div>
+        <div id="profile3">
+            {% if user.profile.introduce == ''%}
+                소개글을 등록해서 자기자신을 소개해주세요!
+            {% else %}
+                소개 : {{user.profile.introduce}}
+            {% endif %}
+        </div>
+        {% if user.id == request.user.id %}
+            <a id="edit-profile" href="{% url 'mypage:profile' user.id %}">프로필 수정하기</a>
+            <a id="edit-myinfo" href="{% url 'checkpw'%}">내정보 수정하기</a>
+        {% endif %}
+    </div>
 </div>
 <div class="walkroad-posts">
-	<a id="registered-posts">등록한 산책로</a>
-	<a id="liked-posts">좋아하는 산책로</a>
-	<input id="search-posts" type="text">
-	<button id="search-posts-btn">검색</button>
+    <a id="registered-posts">등록한 산책로</a>
+    <a id="liked-posts">좋아하는 산책로</a>
+    <input id="search-posts" type="text">
+    <button id="search-posts-btn">검색</button>
 
-	<div class="registered-posts">
-		{% for walkroad in registeredWalkroads %}
-			<div class="registered-post">
-				<a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
-				{{ walkroad.description}}
-			</div>
-		{% endfor %}
-	</div>
+    <div class="registered-posts">
+        {% for walkroad in registeredWalkroads %}
+            <div class="registered-post">
+                <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
+                {{ walkroad.description}}
+            </div>
+        {% endfor %}
+    </div>
 
-	<div class="liked-posts">
-		{% for walkroad in likedWalkroads %}
-			<div class="liked-post hide">
-				<a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
-				{{ walkroad.description}}
-				{{ walkroad.author }}
-			</div>
-		{% endfor %}
-	</div>
+    <div class="liked-posts">
+        {% for walkroad in likedWalkroads %}
+            <div class="liked-post hide">
+                <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
+                {{ walkroad.description}}
+                {{ walkroad.author }}
+            </div>
+        {% endfor %}
+    </div>
 </div>
+
+{% csrf_token %}
+<div class="mapbox">
+    <div class="map-input">
+        <div class="map-input_wrap">
+            <input type="text" name="location" class ="map-input_location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
+            <button type="submit" id="address-location-button" class="address-location-button">설정</button>
+        </div>
+        <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
+    </div>
+    <button id="my-walkroad-button" onclick="myWalkroad()" disabled>등록한 산책로</button>
+    <button id="like-walkroad-button" onclick="likeWalkroad()">좋아한 산책로</button>
+    <div id="map" style="width:100%;height:600px;">
+        <div id="loading" class="loading-class">
+            <div class="loading-background loading-background_map">
+                <div id="loading-bar-spinner" class="spinner">
+                    <div class="spinner-icon"></div>
+                </div>
+                <div class="loading-msg loading-msg_map">📍현 위치 파악 중!</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const my_walkroads = {{ my_walkroads | safe }};
+    const like_walkroads = {{ like_walkroads | safe }};
+
+    const my_walkroad_paths = {{ my_walkroad_paths | safe }};
+    const like_walkroad_paths = {{ like_walkroad_paths | safe }};
+
+    let walkroads = my_walkroads;
+    let walkroad_paths = my_walkroad_paths;
+
+    let userAddress;
+    if ("{{ request.user.is_anonymous }}" == "True") {
+        userAddress = "신림로 1";
+    } else {
+        userAddress = "{{ request.user.profile.location | safe }}";
+    }     
+    const geocoder = new kakao.maps.services.Geocoder();
+
+    const container = document.getElementById('map');
+    const options = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 4
+    };
+
+    const map = new kakao.maps.Map(container, options);
+
+    let currentLocationMarker;
+    let currentLocationInfowindow;
+
+    const setCenterByCurrentLocation = true;
+
+    let overlays = [];
+</script>
+<script src="{% static 'maps/js/components.js' %}"></script>
+<script src="{% static 'maps/js/initial.js' %}"></script>
+<script src="{% static 'maps/js/map.js' %}"></script>
+<script src="{% static 'maps/js/mypage.js' %}"></script>
+
 <script type="module" src="{% static 'mypage/js/mypage.js' %}"></script>
 {% endblock content %}
