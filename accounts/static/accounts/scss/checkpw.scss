@@ -18,23 +18,28 @@
     label {
         width: 46.89px;
         height: 40px;
-        font-family: Montserrat;
         font-style: normal;
         font-weight: bold;
         font-size: 16px;
         line-height: 36px;
         letter-spacing: -0.015em;
         color: #98C794;
+        font-family: 'Nanum Gothic', sans-serif;
     }
 
     .input-btn {
-        width: 80px;
+        width: 150px;
         height: 40px;
-        margin-top: 50px;
+        margin-top: 70px;
         margin-bottom: 30px;
         background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
-        border-radius: 30px;
+        border-radius: 50px;
+        border: none;
+        color: white;
+        font-family: 'Nanum Gothic', sans-serif;
+
     }
+    
 
     #password {
         width: 380px;
@@ -46,6 +51,15 @@
 
     .checkpw-title {
         margin: 5px;
-        margin-top: 50px;
+        margin-top: 30px;
     }
+}
+
+#password {
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+.input-btn:hover {
+    cursor: pointer;
 }
