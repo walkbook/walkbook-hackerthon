@@ -49,7 +49,7 @@
                 <div class="info_wrap">
                     <div class="author_wrap">
                         <p>author</p>
-                        <div>{{ walkroad.author.profile.username }}</div>
+                        <a class="mypage" href="{% url 'mypage:mypage'  walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
                     </div>
                     <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
                     <p id="total-time">소요 시간 : {{ walkroad.time }}</p>

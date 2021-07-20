@@ -3,6 +3,6 @@ from mypage import views
 
 app_name = 'mypage'
 urlpatterns = [
-    path('', views.mypage, name='mypage'),
-    path('profile/', views.profile, name='profile'),
+    path('<int:id>/', views.mypage, name='mypage'),
+    path('<int:id>/profile/', views.profile, name='profile'),
 ]
