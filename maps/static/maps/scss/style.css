@@ -78,7 +78,7 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .input-long-m { width: 97%; height: 100px; }
 
-.mapbox { display: flex; flex-direction: column; align-items: center; }
+.mapbox { height: auto; display: flex; flex-direction: column; align-items: center; }
 
 .mapbox .map-input { width: 100%; display: flex; align-items: center; justify-content: flex-end; margin: 10px; }
 
@@ -100,9 +100,11 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .mapbox #map { border-radius: 5px; }
 
-.loading-background_map { position: absolute; width: 100%; height: 110%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; margin-top: 30px !important; }
+.loading-background_map { position: absolute; width: 100%; height: 100%; top: 51.2%; left: 50%; transform: translate(-50%, -50%); z-index: 3; margin-top: 30px !important; }
 
-.loading-msg { height: 80px; }
+.loading-msg { height: 110%; }
+
+.mapbox-map { height: 1000px; }
 
 @keyframes shake { 0% { transform: rotate(2deg); }
   33% { transform: rotate(-2deg); }
@@ -199,7 +201,7 @@ body { font-family: 'Nanum Gothic', sans-serif; }
     transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-.loading-msg { font-size: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 230px; color: white; z-index: 5; font-family: 'Nanum Gothic', sans-serif; }
+.loading-msg { font-size: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; z-index: 5; font-family: 'Nanum Gothic', sans-serif; }
 
 .new-announce_announce { display: flex; flex-direction: column; }
 
