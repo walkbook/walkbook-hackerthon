@@ -30,29 +30,52 @@
         .profile-feature,
         .profile-likehour,
         .profile-introduce {
-            margin: 5px;
+            margin: 3px;
         }
     }
     label {
-        width: 46.89px;
-        height: 40px;
-        font-family: Montserrat;
+        display: flex;
+        align-items: flex-end;
+        width: 370px;
+        height: 50px;
+        font-family: 'Nanum Gothic', sans-serif;
         font-style: normal;
         font-weight: bold;
-        font-size: 16px;
-        line-height: 36px;
+        font-size: 14px;
+        line-height: 17px;
         letter-spacing: -0.015em;
         color: #98C794;
+        padding: 5px;
+        font-size: 12px;
     }
-
+    
+    input {
+        padding-left: 8px;
+        box-sizing: border-box;
+    }
     .edit-btn {
     width: 200px;
-    height: 55px;
-    margin-top: 50px;
-    margin-bottom: 30px;
+    height: 43px;
+    margin-top: 70px;
+    margin-bottom: 50px;
     background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
+    border: none;
+    color: white;
+    justify-content: center;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
 }
 }
 
+label.profile-desc {
+    display: flex;
+    font-size: 3px;
+    color: var(--yellow);
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 10px;
+}
 

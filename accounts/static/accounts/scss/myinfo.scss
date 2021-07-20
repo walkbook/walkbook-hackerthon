@@ -1,7 +1,30 @@
 @import '../../../../maps/static/maps/scss/components/btn/btn-mid.scss';
 @import '../../../../maps/static/maps/scss/components/line/line-mid.scss';
+
+.username-box {
+    width: 380px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px dashed rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Montserrat;
+    background-color: rgb(231, 231, 231);
+
+}
+.locker {
+    width: 20px;
+    height: 20px;
+}
+
 .myinfo-container {
-    padding-top: 150px;
+    padding-top: 110px;
     h1 {
         width: 200px;
         height: 39.86px;
@@ -15,19 +38,30 @@
     }
 
     label {
-        font-family: Montserrat;
+        display: flex;
+        align-items: flex-end;
+        width: 370px;
+        height: 50px;
+        font-family: 'Nanum Gothic', sans-serif;
         font-style: normal;
         font-weight: bold;
-        font-size: 16px;
-        line-height: 36px;
+        font-size: 14px;
+        line-height: 17px;
         letter-spacing: -0.015em;
         color: #98C794;
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    input {
+        padding-left: 8px;
+        box-sizing: border-box;
     }
 
     #myinfo-form {
         .myinfo {
             #location {
-                width: 300px;
+                width: 310px;
                 height: 40px;
                 background: #FFFFFF;
                 border: 1px dashed rgba(0, 0, 0, 0.5);
@@ -47,9 +81,17 @@
 
             #searchLocation {
                 width: 70px;
-                height: 30px;
+                height: 40px;
                 background: #98C794;
                 border-radius: 10px;
+                border: none;
+                color: white;
+                font-size: 12px;
+            }
+
+            #searchLocation:hover {
+                background-color: var(--deepgreen);
+                cursor: pointer;
             }
 
             #validate-password,
@@ -64,10 +106,21 @@
         }
     }
     .btn-mid {
-        margin: 30px;
+        margin: 100px;
+        color: white;
+        height: 45px;
+        font-family: 'Nanum Gothic', sans-serif;
     }
 }
 
 .myinfo_title {
     margin: 0;
+}
+
+label.password-desc {
+    display: flex;
+    font-size: 3px;
+    color: var(--yellow);
+    justify-content: flex-start;
+    height: 10px;
 }
