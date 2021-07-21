@@ -76,8 +76,10 @@
               {% endif %}
             </div>
             <div class="comment-inner">
-              <img src="{% static 'maps/img/speech-bubble.png' %}" />
-              <span>{% comment %}코멘트 개수 들어갈 자리{% endcomment %}0</span>
+              <a href="{% url 'maps:show' walkroad.id %}">
+                <img src="{% static 'maps/img/speech-bubble.png' %}"/>
+              </a>
+              <span>{{ walkroad.comment_set.count }}</span>
             </div>
 
           </div>
