@@ -23,6 +23,29 @@
                         <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
                     </div>
                     {% endif %}
+                    <div class="like-inner">
+                    {% if user.is_authenticated %}
+                        <a
+                        id="{{walkroad.id}}-like-button"
+                        onclick="onClickLikeBtn({{walkroad.id}})"
+                        class="material-icons mdl-badge mdl-badge--overlap"
+                        data-badge="{{ walkroad.like_users.count }}"
+                        >
+                    {% if user in walkroad.like_users.all %} 
+                        favorite 
+                    {% else %}
+                        favorite_border 
+                    {% endif %}
+                        </a>
+                    {% else %}
+                        <div
+                        class="material-icons mdl-badge mdl-badge--overlap"
+                        data-badge="{{ walkroad.like_users.count }}"
+                        >
+                        favorite_border
+                        </div>
+                    {% endif %}
+                    </div>
                 </div>
 
                 <img class="line-short-m line-short-show" src="{% static 'maps/img/line.png' %}">
@@ -154,4 +177,5 @@
     <script src="{% static 'maps/js/components.js' %}"></script>
     <script src="{% static 'maps/js/initial.js' %}"></script>
     <script src="{% static 'maps/js/show.js' %}"></script>
+    <script src="{% static 'maps/js/post.js' %}"></script>
     {% endblock content %}
