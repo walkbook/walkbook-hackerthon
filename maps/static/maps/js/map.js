@@ -1,11 +1,17 @@
-for (let i = 0; i < walkroad_paths.length; i++) {
-    const path = JSON.parse(walkroad_paths[i].path);
-    drawPolyline(walkroad_paths[i].id, path[kakao.maps.drawing.OverlayType.POLYLINE]);
+draw()
+
+function draw() {
+    for (let i = 0; i < walkroad_paths.length; i++) {
+        const path = JSON.parse(walkroad_paths[i].path);
+        drawPolyline(walkroad_paths[i].id, path[kakao.maps.drawing.OverlayType.POLYLINE]);
+    }
 }
 
 // Drawing Manager에서 가져온 데이터 중 선을 아래 지도에 표시하는 함수입니다
 function drawPolyline(id, lines) {
     let len = lines.length, i = 0;
+
+    if (walkroads.length === 0) return;
 
     const walkroad = walkroads.find(x => x.id === id)
     const like_count = walkroad.like_users ? walkroad.like_users : 0;
@@ -21,6 +27,8 @@ function drawPolyline(id, lines) {
             strokeStyle: style.strokeStyle,
             strokeWeight: style.strokeWeight
         });
+
+        overlays.push(polyline);
 
         const infowindow = new kakao.maps.InfoWindow({
             content: pathInfoContent(id, walkroad.title, walkroad.description, walkroad.time, like_count),
@@ -55,4 +63,14 @@ function pointsToPath(points) {
     }
 
     return path;
+}
+
+function removeOverlays() {
+    let len = overlays.length, i = 0;
+
+    for (; i < len; i++) {
+        overlays[i].setMap(null);
+    }
+
+    overlays = [];
 }

@@ -12,7 +12,7 @@
 <p> PROFILE </p>
 <img class="line-mid" src="{% static 'maps/img/line.png' %}">
 
-<form id="profile-form" method="POST" action="{%url 'mypage:profile' %}">
+<form id="profile-form" method="POST" action="{%url 'mypage:profile' user.id %}">
     {% csrf_token %}
     <div class="profile-feature">
         <h3 class="profile-feature">

@@ -22,14 +22,14 @@
         {% endif %}
     </div>
 
-    {% comment %} <div id="loading">
+    <div id="loading">
         <div class="loading-background">
             <div id="loading-bar-spinner" class="spinner">
                 <div class="spinner-icon"></div>
             </div>
             <div class="loading-msg">📍현 위치 파악 중!</div>
         </div>
-    </div> {% endcomment %}
+    </div>
 
     <img class="line-long" src="{% static 'maps/img/line.png' %}" />
 
@@ -54,7 +54,7 @@
             <div class="info_wrap">
                 <div class="author_wrap">
                     <p>author</p>
-                    <div>{{ walkroad.author.profile.username }}</div>
+                    <a class="mypage" href="{% url 'mypage:mypage'  walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
                 </div>
                 <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
                 <p id="total-time">소요 시간 : {{ walkroad.time }}</p>
@@ -91,6 +91,7 @@
             </p>
             {% endfor %}
         </div>
+</div>
     <script>
         const path = {{ walkroad.path | safe }};
         const infowindow = {{ walkroad.infowindow | safe }};

@@ -1,5 +1,3 @@
-from django.db import connections
-from django.http import request
 from django.http.response import JsonResponse
 from maps.models import Walkroad, Like, Comment, CommentLike
 from django.shortcuts import redirect, render
@@ -7,17 +5,31 @@ from django.db.models import Q, Count
 from django.views.generic import ListView
 import json
 
-# Create your views here.
 def index(request):
     return render(request, 'maps/index.html')
 
 def map(request):
-    walkroads = list(Walkroad.objects.all().values('author', 'title', 'description', 'distance', 'time', 'like_users', 'id'))
-    walkroad_paths = list(Walkroad.objects.all().values('id', 'path'))
-    return render(request, 'maps/map.html', { 
-        'walkroads': json.dumps(walkroads),
-        'walkroad_paths': walkroad_paths
-    })
+    if request.method == 'GET':
+        type = request.GET.get('type', '')
+        keyword = request.GET.get('keyword', '')
+
+        walkroads = Walkroad.objects.all()
+
+        if type == 'all':
+            walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword) | Q(tmi__icontains=keyword))
+        elif type == 'title':
+            walkroads = walkroads.filter(Q(title__icontains=keyword))
+        elif type == 'titlecontent':
+            walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword))
+
+        walkroad_paths = list(walkroads.values('id', 'path'))
+        walkroads = json.dumps(list(walkroads.values('author', 'title', 'description', 'distance', 'time', 'like_users', 'id')))
+        return render(request, 'maps/map.html', { 
+            'walkroads': walkroads,
+            'walkroad_paths': walkroad_paths,
+            'type' : type,
+            'keyword': keyword
+        })
 
 class PostView(ListView):
     model = Walkroad
@@ -34,7 +46,7 @@ class PostView(ListView):
             walkroads = Walkroad.objects.all().annotate(count=Count('like_users')).order_by('-count', '-created_at')
         
         if type == 'all':
-            walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword))
+            walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword) | Q(tmi__icontains=keyword))
         elif type == 'title':
             walkroads = walkroads.filter(Q(title__icontains=keyword))
         elif type == 'titlecontent':
