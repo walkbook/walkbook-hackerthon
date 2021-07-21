@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&display=swap");
 /* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
@@ -54,7 +55,45 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .line-long-m { width: 100%; height: 50px; margin-bottom: 20px; margin-top: 70px; }
 
-.geoSuccessMsg-class { display: flex; justify-content: center; align-items: center; width: 160px; height: 25px; text-align: center; padding: 6px 0; background-color: var(--green); border-radius: 30px; color: #3b3b3b; border: none; font-size: 15px; font-family: 'Montserrat', sans-serif; }
+.geoSuccessMsg-class { display: flex; justify-content: center; align-items: center; width: 140px; height: 25px; text-align: center; padding: 6px 0; background-color: #ebebeb; border-radius: 5px; color: #666666; border: none; font-size: 13px; font-family: 'Nanum Gothic', sans-serif; }
+
+.wrap-i { position: absolute; left: 0; bottom: -30px; width: 190px; height: auto; margin-left: -20px; text-align: left; overflow: hidden; font-size: 12px; font-family: 'Malgun Gothic', dotum, '돋움', sans-serif; line-height: 1.5; box-sizing: border-box; }
+
+.wrap-i * { padding: 0; margin: 0; background-color: rgba(204, 204, 204, 0); }
+
+.wrap-i .info-i { width: 286px; height: auto; border-radius: 5px; border-bottom: 2px solid #ccc; border-right: 1px solid #ccc; overflow: hidden; background: #fff; }
+
+.wrap-i .info-i:nth-child(1) { border: 0; box-shadow: 0px 1px 2px #888; }
+
+.info-i .title-i { padding: 7px 0 6px 10px; height: 20px; background: rgba(247, 66, 11, 0.13); font-size: 14px; font-weight: bold; }
+
+.info-i .close-i { position: absolute; top: 7px; right: 5px; color: #888; width: 17px; height: 17px; }
+
+.info-i .close-i:hover { cursor: pointer; }
+
+.info-i .body-i { position: relative; overflow: hidden; box-sizing: border-box; padding: 10px 15px; }
+
+.ellipsis-i { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.wrap-p { position: absolute; left: 0; bottom: -30px; width: 190px; height: auto; margin-left: -20px; text-align: left; overflow: hidden; font-size: 12px; font-family: 'Malgun Gothic', dotum, '돋움', sans-serif; line-height: 1.5; box-sizing: border-box; }
+
+.wrap-p * { padding: 0; margin: 0; background-color: rgba(204, 204, 204, 0); }
+
+.wrap-p .info-p { width: 286px; height: auto; border-radius: 5px; border-bottom: 2px solid #ccc; border-right: 1px solid #ccc; overflow: hidden; background: #fff; }
+
+.wrap-p .info-p:nth-child(1) { border: 0; box-shadow: 0px 1px 2px #888; }
+
+.info-p .title-p { padding: 7px 0 6px 10px; height: 20px; background: rgba(66, 26, 3, 0.24); font-size: 14px; font-weight: bold; }
+
+.info-p .like-p { position: absolute; top: 8px; right: 25px; color: rgba(58, 30, 5, 0.664); width: 30px; height: 17px; }
+
+.info-p .like-p:hover { cursor: pointer; }
+
+.info-p .body-p { position: relative; overflow: hidden; box-sizing: border-box; padding: 10px 15px; color: #4e2908; font-weight: 600; }
+
+.info-p .body-p span { color: gray; }
+
+.ellipsis-p { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .line-short { width: 300px; height: 35.92px; }
 
