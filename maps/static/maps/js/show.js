@@ -24,7 +24,10 @@ function drawMarker(markers, infowindows) {
             position: marker.getPosition(),
         });
 
-        mappingData[i] = { marker, infowindow }
+        mappingData[i] = {
+            marker,
+            infowindow
+        }
 
         kakao.maps.event.addListener(marker, 'click', function () {
             infowindow.setMap(map);
@@ -34,7 +37,8 @@ function drawMarker(markers, infowindows) {
 
 // Drawing Manager에서 가져온 데이터 중 선을 아래 지도에 표시하는 함수입니다
 function drawPolyline(lines) {
-    var len = lines.length, i = 0;
+    var len = lines.length,
+        i = 0;
 
     for (; i < len; i++) {
         var path = pointsToPath(lines[i].points);
@@ -68,4 +72,55 @@ function pointsToPath(points) {
 
 function closeOverlay(id) {
     mappingData[id].infowindow.setMap(null);
+}
+
+const onSetCommentCount = (commentCount) => {
+    const commentCountElement = document.getElementById('comment-count');
+    commentCountElement.innerHTML = `<strong>댓글이 ${commentCount}개 있습니다</strong>`;
+}
+
+const getCommentElement = (walkroadId, commentId, commentCount, comment, createdTime, author) => {
+    var commentElement = document.createElement('p');
+    commentElement.id = `walkroad${walkroadId}-comment${commentId}`;
+    commentElement.innerHTML = `${author}: ${comment} &nbsp; &nbsp; ${createdTime}
+                                <a id="comment${commentId}-like-button" onclick="onLikeComment(${commentId})">
+                                ${ commentCount } Likes </a>
+                                <a onclick="onDeleteComment(${walkroadId}, ${commentId})">댓글 삭제</a>`
+    return commentElement;
+}
+
+const onAddComment = async (walkroadId) => {
+    const commentInputElement = document.getElementById(`walkroad${walkroadId}-comment-input`);
+    const data = new FormData();
+    data.append("content", commentInputElement.value);
+    const response = await axios.post(`/maps/${walkroadId}/comments/`, data);
+    const {
+        commentId,
+        commentCount,
+        commentLikeCount,
+        createdTime,
+        author
+    } = response.data;
+    const commentElement = getCommentElement(walkroadId, commentId, commentLikeCount, commentInputElement.value, createdTime, author);
+    document.getElementById(`${walkroadId}-comment-list`).appendChild(commentElement);
+    onSetCommentCount(commentCount);
+    commentInputElement.value = '';
+}
+
+const onLikeComment = async (commentId) => {
+    const CommentLikeButton = document.getElementById(`comment${commentId}-like-button`);
+    const response = await axios.get(`/maps/${commentId}/commentlike/`);
+    const commentLikeCount = response.data.commentLikeCount;
+    CommentLikeButton.innerHTML = `${commentLikeCount} Likes`;
+}
+
+const onDeleteComment = async (walkroadId, commentId) => {
+    if (confirm('댓글을 정말 삭제하시겠습니까?')) {
+        const response = await axios.delete(`/maps/${walkroadId}/comments/${commentId}/`);
+        const commentElement = document.getElementById(`walkroad${walkroadId}-comment${commentId}`);
+
+        const commentCount = response.data.commentCount;
+        onSetCommentCount(commentCount);
+        commentElement.remove();
+    }
 }

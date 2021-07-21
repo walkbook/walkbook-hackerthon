@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
+{% block js %}
+<script type="module" src="{% static 'maps/js/show.js' %}"></script>
+{% endblock js %}
 {% block content %}
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
     <div class="body-layout body-layout-show">
@@ -61,6 +63,16 @@
                     <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
                 </div>
             </div>
+            <!-- 지도타입 컨트롤 div 입니다 -->
+            <div class="custom_typecontrol radius_border">
+                <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
+                <span id="btnSkyview" class="btn" onclick="setMapType('skyview')">스카이뷰</span>
+            </div>
+            <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+            <div class="custom_zoomcontrol radius_border"> 
+                <span onclick="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>  
+                <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
+            </div>
             <div id="map" style="width:100%;height:700px;">
                 <div id="loading">
                     <div class="loading-background loading-background-round">
@@ -70,10 +82,42 @@
                         <div class="loading-msg loading-msg-show">📍현 위치 파악 중!</div>
                     </div>
                 </div>
+                <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
+                <p id="total-time">소요 시간 : {{ walkroad.time }}</p>
+                <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
+                <p id="total-distance">총 거리 : {{ walkroad.distance }}</p>
+                <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
+                <p>startㅤㅤㅤㅤ<span>{{ walkroad.start }}</span></p>
+                <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
+                <p>finishㅤㅤㅤㅤ<span>{{ walkroad.finish }}</span></p>
+                <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
+                <p>tmiㅤㅤㅤㅤ<span>{{ walkroad.tmi }}</span></p>
+                <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
             </div>
         </div> 
     </div>
-
+    <img class="line-long-m" src="{% static 'maps/img/line.png' %}">
+    <p id="comment-count"><strong>댓글이 {{walkroad.comment_set.count}}개 있습니다</strong></p>
+    <p>
+        {% csrf_token %}
+        <input id="walkroad{{walkroad.id}}-comment-input" type="text" name="content" />
+        <button onclick="onAddComment({{walkroad.id}})">댓글 달기</button>
+        <div id="{{walkroad.id}}-comment-list">
+            {% for comment in walkroad.comment_set.all|dictsortreversed:"like_users.count" %}
+            <p id="walkroad{{walkroad.id}}-comment{{comment.id}}">
+                {{ comment.author }}: {{ comment.content }} &nbsp; &nbsp;{{ comment.created_at|date:'Y년 M d일 H:m'}}
+                {% if user.is_authenticated %}
+                <a id="comment{{comment.id}}-like-button" onclick="onLikeComment({{comment.id}})">
+                    {{ comment.like_users.count }} Likes
+                </a>
+                {% endif %}
+                {% if request.user == comment.author %}
+                <a onclick="onDeleteComment({{walkroad.id}}, {{comment.id}})">댓글 삭제</a>
+                {% endif %}
+            </p>
+            {% endfor %}
+        </div>
+</div>
     <script>
         const path = {{ walkroad.path | safe }};
         const infowindow = {{ walkroad.infowindow | safe }};
@@ -109,4 +153,4 @@
     <script src="{% static 'maps/js/components.js' %}"></script>
     <script src="{% static 'maps/js/initial.js' %}"></script>
     <script src="{% static 'maps/js/show.js' %}"></script>
-{% endblock content %}
+    {% endblock content %}
