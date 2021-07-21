@@ -194,7 +194,7 @@
 }
 
 .new-announce_img {
-    padding: 10px;
+    padding: 10px 10px 10px 5px;
     width: 20px;
     height: 30px;
     display: flex;
@@ -209,6 +209,7 @@
     line-height: 24px;
     letter-spacing: -0.015em;
     color: rgba(45, 45, 45, 0.8);
+    margin-left: 5px;
 }
 
 .input-box{
