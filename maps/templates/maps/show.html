@@ -55,12 +55,12 @@
                     <a class="mypage show-content" href="{% url 'mypage:mypage'  walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
                 </div>
                 <div class="detail_wrap">
-                    <div class="show-title" id="total-time" >소요시간</div>
-                    <div class="show-content">{{ walkroad.time }} 분</div>
+                    <div class="show-title">소요시간</div>
+                    <div class="show-content" id="total-time">{{ walkroad.time }} 분</div>
                 </div>
                 <div class="detail_wrap">
-                    <div class="show-title" id="total-distance">총 거리</div>
-                    <div class="show-content">{{ walkroad.distance }} m</div>
+                    <div class="show-title">총 거리</div>
+                    <div class="show-content" id="total-distance">{{ walkroad.distance }} m</div>
                 </div>
                 <div class="detail_wrap">
                     <div class="show-title">출발위치</div>
@@ -143,6 +143,26 @@
         </div>
 </div>
     <script>
+        let walkkTime = "{{ walkroad.time }}";
+        let walkHour = '', walkMin = '';
+
+        walkDistance = "{{ walkroad.distance }}";
+
+        if (walkkTime > 60) {
+            walkHour = `${Math.floor(walkkTime / 60)}시간 `;
+        }
+        walkMin = `${walkkTime % 60}분`;
+
+        if (walkDistance >= 1000) {
+            walkDistance = `${Math.round(walkDistance / 100) / 10} k`;
+        }
+
+        const totalTimeElement = document.getElementById('total-time');
+        const totalDistanceElement = document.getElementById('total-distance');
+        totalTimeElement.innerHTML = `${walkHour} ${walkMin}`;
+        totalDistanceElement.innerHTML = `${walkDistance}m`;
+        
+         //////////////////////////map///////////////////////////
         const path = {{ walkroad.path | safe }};
         const infowindow = {{ walkroad.infowindow | safe }};
 
