@@ -24,9 +24,9 @@ const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입
         draggable: true, // 그린 후 드래그가 가능하도록 설정합니다
         removable: true, // 그린 후 삭제 할 수 있도록 x 버튼이 표시됩니다
         editable: true, // 그린 후 수정할 수 있도록 설정합니다 
-        strokeColor: '#39f', // 선 색
+        strokeColor: 'rgb(66, 26, 3)', // 선 색
         hintStrokeStyle: 'dash', // 그리중 마우스를 따라다니는 보조선의 선 스타일
-        hintStrokeOpacity: 0.5  // 그리중 마우스를 따라다니는 보조선의 투명도
+        hintStrokeOpacity: 0.4  // 그리중 마우스를 따라다니는 보조선의 투명도
     }
 };
 

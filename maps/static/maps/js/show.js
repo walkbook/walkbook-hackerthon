@@ -42,10 +42,10 @@ function drawPolyline(lines) {
         var polyline = new kakao.maps.Polyline({
             map: map,
             path: path,
-            strokeColor: style.strokeColor,
-            strokeOpacity: style.strokeOpacity,
-            strokeStyle: style.strokeStyle,
-            strokeWeight: style.strokeWeight
+            strokeColor: 'rgb(66, 26, 3)',
+            strokeOpacity: 0.4,
+            strokeStyle: 'solid',
+            strokeWeight: 7
         });
 
     }
