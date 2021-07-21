@@ -8,14 +8,15 @@ kakao.maps.event.addListener(map, 'zoom_changed', function () {
     }
 });
 
-// // Drawing Manager에서 가져온 데이터 중 마커를 아래 지도에 표시하는 함수입니다
+// Drawing Manager에서 가져온 데이터 중 마커를 아래 지도에 표시하는 함수입니다
 function drawMarker(markers, infowindows) {
 
     for (let i = 0; i < markers.length; i++) {
         const marker = new kakao.maps.Marker({
             map: map,
             position: new kakao.maps.LatLng(markers[i].y, markers[i].x),
-            zIndex: markers[i].zIndex
+            zIndex: markers[i].zIndex,
+            image: new kakao.maps.MarkerImage('/static/maps/img/draw_marker.png', imageSize, imageOption)
         });
 
         const infowindow = new kakao.maps.InfoWindow({
@@ -37,13 +38,12 @@ function drawMarker(markers, infowindows) {
 
 // Drawing Manager에서 가져온 데이터 중 선을 아래 지도에 표시하는 함수입니다
 function drawPolyline(lines) {
-    var len = lines.length,
-        i = 0;
+    const len = lines.length;
 
-    for (; i < len; i++) {
-        var path = pointsToPath(lines[i].points);
-        var style = lines[i].options;
-        var polyline = new kakao.maps.Polyline({
+    for (let i = 0; i < len; i++) {
+        const path = pointsToPath(lines[i].points);
+        const style = lines[i].options;
+        const polyline = new kakao.maps.Polyline({
             map: map,
             path: path,
             strokeColor: 'rgb(66, 26, 3)',
@@ -52,7 +52,24 @@ function drawPolyline(lines) {
             strokeWeight: 7
         });
 
+        const lineLen = lines[i].points.length;
+
+        const flagImageSize = new kakao.maps.Size(40, 60); // 마커이미지의 크기입니다
+        const flagImageOption = { offset: new kakao.maps.Point(5, 60) };
+
+        const startMarker = new kakao.maps.Marker({
+            map: map,
+            position: new kakao.maps.LatLng(lines[i].points[0].y, lines[i].points[0].x),
+            image: new kakao.maps.MarkerImage('/static/maps/img/start_tri.png', flagImageSize, flagImageOption)
+        });
+
+        const finishMarker = new kakao.maps.Marker({
+            map: map,
+            position: new kakao.maps.LatLng(lines[i].points[lineLen - 1].y, lines[i].points[lineLen - 1].x),
+            image: new kakao.maps.MarkerImage('/static/maps/img/finish_tri.png', flagImageSize, flagImageOption)
+        });
     }
+
 }
 
 // Drawing Manager에서 가져온 데이터 중 
@@ -84,7 +101,7 @@ const getCommentElement = (walkroadId, commentId, commentCount, comment, created
     commentElement.id = `walkroad${walkroadId}-comment${commentId}`;
     commentElement.innerHTML = `${author}: ${comment} &nbsp; &nbsp; ${createdTime}
                                 <a id="comment${commentId}-like-button" onclick="onLikeComment(${commentId})">
-                                ${ commentCount } Likes </a>
+                                ${commentCount} Likes </a>
                                 <a onclick="onDeleteComment(${walkroadId}, ${commentId})">댓글 삭제</a>`
     return commentElement;
 }
