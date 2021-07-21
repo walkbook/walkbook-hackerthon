@@ -4,68 +4,74 @@
 
 {% block content %}
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
-    <div class="body-layout">
-        <div class="title-ud">
-            <div class="show-title">
-                <p class="enroll-announce enroll-title">🌱 {{ walkroad.title }}</p>
-                <p class="enroll-desc">{{ walkroad.description }}</p>
-            </div>
-        
-            {% if request.user == walkroad.author %}
-            <div class="ud-btn">
-                <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
-                <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
-            </div>
-            {% endif %}
-        </div>
+    <div class="body-layout body-layout-show">
 
-        <div id="loading">
-            <div class="loading-background">
-                <div id="loading-bar-spinner" class="spinner">
-                    <div class="spinner-icon"></div>
+        <div class="info-box">
+            <div class="info_wrap">
+                <div class="title-ud">
+                    <div class="show-title">
+                        <p class="enroll-announce enroll-title">🌱 {{ walkroad.title }}</p>
+                        <p class="enroll-desc">{{ walkroad.description }}</p>
+                    </div>
+    
+                    {% if request.user == walkroad.author %}
+                    <div class="ud-btn">
+                        <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
+                        <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
+                    </div>
+                    {% endif %}
                 </div>
-                <div class="loading-msg">📍현 위치 파악 중!</div>
+
+                <img class="line-short-m line-short-show" src="{% static 'maps/img/line.png' %}">
+
+                <div class="detail_wrap">
+                    <div class="show-title">author</div>
+                    <a class="mypage show-content" href="{% url 'mypage:mypage'  walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
+                </div>
+                <div class="detail_wrap">
+                    <div class="show-title" id="total-time" >소요시간</div>
+                    <div class="show-content">{{ walkroad.time }} 분</div>
+                </div>
+                <div class="detail_wrap">
+                    <div class="show-title" id="total-distance">총 거리</div>
+                    <div class="show-content">{{ walkroad.distance }} m</div>
+                </div>
+                <div class="detail_wrap">
+                    <div class="show-title">출발위치</div>
+                    <div class="show-content">{{ walkroad.start }}</div>
+                </div>
+                <div class="detail_wrap">
+                    <div class="show-title">도착위치</div>
+                    <div class="show-content">{{ walkroad.finish }}</div>
+                </div>
+                <div class="detail_wrap">
+                    <div class="show-title">TMI</div>
+                    <div class="show-content">{{ walkroad.tmi }}</div>
+                </div>
             </div>
         </div>
-
-        <img class="line-long" src="{% static 'maps/img/line.png' %}" />
-
         {% csrf_token %}
-        <div class="post_wrap">
-            <div class="mapbox_wrap">
-                <div class="mapbox">
-                    <div class="map-input">
-                        <div class="map-input_wrap">
-                            <input type="text" name="location" class ="map-input_location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
-                            <button type="submit" id="address-location-button" class="address-location-button">설정</button>
+        <div class="mapbox_wrap">
+            <div class="mapbox">
+                <div class="map-input">
+                    <div class="map-input_wrap">
+                        <input type="text" name="location" class ="map-input_location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
+                        <button type="submit" id="address-location-button" class="address-location-button">설정</button>
+                    </div>
+                    <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
+                </div>
+            </div>
+            <div id="map" style="width:100%;height:700px;">
+                <div id="loading">
+                    <div class="loading-background loading-background-round">
+                        <div id="loading-bar-spinner" class="spinner">
+                            <div class="spinner-icon"></div>
                         </div>
-                        <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
+                        <div class="loading-msg loading-msg-show">📍현 위치 파악 중!</div>
                     </div>
                 </div>
-                <div id="map" style="width:100%;height:580px;"></div>
             </div>
-
-            <div class="info-box">
-                <div class="info_wrap">
-                    <div class="author_wrap">
-                        <p>author</p>
-                        <a class="mypage" href="{% url 'mypage:mypage'  walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
-                    </div>
-                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
-                    <p id="total-time">소요 시간 : {{ walkroad.time }}</p>
-                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
-                    <p id="total-distance">총 거리 : {{ walkroad.distance }}</p>
-                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
-                    <p>startㅤㅤㅤㅤ<span>{{ walkroad.start }}</span></p>
-                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
-                    <p>finishㅤㅤㅤㅤ<span>{{ walkroad.finish }}</span></p>
-                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
-                    <p>tmiㅤㅤㅤㅤ<span>{{ walkroad.tmi }}</span></p>
-                    <img class="line-short-m" src="{% static 'maps/img/line.png' %}">
-                </div>
-            </div>
-        </div>
-        <img class="line-long-m" src="{% static 'maps/img/line.png' %}">
+        </div> 
     </div>
 
     <script>
