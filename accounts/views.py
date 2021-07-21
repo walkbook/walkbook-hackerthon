@@ -53,7 +53,7 @@ class MyinfoView:
                 user.set_password(request.POST['password1'])
                 user.save()
                 auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            return redirect('/')
+            return redirect('mypage:mypage', id=user.id)
 
     def checkpw(request):
         if request.user.is_authenticated == False:
