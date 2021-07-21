@@ -47,7 +47,7 @@ function drawPolyline(lines) {
             map: map,
             path: path,
             strokeColor: 'rgb(66, 26, 3)',
-            strokeOpacity: 0.4,
+            strokeOpacity: 0.7,
             strokeStyle: 'solid',
             strokeWeight: 7
         });
