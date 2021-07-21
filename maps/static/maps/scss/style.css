@@ -77,7 +77,7 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .ellipsis-i { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-.wrap-p { position: absolute; left: 0; bottom: -30px; width: 190px; height: auto; margin-left: -20px; text-align: left; overflow: hidden; font-size: 12px; font-family: 'Malgun Gothic', dotum, '돋움', sans-serif; line-height: 1.5; box-sizing: border-box; }
+.wrap-p { position: absolute; left: 0; bottom: -30px; width: 230px; height: auto; margin-left: -20px; text-align: left; overflow: hidden; font-size: 12px; font-family: 'Malgun Gothic', dotum, '돋움', sans-serif; line-height: 1.5; box-sizing: border-box; }
 
 .wrap-p * { padding: 0; margin: 0; background-color: rgba(204, 204, 204, 0); }
 
@@ -85,11 +85,9 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .wrap-p .info-p:nth-child(1) { border: 0; box-shadow: 0px 1px 2px #888; }
 
-.info-p .title-p { padding: 7px 0 6px 10px; height: 20px; background: rgba(66, 26, 3, 0.24); font-size: 14px; font-weight: bold; }
+.info-p .title-p { display: flex; width: 100%; padding: 7px 0 6px 10px; height: 20px; background: rgba(66, 26, 3, 0.24); font-size: 14px; font-weight: bold; }
 
-.info-p .like-p { position: absolute; top: 8px; right: 25px; color: rgba(58, 30, 5, 0.664); width: 30px; height: 17px; }
-
-.info-p .like-p:hover { cursor: pointer; }
+.info-p .like-p { position: absolute; top: 8px; right: 10px; color: rgba(58, 30, 5, 0.664); width: 20%; height: 17px; }
 
 .info-p .body-p { position: relative; overflow: hidden; box-sizing: border-box; padding: 10px 15px; color: #4e2908; font-weight: 600; }
 

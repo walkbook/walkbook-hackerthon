@@ -28,7 +28,7 @@ function pathInfoContent(id, title, description, time, like) {
         '    <div class="info info-p">' +
         '        <div class="title title-p">' +
         `            📍${title}` +
-        `            <div class="like-p">${like}Likes</div>` +
+        `            <div class="like-p">${like} Likes</div>` +
         '        </div>' +
         '        <div class="body body-p">'+
         `            <div class="ellipsis ellipsis-p">소요시간 <span>: ${walkHour}${walkMin}</span></div>` +
