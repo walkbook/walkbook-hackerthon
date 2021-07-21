@@ -10,11 +10,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 8px;
+    padding-left: 10px;
     padding-right: 8px;
     box-sizing: border-box;
-    font-size: 16px;
-    font-family: Montserrat;
+    font-size: 14px;
+    font-family: 'Nanum Gothic', sans-serif;
     background-color: rgb(231, 231, 231);
 
 }
@@ -50,7 +50,6 @@
         letter-spacing: -0.015em;
         color: #98C794;
         padding: 5px;
-        font-size: 12px;
     }
 
     input {
@@ -77,6 +76,8 @@
                 background: #FFFFFF;
                 border: 1px dashed rgba(0, 0, 0, 0.5);
                 border-radius: 10px;
+                box-sizing: border-box;
+                padding-left: 8px;
             }
 
             #searchLocation {
@@ -119,7 +120,7 @@
 
 label.password-desc {
     display: flex;
-    font-size: 3px;
+    font-size: 12px;
     color: var(--yellow);
     justify-content: flex-start;
     height: 10px;

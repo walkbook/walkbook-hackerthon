@@ -4,7 +4,7 @@
 
 .signup_container .signupbtn { width: 370px; height: 55px; margin-top: 80px; margin-bottom: 100px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); border-radius: 30px; }
 
-.signup_container label { display: flex; align-items: flex-end; width: 46.89px; height: 50px; font-family: 'Nanum Gothic', sans-serif; font-style: normal; font-weight: bold; font-size: 16px; line-height: 17px; letter-spacing: -0.015em; color: #98C794; }
+.signup_container label { display: flex; align-items: flex-end; width: 46.89px; height: 50px; font-family: 'Nanum Gothic', sans-serif; font-style: normal; font-weight: bold; font-size: 14px; line-height: 17px; letter-spacing: -0.015em; color: #98C794; }
 
 .signup_container #signup-form { padding-top: 20px; }
 
