@@ -2,22 +2,22 @@ let userAddressX = 126.570667;
 let userAddressY = 33.450701;
 
 const currentMarkerImageSrc = '/static/maps/img/current_marker.png', // 마커이미지의 주소입니다    
-    imageSize = new kakao.maps.Size(90, 69), // 마커이미지의 크기입니다
-    imageOption = {offset: new kakao.maps.Point(45, 50)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-      
+    imageSize = new kakao.maps.Size(30, 50), // 마커이미지의 크기입니다
+    imageOption = { offset: new kakao.maps.Point(15, 50) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
 // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 const currentMarkerImage = new kakao.maps.MarkerImage(currentMarkerImageSrc, imageSize, imageOption);
 
 // 지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
-function setMapType(maptype) { 
+function setMapType(maptype) {
     const roadmapControl = document.getElementById('btnRoadmap');
-    const skyviewControl = document.getElementById('btnSkyview'); 
+    const skyviewControl = document.getElementById('btnSkyview');
     if (maptype === 'roadmap') {
-        map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);    
+        map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);
         roadmapControl.className = 'selected_btn';
         skyviewControl.className = 'btn';
     } else {
-        map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);    
+        map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
         skyviewControl.className = 'selected_btn';
         roadmapControl.className = 'btn';
     }
@@ -75,7 +75,6 @@ if (navigator.geolocation) {
 const addrLocationBtn = document.getElementById('address-location-button');
 const currLocationBtn = document.getElementById('current-location-button');
 
-
 addrLocationBtn.addEventListener('click', () => {
     const addressInput = document.getElementById('address-location');
 
@@ -86,7 +85,7 @@ addrLocationBtn.addEventListener('click', () => {
             const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
             currentLocationMarker.setMap(null);
-            currentLocationInfowindow.close();
+            currentLocationInfowindow.setMap(null);
 
             currentLocationMarker = new kakao.maps.Marker({
                 map: map,
@@ -94,11 +93,11 @@ addrLocationBtn.addEventListener('click', () => {
                 image: currentMarkerImage
             });
 
-            currentLocationInfowindow = new kakao.maps.InfoWindow({
+            currentLocationInfowindow = new kakao.maps.CustomOverlay({
                 content: geoSuccessMsg,
-                removable: true
+                position: coords
             });
-            currentLocationInfowindow.open(map, currentLocationMarker);
+            currentLocationInfowindow.setMap(map);
 
             map.setCenter(coords);
         }
@@ -113,7 +112,7 @@ currLocationBtn.addEventListener('click', () => {
 
     if (currentLocationMarker) {
         currentLocationMarker.setMap(null);
-        currentLocationInfowindow.close();
+        currentLocationInfowindow.setMap(null);
     }
 
     if (navigator.geolocation) {
@@ -154,10 +153,10 @@ function displayMarker(locPosition, message) {
         image: currentMarkerImage
     });
 
-    currentLocationInfowindow = new kakao.maps.InfoWindow({
+    currentLocationInfowindow = new kakao.maps.CustomOverlay({
         content: message,
-        removable: true
+        position: locPosition
     });
 
-    currentLocationInfowindow.open(map, currentLocationMarker);
+    currentLocationInfowindow.setMap(map);
 }
