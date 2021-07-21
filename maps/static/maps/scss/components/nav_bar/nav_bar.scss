@@ -10,7 +10,7 @@ body {
     width: 100%;
     //fixed, background-color 수정 예정
     position: fixed;
-    background: linear-gradient(180deg, #FFFFFF 0%, #98c79400 1213.94%);
+    background: linear-gradient(180deg, #FFFFFF 0%, #98c7947e 1213.94%);
     z-index: 9;
 
 
@@ -19,7 +19,7 @@ body {
         height: 40px;
         display: flex;
         justify-content: space-between;
-        margin: 25px 65px 0 65px;
+        margin: 13px 65px 13px 65px;
 
         .header-search {
             width: 280px;
@@ -42,8 +42,8 @@ body {
             }
 
             .logo-img {
-                width: 55px;
-                height: 42px;
+                width: 45px;
+                height: 35px;
             }
         }
         .header-accounts {
