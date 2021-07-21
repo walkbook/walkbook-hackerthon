@@ -11,82 +11,89 @@
 
 <center>
 <div class="signup_container">  
-  <h1>
-    SIGN UP<img class="line" src="{% static 'maps/img/line.png' %}">
-  </h1>
+  <div class="signup-title">
+    SIGN UP
+    <img class="line" src="{% static 'maps/img/line.png' %}">
+  </div>
   <form id="signup-form" method="POST" action="{%url 'signup' %}">
     {% csrf_token %}
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="id">아이디</label>
-      </h3>
-      <input id="userid" name="userid" type="text" value="" placeholder="  필수입력 값 입니다."/>
-      <input id="checkUserid" type="button" value="중복체크"/>
-      <span id="validate-id"></span>
-    </div>
+    <div class="signup-box">
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="id">아이디</label>
+          {% comment %} <i class="far fa-check-circle check-icon"></i> {% endcomment %}
+          
+        </h3>
+        <input id="userid" name="userid" type="text" value="" placeholder="(필수입력) 아이디를 입력해주세요."/>
+        <input id="checkUserid" type="button" value="중복확인"/>
+        <span id="validate-id"></span>
+      </div>
 
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="password1">비밀번호</label>
-      </h3>
-      <input id="password1" name="password1" type="password" value="" placeholder="  4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
-      <span id="validate-password"></span>
-    </div>
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="password1">비밀번호</label>
+          <label class="password-desc">* 4자리 이상의 숫자 또는 대소문자를 입력하세요.</label>
+        </h3>
+        <input id="password1" name="password1" type="password" value="" placeholder="4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
+        <span id="validate-password"></span>
+      </div>
 
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="password2">비밀번호 확인</label>
-      </h3>
-      <input id="password2" name="password2" type="password" value="" placeholder="  4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
-      <span id="same-password"></span>
-    </div>
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="password2">비밀번호 확인</label>
+          <label class="password-desc">* 4자리 이상의 숫자 또는 대소문자를 입력하세요.</label>
+        </h3>
+        <input id="password2" name="password2" type="password" value="" placeholder="4자리 이상의 숫자 또는 대소문자를 입력하세요."/>
+        <span id="same-password"></span>
+      </div>
 
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="username">닉네임</label>
-      </h3>
-      <input id="username" name="username" type="text" value=""/>
-    </div>
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="username">닉네임</label>
+        </h3>
+        <input id="username" name="username" type="text" value="" placeholder="닉네임을 설정해주세요."/>
+      </div>
 
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="sex">성별</label>
-      </h3>
-      <select id="sex" name="sex">
-        <option value="" selected></option>
-        <option value="M">남자</option>
-        <option value="F">여자</option>
-        <option value="U">선택안함</option>
-      </select>
-    </div>
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="sex">성별 선택</label>
+        </h3>
+        <select id="sex" name="sex">
+          <option value="" selected></option>
+          <option value="M">남자</option>
+          <option value="F">여자</option>
+          <option value="U">선택안함</option>
+        </select>
+      </div>
 
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="age">나이대</label>
-      </h3>
-      <select id="age" name="age">
-        <option value="" selected></option>
-        <option value="0">10세 미만</option>
-        <option value="10">10대</option>
-        <option value="20">20대</option>
-        <option value="30">30대</option>
-        <option value="40">40대</option>
-        <option value="50">50대</option>
-        <option value="60">60대 이상</option>
-        <option value="U">선택안함</option>
-      </select>
-    </div>
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="age">나이대 선택</label>
+        </h3>
+        <select id="age" name="age">
+          <option value="" selected></option>
+          <option value="0">10세 미만</option>
+          <option value="10">10대</option>
+          <option value="20">20대</option>
+          <option value="30">30대</option>
+          <option value="40">40대</option>
+          <option value="50">50대</option>
+          <option value="60">60대 이상</option>
+          <option value="U">선택안함</option>
+        </select>
+      </div>
 
-    <div class="signup">
-      <h3 class="signup_title">
-        <label for="location">내 위치 설정</label>
-      </h3>
-      <input id="location" name="location" type="text" placeholder="위치">
-      <input id="searchLocation" type="button" value="위치 입력">
-      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    </div>
-    <div>
-      <input class="signupbtn" type="submit" value="회원가입"/>
+      <div class="signup">
+        <h3 class="signup_title">
+          <label for="location">내 위치 설정</label>
+        </h3>
+        <input id="location" name="location" type="text" placeholder="주로 활동하는 위치를 입력해주세요!">
+        <input id="searchLocation" type="button" value="검색하기">
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+      </div>
+      <div>
+        <input class="signupbtn" type="submit" value="SIGN UP"/>
+      </div>
     </div>
   </form>
   <script type="module" src="{% static 'accounts/js/signup.js' %}"></script>

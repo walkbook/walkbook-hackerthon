@@ -1,60 +1,54 @@
 .signup_container {
-    h1 {
-        position: absolute;
-        width: 100px;
-        height: 39.86px;
-        left: 50%;
-        top: 110px;
-        margin-left: -50px;
-        padding-top: 40px;
 
+
+    .signup-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+        height: 39.86px;
+        padding-top: 130px;
         font-family: Montserrat;
         font-style: normal;
         font-weight: bold;
         font-size: 24px;
         line-height: 36px;
-
         letter-spacing: -0.015em;
-
         color: #98C794;
 
         .line {
-            position: relative;
+            padding-top: 20px;
             width: 653px;
             height: 37px;
-            left: 50%;
-            top: 25px;
-            margin-left: -326px;
-
-            background: url(image.png);
-            transform: rotate(-0.69deg);
         }
     }
 
     .signupbtn {
-        width: 400px;
+        width: 370px;
         height: 55px;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin-top: 80px;
+        margin-bottom: 100px;
         background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
         border-radius: 30px;
     }
 
     label {
-        margin-top: 15px;
+        display: flex;
+        align-items: flex-end;
         width: 46.89px;
-        height: 40px;
-        font-family: Montserrat;
+        height: 50px;
+        font-family: 'Nanum Gothic', sans-serif;
         font-style: normal;
         font-weight: bold;
-        font-size: 16px;
-        line-height: 36px;
+        font-size: 14px;
+        line-height: 17px;
         letter-spacing: -0.015em;
         color: #98C794;
     }
 
     #signup-form {
-        padding-top: 280px;
+        padding-top: 20px;
+
         .signup {
 
             #userid,
@@ -65,6 +59,8 @@
                 background: #FFFFFF;
                 border: 1px dashed rgba(0, 0, 0, 0.5);
                 border-radius: 10px;
+                padding-left: 10px;
+                box-sizing: border-box;
             }
             #password1,
             #password2,
@@ -77,14 +73,30 @@
                 background: #FFFFFF;
                 border: 1px dashed rgba(0, 0, 0, 0.5);
                 border-radius: 10px;
+                padding-left: 10px;
+                box-sizing: border-box;
+                padding-right: 10px;
             }
 
             #checkUserid,
             #searchLocation {
                 width: 70px;
-                height: 30px;
+                height: 40px;
                 background: #98C794;
                 border-radius: 10px;
+                border: none;
+                color: white;
+                font-size: 12px;
+            }
+
+            #checkUserid:hover {
+                background-color: var(--deepgreen);
+                cursor: pointer;
+            }
+
+            #searchLocation:hover {
+                background-color: var(--deepgreen);
+                cursor: pointer;
             }
 
             #validate-id,
@@ -102,5 +114,52 @@
 }
 
 .signup_title {
+    display: flex;
+    flex-direction: column;
+    width: 360px;
     margin: 5px;
+
+    label {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+.signup-box {
+    padding-top: 40px;
+}
+
+.signupbtn {
+    margin-bottom: 50px;
+    background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
+    border-radius: 30px;
+    border: none;
+    color: white;
+    justify-content: center;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+.signupbtn:hover {
+    background-color: var(--deepgreen);
+    cursor: pointer;
+}
+
+#checkUserid {
+    // position: absolute;
+}
+
+.validate-id {
+    position: absolute;
+    left: 400px;
+}
+
+.signup_container label.password-desc {
+    display: flex;
+    font-size: 3px;
+    color: var(--yellow);
+    justify-content: flex-start;
+    height: 20px;
+
 }

@@ -1,30 +1,45 @@
+.mypage-layout {
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.mypage_wrap {
+    display: flex;
+    width: 90%;
+}
+
+.profile_wrap {
+    width: 50%;
+}
+
+.map_wrap {
+    width: 50%;
+}
 
 .hide {
     display: none;
 }
 
 .profile {
-    padding-top: 150px;
     display: flex;
     flex-direction: column;
 
     .workbook {
-        width: 157px;
+        width: 95%;
         height: 35px;
         left: 82px;
         top: 137px;
-
-        font-family: Montserrat;
         font-style: normal;
         font-weight: bold;
         font-size: 16px;
-        line-height: 36px;
+        line-height: 34px;
         letter-spacing: -0.015em;
         color: #49A59A;
     }
 
     .profile-box {
-        width: 556px;
+        width: 95%;
         height: 192.84px;
         left: 75px;
         top: 177px;
@@ -64,4 +79,13 @@
 
         }
     }
+}
+
+.mypage-btn {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.walkroad-posts {
+    width: 95%;
 }

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&display=swap');
+
 // basic settings
 @import "reset.scss";
 @import "variables.scss";
@@ -29,7 +32,7 @@ body {
 .body-layout {
     margin-right: 13%;
     margin-left: 13%;
-    padding-top: 180px;
+    padding-top: 100px;
     padding-bottom: 50px;
 }
 
