@@ -13,8 +13,7 @@ class MapImage(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
 class Walkroad(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.TextField(max_length=100, blank=True)
     description = models.TextField(blank=True)
     start = models.TextField(blank=True)
@@ -36,7 +35,7 @@ class Walkroad(models.Model):
         self.save()
 
     def __str__(self):
-        return f'walkroad id={self.id}, user_id={self.author.id}, username={self.author.profile.username}, title={self.title}, description={self.description}, tmi={self.tmi}'
+            return f'walkroad id={self.id}, user_id={self.author.id}, username={self.author.profile.username}, title={self.title}, description={self.description}, tmi={self.tmi}'
 
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -48,6 +47,13 @@ class Comment(models.Model):
     walkroad = models.ForeignKey(Walkroad, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    like_users = models.ManyToManyField(User, blank=True, related_name='like_comments', through='CommentLike')
+
 
     def __str__(self):
         return f'[walkroad: {self.walkroad}] {self.content}'
+
+class CommentLike(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(default=timezone.now)
