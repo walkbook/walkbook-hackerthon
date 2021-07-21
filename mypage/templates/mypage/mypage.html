@@ -12,7 +12,7 @@
     <div class="mypage_wrap">
         <div class="profile_wrap">
             <div class="profile">
-                <h1 class="workbook">{{user.username}}의 워크북</h1>
+                <h1 class="workbook">{{user.profile.username}}의 워크북</h1>
                 <div class="profile-box">
                     <div id="walkroad-count">
                         총 {{registeredWalkroads.count}} 개의 산책로를 등록했네요!
@@ -64,7 +64,7 @@
                         <div class="liked-post hide">
                             <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
                             {{ walkroad.description}}
-                            {{ walkroad.author }}
+                            <a href="{% url 'mypage:mypage' walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
                         </div>
                     {% endfor %}
                 </div>

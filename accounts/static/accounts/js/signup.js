@@ -36,5 +36,7 @@ import { feature } from './feature.js';
 
 (() => {
 	const searchLocation = document.getElementById('searchLocation');
+	const inputLocation = document.getElementById('location');
 	searchLocation.onclick = () => feature.execLocation();
+	inputLocation.onclick = () => feature.execLocation();
 })();
