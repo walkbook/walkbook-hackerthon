@@ -49,9 +49,8 @@ class Comment(models.Model):
     author = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     like_users = models.ManyToManyField(User, blank=True, related_name='like_comments', through='CommentLike')
 
-
     def __str__(self):
-        return f'[walkroad: {self.walkroad}] {self.content}'
+        return f'walkroad: {self.walkroad}, content: {self.content}, created_at:{self.created_at}'
 
 class CommentLike(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

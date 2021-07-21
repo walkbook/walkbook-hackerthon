@@ -14,6 +14,7 @@
                     <div class="show-title">
                         <p class="enroll-announce enroll-title">🌱 {{ walkroad.title }}</p>
                         <p class="enroll-desc">{{ walkroad.description }}</p>
+                        <p class="enroll-desc">{{ walkroad.created_at|date:'Y/m/d H:i'}}</p>
                     </div>
     
                     {% if request.user == walkroad.author %}
@@ -27,7 +28,7 @@
                 <img class="line-short-m line-short-show" src="{% static 'maps/img/line.png' %}">
 
                 <div class="detail_wrap">
-                    <div class="show-title">author</div>
+                    <div class="show-title">작성자</div>
                     <a class="mypage show-content" href="{% url 'mypage:mypage'  walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
                 </div>
                 <div class="detail_wrap">
@@ -105,7 +106,7 @@
         <div id="{{walkroad.id}}-comment-list">
             {% for comment in walkroad.comment_set.all|dictsortreversed:"like_users.count" %}
             <p id="walkroad{{walkroad.id}}-comment{{comment.id}}">
-                {{ comment.author }}: {{ comment.content }} &nbsp; &nbsp;{{ comment.created_at|date:'Y년 M d일 H:m'}}
+                <a href="{% url 'mypage:mypage'  comment.author.id %}">{{ comment.author.profile.username }}</a>: {{ comment.content }} &nbsp; &nbsp;{{ comment.created_at|date:'Y/m/d H:i'}}
                 {% if user.is_authenticated %}
                 <a id="comment{{comment.id}}-like-button" onclick="onLikeComment({{comment.id}})">
                     {{ comment.like_users.count }} Likes
