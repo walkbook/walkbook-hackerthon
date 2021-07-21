@@ -145,7 +145,7 @@ class CommentView:
     def create(request, id):
         content = request.POST['content']
         comment = Comment.objects.create(walkroad_id=id, content=content, author=request.user)
-        current_time = comment.created_at.strftime('%Y년 %m월 %d일 %-H:%M')
+        current_time = comment.created_at.strftime('%Y/%m/%d %H:%M')
         walkroad = Walkroad.objects.get(id=id)
         return JsonResponse({
             'commentId': comment.id,

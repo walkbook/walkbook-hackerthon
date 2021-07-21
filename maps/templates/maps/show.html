@@ -14,6 +14,7 @@
                     <div class="show-title">
                         <p class="enroll-announce enroll-title">🌱 {{ walkroad.title }}</p>
                         <p class="enroll-desc">{{ walkroad.description }}</p>
+                        <p class="enroll-desc">{{ walkroad.created_at|date:'Y/m/d H:i'}}</p>
                     </div>
     
                     {% if request.user == walkroad.author %}
@@ -22,21 +23,44 @@
                         <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
                     </div>
                     {% endif %}
+                    <div class="like-inner">
+                    {% if user.is_authenticated %}
+                        <a
+                        id="{{walkroad.id}}-like-button"
+                        onclick="onClickLikeBtn({{walkroad.id}})"
+                        class="material-icons mdl-badge mdl-badge--overlap"
+                        data-badge="{{ walkroad.like_users.count }}"
+                        >
+                    {% if user in walkroad.like_users.all %} 
+                        favorite 
+                    {% else %}
+                        favorite_border 
+                    {% endif %}
+                        </a>
+                    {% else %}
+                        <div
+                        class="material-icons mdl-badge mdl-badge--overlap"
+                        data-badge="{{ walkroad.like_users.count }}"
+                        >
+                        favorite_border
+                        </div>
+                    {% endif %}
+                    </div>
                 </div>
 
                 <img class="line-short-m line-short-show" src="{% static 'maps/img/line.png' %}">
 
                 <div class="detail_wrap">
-                    <div class="show-title">author</div>
+                    <div class="show-title">작성자</div>
                     <a class="mypage show-content" href="{% url 'mypage:mypage'  walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
                 </div>
                 <div class="detail_wrap">
-                    <div class="show-title" id="total-time" >소요시간</div>
-                    <div class="show-content">{{ walkroad.time }} 분</div>
+                    <div class="show-title">소요시간</div>
+                    <div class="show-content" id="total-time">{{ walkroad.time }} 분</div>
                 </div>
                 <div class="detail_wrap">
-                    <div class="show-title" id="total-distance">총 거리</div>
-                    <div class="show-content">{{ walkroad.distance }} m</div>
+                    <div class="show-title">총 거리</div>
+                    <div class="show-content" id="total-distance">{{ walkroad.distance }} m</div>
                 </div>
                 <div class="detail_wrap">
                     <div class="show-title">출발위치</div>
@@ -105,7 +129,7 @@
         <div id="{{walkroad.id}}-comment-list">
             {% for comment in walkroad.comment_set.all|dictsortreversed:"like_users.count" %}
             <p id="walkroad{{walkroad.id}}-comment{{comment.id}}">
-                {{ comment.author }}: {{ comment.content }} &nbsp; &nbsp;{{ comment.created_at|date:'Y년 M d일 H:m'}}
+                <a href="{% url 'mypage:mypage'  comment.author.id %}">{{ comment.author.profile.username }}</a>: {{ comment.content }} &nbsp; &nbsp;{{ comment.created_at|date:'Y/m/d H:i'}}
                 {% if user.is_authenticated %}
                 <a id="comment{{comment.id}}-like-button" onclick="onLikeComment({{comment.id}})">
                     {{ comment.like_users.count }} Likes
@@ -119,6 +143,26 @@
         </div>
 </div>
     <script>
+        let walkkTime = "{{ walkroad.time }}";
+        let walkHour = '', walkMin = '';
+
+        walkDistance = "{{ walkroad.distance }}";
+
+        if (walkkTime > 60) {
+            walkHour = `${Math.floor(walkkTime / 60)}시간 `;
+        }
+        walkMin = `${walkkTime % 60}분`;
+
+        if (walkDistance >= 1000) {
+            walkDistance = `${Math.round(walkDistance / 100) / 10} k`;
+        }
+
+        const totalTimeElement = document.getElementById('total-time');
+        const totalDistanceElement = document.getElementById('total-distance');
+        totalTimeElement.innerHTML = `${walkHour} ${walkMin}`;
+        totalDistanceElement.innerHTML = `${walkDistance}m`;
+        
+         //////////////////////////map///////////////////////////
         const path = {{ walkroad.path | safe }};
         const infowindow = {{ walkroad.infowindow | safe }};
 
@@ -153,4 +197,5 @@
     <script src="{% static 'maps/js/components.js' %}"></script>
     <script src="{% static 'maps/js/initial.js' %}"></script>
     <script src="{% static 'maps/js/show.js' %}"></script>
+    <script src="{% static 'maps/js/post.js' %}"></script>
     {% endblock content %}
