@@ -50,11 +50,7 @@
           <p id="total-time" class="total-time-class">소요 시간 <span>: {{ walkroad.time }}분</span></p>
           <div class="mdl-card__supporting-text">소개 <span>: {{ walkroad.description}}</span></div>
         </div>
-        <div class="more-like-box">
-          
-          <div class="more-container">
-            <a href="{% url 'maps:show' walkroad.id %}" class="more-btn">상세보기 ></a>
-          </div>
+        <div class="more-like-box">       
           <div class="like-container">
             <div class="like-inner">
               {% if user.is_authenticated %}
