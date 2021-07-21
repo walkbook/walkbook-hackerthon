@@ -90,7 +90,8 @@
                 {% endif %}
             </p>
             {% endfor %}
-        </div </div> <script>
+        </div>
+    <script>
         const path = {{ walkroad.path | safe }};
         const infowindow = {{ walkroad.infowindow | safe }};
 
@@ -98,9 +99,9 @@
 
         let userAddress;
         if ("{{ request.user.is_anonymous }}" == "True") {
-        userAddress = "신림로 1";
+            userAddress = "신림로 1";
         } else {
-        userAddress = "{{ request.user.profile.location | safe }}";
+            userAddress = "{{ request.user.profile.location | safe }}";
         }
 
         const geocoder = new kakao.maps.services.Geocoder();
@@ -111,8 +112,8 @@
 
         const container = document.getElementById('map');
         const options = {
-        center: new kakao.maps.LatLng((startPoint['y'] + endPoint['y']) / 2, (startPoint['x'] + endPoint['x']) / 2),
-        level: 4
+            center: new kakao.maps.LatLng((startPoint['y'] + endPoint['y']) / 2, (startPoint['x'] + endPoint['x']) / 2),
+            level: 4
         };
 
         const map = new kakao.maps.Map(container, options);
@@ -121,8 +122,8 @@
         let currentLocationInfowindow;
 
         const setCenterByCurrentLocation = false;
-        </script>
-        <script src="{% static 'maps/js/components.js' %}"></script>
-        <script src="{% static 'maps/js/initial.js' %}"></script>
-        <script src="{% static 'maps/js/show.js' %}"></script>
-        {% endblock content %}
+    </script>
+    <script src="{% static 'maps/js/components.js' %}"></script>
+    <script src="{% static 'maps/js/initial.js' %}"></script>
+    <script src="{% static 'maps/js/show.js' %}"></script>
+    {% endblock content %}
