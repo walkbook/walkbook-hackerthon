@@ -18,7 +18,16 @@ const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입
     guideTooltip: ['draw', 'drag', 'edit'],
     markerOptions: { // 마커 옵션입니다 
         draggable: true, // 마커를 그리고 나서 드래그 가능하게 합니다 
-        removable: true // 마커를 삭제 할 수 있도록 x 버튼이 표시됩니다  
+        removable: true, // 마커를 삭제 할 수 있도록 x 버튼이 표시됩니다  
+        markerImages: [
+            {
+                src: '/static/maps/img/draw_marker.png',
+                width: 95,
+                height: 69,
+                shape: 'rect',
+                coords: '0,0,45,50'
+            }
+        ]
     },
     polylineOptions: { // 선 옵션입니다
         draggable: true, // 그린 후 드래그가 가능하도록 설정합니다

@@ -8,14 +8,15 @@ kakao.maps.event.addListener(map, 'zoom_changed', function () {
     }
 });
 
-// // Drawing Manager에서 가져온 데이터 중 마커를 아래 지도에 표시하는 함수입니다
+      // Drawing Manager에서 가져온 데이터 중 마커를 아래 지도에 표시하는 함수입니다
 function drawMarker(markers, infowindows) {
 
     for (let i = 0; i < markers.length; i++) {
         const marker = new kakao.maps.Marker({
             map: map,
             position: new kakao.maps.LatLng(markers[i].y, markers[i].x),
-            zIndex: markers[i].zIndex
+            zIndex: markers[i].zIndex,
+            image: new kakao.maps.MarkerImage('/static/maps/img/draw_marker.png', imageSize, imageOption)
         });
 
         const infowindow = new kakao.maps.InfoWindow({
