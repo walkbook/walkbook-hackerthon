@@ -2,19 +2,22 @@
 
 // current location css
 .geoSuccessMsg-class {
+    position: absolute;
+    top: -100px;
+    left: -83px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 140px;
-    height: 25px;
+    width: 70px;
+    height: 35px;
     text-align: center;
-    padding: 0;
     // background: linear-gradient(180deg, #98c794 -26.67%, #49a59a 100%);
-    background-color: rgb(235, 235, 235);
-    border-radius: 5px;
-    color: rgb(102, 102, 102);
+    background-color: rgba(58, 58, 58, 0.438);
+    border-radius: 50px;
+    color: rgb(255, 255, 255);
     border: none;
     font-size: 13px;
+    font-weight: 600;
     font-family: 'Nanum Gothic', sans-serif;
 }
 

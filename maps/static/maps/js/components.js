@@ -1,4 +1,4 @@
-const geoSuccessMsg = '<div class="geoSuccessMsg-class" style="width:170px;text-align:center;padding:6px 0;border-none;">여기 계시는군요! :D</div>';
+const geoSuccessMsg = '<div class="geoSuccessMsg-class" style="width:170px;text-align:center;padding:6px 0;border-none;">현재 위치 근처의 <br>산책로를 찾아보세요!</div>';
 const geoFailMsg = '현재 위치를 받아올 수 없습니다 :(';
 
 function infoWindowContent(id, title, description) {
