@@ -119,15 +119,17 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .map-all { padding-top: 10px; padding-bottom: 30px; }
 
-.search-map { display: inline-flex; flex-wrap: nowrap; align-items: baseline; }
+.search-map { display: inline-flex; flex-wrap: nowrap; align-items: center; position: relative; }
 
-select.type-select { display: flex; margin: auto; width: 130px; height: 44px; background: #00000004; border-radius: 30px 0px 0px 30px; border: none; padding: 0 20px; font-family: 'Nanum Gothic', sans-serif; box-sizing: border-box; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25); z-index: 2; font-size: 12px; color: gray; }
+select.type-select { display: flex; justify-content: center; margin: auto; width: 110px; height: 44px; background: #00000004; border-radius: 30px 0px 0px 30px; font-family: 'Nanum Gothic', sans-serif; box-sizing: border-box; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25); border: 0.3px solid #dddddd; border-right: none; z-index: 2; font-size: 12px; color: #616161; text-align-last: center; text-align: center; -ms-text-align-last: center; -moz-text-align-last: center; padding-left: 15px; font-weight: 600; background: rgba(43, 153, 63, 0.151); }
 
 select::-ms-expand { display: none; }
 
-input#keyword { width: 500px; height: 44px; background: #EBEBEB; border-radius: 0px 30px 30px 0px; border: none; box-sizing: border-box; padding-left: 10px; }
+input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 0px 30px 30px 0px; border: 0.3px solid #dddddd; box-sizing: border-box; padding-left: 10px; }
 
-#search-btn { margin-left: 5px; width: 44px; height: 35px; background: linear-gradient(180deg, #98C794 -26.67%, #49A59A 100%); border-radius: 5px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 11px; line-height: 24px; /* identical to box height, or 240% */ letter-spacing: -0.015em; color: #FFFFFF; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-family: 'Nanum Gothic', sans-serif; }
+#search-btn { position: absolute; bottom: 13px; right: 23px; width: 20px; height: 20px; border: none; background: transparent; cursor: pointer; }
+
+.searchimg { width: 20px; }
 
 .mapbox { height: auto; display: flex; flex-direction: column; align-items: center; }
 
