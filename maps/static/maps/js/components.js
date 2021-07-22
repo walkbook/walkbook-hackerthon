@@ -5,7 +5,7 @@ function infoWindowContent(id, title, description) {
     return `<div class="wrap wrap-i" id=${id}>` +
         '    <div class="info info-i">' +
         '        <div class="title title-i">' +
-        `            📍${title}` +
+        `            <div class="title-title-i">📍${title}</div>` +
         `            <div class="close close-i" onclick="closeOverlay(${id})" title="닫기">X</div>` +
         '        </div>' +
         '        <div class="body body-i">' +
@@ -27,7 +27,7 @@ function pathInfoContent(id, title, description, time, like) {
     return `<div class="wrap wrap-p" id=${id}>` +
         '    <div class="info info-p">' +
         '        <div class="title title-p">' +
-        `            📍${title}` +
+        `            <div class="title-title-p">📍${title}</div>` +
         `            <div class="like-p">${like} Likes</div>` +
         '        </div>' +
         '        <div class="body body-p">'+
