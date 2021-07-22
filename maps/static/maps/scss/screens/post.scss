@@ -194,6 +194,11 @@ select {
 .mdl-card__title,
 .mdl-card--expand {
     padding: 24px 0 20px 3px;
+    width: auto;
+    display: block; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
 
     a {
         color: black;
@@ -208,10 +213,14 @@ select {
 }
 
 .author-container {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     span {
         font-size: 12px;
         color: #B8B8B8;
-        margin: 25px 0 0 0;
+        margin: 10px 0 0 0;
         box-sizing: border-box;
     }
 }
@@ -239,8 +248,12 @@ select {
     }
 
     .mdl-card__supporting-text {
+        display: inline-block; 
+        white-space: pre-wrap;
+        overflow: auto; 
+        text-overflow: ellipsis;
         width: 100%;
-        height: auto;
+        height: 80px;
         padding: 0 0 5px 0;
         color: var(--green);
         font-weight: 600;
@@ -250,6 +263,7 @@ select {
             color: gray;
             font-weight: 400;
             font-size: 12px;
+            height: 70px;
         }
     }
 
