@@ -58,13 +58,8 @@ manager.addListener('drawend', function (data) {
     } else {
         const markerId = mappingId;
         const marker = data.target;
-        const infoWindow = new kakao.maps.InfoWindow({
-            content: "",
-            map: null,
-            position: marker.getPosition(),
-        })
 
-        mappingData[markerId] = { marker, infoWindow };
+        mappingData[markerId] = { marker };
 
         showInfoInput();
 
@@ -106,7 +101,7 @@ function saveInfo() {
     mappingData[mappingId].infoWindow = new kakao.maps.InfoWindow({
         content: infoWindowContent(mappingId, titleInput.value, descriptionInput.value),
         map: map,
-        position: mappingData[mappingId].infoWindow.getPosition()
+        position: mappingData[mappingId].marker.getPosition()
     })
 
     mappingData[mappingId].title = titleInput.value;
