@@ -55,6 +55,7 @@
                         <div class="registered-post">
                             <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
                             {{ walkroad.description}}
+                            <a onclick="setFocusClickedPost({{ walkroad.path }})">포커스</a>
                         </div>
                     {% endfor %}
                 </div>
