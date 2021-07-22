@@ -344,9 +344,9 @@ h4.title-name, h4.title-title, h4.title-desc, h4.title-start, h4.title-fin, h4.t
 
 .title-ud { display: flex; justify-content: space-between; height: 9%; }
 
-.ud-btn { display: flex; align-items: flex-start; justify-content: center; font-size: 12px; }
+.ud-btn { display: flex; align-items: flex-start; justify-content: center; font-size: 14px; }
 
-.ud-btn a { display: flex; justify-content: center; align-items: center; padding: 8px; background: var(--green); font-size: 9px; border-radius: 5px; margin-left: 3px; color: white; width: 25px; height: 10px; }
+.ud-btn a { display: flex; justify-content: center; align-items: center; padding: 8px; background: var(--green); font-size: 12px; font-weight: 600; border-radius: 5px; margin-left: 3px; color: white; width: 25px; height: 10px; }
 
 .post_wrap { display: flex; }
 
