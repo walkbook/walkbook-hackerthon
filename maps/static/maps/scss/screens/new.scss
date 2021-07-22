@@ -26,7 +26,7 @@
     border-radius: 10px;
 }
 
-.mapbox {
+.mapbox-new {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -217,6 +217,12 @@
     letter-spacing: -0.015em;
     color: rgba(45, 45, 45, 0.8);
     margin-left: 5px;
+}
+
+.warning {
+    color: rgb(255, 97, 24);
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 .input-box{
@@ -411,5 +417,5 @@ h4.title-tmi {
         height: 23px;
         width: 23px;
     }
-
 }
+

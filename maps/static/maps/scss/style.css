@@ -228,7 +228,7 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .new-announce_announce { width: 100%; height: 80px; left: 169px; top: 357px; margin: 10px 0; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
 
-.mapbox { display: flex; flex-direction: row; align-items: flex-end; }
+.mapbox-new { display: flex; flex-direction: row; align-items: flex-end; }
 
 .map-info { display: flex; flex-direction: column; align-items: flex-start; width: 250px; padding: 15px 0 5px 10px; font-family: 'Montserrat', sans-serif; font-weight: 600; }
 
@@ -283,6 +283,8 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 .new-announce_img { padding: 10px 10px 10px 5px; width: 20px; height: 30px; display: flex; align-items: center; }
 
 .new-announce_desc { font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 12px; line-height: 24px; letter-spacing: -0.015em; color: rgba(45, 45, 45, 0.8); margin-left: 5px; }
+
+.warning { color: #ff6118; font-weight: 600; text-decoration: underline; }
 
 .input-box { width: 100%; display: flex; justify-content: center; }
 
