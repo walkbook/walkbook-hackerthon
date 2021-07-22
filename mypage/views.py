@@ -17,7 +17,7 @@ def mypage(request, id):
         my_walkroad_paths = list(registeredWalkroads.values('id', 'path'))
 
         like_walkroads = json.dumps(list(likedWalkroads.values('author', 'title', 'description', 'distance', 'time', 'like_users', 'id')))
-        like_walkroad_paths = list(registeredWalkroads.values('id', 'path'))
+        like_walkroad_paths = list(likedWalkroads.values('id', 'path'))
 
         return render(request, 'mypage/mypage.html', {
           'user': user,

@@ -45,10 +45,10 @@
                 </div>
             </div>
             <div class="walkroad-posts">
-                <a id="registered-posts" onclick="MyPosts.onClickRegisteredPosts()">등록한 산책로</a>
-                <a id="liked-posts" onclick="MyPosts.onClickLikedPosts()">좋아하는 산책로</a>
+                <a id="registered-posts" onclick="onClickRegisteredPosts()">등록한 산책로</a>
+                <a id="liked-posts" onclick="onClickLikedPosts()">좋아하는 산책로</a>
                 <input id="search-posts" type="text">
-                <button id="search-posts-btn" onclick="MyPosts.onClickSearchBtn()">검색</button>
+                <button id="search-posts-btn" onclick="onClickSearchBtn()">검색</button>
 
                 <div class="registered-posts">
                     {% for walkroad in registeredWalkroads %}
@@ -65,6 +65,7 @@
                             <a href="{% url 'maps:show' walkroad.id %}">{{ walkroad.title }}</a>
                             {{ walkroad.description}}
                             <a href="{% url 'mypage:mypage' walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
+                            <a onclick="setFocusClickedPost({{ walkroad.path }})">포커스</a>
                         </div>
                     {% endfor %}
                 </div>
@@ -79,10 +80,6 @@
                     <button type="submit" id="address-location-button" class="address-location-button">설정</button>
                 </div>
                 <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
-            </div>
-            <div class="mypage-btn">
-                <button id="my-walkroad-button" onclick="myWalkroad()" disabled>등록한 산책로</button>
-                <button id="like-walkroad-button" onclick="likeWalkroad()">좋아한 산책로</button>
             </div>
             <!-- 지도타입 컨트롤 div 입니다 -->
             <div class="custom_typecontrol radius_border">
@@ -115,10 +112,10 @@
 
     const my_walkroad_paths = {{ my_walkroad_paths | safe }};
     const like_walkroad_paths = {{ like_walkroad_paths | safe }};
-
+    
     let walkroads = my_walkroads;
     let walkroad_paths = my_walkroad_paths;
-
+    
     let userAddress;
     if ("{{ request.user.is_anonymous }}" == "True") {
         userAddress = "신림로 1";
@@ -145,5 +142,5 @@
 <script src="{% static 'maps/js/components.js' %}"></script>
 <script src="{% static 'maps/js/initial.js' %}"></script>
 <script src="{% static 'maps/js/map.js' %}"></script>
-<script src="{% static 'mypage/js/mypage.js' %}"></script>
+<script src="{% static 'maps/js/mypage.js' %}"></script>
 {% endblock content %}

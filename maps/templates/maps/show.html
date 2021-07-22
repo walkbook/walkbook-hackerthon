@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 
 {% load static %}
-{% block js %}
-<script type="module" src="{% static 'maps/js/show.js' %}"></script>
-{% endblock js %}
 {% block content %}
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
     <div class="body-layout body-layout-show">
