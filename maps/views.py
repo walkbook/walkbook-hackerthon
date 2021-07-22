@@ -152,7 +152,8 @@ class CommentView:
             'commentCount': walkroad.comment_set.count(),
             'commentLikeCount': comment.like_users.count(), 
             'createdTime': current_time,
-            'author': request.user.username 
+            'authorName': request.user.profile.username,
+            'authorId': request.user.id
         })
         
     def delete(request, id, cid):
