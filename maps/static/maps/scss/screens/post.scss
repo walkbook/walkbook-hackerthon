@@ -68,6 +68,10 @@ select.type-select {
     background: rgba(43, 153, 63, 0.151);
 }
 
+select:focus {
+    outline: none;
+}
+
 .searchimg {
     width: 20px;
 }

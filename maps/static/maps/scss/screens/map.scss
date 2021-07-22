@@ -36,6 +36,10 @@ select.type-select {
     background: rgba(43, 153, 63, 0.151);
 }
 
+select:focus {
+    outline: none;
+}
+
 select::-ms-expand {
     display: none;
 }
