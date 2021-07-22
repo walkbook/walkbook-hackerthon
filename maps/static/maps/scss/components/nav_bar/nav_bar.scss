@@ -7,7 +7,7 @@ body {
 .base-header {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 100vw;
     //fixed, background-color 수정 예정
     position: fixed;
     background: linear-gradient(180deg, #FFFFFF 0%, #98c7947e 1213.94%);
