@@ -62,10 +62,12 @@ select.type-select {
     text-align: center;
     -ms-text-align-last: center;
     -moz-text-align-last: center;
-    padding-left: 35px;
+    padding-left: 15px;
     font-weight: 600;
-    // background: rgb(241, 241, 241);
-    background: rgba(43, 153, 63, 0.151);
+    background: rgb(241, 241, 241);
+    // background: rgba(43, 153, 63, 0.151);
+    // background: #7c7c7c;
+    // color: white;
 }
 
 select:focus {
@@ -121,10 +123,10 @@ select {
     -moz-appearance: button;
     -webkit-user-select: none;
     -moz-user-select: none;
-    -webkit-padding-end: 20px;
-    -moz-padding-end: 20px;
-    -webkit-padding-start: 2px;
-    -moz-padding-start: 2px;
+    // -webkit-padding-end: 20px;
+    // -moz-padding-end: 20px;
+    // -webkit-padding-start: 2px;
+    // -moz-padding-start: 2px;
     background-color: #F07575;
     /* Fallback color if gradients are not supported */
     background-image: url(../images/select-arrow.png), -webkit-linear-gradient(top, #E5E5E5, #F4F4F4);
@@ -310,14 +312,16 @@ select {
 
     span{
         margin-left: 7px;
-        font-size: 13px;
-        color: gray;
+        font-size: 12px;
+        color: rgb(94, 94, 94);
+        font-weight: 600;
     }
 }
 
 // 좋아요 하트
 .material-icons mdl-badge, 
 .mdl-badge--overlap {
+    cursor: pointer;
     color: #F44337;
     font-size: 19px;
 }

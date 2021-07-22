@@ -76,8 +76,8 @@
             <div class="comment-inner">
               <a href="{% url 'maps:show' walkroad.id %}">
                 <img src="{% static 'maps/img/speech-bubble.png' %}"/>
+                <span>{{ walkroad.comment_set.count }}</span>
               </a>
-              <span>{{ walkroad.comment_set.count }}</span>
             </div>
 
           </div>
