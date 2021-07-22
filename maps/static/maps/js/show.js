@@ -98,10 +98,10 @@ const onSetCommentCount = (commentCount) => {
     commentCountElement.innerHTML = `<strong>댓글이 ${commentCount}개 있습니다</strong>`;
 }
 
-const getCommentElement = (walkroadId, commentId, commentCount, comment, createdTime, author) => {
+const getCommentElement = (walkroadId, commentId, commentCount, comment, createdTime, authorName, authorId) => {
     var commentElement = document.createElement('p');
     commentElement.id = `walkroad${walkroadId}-comment${commentId}`;
-    commentElement.innerHTML = `${author}: ${comment} &nbsp; &nbsp; ${createdTime}
+    commentElement.innerHTML = `<a href="{% url 'mypage:mypage' ${authorId} %}">${authorName}</a>: ${comment} &nbsp; &nbsp; ${createdTime}
                                 <a id="comment${commentId}-like-button" onclick="onLikeComment(${commentId})">
                                 ${commentCount} Likes </a>
                                 <a onclick="onDeleteComment(${walkroadId}, ${commentId})">댓글 삭제</a>`
@@ -118,9 +118,10 @@ const onAddComment = async (walkroadId) => {
         commentCount,
         commentLikeCount,
         createdTime,
-        author
+        authorName,
+        authorId,
     } = response.data;
-    const commentElement = getCommentElement(walkroadId, commentId, commentLikeCount, commentInputElement.value, createdTime, author);
+    const commentElement = getCommentElement(walkroadId, commentId, commentLikeCount, commentInputElement.value, createdTime, authorName, authorId);
     document.getElementById(`${walkroadId}-comment-list`).appendChild(commentElement);
     onSetCommentCount(commentCount);
     commentInputElement.value = '';
