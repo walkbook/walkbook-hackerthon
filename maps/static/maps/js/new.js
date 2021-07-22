@@ -62,7 +62,6 @@ manager.addListener('drawend', function (data) {
             content: "",
             map: null,
             position: marker.getPosition(),
-            zIndex: 9999999
         })
 
         mappingData[markerId] = { marker, infoWindow };
