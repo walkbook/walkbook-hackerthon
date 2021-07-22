@@ -57,6 +57,8 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .line-long-m { width: 100%; height: 50px; margin-bottom: 20px; margin-top: 70px; }
 
+.line-long-n { width: 100%; height: 50px; margin-bottom: 10px; margin-top: 10px; }
+
 .geoSuccessMsg-class { position: absolute; top: -100px; left: -83px; display: flex; justify-content: center; align-items: center; width: 70px; height: 35px; text-align: center; background-color: rgba(58, 58, 58, 0.438); border-radius: 50px; color: white; border: none; font-size: 13px; font-weight: 600; font-family: 'Nanum Gothic', sans-serif; }
 
 .wrap-i { position: absolute; left: 0; bottom: 20px; width: 200px; height: auto; margin-left: -20px; text-align: left; overflow: hidden; font-size: 12px; font-family: 'Malgun Gothic', dotum, '돋움', sans-serif; line-height: 1.5; box-sizing: border-box; }
@@ -108,6 +110,8 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 .line-long { width: 74vw; height: 50px; margin-bottom: 10px; margin-top: 0px; }
 
 .line-long-m { width: 100%; height: 50px; margin-bottom: 20px; margin-top: 70px; }
+
+.line-long-n { width: 100%; height: 50px; margin-bottom: 10px; margin-top: 10px; }
 
 .input-short { height: 28px; width: 183px; background: #FFFFFF; border-radius: 5px; }
 
@@ -224,9 +228,11 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .new-announce_announce { width: 100%; height: 80px; left: 169px; top: 357px; margin: 10px 0; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
 
-.map-info { display: flex; flex-direction: column; align-items: flex-end; padding: 10px 0 0 10px; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+.mapbox { display: flex; flex-direction: row; align-items: flex-end; }
 
-.map-info p { font-size: 16px; color: #49A59A; margin: 5px 0 0 5px; }
+.map-info { display: flex; flex-direction: column; align-items: flex-start; width: 250px; padding: 15px 0 5px 10px; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+
+.map-info p { font-size: 16px; color: #49A59A; margin: 0; }
 
 .map-info p span { font-size: 14px; color: rgba(135, 135, 135, 0.8); }
 
