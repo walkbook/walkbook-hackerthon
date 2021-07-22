@@ -22,10 +22,10 @@ const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입
         markerImages: [
             {
                 src: '/static/maps/img/draw_marker.png',
-                width: 95,
-                height: 69,
+                width: 30,
+                height: 50,
                 shape: 'rect',
-                coords: '0,0,45,50'
+                coords: '0,0,15,50'
             }
         ]
     },
@@ -61,7 +61,8 @@ manager.addListener('drawend', function (data) {
         const infoWindow = new kakao.maps.InfoWindow({
             content: "",
             map: null,
-            position: marker.getPosition()
+            position: marker.getPosition(),
+            zIndex: 9999999
         })
 
         mappingData[markerId] = { marker, infoWindow };

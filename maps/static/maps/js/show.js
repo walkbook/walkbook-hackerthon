@@ -60,13 +60,15 @@ function drawPolyline(lines) {
         const startMarker = new kakao.maps.Marker({
             map: map,
             position: new kakao.maps.LatLng(lines[i].points[0].y, lines[i].points[0].x),
-            image: new kakao.maps.MarkerImage('/static/maps/img/start_tri.png', flagImageSize, flagImageOption)
+            image: new kakao.maps.MarkerImage('/static/maps/img/start_tri.png', flagImageSize, flagImageOption),
+            zIndex: -1
         });
 
         const finishMarker = new kakao.maps.Marker({
             map: map,
             position: new kakao.maps.LatLng(lines[i].points[lineLen - 1].y, lines[i].points[lineLen - 1].x),
-            image: new kakao.maps.MarkerImage('/static/maps/img/finish_tri.png', flagImageSize, flagImageOption)
+            image: new kakao.maps.MarkerImage('/static/maps/img/finish_tri.png', flagImageSize, flagImageOption),
+            zIndex: -1
         });
     }
 
