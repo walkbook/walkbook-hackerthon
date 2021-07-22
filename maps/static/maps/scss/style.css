@@ -6,6 +6,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap");
@@ -182,31 +184,33 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
   50% { transform: translateY(-10px); }
   to { transform: translateY(0px); } }
 
-.green-box { position: relative; width: auto; height: 100vh; background: linear-gradient(179.61deg, #FFFFFF -9.74%, rgba(152, 199, 148, 0.62) 199.03%), #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
+.index-message { position: absolute; white-space: nowrap; top: 17%; right: 68%; color: var(--green); font-family: 'Noto Sans KR', sans-serif; font-size: 33px; animation: move 3s infinite; -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.226)); color: var(--green); }
 
-.green-box .index-message { position: absolute; top: 22%; right: 66%; color: var(--green); font-family: 'Noto Sans KR', sans-serif; font-size: 23px; animation: move 3s infinite; -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.226)); color: var(--green); }
+.index-message span { font-size: 45px; font-weight: 800; }
 
-.green-box .index-message span { font-size: 30px; font-weight: 700; }
+.green-box { position: relative; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; background: linear-gradient(179.61deg, #FFFFFF -9.74%, rgba(152, 199, 148, 0.62) 199.03%), #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
 
-.green-box .index-img { display: relative; width: 100vw; height: 50vh; }
+.green-box .index_wrap { position: relative; width: 1200px; margin-left: 100px; }
 
-.green-box .index-img .main-img { position: absolute; top: 53%; left: 52%; transform: translate(-50%, -50%); width: 900px; height: 700px; }
+.green-box .index_wrap .index-img { display: relative; width: 900px; height: 700px; }
 
-.green-box .index-img .main-search_map { position: absolute; width: 265px; height: 190px; top: 43%; left: 52%; z-index: 1; }
+.green-box .index_wrap .index-img .main-img { position: absolute; top: 53%; left: 52%; transform: translate(-50%, -50%); width: 900px; height: 700px; }
 
-.green-box .index-img .main-search_map:hover { animation: none; transform: scale(1.1); transition: transform 0.5s ease 0s; }
+.green-box .index_wrap .index-img .main-search_map { position: absolute; width: 265px; height: 190px; top: 43%; left: 52%; z-index: 1; }
 
-.green-box .index-img .main-search_post { position: absolute; width: 220px; height: 170px; bottom: 60%; left: 57%; z-index: 1; }
+.green-box .index_wrap .index-img .main-search_map:hover { animation: none; transform: scale(1.12); transition: transform 0.5s ease 0s; }
 
-.green-box .index-img .main-search_post:hover { transform: scale(1.1); transition: transform 0.5s ease 0s; }
+.green-box .index_wrap .index-img .main-search_post { position: absolute; width: 220px; height: 170px; bottom: 61%; left: 58%; z-index: 1; }
 
-.green-box .index-img .main-mypage { position: absolute; width: 210px; height: 157px; bottom: 67%; right: 46%; z-index: 1; }
+.green-box .index_wrap .index-img .main-search_post:hover { transform: scale(1.12); transition: transform 0.5s ease 0s; }
 
-.green-box .index-img .main-mypage:hover { transform: scale(1.1); transition: transform 0.5s ease 0s; }
+.green-box .index_wrap .index-img .main-mypage { position: absolute; width: 210px; height: 157px; bottom: 70%; right: 45%; z-index: 1; }
 
-.green-box .index-img .main-suggest { position: absolute; width: 270px; height: 210px; bottom: 44%; right: 52vw; z-index: 1; }
+.green-box .index_wrap .index-img .main-mypage:hover { transform: scale(1.12); transition: transform 0.5s ease 0s; }
 
-.green-box .index-img .main-suggest:hover { transform: scale(1.1); transition: transform 0.5s ease 0s; }
+.green-box .index_wrap .index-img .main-suggest { position: absolute; width: 270px; height: 210px; bottom: 43%; right: 52%; z-index: 2; }
+
+.green-box .index_wrap .index-img .main-suggest:hover { transform: scale(1.12); transition: transform 0.5s ease 0s; }
 
 .main-search_map-box { position: absolute; top: 60%; left: 65%; z-index: 1; }
 
