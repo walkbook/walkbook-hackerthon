@@ -45,10 +45,10 @@
                 </div>
             </div>
             <div class="walkroad-posts">
-                <a id="registered-posts">등록한 산책로</a>
-                <a id="liked-posts">좋아하는 산책로</a>
+                <a id="registered-posts" onclick="MyPosts.onClickRegisteredPosts()">등록한 산책로</a>
+                <a id="liked-posts" onclick="MyPosts.onClickLikedPosts()">좋아하는 산책로</a>
                 <input id="search-posts" type="text">
-                <button id="search-posts-btn">검색</button>
+                <button id="search-posts-btn" onclick="MyPosts.onClickSearchBtn()">검색</button>
 
                 <div class="registered-posts">
                     {% for walkroad in registeredWalkroads %}
@@ -145,7 +145,5 @@
 <script src="{% static 'maps/js/components.js' %}"></script>
 <script src="{% static 'maps/js/initial.js' %}"></script>
 <script src="{% static 'maps/js/map.js' %}"></script>
-<script src="{% static 'maps/js/mypage.js' %}"></script>
-
-<script type="module" src="{% static 'mypage/js/mypage.js' %}"></script>
+<script src="{% static 'mypage/js/mypage.js' %}"></script>
 {% endblock content %}
