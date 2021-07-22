@@ -121,48 +121,56 @@
 
 .main-search_map-box {
     position: absolute;
-    top: 60%;
-    left: 65%;
-    z-index: 1;
+    top: 63%;
+    left: 72%;
+    z-index: 3;
 }
 
 .main-search_post-box {
     position: absolute;
     bottom: 79%;
-    left: 67%;
-    z-index: 1;
+    left: 73%;
+    z-index: 3;
 }
 
 
 .main-mypage-box {
     position: absolute;
     bottom: 84%;
-    right: 54%;
-    z-index: 1;
+    right: 60%;
+    z-index: 3;
 }
 
 
 .main-suggest-box {
     position: absolute;
-    bottom: 42%;
-    right: 65vw;
-    z-index: 1;
+    bottom: 35%;
+    right: 70%;
+    z-index: 3;
 }
 
 
 .arrow-box {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 600;
     display: none;
     justify-content: flex-start;
-    width: 179px;
+    width: auto;
     height: auto;
-    padding: 15px;
-
+    padding: 15px 20px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;  
     border-radius: 5px;
     background: rgba(243, 250, 207, 0.753);
-    color: rgb(44, 44, 44);
-    font-size: 11px;
+    color: rgb(51, 97, 37);
+    font-size: 16px;
+
+    span {
+        display: block;
+        font-size: 14px;
+        margin-top: 10px;
+        color:rgba(88, 88, 88, 0.973);
+    }
 }
 
 .icons:hover + p.arrow-box {
