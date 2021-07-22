@@ -10,12 +10,12 @@
 
 .profile-container #profile-form .profile-feature, .profile-container #profile-form .profile-likehour, .profile-container #profile-form .profile-introduce { margin: 3px; }
 
-.profile-container label { display: flex; align-items: flex-end; width: 370px; height: 50px; font-family: 'Nanum Gothic', sans-serif; font-style: normal; font-weight: bold; font-size: 14px; line-height: 17px; letter-spacing: -0.015em; color: #98C794; padding: 5px; font-size: 12px; }
+.profile-container label { display: flex; align-items: flex-end; width: 370px; height: 50px; font-family: 'Nanum Gothic', sans-serif; font-style: normal; font-weight: bold; font-size: 14px; line-height: 17px; letter-spacing: -0.015em; color: #98C794; padding: 5px; }
 
 .profile-container input { padding-left: 8px; box-sizing: border-box; }
 
 .profile-container .edit-btn { width: 200px; height: 43px; margin-top: 70px; margin-bottom: 50px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 30px; border: none; color: white; justify-content: center; font-weight: 600; font-family: 'Montserrat', sans-serif; cursor: pointer; }
 
-label.profile-desc { display: flex; font-size: 3px; color: var(--yellow); justify-content: flex-start; align-items: flex-end; height: 10px; }
+label.profile-desc { display: flex; font-size: 12px; color: var(--yellow); justify-content: flex-start; align-items: flex-end; height: 10px; }
 
 /*# sourceMappingURL=profile.css.map */

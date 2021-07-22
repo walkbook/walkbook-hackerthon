@@ -78,7 +78,7 @@
         padding: 8.5px;
         color: white;
         font-family: 'Nanum Gothic', sans-serif;
-        font-size: 10px;
+        font-size: 11px;
     }
     button:hover {
         cursor: pointer;
@@ -194,7 +194,7 @@
 }
 
 .new-announce_img {
-    padding: 10px;
+    padding: 10px 10px 10px 5px;
     width: 20px;
     height: 30px;
     display: flex;
@@ -209,6 +209,7 @@
     line-height: 24px;
     letter-spacing: -0.015em;
     color: rgba(45, 45, 45, 0.8);
+    margin-left: 5px;
 }
 
 .input-box{
@@ -321,4 +322,87 @@ h4.title-start,
 h4.title-fin,
 h4.title-tmi {
     margin: 20px 0 0 18px;
+}
+
+// 사용자 컨트롤 - 지도
+.custom_typecontrol {
+    display: flex;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 105px;
+    height: 38px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    z-index: 1;
+}
+
+// 사용자 컨트롤 - 줌
+.custom_zoomcontrol {
+    position: absolute;
+    top: 46px;
+    right: 4px;
+    width: 37px;
+    height: 66px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    z-index: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    padding-top: 4px;
+}
+
+.selected_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #98C794 -26.67%, #49A59A 100%);
+    border-radius: 3px;
+    top: 4px;
+    border: none;
+    height: 32px;
+    padding: 0 8.5px;
+    color: white;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 11px;
+    margin-left: 3px;
+    margin-top: 3px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    background: white;
+    border-radius: 3px;
+    top: 4px;
+    border: none;
+    height: 32px;
+    padding: 0 8.5px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 11px;
+    margin-left: 3px;
+    margin-top: 3px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+// zoom button
+.zoom-btn {
+    box-sizing: border-box;
+    cursor: pointer;
+
+    img {
+        height: 23px;
+        width: 23px;
+    }
+
 }

@@ -20,7 +20,7 @@
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
   {% if form.errors %}
-    <p class="login-announce">아이디와 비밀번호가 일치하지 않습니다.</p>
+    <p class="login-announce login-check">아이디와 비밀번호가 일치하지 않습니다.</p>
   {% endif %}
   {% if next %}
     <p class="login-announce">로그인이 필요합니다.</p>

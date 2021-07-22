@@ -1,4 +1,4 @@
-const geoSuccessMsg = '<div class="geoSuccessMsg-class" style="width:170px;text-align:center;padding:6px 0;border-none;">여기 계시는군요! :D</div>';
+const geoSuccessMsg = '<div class="geoSuccessMsg-class" style="width:170px;text-align:center;padding:6px 0;border-none;">현재 위치 근처의 <br>산책로를 찾아보세요!</div>';
 const geoFailMsg = '현재 위치를 받아올 수 없습니다 :(';
 
 function infoWindowContent(id, title, description) {
@@ -28,7 +28,7 @@ function pathInfoContent(id, title, description, time, like) {
         '    <div class="info info-p">' +
         '        <div class="title title-p">' +
         `            📍${title}` +
-        `            <div class="like-p">${like}Likes</div>` +
+        `            <div class="like-p">${like} Likes</div>` +
         '        </div>' +
         '        <div class="body body-p">'+
         `            <div class="ellipsis ellipsis-p">소요시간 <span>: ${walkHour}${walkMin}</span></div>` +

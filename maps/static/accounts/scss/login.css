@@ -6,6 +6,8 @@
 
 .login-announce { text-align: center; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 16px; line-height: 36px; letter-spacing: -0.015em; color: #98C794; padding: 20px; font-family: 'Nanum Gothic', sans-serif; }
 
+.login-check { color: #ff8059; }
+
 .login-container { height: 28px; width: 183px; display: flex; flex-direction: column; justify-content: space-around; align-items: center; margin: auto; margin-top: 120px; background: #FFFFFF; border-radius: 5px; }
 
 .login-container .loginbtn { width: 90%; height: 55px; margin-top: 50px; margin-bottom: 50px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); border-radius: 30px; border: none; color: white; justify-content: center; font-weight: 600; font-family: 'Montserrat', sans-serif; cursor: pointer; }

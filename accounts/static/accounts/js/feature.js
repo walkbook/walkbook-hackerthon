@@ -9,9 +9,11 @@ export const feature = {
 
     if (response.data.isAvailable) {
       document.getElementById('validate-id').innerHTML = '사용 가능!'
+      document.getElementById('validate-id').style.color = 'green';
       return true;
     } else {
       document.getElementById('validate-id').innerHTML = 'ID가 이미 존재합니다.'
+      document.getElementById('validate-id').style.color = 'rgb(255, 128, 89)';
       return false;
     }
   },
@@ -34,10 +36,10 @@ export const feature = {
       this.isSamePassword(this.getPasswords())
     ) {
       document.getElementById('same-password').innerHTML = '비밀번호가 일치합니다.'
-      document.getElementById('same-password').style.color = 'blue';
+      document.getElementById('same-password').style.color = 'green';
     } else {
       document.getElementById('same-password').innerHTML = '비밀번호가 일치하지 않습니다.'
-      document.getElementById('same-password').style.color = 'red';
+      document.getElementById('same-password').style.color = 'rgb(255, 128, 89)';
     }
   },
 
@@ -49,7 +51,7 @@ export const feature = {
       document.getElementById('validate-password').innerHTML = '';
     } else {
       document.getElementById('validate-password').innerHTML = '비밀번호는 4자리 이상의 대소문자, 숫자여야 합니다.'
-      document.getElementById('validate-password').style.color = 'red';
+      document.getElementById('validate-password').style.color = 'rgb(255, 128, 89)';
     }
   },
 
