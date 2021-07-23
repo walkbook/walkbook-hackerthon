@@ -5,8 +5,7 @@
 {% block content %}
 <center>
     <div class="update_wrap">
-        <p class="enroll-announce">🌱 산책로 정보를 수정해주세요!</p>
-		<img class="line-long" src="{% static 'maps/img/line.png' %}" />
+        <p class="enroll-announce">🌱 산책로 정보 수정</p>
         <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}">
             {% csrf_token %}
             <div class="input-box">

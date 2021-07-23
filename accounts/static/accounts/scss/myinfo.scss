@@ -5,12 +5,12 @@
     width: 380px;
     height: 40px;
     background: #FFFFFF;
-    border: 1px dashed rgba(0, 0, 0, 0.5);
+    border: none;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 10px;
+    padding-left: 15px;
     padding-right: 8px;
     box-sizing: border-box;
     font-size: 14px;
@@ -50,6 +50,7 @@
         letter-spacing: -0.015em;
         color: #98C794;
         padding: 5px;
+        margin-bottom: 5px;
     }
 
     input {
@@ -62,8 +63,8 @@
             #location {
                 width: 310px;
                 height: 40px;
-                background: #FFFFFF;
-                border: 1px dashed rgba(0, 0, 0, 0.5);
+                border: none;
+                background: #F3F1F2;
                 border-radius: 10px;
             }
             #password1,
@@ -73,17 +74,18 @@
             #age {
                 width: 380px;
                 height: 40px;
-                background: #FFFFFF;
-                border: 1px dashed rgba(0, 0, 0, 0.5);
+                border: none;
+                background: #F3F1F2;
                 border-radius: 10px;
                 box-sizing: border-box;
-                padding-left: 8px;
+                padding-left: 15px;
             }
 
             #searchLocation {
                 width: 70px;
                 height: 40px;
-                background: #98C794;
+                background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
+                opacity: 70%;
                 border-radius: 10px;
                 border: none;
                 color: white;
