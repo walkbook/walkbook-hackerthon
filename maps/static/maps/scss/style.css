@@ -250,11 +250,11 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .mapbox-new { display: flex; flex-direction: row; align-items: flex-end; }
 
-.map-info { display: flex; flex-direction: column; align-items: flex-start; width: 250px; padding: 15px 0 5px 10px; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+.map-info { position: absolute; display: flex; flex-direction: column; align-items: flex-start; width: auto; padding: 15px 0 5px 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; z-index: 2; background: #f0f0f0; padding: 10px 15px 10px 10px; top: 48px; left: 6px; border-radius: 10px; box-shadow: 5px 5px 20px 5px rgba(128, 128, 128, 0.671); }
 
 .map-info p { font-size: 16px; color: #49A59A; margin: 0; }
 
-.map-info p span { font-size: 14px; color: rgba(135, 135, 135, 0.8); margin-left: 8px; }
+.map-info p span { font-size: 14px; color: rgba(0, 0, 0, 0.8); margin-left: 8px; }
 
 #map { border-radius: 5px; z-index: 0; }
 
@@ -266,9 +266,9 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .marker-line_box button:hover { cursor: pointer; }
 
-.loading_new { position: absolute; width: 100%; height: 100%; top: 50% !important; left: 50%; transform: translate(-50%, -50%); z-index: 3; }
+.loading_new { position: absolute; width: 100%; height: 100%; top: 50% !important; left: 50%; transform: translate(-50%, -50%); z-index: 7; }
 
-.loading-background_new { background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; width: 100%; height: 100%; top: 60%; z-index: 4; }
+.loading-background_new { background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; width: 100%; height: 100%; top: 60%; z-index: 7; }
 
 #loading-bar-spinner.spinner { left: 50%; margin-left: -20px; top: 45%; margin-top: -20px; position: absolute; z-index: 19 !important; -webkit-animation: loading-bar-spinner 400ms linear infinite; animation: loading-bar-spinner 400ms linear infinite; z-index: 5; }
 
@@ -356,7 +356,7 @@ h4.title-name, h4.title-title, h4.title-desc, h4.title-start, h4.title-fin, h4.t
 
 .disabled { background: linear-gradient(180deg, #EBEBEB 0%, rgba(114, 111, 106, 0.8) 110.71%) !important; pointer-events: none; }
 
-.marker-info { position: absolute; z-index: 8; background: rgba(0, 0, 0, 0.651); width: 100%; height: 100%; border-radius: 5px; }
+.marker-info { position: absolute; z-index: 6; background: rgba(0, 0, 0, 0.651); width: 100%; height: 100%; border-radius: 5px; }
 
 .marker-info .marker-info_location { margin-top: 18%; }
 
