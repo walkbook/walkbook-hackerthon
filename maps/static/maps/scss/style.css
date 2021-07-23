@@ -184,13 +184,13 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
   50% { transform: translateY(-10px); }
   to { transform: translateY(0px); } }
 
-.index-message { position: absolute; white-space: nowrap; top: 17%; right: 68%; color: var(--green); font-family: 'Noto Sans KR', sans-serif; font-size: 33px; animation: move 3s infinite; -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.226)); color: var(--green); }
+.index-message { position: absolute; white-space: nowrap; top: 12%; right: 72%; color: var(--green); font-family: 'Noto Sans KR', sans-serif; font-size: 33px; animation: move 3s infinite; -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.226)); color: var(--green); }
 
 .index-message span { font-size: 45px; font-weight: 800; }
 
 .green-box { position: relative; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; background: linear-gradient(179.61deg, #FFFFFF -9.74%, rgba(152, 199, 148, 0.62) 199.03%), #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
 
-.green-box .index_wrap { position: relative; width: 1200px; margin-left: 100px; }
+.green-box .index_wrap { position: relative; width: 1400px; margin-left: 100px; }
 
 .green-box .index_wrap .index-img { display: relative; width: 900px; height: 700px; }
 

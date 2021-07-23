@@ -16,8 +16,9 @@
 .index-message {
     position: absolute;
     white-space: nowrap;
-    top: 17%;
-    right: 68%;
+    // 캐치프레이즈 위치 조정
+    top: 12%;
+    right: 72%;
     color: var(--green);
     font-family: 'Noto Sans KR', sans-serif;
     // font-family: 'Nanum Myeongjo', serif;
@@ -45,7 +46,8 @@
 
     .index_wrap {
         position: relative;
-        width: 1200px;
+        // 캐치프레이즈 수정 위해 창 크기 변경
+        width: 1400px;
         margin-left: 100px;
         
         .index-img {
