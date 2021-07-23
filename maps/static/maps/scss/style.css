@@ -374,13 +374,19 @@ h4.title-name, h4.title-title, h4.title-desc, h4.title-start, h4.title-fin, h4.t
 
 .mapbox_wrap { width: 60%; position: relative; }
 
-.info-box { padding-top: 55px; display: flex; justify-content: flex-end; width: 40%; margin-right: 15px; }
+.info-box { padding-top: 55px; display: flex; justify-content: flex-end; width: 40%; margin-right: 50px; }
 
 .info_wrap { width: 95%; }
 
-.info_wrap p { font-style: normal; font-size: 14px; color: gray; }
+.info_wrap .enroll-title { color: var(--yellow); font-family: 'Nanum Gothic', sans-serif; font-size: 24px; font-weight: 600; text-align: start; margin: 0 0 20px 15px; }
 
-.enroll-title { color: var(--deepgreen); margin-left: 5px; font-family: 'Nanum Gothic', sans-serif; font-weight: 600; font-size: 24px; }
+.info_wrap .material-icons mdl-badge, .info_wrap .mdl-badge--overlap { cursor: pointer; color: #F44337; font-size: 19px; }
+
+.info_wrap .mdl-badge[data-badge]:after { background: none; color: #5E5E5E; top: -1px; left: 18px; }
+
+.info_wrap .comment-inner { font-family: 'Nanum Gothic', sans-serif; }
+
+.info_wrap .comment-inner img { width: 16px; margin: 0 3px 0 5px; }
 
 .enroll-desc { padding: 3px 0 0px 10px; font-size: 16px !important; color: #8b8b8b; font-family: 'Nanum Gothic', sans-serif; }
 
