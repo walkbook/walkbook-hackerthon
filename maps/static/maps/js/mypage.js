@@ -1,11 +1,13 @@
 let selected = 'register';
 
 function onClickRegisteredPosts() {
-    const registeredPosts = this.GetAllRegisteredPosts();
-    const likedPosts = this.GetAllLikedPosts();
-    this.ShowPosts(registeredPosts);
-    this.HidePosts(likedPosts);
-    this.selected = 'register';
+    const registeredPosts = GetAllRegisteredPosts();
+    const likedPosts = GetAllLikedPosts();
+    ShowPosts(registeredPosts);
+    ShowPostsBox("registered-posts-box");
+    HidePosts(likedPosts);
+    HidePostsBox("liked-posts-box");
+    selected = 'register';
     walkroads = my_walkroads;
     walkroad_paths = my_walkroad_paths;
     removeOverlays();
@@ -13,11 +15,13 @@ function onClickRegisteredPosts() {
 }
 
 function onClickLikedPosts() {
-    const registeredPosts = this.GetAllRegisteredPosts();
-    const likedPosts = this.GetAllLikedPosts();
-    this.ShowPosts(likedPosts);
-    this.HidePosts(registeredPosts);
-    this.selected = 'like';
+    const registeredPosts = GetAllRegisteredPosts();
+    const likedPosts = GetAllLikedPosts();
+    ShowPosts(likedPosts);
+    ShowPostsBox("liked-posts-box");
+    HidePosts(registeredPosts);
+    HidePostsBox("registered-posts-box");
+    selected = 'like';
     walkroads = like_walkroads;
     walkroad_paths = like_walkroad_paths;
     removeOverlays();
@@ -48,8 +52,20 @@ function GetAllLikedPosts() {
     }));
 }
 
+function ShowPostsBox(box){
+    const postsBox = document.getElementById(box);
+    postsBox.style.border='1px solid gainsboro';
+    postsBox.style.display = 'flex';
+}
+
 function ShowPosts(posts) {
     return posts.forEach(({post}) => post.classList.remove('hide'));
+}
+
+function HidePostsBox(box){
+    const postsBox = document.getElementById(box);
+    postsBox.style.border= 0;
+    postsBox.style.display = 'None';
 }
 
 function HidePosts(posts) {
@@ -66,13 +82,13 @@ function getUnMatchedPosts(posts, keyword){
 
 function onClickSearchBtn(){
     const keyword = document.getElementById('search-posts').value;
-    let posts = this.GetAllRegisteredPosts()
-    if(this.selected == 'like'){
-        posts = this.GetAllLikedPosts()
+    let posts = GetAllRegisteredPosts()
+    if(selected == 'like'){
+        posts = GetAllLikedPosts()
     }
 
-    const MatchedPosts = this.getMatchedPosts(posts, keyword);
-    const unMatchedPosts = this.getUnMatchedPosts(posts, keyword);
-    this.ShowPosts(MatchedPosts);
-    this.HidePosts(unMatchedPosts);
+    const MatchedPosts = getMatchedPosts(posts, keyword);
+    const unMatchedPosts = getUnMatchedPosts(posts, keyword);
+    ShowPosts(MatchedPosts);
+    HidePosts(unMatchedPosts);
 }
