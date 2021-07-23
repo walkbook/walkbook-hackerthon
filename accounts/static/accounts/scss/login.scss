@@ -6,7 +6,7 @@
         height: 83px;
         display: flex;
         padding-top: 150px;
-        padding-bottom: 20px;
+        padding-bottom: 70px;
         margin: 0;
     }
 
@@ -16,6 +16,7 @@
         display: flex;
         margin: auto;
         top: 200px;
+        padding-bottom: 50px;
     }
 }
 
@@ -28,7 +29,7 @@
     line-height: 36px;
     letter-spacing: -0.015em;
     color: #98C794;
-    padding: 20px;
+    padding-bottom: 20px;
     font-family: 'Nanum Gothic', sans-serif;
 }
 
@@ -52,8 +53,7 @@
     .loginbtn {
         width: 90%;
         height: 55px;
-        margin-top: 50px;
-        margin-bottom: 50px;
+        margin: 40px 0;
         background: linear-gradient(180deg, #49A59A 0%, #98C794 100%);
         border-radius: 30px;
         border: none;
@@ -76,8 +76,7 @@
             box-sizing: border-box;
             width: 380px;
             height: 40px;
-            margin: 8px;
-            background: #FFFFFF;
+            margin: 10px;
             border: none;
             background: #F3F1F2;
             border-radius: 10px;
@@ -98,7 +97,7 @@ h1.login-h1 {
     width: auto;
     display: flex;
     justify-content: center;
-    margin-top: 80px;
+    margin-top: 90px;
     color: grey;
     font-size: 12px;
     text-decoration: underline;

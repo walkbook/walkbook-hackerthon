@@ -1,16 +1,16 @@
 .post-all { padding-top: 110px; }
 
-.post-all .search-post { display: inline-flex; flex-wrap: nowrap; align-items: center; position: relative; }
+.post-all .search-post { display: inline-flex; flex-wrap: nowrap; align-items: center; position: relative; border-radius: 30px 30px 30px 30px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); }
 
 .post-all .search-post select::-ms-expand { display: none; }
 
-.post-all .search-post #keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 0px 30px 30px 0px; border: 0.3px solid #dddddd; box-sizing: border-box; padding-left: 10px; }
+.post-all .search-post #keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 0px 30px 30px 0px; border: none; box-sizing: border-box; padding-left: 10px; }
 
 .post-all .search-post #search-btn { position: absolute; bottom: 13px; right: 23px; width: 20px; height: 20px; border: none; background: transparent; cursor: pointer; }
 
 .post-all .sort-post { position: relative; left: 80%; margin-top: 30px; }
 
-select.type-select { display: flex; justify-content: center; margin: auto; width: 110px; height: 44px; background: #00000004; border-radius: 30px 0px 0px 30px; font-family: 'Nanum Gothic', sans-serif; box-sizing: border-box; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25); border: 0.3px solid #dddddd; border-right: none; z-index: 2; font-size: 12px; color: #616161; text-align-last: center; text-align: center; -ms-text-align-last: center; -moz-text-align-last: center; padding-left: 15px; font-weight: 600; background: #f1f1f1; }
+select.type-select { display: flex; justify-content: center; margin: auto; width: 110px; height: 44px; background: #00000004; border-radius: 30px 0px 0px 30px; font-family: 'Nanum Gothic', sans-serif; box-sizing: border-box; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25); border: none; border-right: none; z-index: 2; font-size: 12px; color: #616161; text-align-last: center; text-align: center; -ms-text-align-last: center; -moz-text-align-last: center; padding-left: 15px; font-weight: 600; background: #f1f1f1; }
 
 select:focus { outline: none; }
 

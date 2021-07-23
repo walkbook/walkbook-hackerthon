@@ -6,7 +6,7 @@
 
 .profile-container #profile-form { display: flex; flex-direction: column; }
 
-.profile-container #profile-form #profile-feature, .profile-container #profile-form #profile-likehour, .profile-container #profile-form #profile-introduce { width: 380px; height: 40px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+.profile-container #profile-form #profile-feature, .profile-container #profile-form #profile-likehour, .profile-container #profile-form #profile-introduce { width: 380px; height: 40px; border: none; background: #F3F1F2; border-radius: 10px; }
 
 .profile-container #profile-form .profile-feature, .profile-container #profile-form .profile-likehour, .profile-container #profile-form .profile-introduce { margin: 3px; }
 

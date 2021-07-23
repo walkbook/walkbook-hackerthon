@@ -2,7 +2,7 @@
 
 .line-mid { width: 653px; height: 37px; }
 
-.username-box { width: 380px; height: 40px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; display: flex; justify-content: space-between; align-items: center; padding-left: 10px; padding-right: 8px; box-sizing: border-box; font-size: 14px; font-family: 'Nanum Gothic', sans-serif; background-color: #e7e7e7; }
+.username-box { width: 380px; height: 40px; background: #FFFFFF; border: none; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; padding-left: 15px; padding-right: 8px; box-sizing: border-box; font-size: 14px; font-family: 'Nanum Gothic', sans-serif; background-color: #e7e7e7; }
 
 .locker { width: 20px; height: 20px; }
 
@@ -10,15 +10,15 @@
 
 .myinfo-container h1 { width: 200px; height: 39.86px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 24px; line-height: 36px; letter-spacing: -0.015em; color: #98C794; }
 
-.myinfo-container label { display: flex; align-items: flex-end; width: 370px; height: 50px; font-family: 'Nanum Gothic', sans-serif; font-style: normal; font-weight: bold; font-size: 14px; line-height: 17px; letter-spacing: -0.015em; color: #98C794; padding: 5px; }
+.myinfo-container label { display: flex; align-items: flex-end; width: 370px; height: 50px; font-family: 'Nanum Gothic', sans-serif; font-style: normal; font-weight: bold; font-size: 14px; line-height: 17px; letter-spacing: -0.015em; color: #98C794; padding: 5px; margin-bottom: 5px; }
 
 .myinfo-container input { padding-left: 8px; box-sizing: border-box; }
 
-.myinfo-container #myinfo-form .myinfo #location { width: 310px; height: 40px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
+.myinfo-container #myinfo-form .myinfo #location { width: 310px; height: 40px; border: none; background: #F3F1F2; border-radius: 10px; }
 
-.myinfo-container #myinfo-form .myinfo #password1, .myinfo-container #myinfo-form .myinfo #password2, .myinfo-container #myinfo-form .myinfo #username, .myinfo-container #myinfo-form .myinfo #sex, .myinfo-container #myinfo-form .myinfo #age { width: 380px; height: 40px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; box-sizing: border-box; padding-left: 8px; }
+.myinfo-container #myinfo-form .myinfo #password1, .myinfo-container #myinfo-form .myinfo #password2, .myinfo-container #myinfo-form .myinfo #username, .myinfo-container #myinfo-form .myinfo #sex, .myinfo-container #myinfo-form .myinfo #age { width: 380px; height: 40px; border: none; background: #F3F1F2; border-radius: 10px; box-sizing: border-box; padding-left: 15px; }
 
-.myinfo-container #myinfo-form .myinfo #searchLocation { width: 70px; height: 40px; background: #98C794; border-radius: 10px; border: none; color: white; font-size: 12px; }
+.myinfo-container #myinfo-form .myinfo #searchLocation { width: 70px; height: 40px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); opacity: 70%; border-radius: 10px; border: none; color: white; font-size: 12px; }
 
 .myinfo-container #myinfo-form .myinfo #searchLocation:hover { background-color: var(--deepgreen); cursor: pointer; }
 
