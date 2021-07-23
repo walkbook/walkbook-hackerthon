@@ -10,10 +10,14 @@ export const feature = {
     if (response.data.isAvailable) {
       document.getElementById('validate-id').innerHTML = '사용 가능!'
       document.getElementById('validate-id').style.color = 'green';
+      document.getElementById('validate-id').style.fontSize = '12px';
+      document.getElementById('validate-id').style.fontWeight = 'lighter';
       return true;
     } else {
       document.getElementById('validate-id').innerHTML = 'ID가 이미 존재합니다.'
-      document.getElementById('validate-id').style.color = 'rgb(255, 128, 89)';
+      document.getElementById('validate-id').style.color = 'var(--yellow)';
+      document.getElementById('validate-id').style.fontSize = '12px';
+      document.getElementById('validate-id').style.fontWeight = 'lighter';
       return false;
     }
   },
@@ -37,9 +41,13 @@ export const feature = {
     ) {
       document.getElementById('same-password').innerHTML = '비밀번호가 일치합니다.'
       document.getElementById('same-password').style.color = 'green';
+      document.getElementById('same-password').style.fontSize = '12px';
+      document.getElementById('same-password').style.fontWeight = 'lighter';
     } else {
       document.getElementById('same-password').innerHTML = '비밀번호가 일치하지 않습니다.'
-      document.getElementById('same-password').style.color = 'rgb(255, 128, 89)';
+      document.getElementById('same-password').style.color = 'var(--yellow)';
+      document.getElementById('same-password').style.fontSize = '12px';
+      document.getElementById('same-password').style.fontWeight = 'lighter';
     }
   },
 
@@ -51,7 +59,9 @@ export const feature = {
       document.getElementById('validate-password').innerHTML = '';
     } else {
       document.getElementById('validate-password').innerHTML = '비밀번호는 4자리 이상의 대소문자, 숫자여야 합니다.'
-      document.getElementById('validate-password').style.color = 'rgb(255, 128, 89)';
+      document.getElementById('validate-password').style.color = 'var(--yellow)';
+      document.getElementById('validate-password').style.fontSize = '12px';
+      document.getElementById('validate-password').style.fontWeight = 'lighter';
     }
   },
 

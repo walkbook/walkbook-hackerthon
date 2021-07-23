@@ -9,6 +9,7 @@
     font-size: 24px;
     font-weight: 600;
     text-align: start;
+    margin: 0 0 20px 15px;
 }
 
 .announcement {
@@ -54,7 +55,7 @@
         span {
             font-size: 14px;
             color: rgba(135, 135, 135, 0.8);
-            
+            margin-left: 8px;
         }
     }
 }
@@ -216,7 +217,7 @@
     line-height: 24px;
     letter-spacing: -0.015em;
     color: rgba(45, 45, 45, 0.8);
-    margin-left: 5px;
+    margin-left: 15px;
 }
 
 .warning {
@@ -226,6 +227,7 @@
 }
 
 .input-box{
+    margin-top: 30px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -263,7 +265,7 @@
 }
 
 .name-box {
-    margin-bottom: 20px;
+    margin: 0 5px 20px 0;
     text-align: start;
 }
 
@@ -274,10 +276,12 @@
 
     .title-box {
         width: 100%;
+        margin-right: 5px;
     }
 
     .desc-box {
         width: 100%;
+        margin-left: 5px;
     }
 }
 
@@ -288,9 +292,11 @@
 
     .start-box {
         width: 100%;
+        margin-right: 5px;
     }
     .fin-box {
         width: 100%;
+        margin-left: 5px;
     }
 }
 
@@ -319,7 +325,7 @@
 }
 
 .enroll-btn {
-    margin-top: 80px;
+    margin-top: 60px;
     margin-bottom: 30px;
     width: 100%;
     display: flex;
@@ -336,7 +342,7 @@ h4.title-desc,
 h4.title-start,
 h4.title-fin,
 h4.title-tmi {
-    margin: 20px 0 0 18px;
+    margin: 11px 0 5px 18px;
     text-align: start;
 }
 

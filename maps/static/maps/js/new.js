@@ -158,8 +158,8 @@ function showResult() {
 
     const totalTimeElement = document.getElementById('total-time');
     const totalDistanceElement = document.getElementById('total-distance');
-    totalTimeElement.innerHTML = `🕒 소요 시간 : ${walkHour} ${walkMin}`;
-    totalDistanceElement.innerHTML = `📏 총 거리 : ${walkDistance}m`;
+    totalTimeElement.innerHTML = `🕒 소요 시간 <span>${walkHour} ${walkMin}</span>`;
+    totalDistanceElement.innerHTML = `📏 총 거리 <span>${walkDistance}m</span>`;
 
 }
 

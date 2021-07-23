@@ -45,9 +45,10 @@
     #password {
         width: 380px;
         height: 40px;
-        background: #FFFFFF;
-        border: 1px dashed rgba(0, 0, 0, 0.5);
+        border: none;
+        background: #F3F1F2;
         border-radius: 10px;
+        padding-left: 15px;
     }
 
     .checkpw-title {

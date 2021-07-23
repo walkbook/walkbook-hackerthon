@@ -4,15 +4,15 @@
 
 .signup_container .signupbtn { width: 370px; height: 55px; margin-top: 80px; margin-bottom: 100px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); border-radius: 30px; }
 
-.signup_container label { display: flex; align-items: flex-end; width: 46.89px; height: 50px; font-family: 'Nanum Gothic', sans-serif; font-style: normal; font-weight: bold; font-size: 14px; line-height: 17px; letter-spacing: -0.015em; color: #98C794; }
+.signup_container label { display: flex; align-items: flex-end; width: 46.89px; height: 40px; font-family: 'Nanum Gothic', sans-serif; font-style: normal; font-weight: bold; font-size: 14px; line-height: 17px; letter-spacing: -0.015em; color: #98C794; }
 
 .signup_container #signup-form { padding-top: 20px; }
 
-.signup_container #signup-form .signup #userid, .signup_container #signup-form .signup #location { width: 300px; height: 40px; margin-bottom: 5px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; padding-left: 10px; box-sizing: border-box; }
+.signup_container #signup-form .signup #userid, .signup_container #signup-form .signup #location { width: 300px; height: 40px; margin-bottom: 5px; background: #F3F1F2; border: none; border-radius: 10px; padding-left: 15px; box-sizing: border-box; }
 
-.signup_container #signup-form .signup #password1, .signup_container #signup-form .signup #password2, .signup_container #signup-form .signup #username, .signup_container #signup-form .signup #sex, .signup_container #signup-form .signup #age { width: 380px; height: 40px; margin-bottom: 5px; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; padding-left: 10px; box-sizing: border-box; padding-right: 10px; }
+.signup_container #signup-form .signup #password1, .signup_container #signup-form .signup #password2, .signup_container #signup-form .signup #username, .signup_container #signup-form .signup #sex, .signup_container #signup-form .signup #age { padding-left: 15px; box-sizing: border-box; width: 380px; height: 40px; margin: 8px; border: none; background: #F3F1F2; border-radius: 10px; }
 
-.signup_container #signup-form .signup #checkUserid, .signup_container #signup-form .signup #searchLocation { width: 70px; height: 40px; background: #98C794; border-radius: 10px; border: none; color: white; font-size: 12px; }
+.signup_container #signup-form .signup #checkUserid, .signup_container #signup-form .signup #searchLocation { width: 70px; height: 40px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); opacity: 70%; border-radius: 10px; border: none; color: white; font-size: 12px; margin-left: 5px; }
 
 .signup_container #signup-form .signup #checkUserid:hover { background-color: var(--deepgreen); cursor: pointer; }
 
@@ -20,7 +20,7 @@
 
 .signup_container #signup-form .signup #validate-id, .signup_container #signup-form .signup #validate-password, .signup_container #signup-form .signup #same-password { font-family: 'Nanum Gothic', sans-serif; font-style: normal; font-weight: bold; font-size: 15px; letter-spacing: -0.015em; }
 
-.signup_title { display: flex; flex-direction: column; width: 360px; margin: 5px; }
+.signup_title { display: flex; flex-direction: column; width: 370px; margin: 10px; }
 
 .signup_title label { width: 100%; display: flex; justify-content: flex-start; }
 
@@ -31,7 +31,5 @@
 .signupbtn:hover { background-color: var(--deepgreen); cursor: pointer; }
 
 .validate-id { position: absolute; left: 400px; }
-
-.signup_container label.password-desc { display: flex; font-size: 12px; color: var(--yellow); justify-content: flex-start; height: 20px; }
 
 /*# sourceMappingURL=signup.css.map */
