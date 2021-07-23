@@ -34,8 +34,8 @@
 			{% csrf_token %}
 			<div class="mapbox mapbox-new">
 				<div class="map-info">
-					<p id="total-time">🕒 소요 시간 <span>0 분</span></p>
-					<p id="total-distance">📏 총 거리 <span>0 m</span></p>
+					<p id="total-time">🕒ㅤ소요 시간 : <span>0 분</span></p>
+					<p id="total-distance">📏ㅤ총 거리 : <span>0 m</span></p>
 				</div>
 
 				<div class="map-input">
@@ -46,14 +46,23 @@
 					<button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
 				</div>
 			</div>
-    
-			<div id="info-input-container" style="display: none">
-					<input type="text" name="info-title" id="info-title-input" placeholder="마커 이름을 달아주세요!"/>
-					<input type="text" name="info-description" id="info-description-input" placeholder="마커 설명을 달아주세요!"/>
-					<button type="submit" id="save-info-button" onclick="saveInfo()">저장</button> 
-			</div>
 
 			<div class="map_wrap">
+				{% comment %} 마커 정보 입력 {% endcomment %}
+				<div id="info-input-container" class="marker-info" style="display: none">
+					<div class="marker-info_location">
+						<div class="marker-info_title">
+							<input type="text" name="info-title" id="info-title-input" placeholder="마커 이름을 달아주세요!"/>
+						</div>
+						<div class="marker-info_desc">
+							<input type="text" name="info-description" id="info-description-input" placeholder="마커 설명을 달아주세요!"/>
+						</div>
+						<div class="marker-info-btn">
+							<button type="submit" id="save-info-button" onclick="saveInfo()">저장</button> 
+						</div>
+					</div>
+				</div>
+				
 				<div id="loading" class="loading_new">
 					<div class="loading-background_new">
 						<div id="loading-bar-spinner" class="spinner">

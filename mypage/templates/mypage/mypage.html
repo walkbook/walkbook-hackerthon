@@ -66,7 +66,7 @@
                 <button id="search-posts-btn"><img onclick="onClickSearchBtn()"class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
                 </div></div>
 
-                <div class="registered-posts">
+                <div id="registered-posts-box" class="registered-posts" style="border: 1px solid gainsboro; display: flex;">
                     {% for walkroad in registeredWalkroads %}
                         <div class="registered-post">
                         <img class="registered-img" src="{% static 'mypage/img/pathex.png' %}">
@@ -79,7 +79,7 @@
                     {% endfor %}
                 </div>
 
-                <div class="liked-posts">
+                <div id="liked-posts-box" class="liked-posts hide">
                     {% for walkroad in likedWalkroads %}
                         <div class="liked-post hide">
                         <img class="liked-img" src="{% static 'mypage/img/pathex.png' %}">
