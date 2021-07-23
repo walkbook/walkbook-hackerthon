@@ -232,9 +232,9 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .body-layout { font-family: 'Nanum Gothic', sans-serif; }
 
-.enroll-announce { color: var(--yellow); font-size: 24px; font-weight: 600; }
+.enroll-announce { color: var(--yellow); font-size: 24px; font-weight: 600; text-align: start; }
 
-.announcement { display: block; color: var(--green); font-size: 14px; }
+.announcement { display: block; color: var(--green); font-size: 14px; text-align: start; }
 
 .new-announce_announce { width: 100%; height: 80px; left: 169px; top: 357px; margin: 10px 0; background: #FFFFFF; border: 1px dashed rgba(0, 0, 0, 0.5); border-radius: 10px; }
 
@@ -306,9 +306,9 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .input-box_wrap { width: 100%; }
 
-.input-name { background-color: rgba(131, 131, 131, 0.301); }
+.input-name { background-color: rgba(131, 131, 131, 0.301); justify-content: start; }
 
-.name-box { margin-bottom: 20px; }
+.name-box { margin-bottom: 20px; text-align: start; }
 
 .title-desc-box { display: flex; margin-bottom: 10px; width: auto; }
 
@@ -332,7 +332,7 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .enroll-btn:hover { cursor: pointer; }
 
-h4.title-name, h4.title-title, h4.title-desc, h4.title-start, h4.title-fin, h4.title-tmi { margin: 20px 0 0 18px; }
+h4.title-name, h4.title-title, h4.title-desc, h4.title-start, h4.title-fin, h4.title-tmi { margin: 20px 0 0 18px; text-align: start; }
 
 .custom_typecontrol { display: flex; position: absolute; top: 4px; right: 4px; width: 105px; height: 38px; background: #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 3px; z-index: 1; }
 
