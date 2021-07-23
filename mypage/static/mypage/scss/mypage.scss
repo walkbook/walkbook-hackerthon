@@ -1,91 +1,309 @@
+.base-header {
+  background:none;
+}
+.base-header .wrap-header .header-accounts a {
+  text-shadow: none;
+}
+
+.book-layer {
+  flex-shrink: 0;
+  right: 0;
+  position: absolute;
+  width: 50vw;
+  height: 100%;
+  background: linear-gradient(163.22deg,
+      rgba(152, 199, 148, 0.88) 14.88%,
+      rgba(73, 165, 154, 0.88) 92.17%),
+    #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
 .mypage-layout {
-    display: flex;
-    justify-content: center;
-    padding-top: 80px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100%;
 }
 
 .mypage_wrap {
-    display: flex;
-    width: 90%;
+  display: flex;
+  justify-content: center;
+  min-width: 1400px;
+  padding-top: 80px;
+  height: 100%;
 }
 
 .profile_wrap {
-    width: 50%;
-}
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  flex-wrap: nowrap;
 
-.map_wrap {
-    width: 50%;
-}
-
-.hide {
-    display: none;
-}
-
-.profile {
+  .profile {
     display: flex;
     flex-direction: column;
 
     .workbook {
-        width: 95%;
-        height: 35px;
-        left: 82px;
-        top: 137px;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 34px;
-        letter-spacing: -0.015em;
-        color: #49A59A;
+      width: 95%;
+      height: 35px;
+      left: 82px;
+      top: 137px;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 34px;
+      letter-spacing: -0.015em;
+      color: #49a59a;
     }
 
     .profile-box {
-        width: 95%;
-        height: 192.84px;
-        left: 75px;
-        top: 177px;
+      position: relative;
+      width: 90%;
+      height: 192.84px;
+      background: #ffffff;
+      border: 1px dashed rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+
+      .logo-img {
+        margin: 15px 20px;
+        width: 149px;
+        height: 157px;
+        left: 92px;
+        top: 194px;
         background: #FFFFFF;
         border: 1px dashed rgba(0, 0, 0, 0.5);
         border-radius: 10px;
+      }
 
-        #walkroad-count {
-            width: 249px;
-            height: 35px;
-            left: 263px;
-            top: 194px;
+      .profile-txt {
+        position: absolute;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 20px;
+      }
 
-            font-family: Montserrat;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 12px;
-            line-height: 36px;
-            letter-spacing: -0.015em;
-            color: #49A59A;
+      #walkroad-count {
+        width: 249px;
+        height: 35px;
+        left: 263px;
+        top: 194px;
+        margin-top: 14px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 36px;
+        letter-spacing: -0.015em;
+        color: #49a59a;
+      }
+
+      #profile1,
+      #profile2,
+      #profile3 {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 30px;
+        letter-spacing: -0.015em;
+        color: #98c794;
+      }
+
+      #edit-profile,
+      #edit-myinfo {
+        display: inline-block;
+        margin-top: 5px;
+        margin-right: 10px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 9px;
+        line-height: 24px;
+        /* identical to box height, or 267% */
+
+        letter-spacing: -0.015em;
+        text-decoration-line: underline;
+        color: #757575;
+      }
+    }
+  }
+
+  .walkroad-posts {
+    width: 95%;
+
+    .walkroad-posts-header {
+      width: 90%;
+      height: 28px;
+      display: flex;
+      margin: 30px;
+      align-items: center;
+      justify-content: space-between;
+
+      #registered-posts,
+      #liked-posts {
+        flex-shrink: 0;
+        margin: 15px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 36px;
+        letter-spacing: -0.015em;
+        color: #C5C5C5;
+      }
+
+      .post-search-btn {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-left: 20px;
+
+        #search-posts {
+          position: relative;
+          margin-left: 30px;
+          height: 23px;
+          width: 150px;
+          border-radius: 10px;
+          border: 0.3px solid #dddddd;
+          font-size: 11px
         }
 
-        #profile1,
-        #profile2,
-        #profile3 {
+        #search-posts-btn {
+          position: absolute;
+          margin: 5px;
+          height: 20px;
+          width: 33px;
+          border: 0.3px solid #dddddd;
+          font-size: 1px;
+          border-radius: 10px;
+          background-color: white;
+        }
+      }
+    }
+
+    .registered-posts,
+    .liked-posts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: auto;
+      max-height: 80%;
+
+      .registered-post,
+      .liked-post {
+        flex-shrink: 0;
+        margin: 15px;
+        position: relative;
+        width: 269px;
+        height: 92px;
+        background: #ffffff;
+        border: 0.5px solid #ECECEC;
+        box-sizing: border-box;
+        border-radius: 10px;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+        .registered-img,
+        .liked-img {
+          position: absolute;
+          margin: 15px;
+          width: 60px;
+          height: 60px;
+          background: #FFFFFF;
+          border: 1px dashed rgba(0, 0, 0, 0.5);
+          border-radius: 10px;
+        }
+
+        .post-txt {
+          position: absolute;
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          margin-left: 40%;
+          margin-top: 10px;
+
+          #title-focus {
+            margin-top: 5px;
+            width: 162px;
+            height: 24px;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 20px;
+            letter-spacing: -0.015em;
+            color: #000000;
+          }
+
+          span {
+            width: 106px;
+            height: 24px;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 11px;
+            line-height: 20px;
+            letter-spacing: -0.015em;
+            color: #98C794;
+          }
+
+          #post-show {
+            width: 100px;
+            height: 24px;
             font-family: Montserrat;
             font-style: normal;
             font-weight: bold;
             font-size: 10px;
-            line-height: 36px;
+            line-height: 20px;
             letter-spacing: -0.015em;
-            color: #98C794;
-        }
+            text-decoration-line: underline;
+            color: #B8B8B8;
+          }
 
-        .edit-profile,
-        .edit-myinfo {
+          .liked-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
+            #username-profile {
+              width: 28px;
+              height: 24px;
+              font-family: Montserrat;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 12px;
+              line-height: 24px;
+              letter-spacing: -0.015em;
+              color: #49a59a;
+            }
+          }
         }
+      }
     }
+  }
+}
+
+a:hover {
+  color: var(--deepgreen) !important;
+}
+
+
+.map_wrap {
+  width: 50%;
+  .map-input {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 150px;
+    margin-top: 30px;
+  }
+}
+
+.hide {
+  display: none;
 }
 
 .mypage-btn {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.walkroad-posts {
-    width: 95%;
+  display: flex;
+  justify-content: flex-start;
 }
