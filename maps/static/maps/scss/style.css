@@ -165,7 +165,9 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .mapbox #map { border-radius: 5px; }
 
-.loading-background_map { position: absolute; width: 100%; height: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5; margin-top: 30px !important; }
+#loading { position: absolute; width: 100%; height: 100%; top: 45%; left: 50%; transform: translate(-50%, -50%); z-index: 3; }
+
+.loading-background_map { position: absolute; background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; width: 100%; height: 130vh; top: 50%; left: 50%; transform: translate(-50%, -50%); margin-top: 30px !important; z-index: 4; }
 
 .loading-msg { height: 100%; }
 
@@ -254,9 +256,9 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .marker-line_box button:first-child { margin-left: 4px; }
 
-#loading { position: absolute; width: 100%; height: 100%; top: 45%; left: 50%; transform: translate(-50%, -50%); z-index: 3; }
+#loading_new { position: absolute; width: 100%; height: 100%; top: 45%; left: 50%; transform: translate(-50%, -50%); z-index: 3; }
 
-.loading-background { margin-top: 25px; background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; width: 100%; height: 100%; top: 50%; z-index: 4; }
+.loading-background_new { margin-top: 29px; background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; width: 100%; height: 100%; top: 50%; z-index: 4; }
 
 #loading-bar-spinner.spinner { left: 50%; margin-left: -20px; top: 45%; margin-top: -20px; position: absolute; z-index: 19 !important; -webkit-animation: loading-bar-spinner 400ms linear infinite; animation: loading-bar-spinner 400ms linear infinite; z-index: 5; }
 
@@ -342,7 +344,7 @@ h4.title-name, h4.title-title, h4.title-desc, h4.title-start, h4.title-fin, h4.t
 
 .zoom-btn img { height: 23px; width: 23px; }
 
-.loading-background-round { position: absolute; width: 100%; height: 110%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; }
+.loading-background_show { position: absolute; background-color: rgba(0, 0, 0, 0.5); width: 100%; height: 110%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; }
 
 .loading-msg-show { height: 105%; }
 
