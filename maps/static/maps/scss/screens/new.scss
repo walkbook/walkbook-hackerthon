@@ -8,12 +8,14 @@
     color: var(--yellow);
     font-size: 24px;
     font-weight: 600;
+    text-align: start;
 }
 
 .announcement {
     display: block;
     color: var(--green);
     font-size: 14px;
+    text-align: start;
     
 }
 .new-announce_announce {
@@ -259,10 +261,12 @@
 
 .input-name {
     background-color: rgba(131, 131, 131, 0.301);
+    justify-content: start;
 }
 
 .name-box {
     margin-bottom: 20px;
+    text-align: start;
 }
 
 .title-desc-box {
@@ -335,6 +339,7 @@ h4.title-start,
 h4.title-fin,
 h4.title-tmi {
     margin: 20px 0 0 18px;
+    text-align: start;
 }
 
 // 사용자 컨트롤 - 지도

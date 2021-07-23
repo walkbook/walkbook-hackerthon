@@ -3,8 +3,8 @@
 {% load static %}
 {% block content %}
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
+<center>
     <div class="body-layout-show">
-
         <div class="info-box">
             <div class="info_wrap">
                 <div class="title-ud">
@@ -138,7 +138,8 @@
             </p>
             {% endfor %}
         </div>
-</div>
+    </div>
+</center>
     <script>
         let walkkTime = "{{ walkroad.time }}";
         let walkHour = '', walkMin = '';
