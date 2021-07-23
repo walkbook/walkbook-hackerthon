@@ -4,6 +4,22 @@
 @font-face {
     font-family: 'UhBeejung';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeejung.woff') format('woff');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'UhBeepuding';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeepuding.woff') format('woff');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'UhBeeHYUNJUNG';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeHYUNJUNG.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'UhBeeMiwan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeMiwan.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,22 +40,22 @@
     white-space: nowrap;
     // 캐치프레이즈 위치 조정
     top: 18%;
-    right: 72%;
-    // color: var(--green);
-    color: #BD8241;
-    font-family: 'Noto Sans KR', sans-serif;
-    // font-family: 'Nanum Myeongjo', serif;
-    // font-family: 'Noto Serif KR', serif;
-    // font-family: 'Nanum Gothic', sans-serif;
+    right: 71%;
     font-family: 'UhBeejung';
-    font-size: 33px;
+    // font-family: 'UhBeepuding';
+    // font-family: 'UhBeeHYUNJUNG';
+    // font-family: 'UhBeeMiwan';
     animation : move 3s infinite;
-    -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.226)); color: var(--green);
+    -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.226)); 
+    color: rgb(51, 97, 37);
+    font-weight: 600;
+    font-size: 33px;
 
     span {
-        font-size: 48px;
+        font-size: 55px;
         font-weight: 800;
         color: #6C4B2D;
+        font-weight: 600;
     }
 }
 
@@ -61,13 +77,14 @@
         
         .index-img {
             display: relative;
+            margin-left: 200px;
             width: 900px;
             height: 700px;
     
             .main-img {
                 position: absolute;
                 top: 53%;
-                left: 52%;
+                left: 57%;
                 transform: translate(-50%, -50%);
                 width: 900px;
                 height: 700px;
@@ -78,7 +95,7 @@
                 width: 265px;
                 height: 190px;
                 top: 43%;
-                left: 52%;
+                left: 57%;
                 z-index: 1;
             }
             .main-search_map:hover {
@@ -92,7 +109,7 @@
                 width: 220px;
                 height: 170px;
                 bottom: 61%;
-                left: 58%;
+                left: 63%;
                 z-index: 1;
             }
             .main-search_post:hover {
@@ -105,7 +122,7 @@
                 width: 210px;
                 height: 157px;
                 bottom: 70%;
-                right: 45%;
+                right: 40%;
                 z-index: 1;
             }
             .main-mypage:hover {
@@ -118,7 +135,7 @@
                 width: 270px;
                 height: 210px;
                 bottom: 43%;
-                right: 52%;
+                right: 47%;
                 z-index: 2;
             }
             .main-suggest:hover {
@@ -133,14 +150,14 @@
 .main-search_map-box {
     position: absolute;
     top: 63%;
-    left: 70%;
+    left: 75%;
     z-index: 3;
 }
 
 .main-search_post-box {
     position: absolute;
     bottom: 50%;
-    left: 73%;
+    left: 78%;
     z-index: 3;
 }
 
@@ -148,7 +165,7 @@
 .main-mypage-box {
     position: absolute;
     bottom: 62%;
-    right: 58%;
+    right: 53%;
     z-index: 3;
 }
 
@@ -156,7 +173,7 @@
 .main-suggest-box {
     position: absolute;
     bottom: 35%;
-    right: 70%;
+    right: 65%;
     z-index: 3;
 }
 
