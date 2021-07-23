@@ -3,16 +3,46 @@
 {% load static %}
 
 {% block content %}
-    <h1>Post Edit</h1>
-    <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}">
-        {% csrf_token %}
-        <input type="text" name="username" id="username" value="{{ request.user.profile.username }}" disabled/>
-        <input type="text" name="title" id="title-input" value="{{ walkroad.title }}"/>
-        <input type="text" name="description" id="description-input" value="{{ walkroad.description }}"/>
-        <input type="text" name="start" id="start-input" value="{{ walkroad.start }}"/>
-        <input type="text" name="finish" id="finish-input" value="{{ walkroad.finish }}"/>
-        <input type="text" name="tmi" id="tmi-input" value="{{ walkroad.tmi }}"/>
-        
-        <button type="submit" id="save-walkroad-button">수정하기</button> 
-    </form>
+    <div class="update_wrap">
+        <p class="enroll-announce">🌱 산책로 정보를 수정해주세요!</p>
+		<img class="line-long" src="{% static 'maps/img/line.png' %}" />
+        <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}">
+            {% csrf_token %}
+            <div class="input-box">
+                <div class="input-box_wrap">
+                    <div class="name-box">
+                        <h4 class="title-name">작성자</h4>
+                        <input type="text" name="username" id="username" class="input-mid-m input-name" value="{{ request.user.profile.username }}" disabled/>
+                    </div>
+                    <div class="title-desc-box">
+                        <div class="title-box">
+                            <h4 class="title-title">산책로 이름</h4>
+                            <input type="text" name="title" id="title-input" class="input-mid-ml" value="{{ walkroad.title }}" />
+                        </div>
+                        <div class="desc-box">
+                            <h4 class="title-desc">산책로 한 줄 소개</h4>
+                            <input type="text" name="description" id="description-input" class="input-mid-ml" value="{{ walkroad.description }}"/>
+                        </div>
+                    </div>
+                    <div class="start-fin-box">
+                        <div class="start-box">
+                            <h4 class="title-start">출발위치</h4>
+                            <input type="text" name="start" id="start-input" class="input-mid-ml" value="{{ walkroad.start }}"/>
+                        </div>
+                        <div class="fin-box">
+                            <h4 class="title-fin">도착위치</h4>
+                            <input type="text" name="finish" id="finish-input" class="input-mid-ml" value="{{ walkroad.finish }}"/>
+                        </div>
+                    </div>
+                    <div class="tmi-box">
+                        <h4 class="title-tmi">TMI</h4>
+                        <input type="text" name="tmi" id="tmi-input" class="input-long input-long-m" value="{{ walkroad.tmi }}"/>
+                    </div>
+                    <div class="enroll-btn">
+                        <button type="submit" id="save-walkroad-button">수정하기</button> 
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 {% endblock content %}
