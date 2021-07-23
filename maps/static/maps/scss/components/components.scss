@@ -22,17 +22,17 @@
 }
 
 // infoWindowContent
-.wrap-i {position: absolute;left: 0;bottom: 20px;width: 200px;height: auto;margin-left: -20px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5; box-sizing: border-box;}
+.wrap-i {position: absolute;left: -75px;bottom: 50px;width: 200px;height: auto;margin-left: -20px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5; box-sizing: border-box;}
 .wrap-i * {padding: 0;margin: 0; background-color: rgba(204, 204, 204, 0);}
 .wrap-i .info-i {width: 200px;height: auto;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
 .wrap-i .info-i:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
 .info-i .title-i {padding: 7px 0 6px 10px;height: auto;background: rgba(247, 66, 11, 0.13);font-size: 14px;font-weight: bold;}
 .info-p .title-title-i {width: 164px;font-size: 14px;font-weight: bold;padding: 7px 10px 6px 10px;box-sizing: border-box;}
-.title-title-i {padding-right: 20px;}
+.title-title-i {padding-right: 30px;white-space: pre-wrap;}
 .info-i .close-i {position: absolute;top: 7px;right: 5px;color: #888;width: 17px;height: 17px;}
 .info-i .close-i:hover {cursor: pointer;}
 .info-i .body-i {width: 195px;position: relative;box-sizing: border-box; padding: 10px 15px;}
-.ellipsis-i {}
+.ellipsis-i {white-space: pre-wrap;}
 
 // pathInfoContent
 .wrap-p {position: absolute;left: 0;bottom: -30px;width: 250px;height: auto;margin-left: -20px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5; box-sizing: border-box;}

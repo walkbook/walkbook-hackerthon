@@ -63,7 +63,7 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .geoSuccessMsg-class { position: absolute; top: -100px; left: -83px; display: flex; justify-content: center; align-items: center; width: 70px; height: 35px; text-align: center; background-color: rgba(58, 58, 58, 0.438); border-radius: 50px; color: white; border: none; font-size: 13px; font-weight: 600; font-family: 'Nanum Gothic', sans-serif; }
 
-.wrap-i { position: absolute; left: 0; bottom: 20px; width: 200px; height: auto; margin-left: -20px; text-align: left; overflow: hidden; font-size: 12px; font-family: 'Malgun Gothic', dotum, '돋움', sans-serif; line-height: 1.5; box-sizing: border-box; }
+.wrap-i { position: absolute; left: -75px; bottom: 50px; width: 200px; height: auto; margin-left: -20px; text-align: left; overflow: hidden; font-size: 12px; font-family: 'Malgun Gothic', dotum, '돋움', sans-serif; line-height: 1.5; box-sizing: border-box; }
 
 .wrap-i * { padding: 0; margin: 0; background-color: rgba(204, 204, 204, 0); }
 
@@ -75,13 +75,15 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .info-p .title-title-i { width: 164px; font-size: 14px; font-weight: bold; padding: 7px 10px 6px 10px; box-sizing: border-box; }
 
-.title-title-i { padding-right: 20px; }
+.title-title-i { padding-right: 30px; white-space: pre-wrap; }
 
 .info-i .close-i { position: absolute; top: 7px; right: 5px; color: #888; width: 17px; height: 17px; }
 
 .info-i .close-i:hover { cursor: pointer; }
 
 .info-i .body-i { width: 195px; position: relative; box-sizing: border-box; padding: 10px 15px; }
+
+.ellipsis-i { white-space: pre-wrap; }
 
 .wrap-p { position: absolute; left: 0; bottom: -30px; width: 250px; height: auto; margin-left: -20px; text-align: left; overflow: hidden; font-size: 12px; font-family: 'Malgun Gothic', dotum, '돋움', sans-serif; line-height: 1.5; box-sizing: border-box; }
 
