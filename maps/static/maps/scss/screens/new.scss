@@ -26,18 +26,25 @@
     border-radius: 10px;
 }
 
+.mapbox-new {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
 .map-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    padding: 10px 0 0 10px;
+    align-items: flex-start;
+    width: 250px;
+    padding: 15px 0 5px 10px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
 
     p {
         font-size: 16px;
         color: #49A59A;
-        margin: 5px 0 0 5px;
+        margin: 0;
         
 
         span {
@@ -210,6 +217,12 @@
     letter-spacing: -0.015em;
     color: rgba(45, 45, 45, 0.8);
     margin-left: 5px;
+}
+
+.warning {
+    color: rgb(255, 97, 24);
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 .input-box{
@@ -404,5 +417,5 @@ h4.title-tmi {
         height: 23px;
         width: 23px;
     }
-
 }
+

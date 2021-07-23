@@ -38,13 +38,15 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 
 .mdl-card__actions, .mdl-card--border, .post-box { height: 100%; }
 
-.mdl-card__title, .mdl-card--expand { padding: 24px 0 20px 3px; }
+.mdl-card__title, .mdl-card--expand { padding: 24px 0 20px 3px; width: auto; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .mdl-card__title a, .mdl-card--expand a { color: black; font-family: 'Nanum Gothic', sans-serif; font-size: 15px; }
 
 .mdl-card__title a:hover, .mdl-card--expand a:hover { color: var(--deepgreen); }
 
-.author-container span { font-size: 12px; color: #B8B8B8; margin: 25px 0 0 0; box-sizing: border-box; }
+.author-container { width: 30%; display: flex; justify-content: flex-end; align-items: center; }
+
+.author-container span { font-size: 12px; color: #B8B8B8; margin: 10px 0 0 0; box-sizing: border-box; }
 
 .post-others { width: 70%; padding: 10px 0 10px 15px; display: flex; justify-content: space-between; flex-direction: column; }
 
@@ -52,9 +54,9 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 
 .post-others .total-time-class span { color: gray; font-weight: 400; font-size: 12px; }
 
-.post-others .mdl-card__supporting-text { width: 100%; height: auto; padding: 0 0 5px 0; color: var(--green); font-weight: 600; font-size: 14px; }
+.post-others .mdl-card__supporting-text { display: inline-block; white-space: pre-wrap; overflow: auto; text-overflow: ellipsis; width: 100%; height: 80px; padding: 0 0 5px 0; color: var(--green); font-weight: 600; font-size: 14px; }
 
-.post-others .mdl-card__supporting-text span { color: gray; font-weight: 400; font-size: 12px; }
+.post-others .mdl-card__supporting-text span { color: gray; font-weight: 400; font-size: 12px; height: 70px; }
 
 .post-others .more-btn { color: gray; font-size: 12px; width: 60px; text-decoration: underline; }
 
