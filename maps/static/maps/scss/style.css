@@ -392,7 +392,7 @@ h4.title-name, h4.title-title, h4.title-desc, h4.title-start, h4.title-fin, h4.t
 
 .enroll-desc { width: 340px; height: auto; font-size: 16px !important; color: #8b8b8b; font-family: 'Nanum Gothic', sans-serif; white-space: pre-wrap; text-align: start; padding-left: 8px; box-sizing: border-box; }
 
-.mdl-badge[data-badge]:after { background: none !important; color: #5E5E5E !important; top: -2px !important; left: 18px !important; font-size: 12px !important; }
+.mdl-badge[data-badge]:after { background: none !important; color: #5E5E5E !important; top: -2px !important; left: 16px !important; font-size: 11px !important; font-family: 'Nanum Gothic', sans-serif !important; font-weight: 600 !important; }
 
 .like-comment_wrap { display: flex; flex-direction: column; align-items: flex-end; }
 
@@ -404,9 +404,23 @@ h4.title-name, h4.title-title, h4.title-desc, h4.title-start, h4.title-fin, h4.t
 
 .comment-inner_show img { width: 16px; }
 
-.comment-inner_show span { margin-left: 8px; font-size: 12px; color: #5e5e5e; font-weight: 600; }
+.comment-inner_show span { margin-left: 7px; font-size: 11px; color: #5e5e5e; font-weight: 600; font-family: 'Nanum Gothic', sans-serif; }
 
-.comment_wrap { margin-top: 25px; width: 95%; height: auto; display: flex; flex-direction: column; background: #FFFFFF; border: 0.5px solid #ECECEC; box-sizing: border-box; padding: 30px 20px 30px 20px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; }
+.comment_wrap { margin-top: 25px; width: 95%; height: auto; display: flex; flex-direction: column; background: #FFFFFF; border: 0.5px solid #ECECEC; box-sizing: border-box; padding: 30px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; }
+
+.comment-input_wrap { display: flex; position: relative; width: 100%; justify-content: space-between; align-items: flex-start; height: 30px; margin-bottom: 10px; }
+
+.comment-input_wrap .comment-count_class { padding-top: 2px; text-align: start; width: 85px; font-size: 16px; }
+
+.comment-input_wrap .comment-input { width: 270px; height: 25px; border-radius: 50px; background: #e6e6e6; border: none; padding-left: 12px; padding-right: 28px; }
+
+.comment-input_wrap button { position: absolute; font-size: 10px; right: 4px; top: 1px; border: none; height: 23px; width: 23px; border-radius: 30px; box-sizing: border-box; padding: 1px 0 0 1px; background: transparent; }
+
+.comment-input_wrap button .circle_show { width: 23px; height: 23px; cursor: pointer; }
+
+.comment-list_class { text-align: start; }
+
+.walkroad-comment_class { margin: 10px 0 0 0; }
 
 .line-short-show { display: block; }
 
@@ -421,6 +435,24 @@ a.mypage:hover { color: var(--green); }
 .show-content { width: 75%; box-sizing: border-box; height: auto; white-space: pre-wrap; }
 
 .mypage_show { color: var(--deepgreen); }
+
+.one-comment_class { display: flex; margin: 0 0 15px 0; padding-bottom: 15px; background: rgba(230, 230, 230, 0.514); border-radius: 5px; margin-top: 15px; height: auto; padding: 10px 20px; }
+
+.comment-name { font-weight: 600; width: 68px; }
+
+.comment-name a { color: var(--deepgreen); }
+
+.comment-body { margin-left: 6px; font-size: 14px; }
+
+.comment-body .comment-ment { display: flex; align-items: flex-start; width: 260px; margin-bottom: 5px; margin-left: 8px; height: auto; }
+
+.comment-body .comment-others { display: flex; }
+
+.comment-body .comment-others .comment-date, .comment-body .comment-others .comment-like, .comment-body .comment-others .comment-del { background: rgba(211, 211, 211, 0.459); padding: 2px 8px; border-radius: 50px; margin-right: 8px; width: auto; height: 20px; font-size: 12px; color: gray; }
+
+.comment-body .comment-others .comment-date a, .comment-body .comment-others .comment-like a, .comment-body .comment-others .comment-del a { color: var(--deepgreen); }
+
+.comment-body .comment-others .comment-like, .comment-body .comment-others .comment-del { cursor: pointer; }
 
 .update_wrap { padding-top: 140px; width: 1070px; margin-right: 13%; margin-left: 13%; }
 

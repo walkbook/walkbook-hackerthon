@@ -339,10 +339,11 @@ select {
     }
 
     span{
-        margin-left: 5px;
+        margin-left: 0px;
         font-size: 12px;
         color: rgb(94, 94, 94);
         font-weight: 600;
+        font-family: 'Nanum Gothic', sans-serif;
     }
 }
 
@@ -359,4 +360,7 @@ select {
     color: #5E5E5E;
     top: -1px;
     left: 18px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 600 !important;
+    font-size: 12px !important;
 }

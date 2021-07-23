@@ -72,10 +72,10 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 
 .comment-inner img { width: 16px; }
 
-.comment-inner span { margin-left: 5px; font-size: 12px; color: #5e5e5e; font-weight: 600; }
+.comment-inner span { margin-left: 0px; font-size: 12px; color: #5e5e5e; font-weight: 600; font-family: 'Nanum Gothic', sans-serif; }
 
 .material-icons mdl-badge, .mdl-badge--overlap { cursor: pointer; color: #F44337; font-size: 19px; }
 
-.mdl-badge[data-badge]:after { background: none; color: #5E5E5E; top: -1px; left: 18px; }
+.mdl-badge[data-badge]:after { background: none; color: #5E5E5E; top: -1px; left: 18px; font-family: 'Nanum Gothic', sans-serif; font-weight: 600 !important; font-size: 12px !important; }
 
 /*# sourceMappingURL=post.css.map */
