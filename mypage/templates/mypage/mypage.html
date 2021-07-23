@@ -7,17 +7,19 @@
 
 {% block content %}
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84f8fca347220d053f38cd40691e54c1&libraries=services,drawing"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{% static 'mypage/js/mypage.js' %}"></script>
 
-
-<div class="book-layer">
-</div>
+<div class="book-layer"><div class="book-layer-left"></div>
+<div class="book-layer-right"></div></div>
 <div class="mypage-layout">
     <div class="mypage_wrap">
         <div class="profile_wrap">
             <div class="profile">
-                <h1 class="workbook">{{user.profile.username}}의 워크북</h1>
+            
+                <h1 class="workbook">{{user.profile.username}}의 워크북 {%comment%}<img class="book-img" src="{% static 'maps/img/book.png' %}">{%endcomment%} </h1>
                 <div class="profile-box">
-                <img class="logo-img" src="{% static 'maps/img/logo.png' %}">
+                <img class="profile-img" src="{% static 'mypage/img/profileimg.png' %}">
                 <div class="profile-txt">
                     <div id="walkroad-count">
                         총 {{registeredWalkroads.count}} 개의 산책로를 등록했네요!
@@ -52,21 +54,22 @@
                 </div>
                 </div>
             </div>
+            <img class="line" src="{% static 'maps/img/line.png' %}">
             <div class="walkroad-posts">
             <div class="walkroad-posts-header">
             <div "posts-header">
-                <a id="registered-posts" onclick="onClickRegisteredPosts()">등록한 산책로</a>
-                <a id="liked-posts" onclick="onClickLikedPosts()">좋아하는 산책로</a>
+                <a class="registered-posts-btn"id="registered-posts" onclick="onClickRegisteredPosts()">등록한 산책로</a>
+                <a class="liked-posts-btn"id="liked-posts" onclick="onClickLikedPosts()">좋아하는 산책로</a>
                 </div>
                 <div class="post-search-btn">
                 <input id="search-posts" type="text">
-                <button id="search-posts-btn" onclick="onClickSearchBtn()"></button>
+                <button id="search-posts-btn"><img onclick="onClickSearchBtn()"class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
                 </div></div>
 
                 <div class="registered-posts">
                     {% for walkroad in registeredWalkroads %}
                         <div class="registered-post">
-                        <img class="registered-img" src="{% static 'maps/img/logo.png' %}">
+                        <img class="registered-img" src="{% static 'mypage/img/pathex.png' %}">
                         <div class="post-txt">
                             <a id="title-focus" onclick="setFocusClickedPost({{ walkroad.path }})">{{ walkroad.title }}</a>
                             <span>{{ walkroad.description}}</span>
@@ -79,7 +82,7 @@
                 <div class="liked-posts">
                     {% for walkroad in likedWalkroads %}
                         <div class="liked-post hide">
-                        <img class="liked-img" src="{% static 'maps/img/logo.png' %}">
+                        <img class="liked-img" src="{% static 'mypage/img/pathex.png' %}">
                         <div class="post-txt">
                             <a id="title-focus" onclick="setFocusClickedPost({{ walkroad.path }})">{{ walkroad.title }}</a>
                             <span>{{ walkroad.description}}</span>
@@ -112,7 +115,7 @@
                 <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
             </div>
             {% comment %} 지도크기 {% endcomment %}
-            <div id="map" style="width:80%;height:700px;">
+            <div id="map" style="width:90%;height:80%;">
                 <div id="loading" class="loading-class">
                     <div class="loading-background loading-background_map">
                         <div id="loading-bar-spinner" class="spinner">
