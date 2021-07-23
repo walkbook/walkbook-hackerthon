@@ -16,42 +16,55 @@
     <div class="mypage_wrap">
         <div class="profile_wrap">
             <div class="profile">
-            
                 <h1 class="workbook">{{user.profile.username}}의 워크북 {%comment%}<img class="book-img" src="{% static 'maps/img/book.png' %}">{%endcomment%} </h1>
-                <div class="profile-box">
-                <img class="profile-img" src="{% static 'mypage/img/profileimg.png' %}">
-                <div class="profile-txt">
-                    <div id="walkroad-count">
-                        총 {{registeredWalkroads.count}} 개의 산책로를 등록했네요!
-                    </div>
-                    <div id="profile1">
-                        {% if user.profile.feature == ''%}
-                            아직 선호하는 산책로 특징을 등록하지 않으셨네요! 
-                        {% else %}
-                        선호하는 산책로 : {{user.profile.feature}}
+                <div class="profile-box"> 
+                {%comment%} 예지 {%endcomment%} 
+                {% if user.id == 2 %}
+                <img class="profile-img" src="{% static 'mypage/img/yeji.png' %}">
+                {%comment%} 나영 {%endcomment%} 
+                {% elif user.id == 3 %}
+                <img class="profile-img" src="{% static 'mypage/img/nayoung.png' %}">
+                {%comment%} 별 {%endcomment%} 
+                {% elif user.id == 4 %}
+                <img class="profile-img" src="{% static 'mypage/img/star.png' %}">
+                {%comment%} 세원 {%endcomment%} 
+                {% elif user.id == 5 %}
+                <img class="profile-img" src="{% static 'mypage/img/sewon.png' %}">
+                {% else %}
+                <img class="profile-img" src="{% static 'mypage/img/profileimg.png' %}">        
+                {% endif %}
+                    <div class="profile-txt">
+                        <div id="walkroad-count">
+                            총 {{registeredWalkroads.count}} 개의 산책로를 등록했네요!
+                        </div>
+                        <div id="profile1">
+                            {% if user.profile.feature == ''%}
+                                아직 선호하는 산책로 특징을 등록하지 않으셨네요! 
+                            {% else %}
+                            선호하는 산책로 : {{user.profile.feature}}
+                            {% endif %}
+                        </div>
+                        <div id="profile2">			
+                            {% if user.profile.likehour == ''%}
+                                선호 시간대를 등록해주세요!
+                            {% else %}
+                                선호 시간대 : {{user.profile.likehour}}
+                            {% endif %}
+                        </div>
+                        <div id="profile3">
+                            {% if user.profile.introduce == ''%}
+                                소개글을 등록해서 자기자신을 소개해주세요!
+                            {% else %}
+                                소개 : {{user.profile.introduce}}
+                            {% endif %}
+                        </div>
+                        {% if user.id == request.user.id %}
+                        <div edit-btn>
+                            <a id="edit-profile" href="{% url 'mypage:profile' user.id %}">프로필 수정하기</a>
+                            <a id="edit-myinfo" href="{% url 'checkpw'%}">내정보 수정하기</a>
+                        </div>
                         {% endif %}
                     </div>
-                    <div id="profile2">			
-                        {% if user.profile.likehour == ''%}
-                            선호 시간대를 등록해주세요!
-                        {% else %}
-                            선호 시간대 : {{user.profile.likehour}}
-                        {% endif %}
-                    </div>
-                    <div id="profile3">
-                        {% if user.profile.introduce == ''%}
-                            소개글을 등록해서 자기자신을 소개해주세요!
-                        {% else %}
-                            소개 : {{user.profile.introduce}}
-                        {% endif %}
-                    </div>
-                    {% if user.id == request.user.id %}
-                    <div edit-btn>
-                        <a id="edit-profile" href="{% url 'mypage:profile' user.id %}">프로필 수정하기</a>
-                        <a id="edit-myinfo" href="{% url 'checkpw'%}">내정보 수정하기</a>
-                    </div>
-                    {% endif %}
-                </div>
                 </div>
             </div>
             <img class="line" src="{% static 'maps/img/line.png' %}">
@@ -69,7 +82,27 @@
                 <div id="registered-posts-box" class="registered-posts" style="border: 1px solid gainsboro; display: flex;">
                     {% for walkroad in registeredWalkroads %}
                         <div class="registered-post">
-                        <img class="registered-img" src="{% static 'mypage/img/pathex.png' %}">
+                        {% if walkroad.id == 1 %}
+                            <img class="registered-img" src="{% static 'maps/img/walkroad1.png' %}">
+                        {% elif walkroad.id == 2 %}
+                            <img class="registered-img" src="{% static 'maps/img/walkroad2.png' %}">
+                        {% elif walkroad.id == 3 %}
+                            <img class="registered-img" src="{% static 'maps/img/walkroad3.png' %}">
+                        {% elif walkroad.id == 4 %}
+                            <img class="registered-img" src="{% static 'maps/img/walkroad4.png' %}">
+                        {% elif walkroad.id == 5 %}
+                            <img class="registered-img" src="{% static 'maps/img/walkroad5.png' %}">
+                        {% elif walkroad.id == 6 %}
+                            <img class="registered-img" src="{% static 'maps/img/walkroad6.png' %}">
+                        {% elif walkroad.id == 7 %}
+                            <img class="registered-img" src="{% static 'maps/img/walkroad7.png' %}">
+                        {% elif walkroad.id == 8 %}
+                            <img class="registered-img" src="{% static 'maps/img/walkroad8.png' %}">
+                        {% elif walkroad.id == 9 %}
+                            <img class="registered-img" src="{% static 'maps/img/walkroad9.png' %}">
+                        {% else %}                        
+                            <img class="registered-img" src="{% static 'mypage/img/pathex.png' %}">
+                        {% endif %}
                         <div class="post-txt">
                             <a id="title-focus" onclick="setFocusClickedPost({{ walkroad.path }})">{{ walkroad.title }}</a>
                             <span>{{ walkroad.description}}</span>
@@ -82,7 +115,27 @@
                 <div id="liked-posts-box" class="liked-posts hide">
                     {% for walkroad in likedWalkroads %}
                         <div class="liked-post hide">
-                        <img class="liked-img" src="{% static 'mypage/img/pathex.png' %}">
+                        {% if walkroad.id == 1 %}
+                            <img class="liked-img" src="{% static 'maps/img/walkroad1.png' %}">
+                        {% elif walkroad.id == 2 %}
+                            <img class="liked-img" src="{% static 'maps/img/walkroad2.png' %}">
+                        {% elif walkroad.id == 3 %}
+                            <img class="liked-img" src="{% static 'maps/img/walkroad3.png' %}">
+                        {% elif walkroad.id == 4 %}
+                            <img class="liked-img" src="{% static 'maps/img/walkroad4.png' %}">
+                        {% elif walkroad.id == 5 %}
+                            <img class="liked-img" src="{% static 'maps/img/walkroad5.png' %}">
+                        {% elif walkroad.id == 6 %}
+                            <img class="liked-img" src="{% static 'maps/img/walkroad6.png' %}">
+                        {% elif walkroad.id == 7 %}
+                            <img class="liked-img" src="{% static 'maps/img/walkroad7.png' %}">
+                        {% elif walkroad.id == 8 %}
+                            <img class="liked-img" src="{% static 'maps/img/walkroad8.png' %}">
+                        {% elif walkroad.id == 9 %}
+                            <img class="liked-img" src="{% static 'maps/img/walkroad9.png' %}">
+                        {% else %}                        
+                            <img class="liked-img" src="{% static 'mypage/img/pathex.png' %}">
+                        {% endif %}
                         <div class="post-txt">
                             <a id="title-focus" onclick="setFocusClickedPost({{ walkroad.path }})">{{ walkroad.title }}</a>
                             <span>{{ walkroad.description}}</span>
