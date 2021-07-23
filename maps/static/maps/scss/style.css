@@ -55,11 +55,11 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .base-header .wrap-header .header-accounts .suggest { font-size: 16px; color: #E5C05B; }
 
-.line-long { width: 74vw; height: 50px; margin-bottom: 10px; margin-top: 0px; }
+.line-long { width: 1070px; height: 50px; margin-bottom: 10px; margin-top: 0px; }
 
 .line-long-m { width: 100%; height: 50px; margin-bottom: 20px; margin-top: 70px; }
 
-.line-long-n { width: 100%; height: 50px; margin-bottom: 10px; margin-top: 10px; }
+.line-long-n { width: 1070px; height: 50px; margin-bottom: 10px; margin-top: 10px; }
 
 .geoSuccessMsg-class { position: absolute; top: -100px; left: -83px; display: flex; justify-content: center; align-items: center; width: 70px; height: 35px; text-align: center; background-color: rgba(58, 58, 58, 0.438); border-radius: 50px; color: white; border: none; font-size: 13px; font-weight: 600; font-family: 'Nanum Gothic', sans-serif; }
 
@@ -109,11 +109,11 @@ body { font-family: 'Nanum Gothic', sans-serif; }
 
 .line-mid { width: 653px; height: 37px; }
 
-.line-long { width: 74vw; height: 50px; margin-bottom: 10px; margin-top: 0px; }
+.line-long { width: 1070px; height: 50px; margin-bottom: 10px; margin-top: 0px; }
 
 .line-long-m { width: 100%; height: 50px; margin-bottom: 20px; margin-top: 70px; }
 
-.line-long-n { width: 100%; height: 50px; margin-bottom: 10px; margin-top: 10px; }
+.line-long-n { width: 1070px; height: 50px; margin-bottom: 10px; margin-top: 10px; }
 
 .input-short { height: 28px; width: 183px; background: #FFFFFF; border-radius: 5px; }
 
@@ -230,7 +230,7 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .body-layout { font-family: 'Nanum Gothic', sans-serif; }
 
-.body-layout .enroll-announce { color: var(--yellow); font-size: 24px; }
+.body-layout .enroll-announce { color: var(--yellow); font-size: 24px; font-weight: 600; }
 
 .announcement { display: block; color: var(--green); font-size: 14px; }
 
@@ -306,7 +306,7 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .input-name { background-color: rgba(131, 131, 131, 0.301); }
 
-.name-box { margin-bottom: 10px; }
+.name-box { margin-bottom: 20px; }
 
 .title-desc-box { display: flex; margin-bottom: 10px; width: auto; }
 
@@ -381,6 +381,10 @@ a.mypage:hover { color: var(--green); }
 .show-title { color: var(--green); font-weight: 600; }
 
 .show-content { padding-left: 40px; width: 75%; box-sizing: border-box; }
+
+.update_wrap { padding-top: 140px; width: 1070px; margin-right: 13%; margin-left: 13%; }
+
+.enroll-announce { color: var(--yellow); font-size: 24px; font-family: 'Nanum Gothic', sans-serif; font-weight: 600; }
 
 body { width: 100%; height: 100%; }
 
