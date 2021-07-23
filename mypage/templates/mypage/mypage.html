@@ -16,57 +16,58 @@
     <div class="mypage_wrap">
         <div class="profile_wrap">
             <div class="profile">
-            
-                <h1 class="workbook">{{user.profile.username}}의 워크북 {%comment%}<img class="book-img" src="{% static 'maps/img/book.png' %}">{%endcomment%} </h1>
                 <div class="profile-box">
-                <img class="profile-img" src="{% static 'mypage/img/profileimg.png' %}">
-                <div class="profile-txt">
-                    <div id="walkroad-count">
-                        총 {{registeredWalkroads.count}} 개의 산책로를 등록했네요!
-                    </div>
-                    <div id="profile1">
-                        {% if user.profile.feature == ''%}
-                            아직 선호하는 산책로 특징을 등록하지 않으셨네요! 
-                        {% else %}
-                        선호하는 산책로 : {{user.profile.feature}}
+                <h1 class="workbook">📒&nbsp;&nbsp;{{user.profile.username}}의 워크북{%comment%}<img class="book-img" src="{% static 'maps/img/book.png' %}">{%endcomment%} </h1>
+                <div class="profile-box-container">
+                    <img class="profile-img" src="{% static 'mypage/img/profileimg.png' %}">
+                    <div class="profile-txt">
+                        <div id="walkroad-count">
+                            총 {{registeredWalkroads.count}} 개의 산책로를 등록했어요!
+                        </div>
+                        <div id="profile1">
+                            {% if user.profile.feature == ''%}
+                                아직 선호하는 산책로 특징을 등록하지 않으셨네요! 
+                            {% else %}
+                            선호하는 산책로 : {{user.profile.feature}}
+                            {% endif %}
+                        </div>
+                        <div id="profile2">			
+                            {% if user.profile.likehour == ''%}
+                                선호 시간대를 등록해주세요!
+                            {% else %}
+                                선호 시간대 : {{user.profile.likehour}}
+                            {% endif %}
+                        </div>
+                        <div id="profile3">
+                            {% if user.profile.introduce == ''%}
+                                소개글을 등록해서 자기자신을 소개해주세요!
+                            {% else %}
+                                소개 : {{user.profile.introduce}}
+                            {% endif %}
+                        </div>
+                        {% if user.id == request.user.id %}
+                        <div edit-btn>
+                            <a id="edit-profile" href="{% url 'mypage:profile' user.id %}">프로필 수정하기</a>
+                            <a id="edit-myinfo" href="{% url 'checkpw'%}">내정보 수정하기</a>
+                        </div>
                         {% endif %}
                     </div>
-                    <div id="profile2">			
-                        {% if user.profile.likehour == ''%}
-                            선호 시간대를 등록해주세요!
-                        {% else %}
-                            선호 시간대 : {{user.profile.likehour}}
-                        {% endif %}
-                    </div>
-                    <div id="profile3">
-                        {% if user.profile.introduce == ''%}
-                            소개글을 등록해서 자기자신을 소개해주세요!
-                        {% else %}
-                            소개 : {{user.profile.introduce}}
-                        {% endif %}
-                    </div>
-                    {% if user.id == request.user.id %}
-                    <div edit-btn>
-                        <a id="edit-profile" href="{% url 'mypage:profile' user.id %}">프로필 수정하기</a>
-                        <a id="edit-myinfo" href="{% url 'checkpw'%}">내정보 수정하기</a>
-                    </div>
-                    {% endif %}
                 </div>
                 </div>
             </div>
-            <img class="line" src="{% static 'maps/img/line.png' %}">
             <div class="walkroad-posts">
-            <div class="walkroad-posts-header">
-            <div "posts-header">
-                <a class="registered-posts-btn"id="registered-posts" onclick="onClickRegisteredPosts()">등록한 산책로</a>
-                <a class="liked-posts-btn"id="liked-posts" onclick="onClickLikedPosts()">좋아하는 산책로</a>
+                <div class="walkroad-posts-header">
+                    <div "posts-header">
+                        <a class="registered-posts-btn"id="registered-posts" onclick="onClickRegisteredPosts()">등록한 산책로</a>
+                        <a class="liked-posts-btn"id="liked-posts" onclick="onClickLikedPosts()">좋아하는 산책로</a>
+                    </div>
+                    <div class="post-search-btn">
+                        <input id="search-posts" type="text">
+                        <button id="search-posts-btn"><img onclick="onClickSearchBtn()"class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
+                    </div>
                 </div>
-                <div class="post-search-btn">
-                <input id="search-posts" type="text">
-                <button id="search-posts-btn"><img onclick="onClickSearchBtn()"class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
-                </div></div>
 
-                <div id="registered-posts-box" class="registered-posts" style="border: 1px solid gainsboro; display: flex;">
+                <div id="registered-posts-box" class="registered-posts posts-box" style="display: flex;">
                     {% for walkroad in registeredWalkroads %}
                         <div class="registered-post">
                         <img class="registered-img" src="{% static 'mypage/img/pathex.png' %}">
@@ -79,7 +80,7 @@
                     {% endfor %}
                 </div>
 
-                <div id="liked-posts-box" class="liked-posts hide">
+                <div id="liked-posts-box" class="liked-posts hide posts-box">
                     {% for walkroad in likedWalkroads %}
                         <div class="liked-post hide">
                         <img class="liked-img" src="{% static 'mypage/img/pathex.png' %}">
@@ -115,7 +116,7 @@
                 <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
             </div>
             {% comment %} 지도크기 {% endcomment %}
-            <div id="map" style="width:90%;height:80%;">
+            <div id="map" style="width:90%;height:93%;">
                 <div id="loading" class="loading-class">
                     <div class="loading-background loading-background_map">
                         <div id="loading-bar-spinner" class="spinner">

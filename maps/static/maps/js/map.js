@@ -41,10 +41,18 @@ function drawPolyline(id, lines) {
         });
 
         kakao.maps.event.addListener(polyline, 'mouseover', function (mouseEvent) {
+            polyline.setOptions({
+                strokeWeight: 10,
+                strokeColor: 'rgb(255, 207, 51)'
+            });
             infowindow.setMap(map);
         });
 
         kakao.maps.event.addListener(polyline, 'mouseout', function (mouseEvent) {
+            polyline.setOptions({
+                strokeWeight: 7,
+                strokeColor: 'rgb(66, 26, 3)'
+            });
             infowindow.setMap(null);
         });
     }
