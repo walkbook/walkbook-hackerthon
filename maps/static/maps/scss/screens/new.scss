@@ -15,6 +15,7 @@
     display: block;
     color: var(--green);
     font-size: 14px;
+    font-weight: 600;
     text-align: start;
     
 }
@@ -89,13 +90,10 @@
         color: white;
         font-family: 'Nanum Gothic', sans-serif;
         font-size: 11px;
+        font-weight: 600;
     }
     button:hover {
         cursor: pointer;
-    }
-
-    button:first-child {
-        margin-left: 4px;
     }
 }
 
@@ -424,3 +422,7 @@ h4.title-tmi {
     }
 }
 
+.disabled {
+    background: linear-gradient(180deg, #EBEBEB 0%, rgba(135, 135, 135, 0.8) 110.71%) !important;
+    pointer-events: none;
+}
