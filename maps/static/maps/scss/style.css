@@ -214,11 +214,11 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .green-box .index_wrap .index-img .main-suggest:hover { transform: scale(1.12); transition: transform 0.5s ease 0s; }
 
-.main-search_map-box { position: absolute; top: 63%; left: 72%; z-index: 3; }
+.main-search_map-box { position: absolute; top: 63%; left: 70%; z-index: 3; }
 
-.main-search_post-box { position: absolute; bottom: 79%; left: 73%; z-index: 3; }
+.main-search_post-box { position: absolute; bottom: 50%; left: 73%; z-index: 3; }
 
-.main-mypage-box { position: absolute; bottom: 84%; right: 60%; z-index: 3; }
+.main-mypage-box { position: absolute; bottom: 62%; right: 58%; z-index: 3; }
 
 .main-suggest-box { position: absolute; bottom: 35%; right: 70%; z-index: 3; }
 
@@ -256,9 +256,9 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .marker-line_box button:first-child { margin-left: 4px; }
 
-#loading_new { position: absolute; width: 100%; height: 100%; top: 45%; left: 50%; transform: translate(-50%, -50%); z-index: 3; }
+#loading_new { position: absolute; width: 100%; height: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; }
 
-.loading-background_new { margin-top: 29px; background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; width: 100%; height: 100%; top: 50%; z-index: 4; }
+.loading-background_new { background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; width: 100%; height: 100%; top: 50%; z-index: 4; }
 
 #loading-bar-spinner.spinner { left: 50%; margin-left: -20px; top: 45%; margin-top: -20px; position: absolute; z-index: 19 !important; -webkit-animation: loading-bar-spinner 400ms linear infinite; animation: loading-bar-spinner 400ms linear infinite; z-index: 5; }
 
