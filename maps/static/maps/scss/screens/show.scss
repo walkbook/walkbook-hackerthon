@@ -26,17 +26,12 @@
     padding-bottom: 50px;
 }
 
-.title-ud {
-    display: flex;
-    justify-content: space-between;
-    height: 9%;
-}
-
 .ud-btn {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: 14px;
+    padding: 5px 7px;
 
     a {
         display: flex;
@@ -47,10 +42,10 @@
         font-size: 12px;
         font-weight: 600;
         border-radius: 5px;
-        margin-left: 3px;
+        margin-right: 5px;
         color: white;
         width: 25px;
-        height: 10px;
+        height: 12px;
     }
 }
 .post_wrap {
@@ -62,53 +57,140 @@
 }
 
 .info-box{
-    padding-top: 55px;
+    padding-top: 14px;
     display: flex;
-    justify-content: flex-end;
-    width: 40%;
-    margin-right: 50px;    
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+    margin-right: 0px;    
 }
 
-.info_wrap {
+.card_wrap {
     width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 0.5px solid #ECECEC;
+    box-sizing: border-box;
+    padding: 30px 20px 30px 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
 
-    .enroll-title {
-        color: var(--yellow);
-        font-family: 'Nanum Gothic', sans-serif;
-        font-size: 24px;
-        font-weight: 600;
-        text-align: start;
-        margin: 0 0 20px 15px;
-    }
+.card-title_wrap {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.5px solid #ebebeb;
+    height: auto;
+}
 
-    .material-icons mdl-badge, 
-    .mdl-badge--overlap {
-        cursor: pointer;
-        color: #F44337;
-        font-size: 19px;
-    }
+.card-body_wrap {
+    text-align: start;
+    height: auto;
+}
 
-    .mdl-badge[data-badge]:after {
-        background: none;
-        color: #5E5E5E;
-        top: -1px;
-        left: 18px;
-    }
+.title-desc_show {
+    height: auto;
+}
 
-    .comment-inner {
-        img {
-            width: 16px;
-            margin: 0 3px 0 5px;
-        }
-        font-family: 'Nanum Gothic', sans-serif;
-    }
+.enroll-title {
+    color: var(--yellow);
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: start;
+    margin: 0 0 15px 10px;
+    width: 340px;
+    height: auto;
+    white-space: pre-wrap;
 }
 
 .enroll-desc {
-    padding: 3px 0 0px 10px;
+    width: 340px;
+    height: auto;
     font-size: 16px !important;
     color: #8b8b8b;
     font-family: 'Nanum Gothic', sans-serif;
+    white-space: pre-wrap;
+    text-align: start;
+    padding-left: 8px;
+    box-sizing: border-box;
+}
+
+.mdl-badge[data-badge]:after {
+    background: none !important;
+    color: #5E5E5E !important;
+    top: -2px !important;
+    left: 18px !important;
+    font-size: 12px !important;
+}
+
+.like-comment_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.like-inner_show {
+    display: flex;
+    width: 54px;
+    height: 25px;
+    border: 0.5px solid #8B8B8B;
+    box-sizing: border-box;
+    border-radius: 30px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.like-icon {
+    cursor: pointer;
+    color: #F44337;
+    font-size: 18px !important;
+}
+
+
+.comment-inner_show {
+    img {
+        width: 16px;
+    }
+    font-family: 'Nanum Gothic', sans-serif;
+    margin-top: 5px;
+    display: flex;
+    width: 54px;
+    height: 25px;
+    border: 0.5px solid #8B8B8B;
+    color: gray;
+    box-sizing: border-box;
+    border-radius: 30px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 14px;
+    span {
+        margin-left: 8px;
+        font-size: 12px;
+        color: rgb(94, 94, 94);
+        font-weight: 600;
+    }
+}
+
+// 댓글
+.comment_wrap {
+    margin-top: 25px;
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 0.5px solid #ECECEC;
+    box-sizing: border-box;
+    padding: 30px 20px 30px 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
 }
 
 .line-short-show {
@@ -127,20 +209,25 @@ a.mypage:hover {
 .detail_wrap {
     height: auto;
     padding-right: 20px;
-    margin: 20px 0 30px 15px;
+    margin: 20px 0 0px 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .show-title {
     color: var(--green);
     font-weight: 600;
+    width: 80px;
+    font-size: 16px;
 }
 
 .show-content {
-    padding-left: 40px;
     width: 75%;
     box-sizing: border-box;
+    height: auto;
+    white-space: pre-wrap;
+}
 
-
+.mypage_show {
+    color: var(--deepgreen)
 }
