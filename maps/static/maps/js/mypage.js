@@ -6,7 +6,8 @@ function onClickRegisteredPosts() {
     ShowPosts(registeredPosts);
     ShowPostsBox("registered-posts-box");
     HidePosts(likedPosts);
-    HidePostsBox("liked-posts-box");
+    HidePostsBox("registered-posts-box");
+    ChangePostsBtnColor("registered-posts", "liked-posts");
     selected = 'register';
     walkroads = my_walkroads;
     walkroad_paths = my_walkroad_paths;
@@ -21,6 +22,7 @@ function onClickLikedPosts() {
     ShowPostsBox("liked-posts-box");
     HidePosts(registeredPosts);
     HidePostsBox("registered-posts-box");
+    ChangePostsBtnColor("liked-posts", "registered-posts");
     selected = 'like';
     walkroads = like_walkroads;
     walkroad_paths = like_walkroad_paths;
@@ -28,7 +30,7 @@ function onClickLikedPosts() {
     draw()
 }
 
-function setFocusClickedPost(path){
+function setFocusClickedPost(path) {
     const points = path[kakao.maps.drawing.OverlayType.POLYLINE][0]["points"];
     const startPoint = points[0];
     const endPoint = points[points.length - 1];
@@ -52,38 +54,43 @@ function GetAllLikedPosts() {
     }));
 }
 
-function ShowPostsBox(box){
+function ShowPostsBox(box) {
     const postsBox = document.getElementById(box);
-    postsBox.style.border='1px solid gainsboro';
     postsBox.style.display = 'flex';
 }
 
 function ShowPosts(posts) {
-    return posts.forEach(({post}) => post.classList.remove('hide'));
+    return posts.forEach(({ post }) => post.classList.remove('hide'));
 }
 
-function HidePostsBox(box){
+function HidePostsBox(box) {
     const postsBox = document.getElementById(box);
-    postsBox.style.border= 0;
-    postsBox.style.display = 'None';
+    postsBox.style.display = 'none';
 }
 
 function HidePosts(posts) {
-    return posts.forEach(({post}) => post.classList.add('hide'));
+    return posts.forEach(({ post }) => post.classList.add('hide'));
 }
 
-function getMatchedPosts(posts, keyword){
-    return posts.filter(({postTitle}) => postTitle.includes(keyword));
+function ChangePostsBtnColor(btnIdToShow, btnIdToHide) {
+    const btnToShow = document.getElementById(btnIdToShow);
+    const btnToHide = document.getElementById(btnIdToHide);
+    btnToShow.style.backgroundColor = 'whitesmoke';
+    btnToHide.style.backgroundColor = 'rgb(209, 209, 209)';
 }
 
-function getUnMatchedPosts(posts, keyword){
-    return posts.filter(({postTitle}) => !postTitle.includes(keyword));
+function getMatchedPosts(posts, keyword) {
+    return posts.filter(({ postTitle }) => postTitle.includes(keyword));
 }
 
-function onClickSearchBtn(){
+function getUnMatchedPosts(posts, keyword) {
+    return posts.filter(({ postTitle }) => !postTitle.includes(keyword));
+}
+
+function onClickSearchBtn() {
     const keyword = document.getElementById('search-posts').value;
     let posts = GetAllRegisteredPosts()
-    if(selected == 'like'){
+    if (selected == 'like') {
         posts = GetAllLikedPosts()
     }
 
