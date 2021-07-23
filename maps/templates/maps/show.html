@@ -80,18 +80,6 @@
                         <div class="show-content">{{ walkroad.tmi }}</div>
                     </div>
                 </div>
-
-                
-                {% comment %}                 
-                <div class="detail_wrap">
-                    <div class="show-title">소요시간</div>
-                    <div class="show-content" id="total-time">{{ walkroad.time }} 분</div>
-                </div>
-                <div class="detail_wrap">
-                    <div class="show-title">총 거리</div>
-                    <div class="show-content" id="total-distance">{{ walkroad.distance }} m</div>
-                </div>
-                {% endcomment %}
             </div>
 
             {% comment %} 댓글 {% endcomment %}
@@ -145,6 +133,7 @@
                     <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
                 </div>
             </div>
+
             <!-- 지도타입 컨트롤 div 입니다 -->
             <div class="radius_border type-control-mapbox">
                 <div id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</div>
@@ -156,6 +145,10 @@
                 <div class="zoom-btn" onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></div>
             </div>
             <div id="map" style="width:100%;height:80vh;">
+                <div class="map-info_show">
+                    <div id="total-time">🕒ㅤ소요 시간 : <span>{{ walkroad.time }}분</span></div>
+                    <div id="total-distance">📏ㅤ총 거리 : <span>{{ walkroad.distance }}m</span></div>
+                </div>
                 <div id="loading">
                     <div class="loading-background_show">
                         <div id="loading-bar-spinner" class="spinner">

@@ -351,3 +351,34 @@ a.mypage:hover {
         }
     }
 }
+
+.map-info_show {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    padding: 15px 0 5px 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    z-index: 2;
+    background: rgb(240, 240, 240);
+    padding: 10px;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px 5px rgba(128, 128, 128, 0.534);
+
+    div {
+        font-size: 16px;
+        color: #49A59A;
+        margin: 0;
+        
+
+        span {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.8);
+            margin-left: 8px;
+        }
+    }
+}

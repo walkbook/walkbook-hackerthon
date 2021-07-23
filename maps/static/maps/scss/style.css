@@ -250,7 +250,7 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .mapbox-new { display: flex; flex-direction: row; align-items: flex-end; }
 
-.map-info { position: absolute; display: flex; flex-direction: column; align-items: flex-start; width: auto; padding: 15px 0 5px 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; z-index: 2; background: #f0f0f0; padding: 10px 15px 10px 10px; top: 48px; left: 6px; border-radius: 10px; box-shadow: 5px 5px 20px 5px rgba(128, 128, 128, 0.671); }
+.map-info { position: absolute; display: flex; flex-direction: column; align-items: flex-start; width: auto; padding: 15px 0 5px 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; z-index: 2; background: #f0f0f0; padding: 10px 15px 10px 10px; top: 48px; left: 6px; border-radius: 10px; box-shadow: 5px 5px 20px 5px rgba(128, 128, 128, 0.548); }
 
 .map-info p { font-size: 16px; color: #49A59A; margin: 0; }
 
@@ -453,6 +453,12 @@ a.mypage:hover { color: var(--green); }
 .comment-body .comment-others .comment-date a, .comment-body .comment-others .comment-like a, .comment-body .comment-others .comment-del a { color: var(--deepgreen); }
 
 .comment-body .comment-others .comment-like, .comment-body .comment-others .comment-del { cursor: pointer; }
+
+.map-info_show { position: absolute; display: flex; flex-direction: column; align-items: center; width: auto; padding: 15px 0 5px 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; z-index: 2; background: #f0f0f0; padding: 10px; bottom: 20px; left: 20px; border-radius: 10px; box-shadow: 5px 5px 20px 5px rgba(128, 128, 128, 0.534); }
+
+.map-info_show div { font-size: 16px; color: #49A59A; margin: 0; }
+
+.map-info_show div span { font-size: 14px; color: rgba(0, 0, 0, 0.8); margin-left: 8px; }
 
 .update_wrap { padding-top: 140px; width: 1070px; margin-right: 13%; margin-left: 13%; }
 
