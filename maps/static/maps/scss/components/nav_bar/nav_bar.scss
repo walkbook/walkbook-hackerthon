@@ -7,7 +7,8 @@ body {
 .base-header {
     display: flex;
     justify-content: space-between;
-    width: 100vw;
+    flex-shrink: 0;
+    width: 100%;
     //fixed, background-color 수정 예정
     position: fixed;
     background: linear-gradient(180deg, #FFFFFF 0%, #98c7947e 1213.94%);
@@ -25,10 +26,11 @@ body {
             width: 280px;
             height: 40px;
             display: flex;
+            flex-shrink: 0;
             justify-content: space-between;
             align-items: center;
     
-            a {    
+            a { 
                 font-size: 14px;
                 color: #6B6B6B;
                 justify-content: center;
@@ -50,6 +52,7 @@ body {
             width: auto;
             height: 50px;
             display: flex;
+            flex-shrink: 0;
             justify-content: space-between;
             align-items: flex-start;
             margin-top: 10px;
