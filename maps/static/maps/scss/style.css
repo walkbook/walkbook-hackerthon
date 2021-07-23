@@ -181,6 +181,8 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
 
 .zoom-control-mapbox { position: absolute; top: 100px; right: 4px; width: 37px; height: 66px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 3px; z-index: 1; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-evenly; align-items: center; background-color: white; padding-top: 4px; }
 
+@font-face { font-family: 'UhBeejung'; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeejung.woff") format("woff"); font-weight: normal; font-style: normal; }
+
 @keyframes shake { 0% { transform: rotate(2deg); }
   33% { transform: rotate(-2deg); }
   66% { transform: rotate(2deg); }
@@ -190,9 +192,9 @@ input#keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 
   50% { transform: translateY(-10px); }
   to { transform: translateY(0px); } }
 
-.index-message { position: absolute; white-space: nowrap; top: 12%; right: 72%; color: var(--green); font-family: 'Noto Sans KR', sans-serif; font-size: 33px; animation: move 3s infinite; -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.226)); color: var(--green); }
+.index-message { position: absolute; white-space: nowrap; top: 18%; right: 72%; color: #BD8241; font-family: 'Noto Sans KR', sans-serif; font-family: 'UhBeejung'; font-size: 33px; animation: move 3s infinite; -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.226)); color: var(--green); }
 
-.index-message span { font-size: 45px; font-weight: 800; }
+.index-message span { font-size: 48px; font-weight: 800; color: #6C4B2D; }
 
 .green-box { position: relative; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; background: linear-gradient(179.61deg, #FFFFFF -9.74%, rgba(152, 199, 148, 0.62) 199.03%), #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
 
