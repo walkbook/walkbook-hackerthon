@@ -1,2 +1,39 @@
-# WalkBook
-SNU LikeLion 9th Hackerthon - 워크북(walkBook)
+# WalkBook 🏃‍♂️🏃‍♀️
+> SNU LikeLion 9th Hackerthon - 워크북(walkBook)
+
+✅ 기획의도
+---
+- 코로나로 인해 여가시간은 늘었으나 활동 범위가 제한되면서 **동네 산책**이 새로운 여가활동 중 하나로 주목받았습니다.
+
+- 그러나 집 근처 산책로에 대한 정보를 공유할 수 있는 곳이 마땅치 않아 평소에 다녔던 산책로만 반복해서 체험하게 되고, 다른 사람들과 경험을 공유하기 힘들다 보니 산책에 대한 흥미를 지속적으로 유지하기 어렵다는 한계가 존재했습니다.
+
+- **워크북**은 이러한 한계를 극복하고 위치별 산책로에 대한 정보와 함께 각자의 긍정적인 경험을 공유할 수 있는 비대면 공간을 만들고자 기획된 웹서비스입니다.
+    
+✅ 주요 서비스 플로우
+---
+1.
+  
+  
+✅ 기술스택
+---
+Frontend : Vanila Js, Scss    
+Backend : Django    
+  
+  
+✅ Model
+---
+![image](https://user-images.githubusercontent.com/52378625/126783361-5feb2977-68dc-4e6b-a6d2-cb99a73ec07e.png)
+
+
+✅ Deploy
+---
+https://walkbook.herokuapp.com
+
+💚 개발 후기
+---
+- 예지(팀장, 프론트엔드 담당)   
+- 별(프론트엔드 담당)    
+- 나영(백엔드 담당)   
+- 세원(백엔드 담당)   
+
+
