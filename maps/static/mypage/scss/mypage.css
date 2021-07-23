@@ -1,4 +1,4 @@
-.base-header { background: none; }
+.base-header { background: none; box-shadow: none; }
 
 .base-header .wrap-header .header-accounts .suggest { color: purple; text-shadow: none; }
 

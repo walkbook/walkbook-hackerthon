@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
+from django.db.models import Count
 from accounts.models import Profile
 from maps.models import Walkroad
 import json
@@ -10,13 +11,13 @@ def mypage(request, id):
     if (user is None) :
         return redirect('login')    
     if request.method == 'GET':
-        registeredWalkroads = Walkroad.objects.filter(author=user)
-        likedWalkroads = user.like_walkroads.all()
+        registeredWalkroads = Walkroad.objects.filter(author=user).annotate(like_count=Count('like_users'))
+        likedWalkroads = user.like_walkroads.all().annotate(like_count=Count('like_users'))
         
-        my_walkroads = json.dumps(list(registeredWalkroads.values('author', 'title', 'description', 'distance', 'time', 'like_users', 'id')))
+        my_walkroads = json.dumps(list(registeredWalkroads.values('author', 'title', 'description', 'distance', 'time', 'like_count', 'id')))
         my_walkroad_paths = list(registeredWalkroads.values('id', 'path'))
 
-        like_walkroads = json.dumps(list(likedWalkroads.values('author', 'title', 'description', 'distance', 'time', 'like_users', 'id')))
+        like_walkroads = json.dumps(list(likedWalkroads.values('author', 'title', 'description', 'distance', 'time', 'like_count', 'id')))
         like_walkroad_paths = list(likedWalkroads.values('id', 'path'))
 
         return render(request, 'mypage/mypage.html', {
