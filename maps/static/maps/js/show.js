@@ -19,7 +19,7 @@ function drawMarker(markers, infowindows) {
             image: new kakao.maps.MarkerImage('/static/maps/img/draw_marker.png', imageSize, imageOption)
         });
 
-        const infowindow = new kakao.maps.InfoWindow({
+        const infowindow = new kakao.maps.CustomOverlay({
             content: infoWindowContent(i, infowindows[i].title, infowindows[i].description),
             map: null,
             position: marker.getPosition(),

@@ -7,6 +7,8 @@ let marking = false;
 let totalTime = 0;
 let totalDistance = 0;
 
+const infoInputBox = document.getElementById('info-input-container');
+
 const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입니다
     map: map, // Drawing Manager로 그리기 요소를 그릴 map 객체입니다
     drawingMode: [ // Drawing Manager로 제공할 그리기 요소 모드입니다
@@ -64,9 +66,9 @@ manager.addListener('drawend', function (data) {
         showInfoInput();
 
         kakao.maps.event.addListener(marker, 'click', function () {
-            const infoWindow = mappingData[markerId].infoWindow;
-            infoWindow.setPosition(marker.getPosition());
-            infoWindow.setMap(map);
+            // const infoWindow = mappingData[markerId].infoWindow;
+            mappingData[markerId].infoWindow.setPosition(marker.getPosition());
+            mappingData[markerId].infoWindow.setMap(map);
         });
     }
 });
@@ -90,7 +92,6 @@ manager.addListener('remove', function (data) {
 });
 
 function showInfoInput() {
-    const infoInputBox = document.getElementById('info-input-container');
     infoInputBox.style.display = 'block';
 }
 
@@ -98,7 +99,7 @@ function saveInfo() {
     const titleInput = document.getElementById('info-title-input');
     const descriptionInput = document.getElementById('info-description-input');
 
-    mappingData[mappingId].infoWindow = new kakao.maps.InfoWindow({
+    mappingData[mappingId].infoWindow = new kakao.maps.CustomOverlay({
         content: infoWindowContent(mappingId, titleInput.value, descriptionInput.value),
         map: map,
         position: mappingData[mappingId].marker.getPosition()
@@ -110,7 +111,6 @@ function saveInfo() {
     titleInput.value = "";
     descriptionInput.value = "";
 
-    const infoInputBox = document.getElementById('info-input-container');
     infoInputBox.style.display = 'none';
 
     markerBtn.disabled = false;

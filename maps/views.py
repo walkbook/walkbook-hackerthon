@@ -13,7 +13,7 @@ def map(request):
         type = request.GET.get('type', '')
         keyword = request.GET.get('keyword', '')
 
-        walkroads = Walkroad.objects.all()
+        walkroads = Walkroad.objects.all().annotate(like_count=Count('like_users'))
 
         if type == 'all':
             walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword) | Q(tmi__icontains=keyword))
@@ -23,7 +23,8 @@ def map(request):
             walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword))
 
         walkroad_paths = list(walkroads.values('id', 'path'))
-        walkroads = json.dumps(list(walkroads.values('author', 'title', 'description', 'distance', 'time', 'like_users', 'id')))
+        walkroads = json.dumps(list(walkroads.values('author', 'title', 'description', 'distance', 'time', 'like_count', 'id')))
+
         return render(request, 'maps/map.html', { 
             'walkroads': walkroads,
             'walkroad_paths': walkroad_paths,

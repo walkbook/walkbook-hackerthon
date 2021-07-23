@@ -14,7 +14,7 @@ function drawPolyline(id, lines) {
     if (walkroads.length === 0) return;
 
     const walkroad = walkroads.find(x => x.id === id)
-    const like_count = walkroad.like_users ? walkroad.like_users : 0;
+    const like_count = walkroad.like_count;
 
     for (; i < len; i++) {
         const path = pointsToPath(lines[i].points);
