@@ -423,6 +423,46 @@ h4.title-tmi {
 }
 
 .disabled {
-    background: linear-gradient(180deg, #EBEBEB 0%, rgba(135, 135, 135, 0.8) 110.71%) !important;
+    background: linear-gradient(180deg, #EBEBEB 0%, rgba(114, 111, 106, 0.8) 110.71%) !important;
     pointer-events: none;
 }
+
+// 마커 정보 입력
+.marker-info {
+    position: absolute;
+    z-index: 8;
+    background: rgba(0, 0, 0, 0.651);
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+
+    .marker-info_location {
+        margin-top: 18%;
+
+        input {
+            box-sizing: border-box;
+            width: 300px;
+            height: 40px;
+            margin: 8px;
+            background: #ebebeb;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            border: none;
+            font-family: 'Nanum Gothic', sans-serif;
+            font-weight: 600;
+            background: black;
+            color: white;
+            cursor: pointer;
+            
+        }
+    }
+}
+
