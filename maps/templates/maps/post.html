@@ -42,7 +42,27 @@
     </div>
 
     <div class="mdl-card__actions mdl-card--border post-box">
+      {% if walkroad.id == 1 %}
+        <div class="post-img"><img class="temp" src="{% static 'maps/img/walkroad1.png' %}"></div>
+      {% elif walkroad.id == 2 %}
+        <div class="post-img"><img class="temp" src="{% static 'maps/img/walkroad2.png' %}"></div>
+      {% elif walkroad.id == 3 %}
+        <div class="post-img"><img class="temp" src="{% static 'maps/img/walkroad3.png' %}"></div>
+      {% elif walkroad.id == 4 %}
+        <div class="post-img"><img class="temp" src="{% static 'maps/img/walkroad4.png' %}"></div>
+      {% elif walkroad.id == 5 %}
+        <div class="post-img"><img class="temp" src="{% static 'maps/img/walkroad5.png' %}"></div>
+      {% elif walkroad.id == 6 %}
+        <div class="post-img"><img class="temp" src="{% static 'maps/img/walkroad6.png' %}"></div>
+      {% elif walkroad.id == 7 %}
+        <div class="post-img"><img class="temp" src="{% static 'maps/img/walkroad7.png' %}"></div>
+      {% elif walkroad.id == 8 %}
+        <div class="post-img"><img class="temp" src="{% static 'maps/img/walkroad8.png' %}"></div>
+      {% elif walkroad.id == 9 %}
+        <div class="post-img"><img class="temp" src="{% static 'maps/img/walkroad9.png' %}"></div>
+      {% else %}
       <div class="post-img"><img class="post-img-basic" src="{% static 'maps/img/image-gallery.png' %}"></div>
+      {% endif %}
       <div class="post-others">
         <div class="time-desc-box">
           <p id="total-time" class="total-time-class">소요 시간 <span>: {{ walkroad.time }}분</span></p>

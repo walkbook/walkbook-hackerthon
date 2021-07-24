@@ -10,7 +10,7 @@
 
 .book-layer-left { margin: 0; position: absolute; left: 0; width: 50%; height: 100%; background: white; box-sizing: border-box; }
 
-.mypage-layout { position: relative; display: flex; justify-content: center; width: 100%; height: 88%; }
+.mypage-layout { position: relative; justify-content: center; width: 100%; height: 88%; }
 
 .mypage_wrap { display: flex; justify-content: center; min-width: 1400px; padding-top: 40px; height: 100%; }
 
@@ -38,7 +38,7 @@
 
 .profile_wrap .walkroad-posts { margin-top: 40px; width: 95%; }
 
-.profile_wrap .walkroad-posts .posts-box { background: whitesmoke; min-height: 300px; border: none; }
+.profile_wrap .walkroad-posts .posts-box { background: whitesmoke; justify-content: space-around; border: none; }
 
 .profile_wrap .walkroad-posts .walkroad-posts-header { width: 90%; height: 28px; display: flex; margin: 10px; align-items: center; justify-content: space-between; }
 
@@ -54,7 +54,9 @@
 
 .profile_wrap .walkroad-posts .post-search-btn .searchimg { position: absolute; width: 15px; right: 10px; bottom: 2px; }
 
-.profile_wrap .registered-posts, .profile_wrap .liked-posts { border-radius: 15px; padding: 10px; width: 90%; flex-direction: row; flex-wrap: wrap; grid-template-columns: 1fr 1fr; overflow: auto; max-height: 80%; }
+
+.profile_wrap .registered-posts, .profile_wrap .liked-posts { border-radius: 15px; padding: 10px; width: 90%; flex-direction: row; flex-wrap: wrap; overflow: auto; max-height: 100%; }
+
 
 .profile_wrap .registered-posts .registered-post, .profile_wrap .registered-posts .liked-post, .profile_wrap .liked-posts .registered-post, .profile_wrap .liked-posts .liked-post { flex-shrink: 0; margin: 2px; position: relative; width: 260px; height: 92px; background: #ffffff; border: 0.5px solid #ECECEC; box-sizing: border-box; border-radius: 10px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); }
 
