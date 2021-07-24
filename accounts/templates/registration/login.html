@@ -16,7 +16,6 @@
 </h1 class="login-h1">
 </center>
 
-
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
   {% if form.errors %}
@@ -41,9 +40,10 @@
   <a href="{% url 'signup' %}?next={{request.path}}">회원가입 하러가기</a>
 </div>
 
-{% comment %} <center>
+<center>
   <a class="mdl-navigation__link" href="{% provider_login_url 'google' %}">
     <img src="{% static 'accounts/img/googlelogin.png' %}" style="width: 184px; height: auto;"/>
   </a>
-</center> {% endcomment %}
+</center>
+
 {% endblock content %}

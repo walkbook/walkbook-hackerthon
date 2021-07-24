@@ -96,7 +96,7 @@ select:focus {
     display: flex;
     flex-wrap: wrap;
     margin: 20px 14%;
-    justify-content: flex-start;
+    justify-content: space-between;
 
     .demo-card-square.mdl-card.mdl-shadow--2dp {
         width: 320px;
@@ -196,6 +196,11 @@ select {
     .post-img-basic {
         width: 30%;
         height: 23%;
+    }
+    
+    .temp {
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -335,14 +340,15 @@ select {
     font-size: 14px;
 
     img {
-        width: 17px;
+        width: 16px;
     }
 
     span{
-        margin-left: 7px;
+        margin-left: 0px;
         font-size: 12px;
         color: rgb(94, 94, 94);
         font-weight: 600;
+        font-family: 'Nanum Gothic', sans-serif;
     }
 }
 
@@ -359,4 +365,7 @@ select {
     color: #5E5E5E;
     top: -1px;
     left: 18px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 600 !important;
+    font-size: 12px !important;
 }

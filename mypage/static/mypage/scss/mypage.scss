@@ -4,13 +4,14 @@
 
   .wrap-header .header-accounts {
     .suggest {
-      color: purple;
+      color: #a87a4e;
       text-shadow: none;
     }
 
     .mypage,
     .logout {
       text-shadow: none;
+      color: white;
     }
   }
 }
@@ -50,17 +51,16 @@
 
 .mypage-layout {
   position: relative;
-  display: flex;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 88%;
 }
 
 .mypage_wrap {
   display: flex;
   justify-content: center;
   min-width: 1400px;
-  padding-top: 90px;
+  padding-top: 40px;
   height: 100%;
 }
 
@@ -75,12 +75,8 @@
   .profile {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
 
-    // .book-img {
-    // width: 50px;
-    // height: auto;
-    // margin-left: 10px;
-    // } 
     .workbook {
       width: 95%;
       height: 35px;
@@ -96,13 +92,17 @@
 
     .profile-box {
       position: relative;
+      margin-top: 30px;
       width: 90%;
-      height: 192.84px;
-      background: gainsboro;
-      border-radius: 10px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+
+      h1 {
+        margin: 20px 0 0 40px;
+      }
 
       .profile-img {
-        margin: 15px 20px;
+        margin: 10px 20px;
         width: 149px;
         height: 157px;
         left: 92px;
@@ -116,18 +116,16 @@
         display: inline-flex;
         flex-direction: column;
         align-items: flex-start;
-        margin-left: 20px;
+        margin-left: 15px;
       }
 
       #walkroad-count {
         width: 249px;
-        height: 35px;
-        left: 263px;
-        top: 194px;
-        margin-top: 14px;
+        height: 30px;
+        margin: 0 0 10px 0;
         font-family: Montserrat;
         font-style: normal;
-        font-weight: normal;
+        font-weight: bolder;
         font-size: 14px;
         line-height: 36px;
         letter-spacing: -0.015em;
@@ -139,22 +137,23 @@
       #profile3 {
         font-family: Montserrat;
         font-style: normal;
-        font-weight: bold;
+        font-weight: light;
         font-size: 12px;
         line-height: 30px;
         letter-spacing: -0.015em;
         color: #98c794;
       }
 
+      
+
       #edit-profile,
       #edit-myinfo {
         display: inline-block;
-        margin-top: 5px;
-        margin-right: 10px;
+        margin: 5px 10px 0 0;
         font-family: Montserrat;
         font-style: normal;
-        font-weight: bold;
-        font-size: 9px;
+        font-weight: light;
+        font-size: 10px;
         line-height: 24px;
         /* identical to box height, or 267% */
 
@@ -162,11 +161,22 @@
         text-decoration-line: underline;
         color: #757575;
       }
+
+      #edit-profile {
+        margin-left: 180px;
+      }
     }
   }
 
   .walkroad-posts {
+    margin-top: 40px;
     width: 95%;
+
+    .posts-box {
+      background:whitesmoke;
+      justify-content: space-around;
+      border: none;
+    }
 
     .walkroad-posts-header {
       width: 90%;
@@ -178,11 +188,11 @@
 
       .registered-posts-btn,
       .liked-posts-btn {
-        background-color: gainsboro;
-        padding: 15px 10px;
+        background-color: whitesmoke;
+        padding: 15px 20px;
         border-radius: 15px 15px 0px 0px;
         flex-shrink: 0;
-        margin: 0px 15px;
+        margin: 0px 5px;
         font-family: Montserrat;
         font-style: normal;
         font-weight: bold;
@@ -192,19 +202,9 @@
         color: rgb(97, 90, 82);
       }
 
-      // a.registered-posts-btn:link, a.liked-posts-btn:link {
-      //   background-color:rgba(73, 165, 154, 0.88);
-      // }    
-      // a.registered-posts-btn:visited, a.liked-posts-btn:visited {
-      //   background-color:rgba(73, 165, 154, 0.88);
-
-      // a.registered-posts-btn:hover, a.liked-posts-btn:hover {
-      //   background-color: goldenrod;
-      // }
-      // a.registered-posts-btn:active, a.liked-posts-btn:active {
-      //   background-color: goldenrod;
-      // }
-
+      .liked-posts-btn {
+        background-color: rgb(209, 209, 209);
+      }
     }
 
     .post-search-btn {
@@ -219,7 +219,8 @@
         width: 150px;
         border-radius: 5px;
         border: 0.3px solid #dddddd;
-        font-size: 11px
+        font-size: 11px;
+        padding: 0 30px 0 10px;
       }
 
       #search-posts-btn {
@@ -243,19 +244,18 @@
   
   .registered-posts,
   .liked-posts {
-    border-radius: 15px 0px 0px 15px;
-    padding: 15px;
+    border-radius: 15px;
+    padding: 10px;
     width: 90%;
     flex-direction: row;
     flex-wrap: wrap;
-    grid-template-columns: 1fr 1fr;
     overflow: auto;
-    max-height: 80%;
+    max-height: 100%;
     
     .registered-post,
     .liked-post {
       flex-shrink: 0;
-      margin: 15px;
+      margin: 2px;
       position: relative;
       width: 260px;
       height: 92px;
@@ -281,10 +281,10 @@
 
       .post-txt {
         position: absolute;
-        width: 50%;
+        width: 57%;
         display: flex;
         flex-direction: column;
-        margin-left: 40%;
+        margin-left: 35%;
         margin-top: 10px;
 
         #title-focus {
@@ -351,7 +351,7 @@
             font-size: 12px;
             line-height: 20px;
             letter-spacing: -0.015em;
-            color: purple;
+            color: var(--deepgreen);
           }
         }
       }
@@ -361,7 +361,6 @@
 
 
 a:hover {
-  color: var(--deepgreen) !important;
   cursor: pointer;
 }
 

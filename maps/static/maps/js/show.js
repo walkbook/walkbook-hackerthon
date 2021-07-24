@@ -95,16 +95,33 @@ function closeOverlay(id) {
 
 const onSetCommentCount = (commentCount) => {
     const commentCountElement = document.getElementById('comment-count');
-    commentCountElement.innerHTML = `<strong>댓글이 ${commentCount}개 있습니다</strong>`;
+    commentCountElement.innerHTML = `<strong>✏️ 댓글 ${commentCount}개</strong>`;
 }
 
 const getCommentElement = (walkroadId, commentId, commentCount, comment, createdTime, authorName, authorId) => {
-    var commentElement = document.createElement('p');
+    var commentElement = document.createElement('div');
     commentElement.id = `walkroad${walkroadId}-comment${commentId}`;
-    commentElement.innerHTML = `<a href="{% url 'mypage:mypage' ${authorId} %}">${authorName}</a>: ${comment} &nbsp; &nbsp; ${createdTime}
-                                <a id="comment${commentId}-like-button" onclick="onLikeComment(${commentId})">
-                                ${commentCount} Likes </a>
-                                <a onclick="onDeleteComment(${walkroadId}, ${commentId})">댓글 삭제</a>`
+    commentElement.className = 'one-comment_class';
+    commentElement.innerHTML = `<div class="comment-name">
+                                    <a href="{% url 'mypage:mypage' ${authorId} %}"><i class="fas fa-book"></i> ${authorName}</a> :ㅤ
+                                </div>
+                                <div class="comment-body">
+                                    <div class="comment-ment">
+                                        ${comment} 
+                                    </div>
+                                    <div class="comment-others">
+                                        <div class="comment-date">${createdTime}</div>
+                                        <div class="comment-like">
+                                            <a id="comment${commentId}-like-button" onclick="onLikeComment(${commentId})">
+                                                ${commentCount} Likes 
+                                            </a>
+                                        </div>
+                                        <div class="comment-del">
+                                            <a onclick="onDeleteComment(${walkroadId}, ${commentId})"><i class="far fa-trash-alt"></i></a>
+                                        </div>
+                                    </div>
+                                </div>`
+                                    
     return commentElement;
 }
 

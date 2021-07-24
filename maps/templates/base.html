@@ -7,7 +7,13 @@
     {% load sass_tags %}
     <link rel="icon" type="image/x-icon" href="/fav/favicon.ico">
 <link rel="shortcut icon" type="image/x-icon" href="/fav/favicon.ico">
+    {% comment %} 기본 {% endcomment %}
     <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/style.scss' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/reset.scss' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/variables.scss' %}"/>
+    {% comment %} 컴포넌트 {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/components/nav_bar/nav_bar.scss' %}"/>
+    {% comment %} 스크린 {% endcomment %}
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-deep_purple.min.css" />
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -30,7 +36,7 @@
           {% if user.is_authenticated %}
             {% comment %} <div>{{user.profile.username}}님 환영합니다.</div> {% endcomment %}
             <a class="suggest" href="{% url 'maps:new' %}">산책로 등록</a>
-            <a class="mypage" href="{% url 'mypage:mypage' user.id %}">나의 워크북</a>
+            <a class="mypage" href="{% url 'mypage:mypage' request.user.id %}">나의 워크북</a>
             <a class="logout" href="{% url 'logout'%}">로그아웃</a>
             {% comment %} <a href="{% url 'checkpw'%}">내 정보수정</a> {% endcomment %}
           {% else %}
