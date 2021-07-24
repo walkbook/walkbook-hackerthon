@@ -82,14 +82,15 @@
                 </div>
             </div>
 
-            {% if user.is_authenticated %}
             {% comment %} 댓글 {% endcomment %}
             <div class="comment_wrap">
                 <div class="comment-input_wrap">
                     <p id="comment-count" class="comment-count_class"><strong>✏️ 댓글 {{walkroad.comment_set.count}}개</strong></p>
+                    {% if user.is_authenticated %}
                     {% csrf_token %}
                     <input id="walkroad{{walkroad.id}}-comment-input" class="comment-input" type="text" name="content" />
                     <button onclick="onAddComment({{walkroad.id}})"><i class="far fa-arrow-alt-circle-right circle_show"></i></button>
+                    {% endif %}
                 </div>
                 <div id="{{walkroad.id}}-comment-list" class="comment-list_class" >
                     {% for comment in walkroad.comment_set.all|dictsortreversed:"like_users.count" %}
@@ -121,7 +122,6 @@
                     {% endfor %}
                 </div>
             </div>
-            {% endif %}
         </div>
 
         {% csrf_token %}
