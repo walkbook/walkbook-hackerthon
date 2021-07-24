@@ -56,7 +56,7 @@
 
 .profile_wrap .registered-posts, .profile_wrap .liked-posts { border-radius: 15px; padding: 10px; width: 90%; flex-direction: row; flex-wrap: wrap; overflow: auto; max-height: 100%; }
 
-.profile_wrap .registered-posts .registered-post, .profile_wrap .registered-posts .liked-post, .profile_wrap .liked-posts .registered-post, .profile_wrap .liked-posts .liked-post { flex-shrink: 0; margin: 10px; position: relative; width: 46.5%; height: 92px; background: #ffffff; border: 0.5px solid #ECECEC; box-sizing: border-box; border-radius: 10px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); }
+.profile_wrap .registered-posts .registered-post, .profile_wrap .registered-posts .liked-post, .profile_wrap .liked-posts .registered-post, .profile_wrap .liked-posts .liked-post { flex-shrink: 0; margin: 10px; position: relative; width: 44%; height: 92px; background: #ffffff; border: 0.5px solid #ECECEC; box-sizing: border-box; border-radius: 10px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); }
 
 .profile_wrap .registered-posts .registered-post .hide, .profile_wrap .registered-posts .liked-post .hide, .profile_wrap .liked-posts .registered-post .hide, .profile_wrap .liked-posts .liked-post .hide { display: none; }
 
