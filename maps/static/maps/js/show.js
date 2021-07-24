@@ -121,7 +121,7 @@ const getCommentElement = (walkroadId, commentId, commentCount, comment, created
                                         </div>
                                     </div>
                                 </div>`
-                                    
+
     return commentElement;
 }
 
@@ -142,6 +142,9 @@ const onAddComment = async (walkroadId) => {
     document.getElementById(`${walkroadId}-comment-list`).appendChild(commentElement);
     onSetCommentCount(commentCount);
     commentInputElement.value = '';
+
+    const commentInnerElement = document.getElementById("comment-inner-count");
+    commentInnerElement.innerHTML = commentCount;
 }
 
 const onLikeComment = async (commentId) => {

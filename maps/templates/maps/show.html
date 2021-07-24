@@ -50,7 +50,7 @@
                             </div>
                             <div class="comment-inner_show">
                                 <img src="{% static 'maps/img/speech-bubble.png' %}"/>
-                                <span>{{ walkroad.comment_set.count }}</span>
+                                <span id="comment-inner-count">{{ walkroad.comment_set.count }}</span>
                             </div>
                         </div>
                     </div>
@@ -82,6 +82,7 @@
                 </div>
             </div>
 
+            {% if user.is_authenticated %}
             {% comment %} 댓글 {% endcomment %}
             <div class="comment_wrap">
                 <div class="comment-input_wrap">
@@ -120,6 +121,7 @@
                     {% endfor %}
                 </div>
             </div>
+            {% endif %}
         </div>
 
         {% csrf_token %}
