@@ -4,7 +4,7 @@
 
 .base-header .wrap-header .header-accounts .mypage, .base-header .wrap-header .header-accounts .logout { text-shadow: none; color: white; }
 
-.book-layer { margin: 0; width: 100%; height: 100%; position: absolute; }
+.book-layer { margin: 0; width: 100%; min-width: 1400px; height: 100%; position: absolute; }
 
 .book-layer-right { margin: 0; position: absolute; right: 0; width: 50%; height: 100%; box-sizing: border-box; background: linear-gradient(163.22deg, rgba(152, 199, 148, 0.88) 14.88%, rgba(73, 165, 154, 0.88) 92.17%), #ffffff; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
 

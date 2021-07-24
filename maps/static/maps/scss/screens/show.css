@@ -95,6 +95,6 @@ a.mypage:hover { color: var(--green); }
 
 .map-info_show div { font-size: 16px; color: #49A59A; margin: 0; }
 
-.map-info_show div span { font-size: 14px; color: rgba(0, 0, 0, 0.8); margin-left: 8px; }
+.map-info_show div span { font-size: 14px; color: rgba(0, 0, 0, 0.8); margin-left: 8px; font-weight: bolder; }
 
 /*# sourceMappingURL=show.css.map */
