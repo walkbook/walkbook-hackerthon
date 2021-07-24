@@ -6,12 +6,15 @@
 <center>
     <div class="body-layout-show">
         <div class="info-box">
-            {% if request.user == walkroad.author %}
                 <div class="ud-btn">
+                {% if request.user == walkroad.author %}
                     <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
                     <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
+                {% else %}
+                    <a href="{% url 'maps:update' id=walkroad.id %}" style="visibility: hidden">수정</a>
+                    <a href="{% url 'maps:delete' id=walkroad.id %}" style="visibility: hidden">삭제</a>
+                {% endif %}
                 </div>
-            {% endif %}
             <div class="card_wrap">
                 {% comment %} 카드 타이틀 부분 {% endcomment %}
                 <div class="card-title_wrap">
