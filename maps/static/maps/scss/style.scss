@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&display=swap');
 
 // basic settings
-@import "reset.scss";
-@import "variables.scss";
+// @import "reset.scss";
+// @import "variables.scss";
 
 
 // components import
-@import "components/nav_bar/nav_bar.scss";
+// @import "components/nav_bar/nav_bar.scss";
 @import "components/line/line-long.scss";
 @import "components/components.scss";
 @import "components/line/line-short.scss";
@@ -25,9 +25,20 @@
 @import "screens/show.scss";
 @import "screens/update.scss";
 
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
 body { 
     width: 100%;
     height: 100%;
+    animation: fadein 2s;
 }
 
 .body-layout {

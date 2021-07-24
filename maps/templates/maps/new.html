@@ -33,10 +33,6 @@
 	
 			{% csrf_token %}
 			<div class="mapbox mapbox-new">
-				<div class="map-info">
-					<p id="total-time">🕒ㅤ소요 시간 : <span>0 분</span></p>
-					<p id="total-distance">📏ㅤ총 거리 : <span>0 m</span></p>
-				</div>
 
 				<div class="map-input">
 					<div class="map-input_wrap">
@@ -48,6 +44,10 @@
 			</div>
 
 			<div class="map_wrap">
+				<div class="map-info">
+					<p id="total-time">🕒ㅤ소요 시간 : <span>0 분</span></p>
+					<p id="total-distance">📏ㅤ총 거리 : <span>0 m</span></p>
+				</div>
 				{% comment %} 마커 정보 입력 {% endcomment %}
 				<div id="info-input-container" class="marker-info" style="display: none">
 					<div class="marker-info_location">
