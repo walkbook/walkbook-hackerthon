@@ -1,8 +1,8 @@
 .base-header { background: none; box-shadow: none; }
 
-.base-header .wrap-header .header-accounts .suggest { color: purple; text-shadow: none; }
+.base-header .wrap-header .header-accounts .suggest { color: #a87a4e; text-shadow: none; }
 
-.base-header .wrap-header .header-accounts .mypage, .base-header .wrap-header .header-accounts .logout { text-shadow: none; }
+.base-header .wrap-header .header-accounts .mypage, .base-header .wrap-header .header-accounts .logout { text-shadow: none; color: white; }
 
 .book-layer { margin: 0; width: 100%; height: 100%; position: absolute; }
 
@@ -10,51 +10,60 @@
 
 .book-layer-left { margin: 0; position: absolute; left: 0; width: 50%; height: 100%; background: white; box-sizing: border-box; }
 
-.mypage-layout { position: relative; display: flex; justify-content: center; width: 100%; height: 100%; }
+.mypage-layout { position: relative; display: flex; justify-content: center; width: 100%; height: 88%; }
 
-.mypage_wrap { display: flex; justify-content: center; min-width: 1400px; padding-top: 90px; height: 100%; }
+.mypage_wrap { display: flex; justify-content: center; min-width: 1400px; padding-top: 40px; height: 100%; }
 
 .profile_wrap { box-sizing: border-box; padding-left: 80px; display: flex; flex-direction: column; width: 50%; flex-wrap: nowrap; }
 
-.profile_wrap .profile { display: flex; flex-direction: column; }
+.profile_wrap .profile { display: flex; flex-direction: column; margin-top: 20px; }
 
 .profile_wrap .profile .workbook { width: 95%; height: 35px; left: 82px; top: 137px; font-style: normal; font-weight: bold; font-size: 20px; line-height: 34px; letter-spacing: -0.015em; color: #49a59a; }
 
-.profile_wrap .profile .profile-box { position: relative; width: 90%; height: 192.84px; background: gainsboro; border-radius: 10px; }
+.profile_wrap .profile .profile-box { position: relative; margin-top: 30px; width: 90%; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); }
 
-.profile_wrap .profile .profile-box .profile-img { margin: 15px 20px; width: 149px; height: 157px; left: 92px; top: 194px; background: #FFFFFF; border-radius: 10px; }
+.profile_wrap .profile .profile-box h1 { margin: 20px 0 0 40px; }
 
-.profile_wrap .profile .profile-box .profile-txt { position: absolute; display: inline-flex; flex-direction: column; align-items: flex-start; margin-left: 20px; }
+.profile_wrap .profile .profile-box .profile-img { margin: 10px 20px; width: 149px; height: 157px; left: 92px; top: 194px; background: #FFFFFF; border-radius: 10px; }
 
-.profile_wrap .profile .profile-box #walkroad-count { width: 249px; height: 35px; left: 263px; top: 194px; margin-top: 14px; font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 14px; line-height: 36px; letter-spacing: -0.015em; color: #49a59a; }
+.profile_wrap .profile .profile-box .profile-txt { position: absolute; display: inline-flex; flex-direction: column; align-items: flex-start; margin-left: 15px; }
 
-.profile_wrap .profile .profile-box #profile1, .profile_wrap .profile .profile-box #profile2, .profile_wrap .profile .profile-box #profile3 { font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 12px; line-height: 30px; letter-spacing: -0.015em; color: #98c794; }
+.profile_wrap .profile .profile-box #walkroad-count { width: 249px; height: 30px; margin: 0 0 10px 0; font-family: Montserrat; font-style: normal; font-weight: bolder; font-size: 14px; line-height: 36px; letter-spacing: -0.015em; color: #49a59a; }
 
-.profile_wrap .profile .profile-box #edit-profile, .profile_wrap .profile .profile-box #edit-myinfo { display: inline-block; margin-top: 5px; margin-right: 10px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 9px; line-height: 24px; /* identical to box height, or 267% */ letter-spacing: -0.015em; text-decoration-line: underline; color: #757575; }
+.profile_wrap .profile .profile-box #profile1, .profile_wrap .profile .profile-box #profile2, .profile_wrap .profile .profile-box #profile3 { font-family: Montserrat; font-style: normal; font-weight: light; font-size: 12px; line-height: 30px; letter-spacing: -0.015em; color: #98c794; }
 
-.profile_wrap .walkroad-posts { width: 95%; }
+.profile_wrap .profile .profile-box #edit-profile, .profile_wrap .profile .profile-box #edit-myinfo { display: inline-block; margin: 5px 10px 0 0; font-family: Montserrat; font-style: normal; font-weight: light; font-size: 10px; line-height: 24px; /* identical to box height, or 267% */ letter-spacing: -0.015em; text-decoration-line: underline; color: #757575; }
+
+.profile_wrap .profile .profile-box #edit-profile { margin-left: 180px; }
+
+.profile_wrap .walkroad-posts { margin-top: 40px; width: 95%; }
+
+.profile_wrap .walkroad-posts .posts-box { background: whitesmoke; min-height: 300px; border: none; }
 
 .profile_wrap .walkroad-posts .walkroad-posts-header { width: 90%; height: 28px; display: flex; margin: 10px; align-items: center; justify-content: space-between; }
 
-.profile_wrap .walkroad-posts .walkroad-posts-header .registered-posts-btn, .profile_wrap .walkroad-posts .walkroad-posts-header .liked-posts-btn { background-color: gainsboro; padding: 15px 10px; border-radius: 15px 15px 0px 0px; flex-shrink: 0; margin: 0px 15px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 14px; line-height: 36px; letter-spacing: -0.015em; color: #615a52; }
+.profile_wrap .walkroad-posts .walkroad-posts-header .registered-posts-btn, .profile_wrap .walkroad-posts .walkroad-posts-header .liked-posts-btn { background-color: whitesmoke; padding: 15px 20px; border-radius: 15px 15px 0px 0px; flex-shrink: 0; margin: 0px 10px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 14px; line-height: 36px; letter-spacing: -0.015em; color: #615a52; }
+
+.profile_wrap .walkroad-posts .walkroad-posts-header .liked-posts-btn { background-color: #d1d1d1; }
 
 .profile_wrap .walkroad-posts .post-search-btn { display: flex; align-items: center; justify-content: flex-end; }
 
-.profile_wrap .walkroad-posts .post-search-btn #search-posts { position: relative; margin-left: 30px; height: 23px; width: 150px; border-radius: 5px; border: 0.3px solid #dddddd; font-size: 11px; }
+.profile_wrap .walkroad-posts .post-search-btn #search-posts { position: relative; margin-left: 30px; height: 23px; width: 150px; border-radius: 5px; border: 0.3px solid #dddddd; font-size: 11px; padding: 0 30px 0 10px; }
 
 .profile_wrap .walkroad-posts .post-search-btn #search-posts-btn { position: absolute; width: 20px; height: 20px; border: none; background: transparent; cursor: pointer; }
 
 .profile_wrap .walkroad-posts .post-search-btn .searchimg { position: absolute; width: 15px; right: 10px; bottom: 2px; }
 
-.profile_wrap .registered-posts, .profile_wrap .liked-posts { border-radius: 15px 0px 0px 15px; padding: 15px; width: 90%; flex-direction: row; flex-wrap: wrap; grid-template-columns: 1fr 1fr; overflow: auto; max-height: 80%; }
+.profile_wrap .registered-posts, .profile_wrap .liked-posts { border-radius: 15px; padding: 10px; width: 90%; flex-direction: row; flex-wrap: wrap; grid-template-columns: 1fr 1fr; overflow: auto; max-height: 80%; }
 
-.profile_wrap .registered-posts .registered-post, .profile_wrap .registered-posts .liked-post, .profile_wrap .liked-posts .registered-post, .profile_wrap .liked-posts .liked-post { flex-shrink: 0; margin: 15px; position: relative; width: 260px; height: 92px; background: #ffffff; border: 0.5px solid #ECECEC; box-sizing: border-box; border-radius: 10px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); }
+
+.profile_wrap .registered-posts .registered-post, .profile_wrap .registered-posts .liked-post, .profile_wrap .liked-posts .registered-post, .profile_wrap .liked-posts .liked-post { flex-shrink: 0; margin: 2px; position: relative; width: 260px; height: 92px; background: #ffffff; border: 0.5px solid #ECECEC; box-sizing: border-box; border-radius: 10px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); }
 
 .profile_wrap .registered-posts .registered-post .hide, .profile_wrap .registered-posts .liked-post .hide, .profile_wrap .liked-posts .registered-post .hide, .profile_wrap .liked-posts .liked-post .hide { display: none; }
 
 .profile_wrap .registered-posts .registered-post .registered-img, .profile_wrap .registered-posts .registered-post .liked-img, .profile_wrap .registered-posts .liked-post .registered-img, .profile_wrap .registered-posts .liked-post .liked-img, .profile_wrap .liked-posts .registered-post .registered-img, .profile_wrap .liked-posts .registered-post .liked-img, .profile_wrap .liked-posts .liked-post .registered-img, .profile_wrap .liked-posts .liked-post .liked-img { position: absolute; margin: 15px; width: 60px; height: 60px; background: #FFFFFF; border-radius: 10px; }
 
-.profile_wrap .registered-posts .registered-post .post-txt, .profile_wrap .registered-posts .liked-post .post-txt, .profile_wrap .liked-posts .registered-post .post-txt, .profile_wrap .liked-posts .liked-post .post-txt { position: absolute; width: 50%; display: flex; flex-direction: column; margin-left: 40%; margin-top: 10px; }
+.profile_wrap .registered-posts .registered-post .post-txt, .profile_wrap .registered-posts .liked-post .post-txt, .profile_wrap .liked-posts .registered-post .post-txt, .profile_wrap .liked-posts .liked-post .post-txt { position: absolute; width: 57%; display: flex; flex-direction: column; margin-left: 35%; margin-top: 10px; }
 
 .profile_wrap .registered-posts .registered-post .post-txt #title-focus, .profile_wrap .registered-posts .liked-post .post-txt #title-focus, .profile_wrap .liked-posts .registered-post .post-txt #title-focus, .profile_wrap .liked-posts .liked-post .post-txt #title-focus { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 5px; width: 162px; height: 24px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 15px; line-height: 20px; letter-spacing: -0.015em; color: #000000; }
 
@@ -64,9 +73,9 @@
 
 .profile_wrap .registered-posts .registered-post .post-txt .liked-link, .profile_wrap .registered-posts .liked-post .post-txt .liked-link, .profile_wrap .liked-posts .registered-post .post-txt .liked-link, .profile_wrap .liked-posts .liked-post .post-txt .liked-link { display: flex; align-items: flex-end; }
 
-.profile_wrap .registered-posts .registered-post .post-txt .liked-link #username-profile, .profile_wrap .registered-posts .liked-post .post-txt .liked-link #username-profile, .profile_wrap .liked-posts .registered-post .post-txt .liked-link #username-profile, .profile_wrap .liked-posts .liked-post .post-txt .liked-link #username-profile { text-align: right; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 80px; height: 24px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 12px; line-height: 20px; letter-spacing: -0.015em; color: purple; }
+.profile_wrap .registered-posts .registered-post .post-txt .liked-link #username-profile, .profile_wrap .registered-posts .liked-post .post-txt .liked-link #username-profile, .profile_wrap .liked-posts .registered-post .post-txt .liked-link #username-profile, .profile_wrap .liked-posts .liked-post .post-txt .liked-link #username-profile { text-align: right; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 80px; height: 24px; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 12px; line-height: 20px; letter-spacing: -0.015em; color: var(--deepgreen); }
 
-a:hover { color: var(--deepgreen) !important; cursor: pointer; }
+a:hover { cursor: pointer; }
 
 .map_wrap { width: 50%; position: relative; margin-top: 27px; box-sizing: border-box; padding: 0 20px; }
 
