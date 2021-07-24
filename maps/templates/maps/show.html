@@ -6,99 +6,122 @@
 <center>
     <div class="body-layout-show">
         <div class="info-box">
-            <div class="info_wrap">
-                <div class="title-ud">
-                    <div class="show-title">
-                        <p class="enroll-announce enroll-title">{{ walkroad.title }}</p>
-                        <p class="enroll-desc">{{ walkroad.description }}</p>
-                        <p class="enroll-desc">{{ walkroad.created_at|date:'Y/m/d H:i'}}</p>
-                    </div>
-    
-                    {% if request.user == walkroad.author %}
-                    <div class="ud-btn">
-                        <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
-                        <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
-                    </div>
-                    {% endif %}
-                    <div class="like-comment_wrap">
-
-                        <div class="like-inner">
-                        {% if user.is_authenticated %}
-                            <a
-                            id="{{walkroad.id}}-like-button"
-                            onclick="onClickLikeBtn({{walkroad.id}})"
-                            class="material-icons mdl-badge mdl-badge--overlap"
-                            data-badge="{{ walkroad.like_users.count }}"
-                            >
-                        {% if user in walkroad.like_users.all %} 
-                            favorite 
-                        {% else %}
-                            favorite_border 
-                        {% endif %}
-                            </a>
-                        {% else %}
-                            <div
-                            class="material-icons mdl-badge mdl-badge--overlap"
-                            data-badge="{{ walkroad.like_users.count }}"
-                            >
-                            favorite_border
-                            </div>
-                        {% endif %}
-                        </div>
-                        <div class="comment-inner">
-                            <img src="{% static 'maps/img/speech-bubble.png' %}"/>
-                            <span>{{ walkroad.comment_set.count }}</span>
+            {% if request.user == walkroad.author %}
+                <div class="ud-btn">
+                    <a href="{% url 'maps:update' id=walkroad.id %}">수정</a>
+                    <a href="{% url 'maps:delete' id=walkroad.id %}">삭제</a>
+                </div>
+            {% endif %}
+            <div class="card_wrap">
+                {% comment %} 카드 타이틀 부분 {% endcomment %}
+                <div class="card-title_wrap">
+                    {% comment %} 좌측 타이틀, 소개 {% endcomment %}
+                    <div class="title-left">
+                        <div class="title-desc_show">
+                            <p class="enroll-announce enroll-title">{{ walkroad.title }}</p>
+                            <p class="enroll-desc">{{ walkroad.description }}</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="detail_wrap">
-                    <div class="show-title">작성자</div>
-                    <a class="mypage show-content" href="{% url 'mypage:mypage'  walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
-                </div>
-                <div class="detail_wrap">
-                    <div class="show-title">소요시간</div>
-                    <div class="show-content" id="total-time">{{ walkroad.time }} 분</div>
-                </div>
-                <div class="detail_wrap">
-                    <div class="show-title">총 거리</div>
-                    <div class="show-content" id="total-distance">{{ walkroad.distance }} m</div>
-                </div>
-                <div class="detail_wrap">
-                    <div class="show-title">출발위치</div>
-                    <div class="show-content">{{ walkroad.start }}</div>
-                </div>
-                <div class="detail_wrap">
-                    <div class="show-title">도착위치</div>
-                    <div class="show-content">{{ walkroad.finish }}</div>
-                </div>
-                <div class="detail_wrap">
-                    <div class="show-title">TMI</div>
-                    <div class="show-content">{{ walkroad.tmi }}</div>
-                </div>
-                <div clsss="comment_wrap">
-                    <p id="comment-count"><strong>댓글이 {{walkroad.comment_set.count}}개 있습니다</strong></p>
-                    {% csrf_token %}
-                    <input id="walkroad{{walkroad.id}}-comment-input" type="text" name="content" />
-                    <button onclick="onAddComment({{walkroad.id}})">댓글 달기</button>
-                    <div id="{{walkroad.id}}-comment-list">
-                        {% for comment in walkroad.comment_set.all|dictsortreversed:"like_users.count" %}
-                        <p id="walkroad{{walkroad.id}}-comment{{comment.id}}">
-                            <a href="{% url 'mypage:mypage'  comment.author.id %}">{{ comment.author.profile.username }}</a>: {{ comment.content }} &nbsp; &nbsp;{{ comment.created_at|date:'Y/m/d H:i'}}
+                    {% comment %} 우측 좋아요, 댓글, 작성자 {% endcomment %}
+                    <div class="title-right">
+                        <div class="like-comment_wrap">
+                            <div class="like-inner_show">
                             {% if user.is_authenticated %}
-                            <a id="comment{{comment.id}}-like-button" onclick="onLikeComment({{comment.id}})">
-                                {{ comment.like_users.count }} Likes
-                            </a>
+                                <a
+                                id="{{walkroad.id}}-like-button"
+                                onclick="onClickLikeBtn({{walkroad.id}})"
+                                class="material-icons mdl-badge mdl-badge--overlap like-icon"
+                                data-badge="{{ walkroad.like_users.count }}"
+                                >
+                            {% if user in walkroad.like_users.all %} 
+                                favorite 
+                            {% else %}
+                                favorite_border 
                             {% endif %}
-                            {% if request.user == comment.author %}
-                            <a onclick="onDeleteComment({{walkroad.id}}, {{comment.id}})">댓글 삭제</a>
+                                </a>
+                            {% else %}
+                                <div
+                                class="material-icons mdl-badge mdl-badge--overlap like-badge_show"
+                                data-badge="{{ walkroad.like_users.count }}"
+                                >
+                                favorite_border
+                                </div>
                             {% endif %}
-                        </p>
-                        {% endfor %}
+                            </div>
+                            <div class="comment-inner_show">
+                                <img src="{% static 'maps/img/speech-bubble.png' %}"/>
+                                <span>{{ walkroad.comment_set.count }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body_wrap">
+                    <div class="detail_wrap">
+                        <div class="show-title">작성자</div>
+                        <a class="mypage_show" href="{% url 'mypage:mypage'  walkroad.author.id %}">
+                            <i class="fas fa-book"></i> {{ walkroad.author.profile.username }}
+                        </a>
+                    </div>
+                    <div class="detail_wrap">
+                        <div class="show-title">작성일시</div>
+                        {% comment %}  H시 i분 {% endcomment %}
+                        <div class="show-content">{{ walkroad.created_at|date:'Y / m / d'}}</div>  
+                    </div>
+                    <div class="detail_wrap">
+                        <div class="show-title">출발위치</div>
+                        <div class="show-content">{{ walkroad.start }}</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div class="show-title">도착위치</div>
+                        <div class="show-content">{{ walkroad.finish }}</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div class="show-title">TMI</div>
+                        <div class="show-content">{{ walkroad.tmi }}</div>
                     </div>
                 </div>
             </div>
+
+            {% comment %} 댓글 {% endcomment %}
+            <div class="comment_wrap">
+                <div class="comment-input_wrap">
+                    <p id="comment-count" class="comment-count_class"><strong>✏️ 댓글 {{walkroad.comment_set.count}}개</strong></p>
+                    {% csrf_token %}
+                    <input id="walkroad{{walkroad.id}}-comment-input" class="comment-input" type="text" name="content" />
+                    <button onclick="onAddComment({{walkroad.id}})"><i class="far fa-arrow-alt-circle-right circle_show"></i></button>
+                </div>
+                <div id="{{walkroad.id}}-comment-list" class="comment-list_class" >
+                    {% for comment in walkroad.comment_set.all|dictsortreversed:"like_users.count" %}
+                    <div id="walkroad{{walkroad.id}}-comment{{comment.id}}" class="one-comment_class">
+                        <div class="comment-name">
+                            <a href="{% url 'mypage:mypage'  comment.author.id %}"><i class="fas fa-book"></i> {{ comment.author.profile.username }}</a> :
+                        </div>
+                        <div class="comment-body">
+                            <div class="comment-ment">
+                                {{ comment.content }}
+                            </div>
+                            <div class="comment-others">
+                                <div class="comment-date">{{ comment.created_at|date:'Y/m/d H:i'}}</div>
+                                <div class="comment-like">
+                                    {% if user.is_authenticated %}
+                                    <a id="comment{{comment.id}}-like-button" onclick="onLikeComment({{comment.id}})">
+                                        {{ comment.like_users.count }} Likes
+                                    </a>
+                                    {% endif %}
+                                </div>
+                                <div class="comment-del">
+                                    {% if request.user == comment.author %}
+                                    <a onclick="onDeleteComment({{walkroad.id}}, {{comment.id}})"><i class="far fa-trash-alt"></i></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
+
         {% csrf_token %}
         <div class="mapbox_wrap">
             <div class="mapbox">
@@ -110,6 +133,7 @@
                     <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
                 </div>
             </div>
+
             <!-- 지도타입 컨트롤 div 입니다 -->
             <div class="radius_border type-control-mapbox">
                 <div id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</div>
@@ -120,7 +144,11 @@
                 <div class="zoom-btn" onclick="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></div>  
                 <div class="zoom-btn" onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></div>
             </div>
-            <div id="map" style="width:100%;height:100vh;">
+            <div id="map" style="width:100%;height:80vh;">
+                <div class="map-info_show">
+                    <div id="total-time">🕒ㅤ소요 시간 : <span>{{ walkroad.time }}분</span></div>
+                    <div id="total-distance">📏ㅤ총 거리 : <span>{{ walkroad.distance }}m</span></div>
+                </div>
                 <div id="loading">
                     <div class="loading-background_show">
                         <div id="loading-bar-spinner" class="spinner">
