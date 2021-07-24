@@ -95,7 +95,9 @@ function closeOverlay(id) {
 
 const onSetCommentCount = (commentCount) => {
     const commentCountElement = document.getElementById('comment-count');
+    const commentIcon = document.getElementById('comment-inner-count');
     commentCountElement.innerHTML = `<strong>✏️ 댓글 ${commentCount}개</strong>`;
+    commentIcon.innerHTML = `${commentCount}`;
 }
 
 const getCommentElement = (walkroadId, commentId, commentCount, comment, createdTime, authorName, authorId) => {
