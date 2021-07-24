@@ -6,8 +6,8 @@
     {% load static %}
     {% load sass_tags %}
     {% comment %} 파비콘 {% endcomment %}
-    <link rel="icon" type="image/x-icon" href="/fav/favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="/fav/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{% sass_src 'maps/img/fav/favicon.ico' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% sass_src 'maps/img/fav/favicon.ico' %}">
     {% comment %} 기본 {% endcomment %}
     <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/style.scss' %}"/>
     <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/reset.scss' %}"/>
