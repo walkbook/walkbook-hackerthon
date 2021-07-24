@@ -1,6 +1,7 @@
 # WalkBook 🏃‍♂️🏃‍♀️
 > SNU LikeLion 9th Hackerthon - 워크북(walkBook)
 ✅ "함께 길을 읽다, 워크북"
+<img src="https://user-images.githubusercontent.com/76577426/126854973-76a95cd5-cd65-4e14-89cf-01dd4825c455.png"  width="700" height="370">
 
 ✅ 기획의도
 ---
