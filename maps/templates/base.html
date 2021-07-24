@@ -34,7 +34,7 @@
           {% if user.is_authenticated %}
             {% comment %} <div>{{user.profile.username}}님 환영합니다.</div> {% endcomment %}
             <a class="suggest" href="{% url 'maps:new' %}">산책로 등록</a>
-            <a class="mypage" href="{% url 'mypage:mypage' user.id %}">나의 워크북</a>
+            <a class="mypage" href="{% url 'mypage:mypage' request.user.id %}">나의 워크북</a>
             <a class="logout" href="{% url 'logout'%}">로그아웃</a>
             {% comment %} <a href="{% url 'checkpw'%}">내 정보수정</a> {% endcomment %}
           {% else %}
