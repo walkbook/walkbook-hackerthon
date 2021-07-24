@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap");
+body { font-family: 'Nanum Gothic', sans-serif; }
+
+.base-header { display: flex; justify-content: space-between; flex-shrink: 0; width: 100%; position: fixed; background: linear-gradient(180deg, #FFFFFF 0%, #98c7947e 1213.94%); z-index: 9; box-shadow: 0 0 10px #e6e6e6; }
+
+.base-header .wrap-header { width: 100%; height: 40px; display: flex; justify-content: space-between; margin: 13px 65px 13px 50px; }
+
+.base-header .wrap-header .header-search { width: 350px; height: 40px; display: flex; flex-shrink: 0; justify-content: space-between; align-items: center; }
+
+.base-header .wrap-header .header-search a { font-size: 14px; color: #6B6B6B; justify-content: center; font-family: 'Nanum Gothic', sans-serif; font-weight: 600; }
+
+.base-header .wrap-header .header-search a:first-child { margin-right: 20px; }
+
+.base-header .wrap-header .header-search a:hover { color: var(--deepgreen); }
+
+.base-header .wrap-header .header-search .logo-img { width: 45px; height: 35px; }
+
+.base-header .wrap-header .header-accounts { width: auto; height: 50px; display: flex; flex-shrink: 0; justify-content: space-between; align-items: flex-start; margin-top: 10px; box-sizing: border-box; }
+
+.base-header .wrap-header .header-accounts a { margin-left: 30px; font-size: 14px; color: #6B6B6B; text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; font-family: 'Nanum Gothic', sans-serif; font-weight: 600; }
+
+.base-header .wrap-header .header-accounts a:hover { color: var(--deepgreen); }
+
+.base-header .wrap-header .header-accounts .suggest { font-size: 16px; color: #E5C05B; }
+
+/*# sourceMappingURL=nav_bar.css.map */

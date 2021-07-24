@@ -1,9 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&display=swap");
-/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
-*/
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap");
@@ -12,51 +9,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR&display=swap");
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
-
-body { line-height: 1; }
-
-ol, ul { list-style: none; }
-
-blockquote, q { quotes: none; }
-
-blockquote:before, blockquote:after, q:before, q:after { content: ""; content: none; }
-
-table { border-collapse: collapse; border-spacing: 0; }
-
-input:focus { outline: none; }
-
-a { color: inherit; text-decoration: none; }
-
-:root { --green: #98C794; --deepgreen: #49A59A; --yellow: #E5C05B; }
-
-body { font-family: 'Nanum Gothic', sans-serif; }
-
-.base-header { display: flex; justify-content: space-between; flex-shrink: 0; width: 100%; position: fixed; background: linear-gradient(180deg, #FFFFFF 0%, #98c7947e 1213.94%); z-index: 9; box-shadow: 0 0 10px #e6e6e6; }
-
-.base-header .wrap-header { width: 100%; height: 40px; display: flex; justify-content: space-between; margin: 13px 65px 13px 50px; }
-
-.base-header .wrap-header .header-search { width: 350px; height: 40px; display: flex; flex-shrink: 0; justify-content: space-between; align-items: center; }
-
-.base-header .wrap-header .header-search a { font-size: 14px; color: #6B6B6B; justify-content: center; font-family: 'Nanum Gothic', sans-serif; font-weight: 600; }
-
-.base-header .wrap-header .header-search a:first-child { margin-right: 20px; }
-
-.base-header .wrap-header .header-search a:hover { color: var(--deepgreen); }
-
-.base-header .wrap-header .header-search .logo-img { width: 45px; height: 35px; }
-
-.base-header .wrap-header .header-accounts { width: auto; height: 50px; display: flex; flex-shrink: 0; justify-content: space-between; align-items: flex-start; margin-top: 10px; box-sizing: border-box; }
-
-.base-header .wrap-header .header-accounts a { margin-left: 30px; font-size: 14px; color: #6B6B6B; text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; font-family: 'Nanum Gothic', sans-serif; font-weight: 600; }
-
-.base-header .wrap-header .header-accounts a:hover { color: var(--deepgreen); }
-
-.base-header .wrap-header .header-accounts .suggest { font-size: 16px; color: #E5C05B; }
-
 .line-long { width: 1070px; height: 50px; margin-bottom: 10px; margin-top: 0px; }
 
 .line-long-m { width: 100%; height: 50px; margin-bottom: 20px; margin-top: 70px; }
@@ -464,7 +416,10 @@ a.mypage:hover { color: var(--green); }
 
 .enroll-announce { color: var(--yellow); font-size: 24px; font-family: 'Nanum Gothic', sans-serif; font-weight: 600; }
 
-body { width: 100%; height: 100%; }
+@keyframes fadein { from { opacity: 0; }
+  to { opacity: 1; } }
+
+body { width: 100%; height: 100%; animation: fadein 2s; }
 
 .body-layout { width: 1070px; margin-right: 13%; margin-left: 13%; padding-top: 100px; padding-bottom: 50px; }
 
