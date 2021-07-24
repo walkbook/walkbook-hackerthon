@@ -10,173 +10,177 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="{% static 'mypage/js/mypage.js' %}"></script>
 
-<div class="book-layer"><div class="book-layer-left"></div>
-<div class="book-layer-right"></div></div>
-<div class="mypage-layout">
-    <div class="mypage_wrap">
-        <div class="profile_wrap">
-            <div class="profile">
-                <div class="profile-box">
-                <h1 class="workbook">📒&nbsp;&nbsp;{{user.profile.username}}의 워크북{%comment%}<img class="book-img" src="{% static 'maps/img/book.png' %}">{%endcomment%} </h1>
-                <div class="profile-box-container">
-                    {%comment%} 예지 {%endcomment%} 
-                    {% if user.id == 2 %}
-                    <img class="profile-img" src="{% static 'mypage/img/yeji.png' %}">
-                    {%comment%} 나영 {%endcomment%} 
-                    {% elif user.id == 3 %}
-                    <img class="profile-img" src="{% static 'mypage/img/nayoung.png' %}">
-                    {%comment%} 별 {%endcomment%} 
-                    {% elif user.id == 4 %}
-                    <img class="profile-img" src="{% static 'mypage/img/star.png' %}">
-                    {%comment%} 세원 {%endcomment%} 
-                    {% elif user.id == 5 %}
-                    <img class="profile-img" src="{% static 'mypage/img/sewon.png' %}">
-                    {% else %}
-                    <img class="profile-img" src="{% static 'mypage/img/profileimg.png' %}">        
-                    {% endif %}
-                    <div class="profile-txt">
-                        <div id="walkroad-count">
-                            총 {{registeredWalkroads.count}} 개의 산책로를 등록했어요!
-                        </div>
-                        <div id="profile1">
-                            {% if user.profile.feature == ''%}
-                                아직 선호하는 산책로 특징을 등록하지 않으셨네요! 
+<div class="book-layer">
+    <div class="book-layer-left"></div>
+    <div class="book-layer-right"></div>
+    <div class="mypage-layout">
+        <div class="mypage_wrap">
+            <div class="profile_wrap">
+                <div class="profile">
+                    <div class="profile-box">
+                        <h1 class="workbook">📒&nbsp;&nbsp;{{user.profile.username}}의 워크북{%comment%}<img class="book-img" src="{% static 'maps/img/book.png' %}">{%endcomment%} </h1>
+                        <div class="profile-box-container">
+                            {%comment%} 예지 {%endcomment%} 
+                            {% if user.id == 2 %}
+                            <img class="profile-img" src="{% static 'mypage/img/yeji.png' %}">
+                            {%comment%} 나영 {%endcomment%} 
+                            {% elif user.id == 3 %}
+                            <img class="profile-img" src="{% static 'mypage/img/nayoung.png' %}">
+                            {%comment%} 별 {%endcomment%} 
+                            {% elif user.id == 4 %}
+                            <img class="profile-img" src="{% static 'mypage/img/star.png' %}">
+                            {%comment%} 세원 {%endcomment%} 
+                            {% elif user.id == 5 %}
+                            <img class="profile-img" src="{% static 'mypage/img/sewon.png' %}">
                             {% else %}
-                            선호하는 산책로 : {{user.profile.feature}}
+                            <img class="profile-img" src="{% static 'mypage/img/profileimg.png' %}">        
                             {% endif %}
+                            <div class="profile-txt">
+                                <div id="walkroad-count">
+                                    총 {{registeredWalkroads.count}} 개의 산책로를 등록했어요!
+                                </div>
+                                <div id="profile1">
+                                    {% if user.profile.feature == ''%}
+                                        아직 선호하는 산책로 특징을 등록하지 않으셨네요! 
+                                    {% else %}
+                                    선호하는 산책로 : {{user.profile.feature}}
+                                    {% endif %}
+                                </div>
+                                <div id="profile2">			
+                                    {% if user.profile.likehour == ''%}
+                                        선호 시간대를 등록해주세요!
+                                    {% else %}
+                                        선호 시간대 : {{user.profile.likehour}}
+                                    {% endif %}
+                                </div>
+                                <div id="profile3">
+                                    {% if user.profile.introduce == ''%}
+                                        소개글을 등록해서 자기자신을 소개해주세요!
+                                    {% else %}
+                                        소개 : {{user.profile.introduce}}
+                                    {% endif %}
+                                </div>
+                                {% if user.id == request.user.id %}
+                                <div edit-btn>
+                                    <a id="edit-profile" href="{% url 'mypage:profile' user.id %}">프로필 수정하기</a>
+                                    <a id="edit-myinfo" href="{% url 'checkpw'%}">내정보 수정하기</a>
+                                </div>
+                                {% endif %}
+                            </div>
                         </div>
-                        <div id="profile2">			
-                            {% if user.profile.likehour == ''%}
-                                선호 시간대를 등록해주세요!
-                            {% else %}
-                                선호 시간대 : {{user.profile.likehour}}
-                            {% endif %}
-                        </div>
-                        <div id="profile3">
-                            {% if user.profile.introduce == ''%}
-                                소개글을 등록해서 자기자신을 소개해주세요!
-                            {% else %}
-                                소개 : {{user.profile.introduce}}
-                            {% endif %}
-                        </div>
-                        {% if user.id == request.user.id %}
-                        <div edit-btn>
-                            <a id="edit-profile" href="{% url 'mypage:profile' user.id %}">프로필 수정하기</a>
-                            <a id="edit-myinfo" href="{% url 'checkpw'%}">내정보 수정하기</a>
-                        </div>
-                        {% endif %}
                     </div>
                 </div>
-                </div>
-            </div>
-            <div class="walkroad-posts">
-                <div class="walkroad-posts-header">
-                    <div "posts-header">
-                        <a class="registered-posts-btn"id="registered-posts" onclick="onClickRegisteredPosts()">등록한 산책로</a>
-                        <a class="liked-posts-btn"id="liked-posts" onclick="onClickLikedPosts()">좋아하는 산책로</a>
+                <div class="walkroad-posts">
+                    <div class="walkroad-posts-header">
+                        <div "posts-header">
+                            <a class="registered-posts-btn"id="registered-posts" onclick="onClickRegisteredPosts()">등록한 산책로</a>
+                            <a class="liked-posts-btn"id="liked-posts" onclick="onClickLikedPosts()">좋아하는 산책로</a>
+                        </div>
+                        <div class="post-search-btn">
+                            <input id="search-posts" type="text">
+                            <button id="search-posts-btn"><img onclick="onClickSearchBtn()"class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
+                        </div>
                     </div>
-                    <div class="post-search-btn">
-                        <input id="search-posts" type="text">
-                        <button id="search-posts-btn"><img onclick="onClickSearchBtn()"class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
+
+                    <div id="registered-posts-box" class="registered-posts posts-box" style="display: flex;">
+                        {% for walkroad in registeredWalkroads %}
+                            <div class="registered-post">
+                                {% if walkroad.id == 1 %}
+                                <img class="registered-img" src="{% static 'maps/img/walkroad1.png' %}">
+                                {% elif walkroad.id == 2 %}
+                                <img class="registered-img" src="{% static 'maps/img/walkroad2.png' %}">
+                                {% elif walkroad.id == 3 %}
+                                <img class="registered-img" src="{% static 'maps/img/walkroad3.png' %}">
+                                {% elif walkroad.id == 4 %}
+                                <img class="registered-img" src="{% static 'maps/img/walkroad4.png' %}">
+                                {% elif walkroad.id == 5 %}
+                                <img class="registered-img" src="{% static 'maps/img/walkroad5.png' %}">
+                                {% elif walkroad.id == 6 %}
+                                <img class="registered-img" src="{% static 'maps/img/walkroad6.png' %}">
+                                {% elif walkroad.id == 7 %}
+                                <img class="registered-img" src="{% static 'maps/img/walkroad7.png' %}">
+                                {% elif walkroad.id == 8 %}
+                                <img class="registered-img" src="{% static 'maps/img/walkroad8.png' %}">
+                                {% elif walkroad.id == 9 %}
+                                <img class="registered-img" src="{% static 'maps/img/walkroad9.png' %}">
+                                {% else %}                        
+                                <img class="registered-img" src="{% static 'mypage/img/pathex.png' %}">
+                                {% endif %}
+                                <div class="post-txt">
+                                    <a id="title-focus" onclick="setFocusClickedPost({{ walkroad.path }})">{{ walkroad.title }}</a>
+                                    <span>{{ walkroad.description}}</span>
+                                    <a id="post-show" href="{% url 'maps:show' walkroad.id %}">상세보기</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div id="liked-posts-box" class="liked-posts posts-box">
+                        {% for walkroad in likedWalkroads %}
+                            <div class="liked-post hide">
+                                {% if walkroad.id == 1 %}
+                                <img class="liked-img" src="{% static 'maps/img/walkroad1.png' %}">
+                                {% elif walkroad.id == 2 %}
+                                <img class="liked-img" src="{% static 'maps/img/walkroad2.png' %}">
+                                {% elif walkroad.id == 3 %}
+                                <img class="liked-img" src="{% static 'maps/img/walkroad3.png' %}">
+                                {% elif walkroad.id == 4 %}
+                                <img class="liked-img" src="{% static 'maps/img/walkroad4.png' %}">
+                                {% elif walkroad.id == 5 %}
+                                <img class="liked-img" src="{% static 'maps/img/walkroad5.png' %}">
+                                {% elif walkroad.id == 6 %}
+                                <img class="liked-img" src="{% static 'maps/img/walkroad6.png' %}">
+                                {% elif walkroad.id == 7 %}
+                                <img class="liked-img" src="{% static 'maps/img/walkroad7.png' %}">
+                                {% elif walkroad.id == 8 %}
+                                <img class="liked-img" src="{% static 'maps/img/walkroad8.png' %}">
+                                {% elif walkroad.id == 9 %}
+                                <img class="liked-img" src="{% static 'maps/img/walkroad9.png' %}">
+                                {% else %}                        
+                                <img class="liked-img" src="{% static 'mypage/img/pathex.png' %}">
+                                {% endif %}
+                                <div class="post-txt">
+                                    <a id="title-focus" onclick="setFocusClickedPost({{ walkroad.path }})">{{ walkroad.title }}</a>
+                                    <span>{{ walkroad.description}}</span>
+                                    <div class="liked-link">
+                                        <a id="post-show" href="{% url 'maps:show' walkroad.id %}">상세보기</a>
+                                        <a id="username-profile" href="{% url 'mypage:mypage' walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
+            </div>
 
-                <div id="registered-posts-box" class="registered-posts posts-box" style="display: flex;">
-                    {% for walkroad in registeredWalkroads %}
-                        <div class="registered-post">
-                        {% if walkroad.id == 1 %}
-                            <img class="registered-img" src="{% static 'maps/img/walkroad1.png' %}">
-                        {% elif walkroad.id == 2 %}
-                            <img class="registered-img" src="{% static 'maps/img/walkroad2.png' %}">
-                        {% elif walkroad.id == 3 %}
-                            <img class="registered-img" src="{% static 'maps/img/walkroad3.png' %}">
-                        {% elif walkroad.id == 4 %}
-                            <img class="registered-img" src="{% static 'maps/img/walkroad4.png' %}">
-                        {% elif walkroad.id == 5 %}
-                            <img class="registered-img" src="{% static 'maps/img/walkroad5.png' %}">
-                        {% elif walkroad.id == 6 %}
-                            <img class="registered-img" src="{% static 'maps/img/walkroad6.png' %}">
-                        {% elif walkroad.id == 7 %}
-                            <img class="registered-img" src="{% static 'maps/img/walkroad7.png' %}">
-                        {% elif walkroad.id == 8 %}
-                            <img class="registered-img" src="{% static 'maps/img/walkroad8.png' %}">
-                        {% elif walkroad.id == 9 %}
-                            <img class="registered-img" src="{% static 'maps/img/walkroad9.png' %}">
-                        {% else %}                        
-                            <img class="registered-img" src="{% static 'mypage/img/pathex.png' %}">
-                        {% endif %}
-                        <div class="post-txt">
-                            <a id="title-focus" onclick="setFocusClickedPost({{ walkroad.path }})">{{ walkroad.title }}</a>
-                            <span>{{ walkroad.description}}</span>
-                            <a id="post-show" href="{% url 'maps:show' walkroad.id %}">상세보기</a>
-                        </div>
-                        </div>
-                    {% endfor %}
+            {% csrf_token %}
+            <div class="mapbox map_wrap">
+                <div class="map-input">
+                    <div class="map-input_wrap">
+                        <input type="text" name="location" class ="map-input_location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
+                        <button type="submit" id="address-location-button" class="address-location-button">설정</button>
+                    </div>
+                    <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
                 </div>
-
-                <div id="liked-posts-box" class="liked-posts hide posts-box">
-                    {% for walkroad in likedWalkroads %}
-                        <div class="liked-post hide">
-                        {% if walkroad.id == 1 %}
-                            <img class="liked-img" src="{% static 'maps/img/walkroad1.png' %}">
-                        {% elif walkroad.id == 2 %}
-                            <img class="liked-img" src="{% static 'maps/img/walkroad2.png' %}">
-                        {% elif walkroad.id == 3 %}
-                            <img class="liked-img" src="{% static 'maps/img/walkroad3.png' %}">
-                        {% elif walkroad.id == 4 %}
-                            <img class="liked-img" src="{% static 'maps/img/walkroad4.png' %}">
-                        {% elif walkroad.id == 5 %}
-                            <img class="liked-img" src="{% static 'maps/img/walkroad5.png' %}">
-                        {% elif walkroad.id == 6 %}
-                            <img class="liked-img" src="{% static 'maps/img/walkroad6.png' %}">
-                        {% elif walkroad.id == 7 %}
-                            <img class="liked-img" src="{% static 'maps/img/walkroad7.png' %}">
-                        {% elif walkroad.id == 8 %}
-                            <img class="liked-img" src="{% static 'maps/img/walkroad8.png' %}">
-                        {% elif walkroad.id == 9 %}
-                            <img class="liked-img" src="{% static 'maps/img/walkroad9.png' %}">
-                        {% else %}                        
-                            <img class="liked-img" src="{% static 'mypage/img/pathex.png' %}">
-                        {% endif %}
-                        <div class="post-txt">
-                            <a id="title-focus" onclick="setFocusClickedPost({{ walkroad.path }})">{{ walkroad.title }}</a>
-                            <span>{{ walkroad.description}}</span>
-                            <div class="liked-link">
-                            <a id="post-show" href="{% url 'maps:show' walkroad.id %}">상세보기</a>
-                            <a id="username-profile" href="{% url 'mypage:mypage' walkroad.author.id %}">{{ walkroad.author.profile.username }}</a>
-                        </div></div></div>
-                    {% endfor %}
+                <!-- 지도타입 컨트롤 div 입니다 -->
+                <div class="custom_typecontrol radius_border">
+                    <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
+                    <span id="btnSkyview" class="btn" onclick="setMapType('skyview')">스카이뷰</span>
                 </div>
-            </div>
-        </div>
-
-        {% csrf_token %}
-        <div class="mapbox map_wrap">
-            <div class="map-input">
-                <div class="map-input_wrap">
-                    <input type="text" name="location" class ="map-input_location" id="address-location" placeholder="주소를 입력해주세요! ex) 신림로 1"/>
-                    <button type="submit" id="address-location-button" class="address-location-button">설정</button>
+                <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+                <div class="custom_zoomcontrol radius_border"> 
+                    <span onclick="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>  
+                    <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
                 </div>
-                <button id="current-location-button" class="current-location-button"><img class="current-location-img" src="{% static 'maps/img/location.png' %}"></button>
-            </div>
-            <!-- 지도타입 컨트롤 div 입니다 -->
-            <div class="custom_typecontrol radius_border">
-                <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
-                <span id="btnSkyview" class="btn" onclick="setMapType('skyview')">스카이뷰</span>
-            </div>
-            <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
-            <div class="custom_zoomcontrol radius_border"> 
-                <span onclick="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>  
-                <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
-            </div>
-            {% comment %} 지도크기 {% endcomment %}
-            <div id="map" style="width:90%;height:93%;">
-                <div id="loading" class="loading-class">
-                    <div class="loading-background loading-background_map">
-                        <div id="loading-bar-spinner" class="spinner">
-                            <div class="spinner-icon"></div>
+                {% comment %} 지도크기 {% endcomment %}
+                <div id="map" style="width:90%;height:93%;">
+                    <div id="loading" class="loading-class">
+                        <div class="loading-background loading-background_map">
+                            <div id="loading-bar-spinner" class="spinner">
+                                <div class="spinner-icon"></div>
+                            </div>
+                            <div class="loading-msg loading-msg_map">📍현 위치 파악 중!</div>
                         </div>
-                        <div class="loading-msg loading-msg_map">📍현 위치 파악 중!</div>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ function onClickRegisteredPosts() {
     ShowPosts(registeredPosts);
     ShowPostsBox("registered-posts-box");
     HidePosts(likedPosts);
-    HidePostsBox("registered-posts-box");
+    HidePostsBox("liked-posts-box");
     ChangePostsBtnColor("registered-posts", "liked-posts");
     selected = 'register';
     walkroads = my_walkroads;
