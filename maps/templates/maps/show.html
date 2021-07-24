@@ -50,7 +50,7 @@
                             </div>
                             <div class="comment-inner_show">
                                 <img src="{% static 'maps/img/speech-bubble.png' %}"/>
-                                <span>{{ walkroad.comment_set.count }}</span>
+                                <span id="comment-inner-count">{{ walkroad.comment_set.count }}</span>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                     <div class="detail_wrap">
                         <div class="show-title">작성일시</div>
                         {% comment %}  H시 i분 {% endcomment %}
-                        <div class="show-content">{{ walkroad.created_at|date:'Y / m / d'}}</div>  
+                        <div class="show-content">{{ walkroad.created_at|date:'Y / m / d'}}</div>  
                     </div>
                     <div class="detail_wrap">
                         <div class="show-title">출발위치</div>
@@ -86,9 +86,11 @@
             <div class="comment_wrap">
                 <div class="comment-input_wrap">
                     <p id="comment-count" class="comment-count_class"><strong>✏️ 댓글 {{walkroad.comment_set.count}}개</strong></p>
+                    {% if user.is_authenticated %}
                     {% csrf_token %}
                     <input id="walkroad{{walkroad.id}}-comment-input" class="comment-input" type="text" name="content" />
                     <button onclick="onAddComment({{walkroad.id}})"><i class="far fa-arrow-alt-circle-right circle_show"></i></button>
+                    {% endif %}
                 </div>
                 <div id="{{walkroad.id}}-comment-list" class="comment-list_class" >
                     {% for comment in walkroad.comment_set.all|dictsortreversed:"like_users.count" %}
@@ -102,18 +104,18 @@
                             </div>
                             <div class="comment-others">
                                 <div class="comment-date">{{ comment.created_at|date:'Y/m/d H:i'}}</div>
+                                {% if user.is_authenticated %}
                                 <div class="comment-like">
-                                    {% if user.is_authenticated %}
                                     <a id="comment{{comment.id}}-like-button" onclick="onLikeComment({{comment.id}})">
                                         {{ comment.like_users.count }} Likes
                                     </a>
-                                    {% endif %}
                                 </div>
+                                {% endif %}
+                                {% if request.user == comment.author %}
                                 <div class="comment-del">
-                                    {% if request.user == comment.author %}
                                     <a onclick="onDeleteComment({{walkroad.id}}, {{comment.id}})"><i class="far fa-trash-alt"></i></a>
-                                    {% endif %}
                                 </div>
+                                {% endif %}
                             </div>
                         </div>   
                     </div>
@@ -179,7 +181,7 @@
         const totalTimeElement = document.getElementById('total-time');
         const totalDistanceElement = document.getElementById('total-distance');
         totalTimeElement.innerHTML = `🕒 소요 시간 : <span>${walkHour} ${walkMin}</span>`;
-        totalDistanceElement.innerHTML = `📏ㅤ총 거리 : <span>${walkDistance}m</span>`;
+        totalDistanceElement.innerHTML = `📏 총 거리 : <span>${walkDistance}m</span>`;
         
          //////////////////////////map///////////////////////////
         const path = {{ walkroad.path | safe }};
