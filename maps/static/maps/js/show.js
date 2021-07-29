@@ -95,7 +95,9 @@ function closeOverlay(id) {
 
 const onSetCommentCount = (commentCount) => {
     const commentCountElement = document.getElementById('comment-count');
+    const commentIcon = document.getElementById('comment-inner-count');
     commentCountElement.innerHTML = `<strong>✏️ 댓글 ${commentCount}개</strong>`;
+    commentIcon.innerHTML = `${commentCount}`;
 }
 
 const getCommentElement = (walkroadId, commentId, commentCount, comment, createdTime, authorName, authorId) => {
@@ -121,7 +123,7 @@ const getCommentElement = (walkroadId, commentId, commentCount, comment, created
                                         </div>
                                     </div>
                                 </div>`
-                                    
+
     return commentElement;
 }
 
@@ -142,6 +144,9 @@ const onAddComment = async (walkroadId) => {
     document.getElementById(`${walkroadId}-comment-list`).appendChild(commentElement);
     onSetCommentCount(commentCount);
     commentInputElement.value = '';
+
+    const commentInnerElement = document.getElementById("comment-inner-count");
+    commentInnerElement.innerHTML = commentCount;
 }
 
 const onLikeComment = async (commentId) => {
