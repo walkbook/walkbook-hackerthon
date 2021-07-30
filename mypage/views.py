@@ -3,7 +3,11 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 from accounts.models import Profile
 from maps.models import Walkroad
-import json
+import json, boto3, os
+from main.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+
+from django.utils import timezone
+from uuid import uuid4
 
 # Create your views here.
 def mypage(request, id):
@@ -44,6 +48,27 @@ def profile(request, id):
         feature = request.POST['feature']
         likehour = request.POST['likehour']
         introduce = request.POST['introduce']
-        profile.update(feature=feature, likehour=likehour, introduce=introduce)
+        
+        if len(request.FILES) != 0:
+       	  s3_client = boto3.client(
+            's3',
+            aws_access_key_id=AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+          )
+          avatar = request.FILES['avatar']
+          filename = '/'.join([timezone.now().strftime('%Y/%m/%d'), uuid4().hex + os.path.splitext(str(avatar))[-1].lower()])
+          print(filename)   # 여기서 'media/2021/07/30/a0c33eb5d58e47a59227cd64c8bb14df.jpeg' -> amazon에서 제대로 upload됨 
+          # 근데 html에서 '/media/media..' 이런 식으로 불러옴..
+          s3_client.upload_fileobj(
+            avatar,
+            "walkbook",
+            filename,
+            ExtraArgs={
+                "ContentType": avatar.content_type,
+            }
+          )
+          profile.update(feature=feature, likehour=likehour, introduce=introduce, avatar=filename)
+        else: 
+          profile.update(feature=feature, likehour=likehour, introduce=introduce)
 
         return redirect('mypage:mypage', id=user.id)
