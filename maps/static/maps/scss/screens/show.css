@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR&display=swap");
@@ -91,10 +92,12 @@ a.mypage:hover { color: var(--green); }
 
 .comment-body .comment-others .comment-like, .comment-body .comment-others .comment-del { cursor: pointer; }
 
-.map-info_show { position: absolute; display: flex; flex-direction: column; align-items: center; width: auto; padding: 15px 0 5px 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; z-index: 2; background: #f0f0f0; padding: 10px; bottom: 20px; left: 20px; border-radius: 10px; box-shadow: 5px 5px 20px 5px rgba(128, 128, 128, 0.534); }
+.map-info_show { position: absolute; display: flex; flex-direction: column; align-items: flex-start; width: auto; padding: 15px 0 5px 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; z-index: 2; background: #f0f0f0; padding: 10px; bottom: 20px; left: 20px; border-radius: 10px; box-shadow: 5px 5px 20px 5px rgba(128, 128, 128, 0.534); }
 
 .map-info_show div { font-size: 16px; color: #49A59A; margin: 0; }
 
-.map-info_show div span { font-size: 14px; color: rgba(0, 0, 0, 0.8); margin-left: 8px; }
+.map-info_show div span { font-size: 14px; color: rgba(0, 0, 0, 0.8); margin-left: 8px; font-weight: bolder; }
+
+.material-icons, .mdl-badge, .mdl-badge—overlap, .like-badge_show { color: #F44337; font-size: 18px !important; }
 
 /*# sourceMappingURL=show.css.map */

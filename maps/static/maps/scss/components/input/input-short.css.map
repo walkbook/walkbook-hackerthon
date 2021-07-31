@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "input-short.css",
+	"sources": [
+		"input-short.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,YAAY,CAAC,EACT,MAAM,EAAE,IAAI,EACZ,KAAK,EAAE,KAAK,EACZ,UAAU,EAAE,OAAO,EACnB,aAAa,EAAE,GAAG,GACrB"
+}
