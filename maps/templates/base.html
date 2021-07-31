@@ -46,7 +46,7 @@
           <a href="{% url 'maps:post' %}">게시판에서 찾기</a>
         </div>
         <div class="header-accounts">
-          {% if reqiest.user.is_authenticated %}
+          {% if request.user.is_authenticated %}
             <a class="suggest" href="{% url 'maps:new' %}">산책로 등록</a>
             <a class="mypage" href="{% url 'mypage:mypage' request.user.id %}">나의 워크북</a>
             <a class="logout" href="{% url 'logout'%}">로그아웃</a>
