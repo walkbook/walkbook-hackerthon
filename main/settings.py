@@ -20,6 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -139,25 +142,32 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+if DEBUG:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-AWS_REGION = 'ap-northeast-2'
-AWS_STORAGE_BUCKET_NAME = 'walkbook'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (
-    AWS_STORAGE_BUCKET_NAME, AWS_REGION)
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-AWS_DEFAULT_ACL = 'public-read'
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+else:
+    AWS_REGION = 'ap-northeast-2'
+    AWS_STORAGE_BUCKET_NAME = 'walkbook'
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (
+        AWS_STORAGE_BUCKET_NAME, AWS_REGION)
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+    AWS_DEFAULT_ACL = 'public-read'
 
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, 'static')
-MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, 'media')
+    STATIC_URL = '/static/'
+    STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
 
-DEFAULT_FILE_STORAGE = 'main.storages.MediaStorage'
-STATICFILES_STORAGE = 'main.storages.StaticStorage'
-MEDIAFILES_LOCATION = 'media'
-STATICFILES_LOCATION = 'static'
+    STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, 'static')
+    MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, 'media')
+
+    DEFAULT_FILE_STORAGE = 'main.storages.MediaStorage'
+    STATICFILES_STORAGE = 'main.storages.StaticStorage'
+    MEDIAFILES_LOCATION = 'media'
+    STATICFILES_LOCATION = 'static'
 
 STATICFILES_DIRS = [
   os.path.join(BASE_DIR, 'accounts', 'static'),
@@ -170,6 +180,7 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'sass_processor.finders.CssFinder'
 ]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

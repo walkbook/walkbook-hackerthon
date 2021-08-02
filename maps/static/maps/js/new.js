@@ -23,7 +23,7 @@ const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입
         removable: true, // 마커를 삭제 할 수 있도록 x 버튼이 표시됩니다  
         markerImages: [
             {
-                src: '/static/maps/img/draw_marker.png',
+                src: 'https://walkbook.s3.ap-northeast-2.amazonaws.com/static/maps/img/draw_marker.png',
                 width: 30,
                 height: 50,
                 shape: 'rect',

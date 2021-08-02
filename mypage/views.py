@@ -1,12 +1,11 @@
+from botocore.retries import bucket
+from main.settings import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.db.models import Count
 from accounts.models import Profile
 from maps.models import Walkroad
-import json
-
-from django.utils import timezone
-from uuid import uuid4
+import json, boto3
 
 # Create your views here.
 def mypage(request, id):
@@ -49,6 +48,15 @@ def profile(request, id):
         profile.introduce = request.POST['introduce']
         
         if len(request.FILES) != 0:
+          s3_client = boto3.client(
+              's3',
+              aws_access_key_id=AWS_ACCESS_KEY_ID,
+              aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+          )
+          s3_client.delete_object(
+            Bucket='walkbook',
+            Key=profile.avatar.url.split("amazonaws.com/",1)[1]
+          )
           avatar = request.FILES['avatar']
           profile.avatar = avatar
 

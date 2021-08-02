@@ -16,7 +16,7 @@ function drawMarker(markers, infowindows) {
             map: map,
             position: new kakao.maps.LatLng(markers[i].y, markers[i].x),
             zIndex: markers[i].zIndex,
-            image: new kakao.maps.MarkerImage('/static/maps/img/draw_marker.png', imageSize, imageOption)
+            image: new kakao.maps.MarkerImage('https://walkbook.s3.ap-northeast-2.amazonaws.com/static/maps/img/draw_marker.png', imageSize, imageOption)
         });
 
         const infowindow = new kakao.maps.CustomOverlay({
@@ -60,14 +60,14 @@ function drawPolyline(lines) {
         const startMarker = new kakao.maps.Marker({
             map: map,
             position: new kakao.maps.LatLng(lines[i].points[0].y, lines[i].points[0].x),
-            image: new kakao.maps.MarkerImage('/static/maps/img/start_tri.png', flagImageSize, flagImageOption),
+            image: new kakao.maps.MarkerImage('https://walkbook.s3.ap-northeast-2.amazonaws.com/static/maps/img/start_tri.png', flagImageSize, flagImageOption),
             zIndex: -1
         });
 
         const finishMarker = new kakao.maps.Marker({
             map: map,
             position: new kakao.maps.LatLng(lines[i].points[lineLen - 1].y, lines[i].points[lineLen - 1].x),
-            image: new kakao.maps.MarkerImage('/static/maps/img/finish_tri.png', flagImageSize, flagImageOption),
+            image: new kakao.maps.MarkerImage('https://walkbook.s3.ap-northeast-2.amazonaws.com/static/maps/img/finish_tri.png', flagImageSize, flagImageOption),
             zIndex: -1
         });
     }
