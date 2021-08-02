@@ -29,6 +29,7 @@ class Profile(models.Model):
     uuid_name = uuid4().hex
     extension = os.path.splitext(filename)[-1].lower()
     return '/'.join([
+      'avatar',
       ymd_path,
       uuid_name + extension,
     ])
