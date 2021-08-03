@@ -1,7 +1,7 @@
 import { feature } from './feature.js';
 
 (() => {
-	document.onkeypress =(e) =>{
+	document.onkeypress = (e) =>{
 		if (e.key === 'Enter') {
 			e.preventDefault();
 		}
@@ -10,23 +10,23 @@ import { feature } from './feature.js';
 
 (() => {
 	const checkUserid = document.getElementById('checkUserid');
-	checkUserid.onclick = () => feature.isAvailableID();
+	checkUserid.onclick = () => feature.checkUserId();
 })();
 
 (() => {
 	const inputUserid = document.getElementById('userid');
 	inputUserid.onkeyup = (e) => {
 		if (e.key === 'Enter') {
-			feature.isAvailableID(e.target.value);
+			feature.checkUserId();
 		}
-		else feature.clearUseridMsg(e.target.value);
+		else feature.clearValidateIdMsg();
 	}
 })();
 
 (() => {
 	const passwordInput = document.querySelectorAll('input[type=password]');
-	passwordInput[0].onkeyup = () => feature.handleValidatePw();
-	passwordInput[1].onkeyup = () => feature.handleSamePw();
+	passwordInput[0].onkeyup = () => feature.showValidatePwMsg();
+	passwordInput[1].onkeyup = () => feature.showSamePwMsg();
 })();
 
 (() => {

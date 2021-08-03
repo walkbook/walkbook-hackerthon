@@ -6,9 +6,6 @@
 <link rel="stylesheet" type="text/css" href={% sass_src 'accounts/scss/myinfo.scss' %}/>
 {% endblock style %}
 {% block content %}
-
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-  <script type="text/javascript" src="{% static 'accounts/js/axios.js' %}"></script>
 <center>
   <div class="myinfo-container">
     <center><h1>MY INFO</h1>
@@ -22,6 +19,7 @@
           <div class="username-box">{{ user.username }}<img class="locker" src="{% static 'accounts/img/locker.png' %}"></div>
       </div>
 
+      {% if not is_social %}
       <div class="myinfo">
         <h3 class="myinfo_title">
           <label for="password1">새 비밀번호</label>
@@ -37,6 +35,7 @@
         <center><input id="password2" name="password2" type="password" value="" placeholder="4자리 이상의 숫자 또는 대소문자를 입력하세요."/></center>
         <div id="same-password" class="password-desc"></div>
       </div>
+      {% endif %}
 
       <div class="myinfo">
         <h3 class="myinfo_title">
