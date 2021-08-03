@@ -3,12 +3,9 @@
 {% load static %}
 {% block style %}
 {% load sass_tags %}
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'accounts/scss/checkpw.scss' %}"/>
+<link rel="stylesheet" type="text/css" href="{% sass_src 'accounts/scss/checkpw.scss' %}"/>
 {% endblock style %}
-
 {% block content %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-<script src="{% static 'accounts/js/axios.js' %}"></script>
 <center><div class="checkpw-container">
 <h1>CHECK PASSWORD</h1>
 <img class="line-mid" src="{% static 'maps/img/line.png' %}">
