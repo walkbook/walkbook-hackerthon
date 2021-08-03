@@ -20,16 +20,12 @@
                     <div class="profile-box">
                         <h1 class="workbook">📒&nbsp;&nbsp;{{user.profile.username}}의 워크북{%comment%}<img class="book-img" src="{% static 'maps/img/book.png' %}">{%endcomment%} </h1>
                         <div class="profile-box-container">
-                            {%comment%} 예지 {%endcomment%} 
                             {% if user.id == 2 %}
                             <img class="profile-img" src="{% static 'mypage/img/yeji.png' %}">
-                            {%comment%} 나영 {%endcomment%} 
                             {% elif user.id == 3 %}
                             <img class="profile-img" src="{% static 'mypage/img/nayoung.png' %}">
-                            {%comment%} 별 {%endcomment%} 
                             {% elif user.id == 4 %}
                             <img class="profile-img" src="{% static 'mypage/img/star.png' %}">
-                            {%comment%} 세원 {%endcomment%} 
                             {% elif user.id == 5 %}
                             <img class="profile-img" src="{% static 'mypage/img/sewon.png' %}">
                             {% else %}
