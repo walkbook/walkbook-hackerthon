@@ -143,12 +143,14 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 if DEBUG:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+############## LOCAL static 사용시 주석 해제 #################
+#     STATIC_URL = '/static/'
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-else:
+#     MEDIA_URL = '/media/'
+#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# else:
+##########################################################
     AWS_REGION = 'ap-northeast-2'
     AWS_STORAGE_BUCKET_NAME = 'walkbook'
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (

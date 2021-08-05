@@ -15,7 +15,7 @@
     SIGN UP
     <img class="line" src="{% static 'maps/img/line.png' %}">
   </div>
-  <form id="signup-form" method="POST" action="{%url 'signup' %}">
+  <form id="signup-form" method="POST" action="{%url 'signup' %}" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="signup-box">
       <div class="signup">
@@ -88,6 +88,12 @@
         <input id="location" name="location" type="text" placeholder="주로 활동하는 위치를 입력해주세요!">
         <input id="searchLocation" type="button" value="검색하기">
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+      </div>
+      <div class="signup">
+        <h3 class="signup_title">
+            <label for="avatar">프로필 사진</label>
+        </h3>
+        <input type="file" name="avatar" accept="image/*">
       </div>
       <div>
         <input class="signupbtn" type="submit" value="SIGN UP"/>
