@@ -234,6 +234,7 @@ saveWalkroadBtn.addEventListener('click', async () => {
     const start = document.getElementById('start-input');
     const finish = document.getElementById('finish-input');
     const tmi = document.getElementById('tmi-input');
+    const image = document.getElementById('image-input');
 
     for (let i = 0; i < mappingId; i++) {
         if (mappingData[i].marker.getMap()) {
@@ -245,24 +246,30 @@ saveWalkroadBtn.addEventListener('click', async () => {
             })
         }
     }
+    console.log(image.files);   // FileList 
 
-    let data = new FormData();
-    data.append("title", title.value);
-    data.append("description", description.value);
-    data.append("start", start.value);
-    data.append("finish", finish.value);
-    data.append("tmi", tmi.value);
-    data.append("path", JSON.stringify(path));
-    data.append("infowindow", JSON.stringify(infowindow));
-    data.append("distance", totalDistance);
-    data.append("time", totalTime);
+    // let data = new FormData();
+    // data.append("title", title.value);
+    // data.append("description", description.value);
+    // data.append("start", start.value);
+    // data.append("finish", finish.value);
+    // data.append("tmi", tmi.value);
+    // data.append("image", image);
+    // data.append("path", JSON.stringify(path));
+    // data.append("infowindow", JSON.stringify(infowindow));
+    // data.append("distance", totalDistance);
+    // data.append("time", totalTime);
 
-    await axios.post(`/maps/new/`, data)
-        .then(function (response) {
-            window.location.href = `/maps/${response.data.id}`;
-        })
-        .catch(function (response) {
-            //handle error
-            console.log(response);
-        });
+    // await axios.post(`/maps/new/`, data, {
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data'
+    //     }
+    //   })
+    //     .then(function (response) {
+    //         window.location.href = `/maps/${response.data.id}`;
+    //     })
+    //     .catch(function (response) {
+    //         //handle error
+    //         console.log(response);
+    //     });
 });

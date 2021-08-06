@@ -144,12 +144,12 @@ USE_TZ = False
 
 if DEBUG:
 ############## LOCAL static 사용시 주석 해제 #################
-#     STATIC_URL = '/static/'
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-#     MEDIA_URL = '/media/'
-#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# else:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+else:
 ##########################################################
     AWS_REGION = 'ap-northeast-2'
     AWS_STORAGE_BUCKET_NAME = 'walkbook'
@@ -160,16 +160,13 @@ if DEBUG:
     }
     AWS_DEFAULT_ACL = 'public-read'
 
-    STATIC_URL = '/static/'
-    STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
-
     STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, 'static')
-    MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, 'media')
-
-    DEFAULT_FILE_STORAGE = 'main.storages.MediaStorage'
     STATICFILES_STORAGE = 'main.storages.StaticStorage'
-    MEDIAFILES_LOCATION = 'media'
     STATICFILES_LOCATION = 'static'
+
+    MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, 'media')
+    DEFAULT_FILE_STORAGE = 'main.storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
 
 STATICFILES_DIRS = [
   os.path.join(BASE_DIR, 'accounts', 'static'),
