@@ -85,6 +85,12 @@
                 </div>
             </div>
 
+            <div>
+                {% for mapimage in walkroad.mapimage_set.all %}
+                <img src="{{ mapimage.image.url }}" width=200>
+                {% endfor %}
+            </div>
+
             {% comment %} 댓글 {% endcomment %}
             <div class="comment_wrap">
                 <div class="comment-input_wrap">

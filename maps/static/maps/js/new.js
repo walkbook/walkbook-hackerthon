@@ -229,12 +229,12 @@ saveWalkroadBtn.addEventListener('click', async () => {
     const path = manager.getData();
     const infowindow = [];
 
-    const title = document.getElementById('title-input');
-    const description = document.getElementById('description-input');
-    const start = document.getElementById('start-input');
-    const finish = document.getElementById('finish-input');
-    const tmi = document.getElementById('tmi-input');
-    const image = document.getElementById('image-input');
+    const titleInput = document.getElementById('title-input');
+    const descriptionInput = document.getElementById('description-input');
+    const startInput = document.getElementById('start-input');
+    const finishInput = document.getElementById('finish-input');
+    const tmiInput = document.getElementById('tmi-input');
+    const imageInput = document.getElementById('image-input');
 
     for (let i = 0; i < mappingId; i++) {
         if (mappingData[i].marker.getMap()) {
@@ -246,30 +246,32 @@ saveWalkroadBtn.addEventListener('click', async () => {
             })
         }
     }
-    console.log(image.files);   // FileList 
 
-    // let data = new FormData();
-    // data.append("title", title.value);
-    // data.append("description", description.value);
-    // data.append("start", start.value);
-    // data.append("finish", finish.value);
-    // data.append("tmi", tmi.value);
-    // data.append("image", image);
-    // data.append("path", JSON.stringify(path));
-    // data.append("infowindow", JSON.stringify(infowindow));
-    // data.append("distance", totalDistance);
-    // data.append("time", totalTime);
+    let data = new FormData();
+    data.append("title", titleInput.value);
+    data.append("description", descriptionInput.value);
+    data.append("start", startInput.value);
+    data.append("finish", finishInput.value);
+    data.append("tmi", tmiInput.value);
+    data.append("path", JSON.stringify(path));
+    data.append("infowindow", JSON.stringify(infowindow));
+    data.append("distance", totalDistance);
+    data.append("time", totalTime);
 
-    // await axios.post(`/maps/new/`, data, {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data'
-    //     }
-    //   })
-    //     .then(function (response) {
-    //         window.location.href = `/maps/${response.data.id}`;
-    //     })
-    //     .catch(function (response) {
-    //         //handle error
-    //         console.log(response);
-    //     });
+    for (let i = 0; i < imageInput.files.length; i++) {
+        data.append(`images`, imageInput.files[i]);
+    }
+
+    await axios.post(`/maps/new/`, data, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+        .then(function (response) {
+            window.location.href = `/maps/${response.data.id}`;
+        })
+        .catch(function (response) {
+            //handle error
+            console.log(response);
+        });
 });

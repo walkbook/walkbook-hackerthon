@@ -100,9 +100,11 @@ def new(request):
             infowindow = infowindow
             )
 
-        image_list = request.FILES.getlist('image') # file을 못받음..
-        for item in image_list: 
-            images = MapImage.objects.create(walkroad=walkroad, image=item)
+        images = request.FILES.getlist('images') # file을 못받음..
+        print('images', images)
+        for image in images: 
+            print('image', image)
+            images = MapImage.objects.create(walkroad=walkroad, image=image)
             images.save()
 
         return JsonResponse({
