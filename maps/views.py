@@ -1,6 +1,6 @@
 from os import walk
 from django.http.response import JsonResponse
-from maps.models import MapImage, Walkroad, Like, Comment, CommentLike
+from maps.models import Walkroad, Like, Comment, CommentLike
 from django.shortcuts import redirect, render
 from django.db.models import Q, Count
 from django.views.generic import ListView
@@ -97,15 +97,14 @@ def new(request):
             distance = distance,
             time = time,
             path = path,
-            infowindow = infowindow
+            infowindow = infowindow,
             )
 
-        images = request.FILES.getlist('images') # file을 못받음..
-        print('images', images)
-        for image in images: 
-            print('image', image)
-            images = MapImage.objects.create(walkroad=walkroad, image=image)
-            images.save()
+        images = request.FILES.getlist('images')
+
+        if len(images) > 0:
+            walkroad.thumbnail = images[0]
+            walkroad.save()
 
         return JsonResponse({
             'id': walkroad.id
@@ -124,6 +123,13 @@ def update(request, id):
         finish = request.POST['finish']
         tmi = request.POST['tmi']
         Walkroad.objects.filter(id=id).update(title=title, description=description, start=start, finish=finish, tmi=tmi)
+
+        thumbnail = request.FILES['thumbnail']
+        if thumbnail:
+            walkroad = Walkroad.objects.get(id=id)
+            walkroad.thumbnail = thumbnail
+            walkroad.save()
+            
         return redirect('maps:show', id)
         
     walkroad = Walkroad.objects.get(id=id)
