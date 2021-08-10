@@ -3,6 +3,7 @@ from maps.models import Walkroad, Like, Comment, CommentLike, Tag
 from django.shortcuts import redirect, render
 from django.db.models import Q, Count
 from django.views.generic import ListView
+from itertools import chain
 import json
 
 def index(request):
@@ -57,14 +58,14 @@ class PostView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
-        type = self.request.GET.get('type', '')
-        keyword = self.request.GET.get('keyword', '')
-        sort = self.request.GET.get('sort', '')
+        context['tags'] = Tag.objects.all()
+        # type = self.request.GET.get('type', '')
+        # keyword = self.request.GET.get('keyword', '')
+        # sort = self.request.GET.get('sort', '')
 
-        context['keyword'] = keyword
-        context['type'] = type
-        context['sort'] = sort
+        # context['keyword'] = keyword
+        # context['type'] = type
+        # context['sort'] = sort
         
         return context
 

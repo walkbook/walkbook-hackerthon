@@ -19,6 +19,11 @@
         <input name="keyword" id="keyword" type="text" />
         <button name="search-btn" id="search-btn" type="submit"><img class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
       </div>
+      <div>
+          {% for tag in tags %}
+            <span>{{ tag }}</span>
+          {% endfor %}
+      </div>
     </center>
     <select class="sort-post" name="sort" onchange="form.submit();">
       <option value="like">좋아요순</option>
