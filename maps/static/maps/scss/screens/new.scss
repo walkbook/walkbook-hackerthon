@@ -314,7 +314,19 @@
 }
 
 .tmi-box {
+    margin-bottom: 10px;
+}
+
+.tag-box {
     margin-bottom: 60px;
+
+    .tags-box{
+        display: flex;
+
+        #tag-list{
+            display: flex;
+        }
+    }
 }
 
 #save-walkroad-button {
@@ -349,7 +361,8 @@ h4.title-title,
 h4.title-desc,
 h4.title-start,
 h4.title-fin,
-h4.title-tmi {
+h4.title-tmi,
+h4.title-tag {
     margin: 11px 0 5px 18px;
     text-align: start;
 }

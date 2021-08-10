@@ -1,5 +1,5 @@
 from django.http.response import JsonResponse
-from maps.models import Walkroad, Like, Comment, CommentLike
+from maps.models import Walkroad, Like, Comment, CommentLike, Tag
 from django.shortcuts import redirect, render
 from django.db.models import Q, Count
 from django.views.generic import ListView
@@ -70,8 +70,10 @@ class PostView(ListView):
 
 def show(request, id):
     walkroad = Walkroad.objects.get(id=id)
+    tags = Tag.objects.filter(walkroads=walkroad)
     return render(request, 'maps/show.html', { 
         'walkroad': walkroad,
+        'tags': tags,
         })
 
 def new(request):
@@ -98,6 +100,11 @@ def new(request):
             path = path,
             infowindow = infowindow
             )
+
+        tags = request.POST.getlist('tags')
+        for tag in tags:
+            newTag = Tag.objects.get(id = tag)
+            walkroad.tags.add(newTag)
         
         return JsonResponse({
             'id': walkroad.id
@@ -115,7 +122,9 @@ def update(request, id):
         start = request.POST['start']
         finish = request.POST['finish']
         tmi = request.POST['tmi']
-        Walkroad.objects.filter(id=id).update(title=title, description=description, start=start, finish=finish, tmi=tmi)
+        walkroad = Walkroad.objects.filter(id=id)
+        walkroad.update(title=title, description=description, start=start, finish=finish, tmi=tmi)
+        # walkroad.first().tags.set(request.POST.getlist('tags'))
         return redirect('maps:show', id)
         
     walkroad = Walkroad.objects.get(id=id)
@@ -172,3 +181,16 @@ class CommentLikeView:
         else:
             CommentLike.objects.create(user=request.user, comment=comment)
         return JsonResponse({'commentLikeCount': comment.commentlike_set.count()})
+
+class TagView:
+    def create(request):
+        tag = Tag.objects.filter(content=request.POST['content'])
+        if tag.count() == 0:
+            newTag = Tag.objects.create(content=request.POST['content'])
+            return JsonResponse({
+                'tag': newTag.id
+            })
+        return JsonResponse({
+                'tag': tag.first().id
+        })
+            

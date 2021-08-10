@@ -91,7 +91,13 @@
 
 .start-fin-box { display: flex; margin-bottom: 10px; }
 
-.tmi-box { margin-bottom: 60px; }
+.tmi-box { margin-bottom: 10px; }
+
+.tag-box { margin-bottom: 60px; }
+
+.tag-box .tags-box { display: flex; }
+
+.tag-box .tags-box #tag-list { display: flex; }
 
 #save-walkroad-button { width: 130px; height: 40px; background: linear-gradient(180deg, #49A59A 0%, #98C794 100%); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 40px; border: none; color: white; font-family: 'Nanum Gothic', sans-serif; font-style: normal; font-size: 13px; line-height: 21px; letter-spacing: -0.035em; }
 
@@ -99,7 +105,7 @@
 
 .enroll-btn:hover { cursor: pointer; }
 
-h4.title-name, h4.title-title, h4.title-desc, h4.title-start, h4.title-fin, h4.title-tmi { margin: 11px 0 5px 18px; text-align: start; }
+h4.title-name, h4.title-title, h4.title-desc, h4.title-start, h4.title-fin, h4.title-tmi, h4.title-tag { margin: 11px 0 5px 18px; text-align: start; }
 
 .custom_typecontrol { display: flex; position: absolute; top: 4px; right: 4px; width: 105px; height: 38px; background: #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 3px; z-index: 1; }
 

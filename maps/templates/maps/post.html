@@ -18,7 +18,7 @@
         </select>
         <input name="keyword" id="keyword" type="text" />
         <button name="search-btn" id="search-btn" type="submit"><img class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
-    </div>
+      </div>
     </center>
     <select class="sort-post" name="sort" onchange="form.submit();">
       <option value="like">좋아요순</option>
@@ -67,6 +67,9 @@
         <div class="time-desc-box">
           <p id="total-time" class="total-time-class">소요 시간 <span>: {{ walkroad.time }}분</span></p>
           <div class="mdl-card__supporting-text">소개 <span>: {{ walkroad.description}}</span></div>
+          {% for tag in walkroad.tags.all %}
+            <span>{{ tag }}</span>
+          {% endfor %}
         </div>
         <div class="more-like-box">       
           <div class="like-container">
