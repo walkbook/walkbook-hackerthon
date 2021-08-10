@@ -257,10 +257,7 @@ saveWalkroadBtn.addEventListener('click', async () => {
     data.append("infowindow", JSON.stringify(infowindow));
     data.append("distance", totalDistance);
     data.append("time", totalTime);
-
-    for (let i = 0; i < imageInput.files.length; i++) {
-        data.append(`images`, imageInput.files[i]);
-    }
+    data.append(`images`, imageInput.files[0]);
 
     await axios.post(`/maps/new/`, data, {
         headers: {

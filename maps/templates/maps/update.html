@@ -6,7 +6,7 @@
 <center>
     <div class="update_wrap">
         <p class="enroll-announce">🌱 산책로 정보 수정</p>
-        <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}">
+        <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="input-box">
                 <div class="input-box_wrap">
@@ -37,6 +37,13 @@
                     <div class="tmi-box">
                         <h4 class="title-tmi">TMI</h4>
                         <input type="text" name="tmi" id="tmi-input" class="input-long input-long-m" value="{{ walkroad.tmi }}"/>
+                    </div>
+                    <div class="thumbnail-box">
+                        <h4 class="title-thumbnail">썸네일</h4>
+                        {% if walkroad.thumbnail %}
+                            <img src="{{ walkroad.thumbnail.url }}">
+                        {% endif %}
+                        <input type="file" name="thumbnail" accept="image/*">
                     </div>
                     <div class="enroll-btn">
                         <button type="submit" id="save-walkroad-button">수정하기</button> 

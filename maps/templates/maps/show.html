@@ -86,9 +86,11 @@
             </div>
 
             <div>
-                {% for mapimage in walkroad.mapimage_set.all %}
-                <img src="{{ mapimage.image.url }}" width=200>
-                {% endfor %}
+                {% if walkroad.thumbnail %}
+                <img src="{{ walkroad.thumbnail.url }}" width=200>
+                {% else %}
+                <img src="{% static 'maps/img/image-gallery.png' %}" width=200>
+                {% endif %}
             </div>
 
             {% comment %} 댓글 {% endcomment %}
