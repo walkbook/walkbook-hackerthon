@@ -4,8 +4,6 @@ from django.contrib import auth
 from django.http import JsonResponse
 from .models import Profile
 from allauth.socialaccount.models import SocialAccount
-from django import forms
-from django.contrib.auth.forms import AuthenticationForm
 
 class SignUpView:
     def signup(request):
@@ -16,6 +14,12 @@ class SignUpView:
             user.profile.sex = request.POST['sex']
             user.profile.age = request.POST['age']
             user.profile.location = request.POST['location']
+            
+            if len(request.FILES) != 0:
+              avatar = request.FILES['avatar']
+              user.profile.avatar = avatar
+              user.profile.save()
+
             user.save()
 
             auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
