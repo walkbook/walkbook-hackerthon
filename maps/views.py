@@ -65,14 +65,17 @@ class PostView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['tags'] = Tag.objects.all().annotate(count=Count('walkroads')).order_by('-count')
-        # type = self.request.GET.get('type', '')
-        # keyword = self.request.GET.get('keyword', '')
-        # sort = self.request.GET.get('sort', '')
+        type = self.request.GET.get('type', '')
+        keyword = self.request.GET.get('keyword', '')
+        sort = self.request.GET.get('sort', '')
+        tag_content = self.request.GET.get('tag', '')
 
-        # context['keyword'] = keyword
-        # context['type'] = type
-        # context['sort'] = sort
+        context['keyword'] = keyword
+        context['type'] = type
+        context['sort'] = sort
+        context['tag_content'] = tag_content
+
+        context['tags'] = Tag.objects.all().annotate(count=Count('walkroads')).order_by('-count')
         
         return context
 
@@ -132,12 +135,17 @@ def update(request, id):
         tmi = request.POST['tmi']
         walkroad = Walkroad.objects.filter(id=id)
         walkroad.update(title=title, description=description, start=start, finish=finish, tmi=tmi)
-        # walkroad.first().tags.set(request.POST.getlist('tags'))
+        tags = request.POST.getlist('tags')
+        walkroad.first().tags.clear()
+        for tag in tags:
+            newTag = Tag.objects.get(content = tag)
+            walkroad.first().tags.add(newTag)
         return redirect('maps:show', id)
         
     walkroad = Walkroad.objects.get(id=id)
+    tags = Tag.objects.filter(walkroads=walkroad)
     if request.user == walkroad.author:
-        return render(request, 'maps/update.html', { 'walkroad': walkroad })
+        return render(request, 'maps/update.html', { 'walkroad': walkroad, 'tags': tags })
     else:
         return redirect('maps:show', id)
 

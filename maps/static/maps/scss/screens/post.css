@@ -12,7 +12,7 @@
 
 .post-all .tag-list { margin-top: 15px; max-width: 500px; overflow: hidden; }
 
-.post-all .tag-list input { display: inline-block; padding: 3px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 20px; color: #49a59a; border-radius: 10px; border: 0px; cursor: pointer; }
+.post-all .tag-list input { display: inline-block; padding: 3px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 20px; color: #49a59a; border-radius: 20px; border: 0px; cursor: pointer; }
 
 .post-all .tag-list input:hover { color: goldenrod; }
 
@@ -72,7 +72,7 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 
 .post-others .mdl-tag { overflow: hidden; max-height: 58px; margin-bottom: 5px; }
 
-.post-others .mdl-tag input { display: inline-block; padding: 2px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 19px; color: #49a59a; border-radius: 10px; border: 0px; cursor: pointer; }
+.post-others .mdl-tag input { display: inline-block; padding: 2px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 19px; color: #49a59a; border-radius: 20px; border: 0px; cursor: pointer; }
 
 .post-others .mdl-tag input:hover { color: goldenrod; }
 

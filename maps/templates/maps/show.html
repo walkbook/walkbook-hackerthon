@@ -82,6 +82,14 @@
                         <div class="show-title">TMI</div>
                         <div class="show-content">{{ walkroad.tmi }}</div>
                     </div>
+                    <div class="detail_wrap">
+                        <div class="show-title">태그</div>
+                        <div class="show-content">
+                        {% for tag in tags %}
+                        <div> {{tag.content}} </div>
+                        {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
 

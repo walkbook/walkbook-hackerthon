@@ -222,7 +222,7 @@ const removeTag = (elem) => {
 const getTagElement = (tagContent) => {
     var newTagElement = document.createElement('input');
     newTagElement.setAttribute('type', 'text');
-    newTagElement.setAttribute('name', 'tag-element');
+    newTagElement.setAttribute('name', 'tags');
     newTagElement.setAttribute('class', 'input-long');
     newTagElement.setAttribute('style', `width: ${tagContent.length*20}px`);
     newTagElement.setAttribute('onclick', 'removeTag(this)');
@@ -230,12 +230,11 @@ const getTagElement = (tagContent) => {
     newTagElement.setAttribute('value', `${tagContent}`);
     return newTagElement; 
 }
-
 const tagInputElement = document.getElementById('tag-input');
 tagInputElement.onkeydown = (e) => {
     if (e.key === 'Enter' && tagInputElement.value != '') {
         //중복체크
-        tagList = document.querySelectorAll('input[name=tag-element]');
+        tagList = document.querySelectorAll('input[name=tags]');
         for(var i = 0; i < tagList.length; i++) {
             if (tagList[i].value == tagInputElement.value){
                 return tagInputElement.value = '';
@@ -291,7 +290,7 @@ saveWalkroadBtn.addEventListener('click', async () => {
     data.append("time", totalTime);
 
     //태그 생성
-    tagList = document.querySelectorAll('input[name=tag-element]');
+    tagList = document.querySelectorAll('input[name=tags]');
     for (var i = 0; i < tagList.length; i++) {
         let tagData = new FormData();
         tagData.append("content", tagList[i].value);

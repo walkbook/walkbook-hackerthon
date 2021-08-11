@@ -6,7 +6,7 @@
 <center>
     <div class="update_wrap">
         <p class="enroll-announce">🌱 산책로 정보 수정</p>
-        <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}">
+        <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}" onsubmit="createTag()">
             {% csrf_token %}
             <div class="input-box">
                 <div class="input-box_wrap">
@@ -38,6 +38,17 @@
                         <h4 class="title-tmi">TMI</h4>
                         <input type="text" name="tmi" id="tmi-input" class="input-long input-long-m" value="{{ walkroad.tmi }}"/>
                     </div>
+                    <div class="tag-box">
+						<h4 class="title-tag">태그</h4>
+						<div class = "tags-box">
+							<div id = "tag-list">
+                            {%for tag in tags%}
+                            <input type="text" name="tags" class="input-long" style="width: 40px" onclick="removeTag(this)" readonly="True" value="{{tag.content}}">
+                            {%endfor%}
+                            </div>
+							<input type="text" name="tag" id="tag-input" class="input-long" placeholder="엔터를 입력하여 태그를 등록하세요."/>
+						</div>
+					</div>
                     <div class="enroll-btn">
                         <button type="submit" id="save-walkroad-button">수정하기</button> 
                     </div>
@@ -46,4 +57,5 @@
         </form>
     </div>
 </center>
+<script src="{% static 'maps/js/update.js' %}"></script>
 {% endblock content %}
