@@ -116,7 +116,7 @@ def new(request):
         for tag in tags:
             newTag = Tag.objects.get(id = tag)
             walkroad.tags.add(newTag)
-        
+        deleteUnusedTag()
         return JsonResponse({
             'id': walkroad.id
         })
@@ -125,6 +125,11 @@ def new(request):
         return redirect('login')
     else:
         return render(request, 'maps/new.html')
+
+def deleteUnusedTag():
+    for tag in Tag.objects.all():
+        if tag.walkroads.count() == 0:
+            tag.delete()
 
 def update(request, id):
     if request.method == 'POST':
@@ -135,11 +140,14 @@ def update(request, id):
         tmi = request.POST['tmi']
         walkroad = Walkroad.objects.filter(id=id)
         walkroad.update(title=title, description=description, start=start, finish=finish, tmi=tmi)
+
         tags = request.POST.getlist('tags')
         walkroad.first().tags.clear()
         for tag in tags:
             newTag = Tag.objects.get(content = tag)
             walkroad.first().tags.add(newTag)
+
+        deleteUnusedTag()
         return redirect('maps:show', id)
         
     walkroad = Walkroad.objects.get(id=id)
@@ -152,6 +160,7 @@ def update(request, id):
 def delete(request, id):
     walkroad = Walkroad.objects.get(id=id)
     walkroad.delete()
+    deleteUnusedTag()
     return redirect('maps:post')
 
 class LikeView:
