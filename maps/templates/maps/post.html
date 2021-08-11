@@ -10,21 +10,24 @@
 <div class="post-all">
   <form action="{%url 'maps:post' %}" method="GET">
     <center>
+    <div class="search-post-tags">
       <div class="search-post">
         <select class="type-select" name="type">
             <option value="all">전체</option>
             <option value="title">제목</option>
             <option value="titlecontent">제목+내용</option>
         </select>
-        <input name="keyword" id="keyword" type="text" />
-        <button name="search-btn" id="search-btn" type="submit"><img class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
-      </div>
-      <div>
+          <input name="keyword" id="keyword" type="text" />
+          <button name="search-btn" id="search-btn" type="submit"><img class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
+        </div>
+          <div class="tag-list">
           {% for tag in tags %}
-            <span>{{ tag }}</span>
+            <span>#{{ tag }}</span>
           {% endfor %}
+          </div>
       </div>
-    </center>
+      </center>
+    
     <select class="sort-post" name="sort" onchange="form.submit();">
       <option value="like">좋아요순</option>
       <option value="date">최신순</option>
@@ -72,8 +75,10 @@
         <div class="time-desc-box">
           <p id="total-time" class="total-time-class">소요 시간 <span>: {{ walkroad.time }}분</span></p>
           <div class="mdl-card__supporting-text">소개 <span>: {{ walkroad.description}}</span></div>
+        </div>
+        <div class="mdl-tag">
           {% for tag in walkroad.tags.all %}
-            <span>{{ tag }}</span>
+            <span>#{{ tag }}</span>
           {% endfor %}
         </div>
         <div class="more-like-box">       

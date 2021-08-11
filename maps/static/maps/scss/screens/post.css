@@ -1,3 +1,5 @@
+@font-face { font-family: 'Uiyeun'; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff") format("woff"); font-weight: normal; font-style: normal; }
+
 .post-all { padding-top: 110px; }
 
 .post-all .search-post { display: inline-flex; flex-wrap: nowrap; align-items: center; position: relative; border-radius: 30px 30px 30px 30px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); }
@@ -7,6 +9,12 @@
 .post-all .search-post #keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 0px 30px 30px 0px; border: none; box-sizing: border-box; padding-left: 10px; }
 
 .post-all .search-post #search-btn { position: absolute; bottom: 13px; right: 23px; width: 20px; height: 20px; border: none; background: transparent; cursor: pointer; }
+
+.post-all .tag-list { margin-top: 15px; max-width: 500px; overflow: hidden; }
+
+.post-all .tag-list span { display: inline-block; padding: 3px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 20px; color: #49a59a; border-radius: 10px; cursor: pointer; }
+
+.post-all .tag-list span:hover { color: goldenrod; }
 
 .post-all .sort-post { position: relative; left: 80%; margin-top: 30px; width: 90px; height: 30px; border: 0.3px solid #dddddd; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25); background: #fafafa; font-size: 12px; font-weight: 600; font-family: 'Nanum Gothic', sans-serif; text-align-last: center; text-align: center; -ms-text-align-last: center; -moz-text-align-last: center; }
 
@@ -52,13 +60,21 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 
 .post-others { width: 70%; padding: 10px 0 10px 15px; display: flex; justify-content: space-between; flex-direction: column; }
 
+.post-others .time-desc-box { max-height: 60px; margin-bottom: 8px; }
+
 .post-others .total-time-class { margin: 5px 0 0 0; color: var(--green); font-weight: 600; font-size: 14px; }
 
 .post-others .total-time-class span { color: gray; font-weight: 400; font-size: 12px; }
 
-.post-others .mdl-card__supporting-text { display: inline-block; white-space: pre-wrap; overflow: auto; text-overflow: ellipsis; width: 100%; height: 80px; padding: 0 0 5px 0; color: var(--green); font-weight: 600; font-size: 14px; }
+.post-others .mdl-card__supporting-text { display: inline-block; white-space: pre-wrap; overflow: auto; text-overflow: ellipsis; width: 100%; height: 40px; padding: 0 0 5px 0; color: var(--green); font-weight: 600; font-size: 14px; }
 
 .post-others .mdl-card__supporting-text span { color: gray; font-weight: 400; font-size: 12px; height: 70px; }
+
+.post-others .mdl-tag { overflow: hidden; max-height: 58px; margin-bottom: 5px; }
+
+.post-others .mdl-tag span { display: inline-block; padding: 2px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 19px; color: #49a59a; border-radius: 10px; cursor: pointer; }
+
+.post-others .mdl-tag span:hover { color: goldenrod; }
 
 .post-others .more-btn { color: gray; font-size: 12px; width: 60px; text-decoration: underline; }
 

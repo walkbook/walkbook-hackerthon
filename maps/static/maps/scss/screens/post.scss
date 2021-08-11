@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Uiyeun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .post-all {
     padding-top: 110px;
 
@@ -12,7 +19,6 @@
         select::-ms-expand {
             display: none;
         }
-        
 
         #keyword {
             width: 500px;
@@ -36,23 +42,47 @@
         }
     }
 
-    .sort-post {
-        position: relative;
-        left: 80%;
-        margin-top: 30px;
-        width: 90px;
-        height: 30px;
-        border: 0.3px solid #dddddd;
-        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
-        background: #fafafa;
-        font-size: 12px;
-        font-weight: 600;
-        font-family: 'Nanum Gothic', sans-serif;
-        text-align-last: center;
-        text-align: center;
-        -ms-text-align-last: center;
-        -moz-text-align-last: center;
+    .tag-list {
+        margin-top: 15px;
+        max-width: 500px;
+        overflow: hidden;
+
+        span {
+            display: inline-block;
+            padding: 3px 5px;
+            margin: 2px;
+            background: rgba(97, 97, 97, 0.05);
+            font-family: 'Uiyeun';
+            font-size: 20px;
+            color: #49a59a;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        span:hover {
+            color: goldenrod;
+        }
     }
+
+
+
+
+.sort-post {
+    position: relative;
+    left: 80%;
+    margin-top: 30px;
+    width: 90px;
+    height: 30px;
+    border: 0.3px solid #dddddd;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+    background: #fafafa;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align-last: center;
+    text-align: center;
+    -ms-text-align-last: center;
+    -moz-text-align-last: center;
+}
 }
 
 select.type-select {
@@ -120,18 +150,19 @@ select:focus {
             }
         }
 
-        
+
     }
 }
 
 .mdl-card__title-text {
-            font-family: Montserrat;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 20px;
-            letter-spacing: -0.015em;
-            color: #000000 !important;
-        }
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: -0.015em;
+    color: #000000 !important;
+}
+
 select {
     -webkit-appearance: button;
     -moz-appearance: button;
@@ -197,7 +228,7 @@ select {
         width: 30%;
         height: 23%;
     }
-    
+
     .temp {
         width: 100%;
         height: 100%;
@@ -214,9 +245,9 @@ select {
 .mdl-card--expand {
     padding: 24px 0 20px 3px;
     width: auto;
-    display: block; 
-    white-space: nowrap; 
-    overflow: hidden; 
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
 
     a {
@@ -224,10 +255,10 @@ select {
         font-family: 'Nanum Gothic', sans-serif;
         font-size: 15px;
     }
-    
+
     a:hover {
         color: var(--deepgreen);
-        
+
     }
 }
 
@@ -236,6 +267,7 @@ select {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
     span {
         font-size: 12px;
         color: #B8B8B8;
@@ -253,6 +285,11 @@ select {
     justify-content: space-between;
     flex-direction: column;
 
+    .time-desc-box {
+        max-height: 60px;
+        margin-bottom: 8px;
+    }
+
     .total-time-class {
         margin: 5px 0 0 0;
         color: var(--green);
@@ -267,12 +304,12 @@ select {
     }
 
     .mdl-card__supporting-text {
-        display: inline-block; 
+        display: inline-block;
         white-space: pre-wrap;
-        overflow: auto; 
+        overflow: auto;
         text-overflow: ellipsis;
         width: 100%;
-        height: 80px;
+        height: 40px;
         padding: 0 0 5px 0;
         color: var(--green);
         font-weight: 600;
@@ -283,6 +320,28 @@ select {
             font-weight: 400;
             font-size: 12px;
             height: 70px;
+        }
+    }
+
+    .mdl-tag {
+        overflow: hidden;
+        max-height: 58px;
+        margin-bottom: 5px;
+
+        span {
+            display: inline-block;
+            padding: 2px 5px;
+            margin: 2px;
+            background: rgba(97, 97, 97, 0.05);
+            font-family: 'Uiyeun';
+            font-size: 19px;
+            color: #49a59a;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        span:hover {
+            color: goldenrod;
         }
     }
 
@@ -305,6 +364,7 @@ select {
     justify-content: flex-end;
     margin: 7px 0;
 }
+
 .like-container {
     display: flex;
     justify-content: flex-end;
@@ -343,7 +403,7 @@ select {
         width: 16px;
     }
 
-    span{
+    span {
         margin-left: 0px;
         font-size: 12px;
         color: rgb(94, 94, 94);
@@ -353,7 +413,7 @@ select {
 }
 
 // 좋아요 하트
-.material-icons mdl-badge, 
+.material-icons mdl-badge,
 .mdl-badge--overlap {
     cursor: pointer;
     color: #F44337;
