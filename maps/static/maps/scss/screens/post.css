@@ -12,9 +12,9 @@
 
 .post-all .tag-list { margin-top: 15px; max-width: 500px; overflow: hidden; }
 
-.post-all .tag-list span { display: inline-block; padding: 3px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 20px; color: #49a59a; border-radius: 10px; cursor: pointer; }
+.post-all .tag-list input { display: inline-block; padding: 3px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 20px; color: #49a59a; border-radius: 10px; border: 0px; cursor: pointer; }
 
-.post-all .tag-list span:hover { color: goldenrod; }
+.post-all .tag-list input:hover { color: goldenrod; }
 
 .post-all .sort-post { position: relative; left: 80%; margin-top: 30px; width: 90px; height: 30px; border: 0.3px solid #dddddd; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25); background: #fafafa; font-size: 12px; font-weight: 600; font-family: 'Nanum Gothic', sans-serif; text-align-last: center; text-align: center; -ms-text-align-last: center; -moz-text-align-last: center; }
 
@@ -72,9 +72,9 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 
 .post-others .mdl-tag { overflow: hidden; max-height: 58px; margin-bottom: 5px; }
 
-.post-others .mdl-tag span { display: inline-block; padding: 2px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 19px; color: #49a59a; border-radius: 10px; cursor: pointer; }
+.post-others .mdl-tag input { display: inline-block; padding: 2px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 19px; color: #49a59a; border-radius: 10px; border: 0px; cursor: pointer; }
 
-.post-others .mdl-tag span:hover { color: goldenrod; }
+.post-others .mdl-tag input:hover { color: goldenrod; }
 
 .post-others .more-btn { color: gray; font-size: 12px; width: 60px; text-decoration: underline; }
 

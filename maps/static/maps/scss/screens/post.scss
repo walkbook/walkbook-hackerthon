@@ -47,7 +47,7 @@
         max-width: 500px;
         overflow: hidden;
 
-        span {
+        input {
             display: inline-block;
             padding: 3px 5px;
             margin: 2px;
@@ -56,9 +56,10 @@
             font-size: 20px;
             color: #49a59a;
             border-radius: 10px;
+            border: 0px;
             cursor: pointer;
         }
-        span:hover {
+        input:hover {
             color: goldenrod;
         }
     }
@@ -328,7 +329,7 @@ select {
         max-height: 58px;
         margin-bottom: 5px;
 
-        span {
+        input {
             display: inline-block;
             padding: 2px 5px;
             margin: 2px;
@@ -337,10 +338,11 @@ select {
             font-size: 19px;
             color: #49a59a;
             border-radius: 10px;
+            border: 0px;
             cursor: pointer;
         }
 
-        span:hover {
+        input:hover {
             color: goldenrod;
         }
     }

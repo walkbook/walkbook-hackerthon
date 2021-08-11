@@ -41,11 +41,18 @@ class PostView(ListView):
         type = self.request.GET.get('type', '')
         keyword = self.request.GET.get('keyword', '')
         sort = self.request.GET.get('sort', '')
+        tag_content = self.request.GET.get('tag', '')
+
+        if tag_content != '':
+            tag = Tag.objects.get(content=tag_content)
+            walkroads = Walkroad.objects.filter(tags=tag)
+        else:
+            walkroads = Walkroad.objects.all()
 
         if sort == 'date':
-            walkroads = Walkroad.objects.all().annotate(count=Count('like_users')).order_by('-created_at', '-count')
+            walkroads = walkroads.annotate(count=Count('like_users')).order_by('-created_at', '-count')
         else :
-            walkroads = Walkroad.objects.all().annotate(count=Count('like_users')).order_by('-count', '-created_at')
+            walkroads = walkroads.annotate(count=Count('like_users')).order_by('-count', '-created_at')
         
         if type == 'all':
             walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword) | Q(tmi__icontains=keyword))
@@ -58,7 +65,7 @@ class PostView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['tags'] = Tag.objects.all()
+        context['tags'] = Tag.objects.all().annotate(count=Count('walkroads')).order_by('-count')
         # type = self.request.GET.get('type', '')
         # keyword = self.request.GET.get('keyword', '')
         # sort = self.request.GET.get('sort', '')
