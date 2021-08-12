@@ -143,7 +143,7 @@
 	{% if user.is_authenticated %}
     <script type="text/javascript">
         const userAddress = "{{ request.user.profile.location | safe }}";
-    </>
+    </script>
     {% else %}
     <script type="text/javascript">
         const userAddress = "신림로 1";
