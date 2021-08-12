@@ -40,10 +40,14 @@
                     </div>
                     <div class="thumbnail-box">
                         <h4 class="title-thumbnail">썸네일</h4>
-                        {% if walkroad.thumbnail %}
-                            <img src="{{ walkroad.thumbnail.url }}">
-                        {% endif %}
-                        <input type="file" name="thumbnail" accept="image/*">
+                        <div class="image-input">
+                            <input type="file" id="file" name="thumbnail" accept="image/*" hidden>
+                            <label class="label-file" for="file">choose file</label>
+                            {% if walkroad.thumbnail %}
+                                <img src="{{ walkroad.thumbnail.url }}">
+                            {% endif %}
+                            
+                        </div>
                     </div>
                     <div class="enroll-btn">
                         <button type="submit" id="save-walkroad-button">수정하기</button> 

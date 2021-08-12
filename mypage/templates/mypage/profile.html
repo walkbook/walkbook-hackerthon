@@ -7,6 +7,8 @@
 
 
 {% block content %}
+<script src="{% static 'mypage/js/profile.js' %}"></script>
+
 <center>
 <div class="profile-container">
 <p> PROFILE </p>
@@ -18,10 +20,15 @@
         <h3 class="profile-avatar">
             <label for="avatar">프로필 사진</label>
         </h3>
-        {% if user.profile.avatar %}
-            <img src="{{ user.profile.avatar.url }}">
-        {% endif %}
-        <input type="file" name="avatar" accept="image/*">
+        <div class="profile-inputbox">
+            {% if user.profile.avatar %}
+                <img src="{{ user.profile.avatar.url }}">
+            {% endif %}
+            <div class="image-inputbox">
+                <input type="file" id="file" name="avatar" accept="image/*" hidden>
+                <label class="label-file label-profile" for="file">choose file</label>
+            </div>
+        </div>
     </div>
     <div class="profile-feature">
         <h3 class="profile-feature">

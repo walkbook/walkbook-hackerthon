@@ -123,7 +123,12 @@
                     <form>
                         <div class="image-box">
                             <h4 class="title-image">썸네일</h4>
-                            <input type="file" name="image" id="image-input" accept="image/*">
+							<div class="image-input">
+                                <input type="file" name="image" id="file" accept="image/*" hidden onchange="readURL(this);">
+								<label class="label-file" for="file">choose file</label>
+								{% comment %} <img style="width: 200px;" id="preview-image" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"> {% endcomment %}
+								<img id="preview" />
+							</div>
                         </div>
                     </form>
 					<div class="enroll-btn">
@@ -138,7 +143,7 @@
 	{% if user.is_authenticated %}
     <script type="text/javascript">
         const userAddress = "{{ request.user.profile.location | safe }}";
-    </script>
+    </>
     {% else %}
     <script type="text/javascript">
         const userAddress = "신림로 1";

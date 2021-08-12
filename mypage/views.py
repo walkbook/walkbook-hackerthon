@@ -48,17 +48,17 @@ def profile(request, id):
         profile.introduce = request.POST['introduce']
         
         if len(request.FILES) != 0:
-          s3_client = boto3.client(
-              's3',
-              aws_access_key_id=AWS_ACCESS_KEY_ID,
-              aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-          )
-          s3_client.delete_object(
-            Bucket='walkbook',
-            Key=profile.avatar.url.split("amazonaws.com/",1)[1]
-          )
-          avatar = request.FILES['avatar']
-          profile.avatar = avatar
+            # s3_client = boto3.client(
+            #     's3',
+            #     aws_access_key_id=AWS_ACCESS_KEY_ID,
+            #     aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+            # )
+            # s3_client.delete_object(
+            #   Bucket='walkbook',
+            #   Key=profile.avatar.url.split("amazonaws.com/",1)[1]
+            # )
+            avatar = request.FILES['avatar']
+            profile.avatar = avatar
 
         profile.save()
 
