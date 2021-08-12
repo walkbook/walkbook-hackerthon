@@ -26,7 +26,9 @@
         </h3>
         
             {% if user.profile.avatar %}
-                <img class="preview" src="{{ user.profile.avatar.url }}" >
+                <img class="preview" src="{{ user.profile.avatar.url }}" />
+            {% else %}
+                <img class="preview" />
             {% endif %}
             
         
