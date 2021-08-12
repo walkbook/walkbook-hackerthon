@@ -39,15 +39,16 @@
                         <input type="text" name="tmi" id="tmi-input" class="input-long input-long-m" value="{{ walkroad.tmi }}"/>
                     </div>
                     <div class="thumbnail-box">
-                        <h4 class="title-thumbnail">썸네일</h4>
-                        <div class="image-input">
+                        <h4 class="title-thumbnail">
+                            썸네일
                             <input type="file" id="file" name="thumbnail" accept="image/*" hidden>
                             <label class="label-file" for="file">choose file</label>
+                        </h4>
+                        
                             {% if walkroad.thumbnail %}
-                                <img src="{{ walkroad.thumbnail.url }}">
+                                <img class="preview" src="{{ walkroad.thumbnail.url }}" width="300">
                             {% endif %}
-                            
-                        </div>
+                        
                     </div>
                     <div class="enroll-btn">
                         <button type="submit" id="save-walkroad-button">수정하기</button> 
@@ -57,4 +58,18 @@
         </form>
     </div>
 </center>
+<script>
+    const reader = new FileReader();
+
+    reader.onload = (readerEvent) => {
+        document.querySelector(".preview").setAttribute("src", readerEvent.target.result);
+    };
+
+    document.querySelector("#file").addEventListener("change", (changeEvent) => {
+
+        const imgFile = changeEvent.target.files[0];
+        reader.readAsDataURL(imgFile);
+        document.querySelector(".preview").style.display = "block";
+    })
+</script>
 {% endblock content %}

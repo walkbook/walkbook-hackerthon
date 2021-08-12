@@ -13,7 +13,8 @@
 }
 
 .title-thumbnail {
-    margin: 11px 0 5px 7px !important;
+    display: flex;
+    margin: 11px 0 10px 7px !important;
     text-align: start;
 }
 
@@ -41,4 +42,10 @@
         border-radius: 5px;
         
     }
+}
+
+.preview {
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
 }
