@@ -23,11 +23,10 @@
                 <input type="file" id="file" name="avatar" accept="image/*" hidden>
                 <label class="label-file label-profile" for="file">choose file</label>
             </label>
-            <img src="" id="preview" class="preview"/>
         </h3>
         
             {% if user.profile.avatar %}
-                <img src="{{ user.profile.avatar.url }}">
+                <img class="preview" src="{{ user.profile.avatar.url }}" >
             {% endif %}
             
         
@@ -61,8 +60,8 @@
     const reader = new FileReader();
 
     reader.onload = (readerEvent) => {
-        document.querySelector("#preview").setAttribute("src", readerEvent.target.result);
-        //파일을 읽는 이벤트가 발생하면 #preview의 src 속성을 readerEvent의 결과물로 대체
+        document.querySelector(".preview").setAttribute("src", readerEvent.target.result);
+        //파일을 읽는 이벤트가 발생하면 .preview의 src 속성을 readerEvent의 결과물로 대체
     };
 
     document.querySelector("#file").addEventListener("change", (changeEvent) => {
