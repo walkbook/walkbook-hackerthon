@@ -18,17 +18,19 @@
     {% csrf_token %}
     <div class="profile-avatar">
         <h3 class="profile-avatar">
-            <label for="avatar">프로필 사진</label>
+            <label class="label-avatar" for="avatar">
+                프로필 사진
+                <input type="file" id="file" name="avatar" accept="image/*" hidden>
+                <label class="label-file label-profile" for="file">choose file</label>
+            </label>
+            <img src="" id="preview" class="preview"/>
         </h3>
-        <div class="profile-inputbox">
+        
             {% if user.profile.avatar %}
                 <img src="{{ user.profile.avatar.url }}">
             {% endif %}
-            <div class="image-inputbox">
-                <input type="file" id="file" name="avatar" accept="image/*" hidden>
-                <label class="label-file label-profile" for="file">choose file</label>
-            </div>
-        </div>
+            
+        
     </div>
     <div class="profile-feature">
         <h3 class="profile-feature">
@@ -54,4 +56,20 @@
 </form>
 </div>
 <center>
+
+<script>
+    const reader = new FileReader();
+
+    reader.onload = (readerEvent) => {
+        document.querySelector("#preview").setAttribute("src", readerEvent.target.result);
+        //파일을 읽는 이벤트가 발생하면 #preview의 src 속성을 readerEvent의 결과물로 대체
+    };
+
+    document.querySelector("#file").addEventListener("change", (changeEvent) => {
+
+        const imgFile = changeEvent.target.files[0];
+        reader.readAsDataURL(imgFile);
+        document.querySelector("#preview").style.display = "block";
+    })
+</script>
 {% endblock content %}
