@@ -223,8 +223,8 @@ const getTagElement = (tagContent) => {
     var newTagElement = document.createElement('input');
     newTagElement.setAttribute('type', 'text');
     newTagElement.setAttribute('name', 'tags');
-    newTagElement.setAttribute('class', 'input-long');
-    newTagElement.setAttribute('style', `width: ${tagContent.length*20}px`);
+    newTagElement.setAttribute('class', 'tag-created');
+    //newTagElement.setAttribute('size', `${tagContent}.val().length`);
     newTagElement.setAttribute('onclick', 'removeTag(this)');
     newTagElement.setAttribute('readonly', 'True');
     newTagElement.setAttribute('value', `${tagContent}`);

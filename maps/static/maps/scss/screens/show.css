@@ -2,6 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR&display=swap");
+@font-face { font-family: 'Uiyeun'; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff") format("woff"); font-weight: normal; font-style: normal; }
+
 .loading-background_show { position: absolute; background-color: rgba(0, 0, 0, 0.5); width: 100%; height: 110%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; }
 
 .loading-msg-show { height: 105%; }
@@ -70,7 +72,9 @@ a.mypage:hover { color: var(--green); }
 
 .show-title { color: var(--green); font-weight: 600; width: 80px; font-size: 16px; }
 
-.show-content { width: 75%; box-sizing: border-box; height: auto; white-space: pre-wrap; }
+.show-content { width: 75%; box-sizing: border-box; height: auto; }
+
+.show-content .tag-content { display: inline-block; padding: 3px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 20px; color: #49a59a; border-radius: 15px; border: 0px; cursor: pointer; }
 
 .mypage_show { color: var(--deepgreen); }
 

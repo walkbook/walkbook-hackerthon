@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR&display=swap');
+@font-face {
+    font-family: 'Uiyeun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .loading-background_show {
     position: absolute;
@@ -285,7 +291,19 @@ a.mypage:hover {
     width: 75%;
     box-sizing: border-box;
     height: auto;
-    white-space: pre-wrap;
+    //white-space: pre-wrap; 이거 왜 있는 건지 모르겠는데 태그에 방해돼서 일단 코멘트처리해뒀어요ㅜㅜ(별)
+    .tag-content {
+        display: inline-block;
+            padding: 3px 5px;
+            margin: 2px;
+            background: rgba(97, 97, 97, 0.05);
+            font-family: 'Uiyeun';
+            font-size: 20px;
+            color: #49a59a;
+            border-radius: 15px;
+            border: 0px;
+            cursor: pointer;
+    }
 }
 
 .mypage_show {

@@ -75,7 +75,7 @@ class PostView(ListView):
         context['sort'] = sort
         context['tag_content'] = tag_content
 
-        context['tags'] = Tag.objects.all().annotate(count=Count('walkroads')).order_by('-count')
+        context['tags'] = Tag.objects.all().annotate(count=Count('walkroads')).order_by('-count')[:8]
         
         return context
 

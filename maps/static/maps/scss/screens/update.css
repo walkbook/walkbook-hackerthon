@@ -2,4 +2,6 @@
 
 .enroll-announce { color: var(--yellow); font-size: 24px; font-family: 'Nanum Gothic', sans-serif; font-weight: 600; }
 
+.tag-created { height: 40px; border: none; background: #F3F1F2; border-radius: 10px; }
+
 /*# sourceMappingURL=update.css.map */

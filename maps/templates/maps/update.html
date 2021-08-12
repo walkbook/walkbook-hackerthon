@@ -43,7 +43,7 @@
 						<div class = "tags-box">
 							<div id = "tag-list">
                             {%for tag in tags%}
-                            <input type="text" name="tags" class="input-long" style="width: 40px" onclick="removeTag(this)" readonly="True" value="{{tag.content}}">
+                            <input type="text" name="tags" class="tag-created"  onclick="removeTag(this)" readonly="True" value="{{tag.content}}">
                             {%endfor%}
                             </div>
 							<input type="text" name="tag" id="tag-input" class="input-long" placeholder="엔터를 입력하여 태그를 등록하세요."/>
@@ -59,3 +59,4 @@
 </center>
 <script src="{% static 'maps/js/update.js' %}"></script>
 {% endblock content %}
+

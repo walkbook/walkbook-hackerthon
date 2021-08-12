@@ -1,5 +1,11 @@
 @font-face { font-family: 'Uiyeun'; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff") format("woff"); font-weight: normal; font-style: normal; }
 
+@font-face { font-family: 'YanoljaYacheR'; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/YanoljaYacheR.woff") format("woff"); font-weight: normal; font-style: normal; }
+
+@font-face { font-family: 'IM_Hyemin-Bold'; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2") format("woff"); font-weight: normal; font-style: normal; }
+
+@font-face { font-family: 'Binggrae'; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae.woff") format("woff"); font-weight: normal; font-style: normal; }
+
 .post-all { padding-top: 110px; }
 
 .post-all .search-post { display: inline-flex; flex-wrap: nowrap; align-items: center; position: relative; border-radius: 30px 30px 30px 30px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); }
@@ -12,7 +18,7 @@
 
 .post-all .tag-list { margin-top: 15px; max-width: 500px; overflow: hidden; }
 
-.post-all .tag-list input { display: inline-block; padding: 3px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 20px; color: #49a59a; border-radius: 20px; border: 0px; cursor: pointer; }
+.post-all .tag-list input { display: inline-block; padding: 3px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 23px; letter-spacing: 0.05em; color: #49a59a; border-radius: 15px; border: 0px; cursor: pointer; }
 
 .post-all .tag-list input:hover { color: goldenrod; }
 
@@ -48,9 +54,9 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 
 .mdl-card__actions, .mdl-card--border, .post-box { height: 100%; }
 
-.mdl-card__title, .mdl-card--expand { padding: 24px 0 20px 3px; width: auto; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mdl-card__title, .mdl-card--expand { padding: 24px 0 20px 3px; width: auto; display: block; white-space: nowrap; overflow: auto; text-overflow: ellipsis; }
 
-.mdl-card__title a, .mdl-card--expand a { color: black; font-family: 'Nanum Gothic', sans-serif; font-size: 15px; }
+.mdl-card__title a, .mdl-card--expand a { color: black; font-family: 'Nanum Gothic', sans-serif; font-size: 16px; font-weight: 700; }
 
 .mdl-card__title a:hover, .mdl-card--expand a:hover { color: var(--deepgreen); }
 
@@ -60,19 +66,19 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 
 .post-others { width: 70%; padding: 10px 0 10px 15px; display: flex; justify-content: space-between; flex-direction: column; }
 
-.post-others .time-desc-box { max-height: 60px; margin-bottom: 8px; }
+.post-others .time-desc-box { max-height: 60px; margin-bottom: 8px; font-family: 'Nanum Gothic', sans-serif; }
 
-.post-others .total-time-class { margin: 5px 0 0 0; color: var(--green); font-weight: 600; font-size: 14px; }
+.post-others .total-time-class { margin: 5px 0 0 0; color: var(--green); font-weight: 600; font-size: 13px; }
 
-.post-others .total-time-class span { color: gray; font-weight: 400; font-size: 12px; }
+.post-others .total-time-class span { color: gray; font-weight: 400; font-size: 13px; }
 
-.post-others .mdl-card__supporting-text { display: inline-block; white-space: pre-wrap; overflow: auto; text-overflow: ellipsis; width: 100%; height: 40px; padding: 0 0 5px 0; color: var(--green); font-weight: 600; font-size: 14px; }
+.post-others .mdl-card__supporting-text { display: inline-block; white-space: pre-wrap; overflow: hidden; width: 100%; height: 45px; padding: 0 0 5px 0; color: var(--green); font-weight: 600; font-size: 13px; }
 
-.post-others .mdl-card__supporting-text span { color: gray; font-weight: 400; font-size: 12px; height: 70px; }
+.post-others .mdl-card__supporting-text span { color: gray; font-weight: 400; font-size: 13px; height: 45px; text-overflow: ellipsis; }
 
-.post-others .mdl-tag { overflow: hidden; max-height: 58px; margin-bottom: 5px; }
+.post-others .mdl-tag { overflow: hidden; max-height: 29px; margin-top: 3px; margin-bottom: 5px; }
 
-.post-others .mdl-tag input { display: inline-block; padding: 2px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 19px; color: #49a59a; border-radius: 20px; border: 0px; cursor: pointer; }
+.post-others .mdl-tag input { display: inline-block; padding: 2px 5px; margin: 1px; background: rgba(97, 97, 97, 0.05); font-family: 'Uiyeun'; font-size: 20px; letter-spacing: 0.09em; color: #49a59a; border-radius: 15px; border: 0px; cursor: pointer; }
 
 .post-others .mdl-tag input:hover { color: goldenrod; }
 
