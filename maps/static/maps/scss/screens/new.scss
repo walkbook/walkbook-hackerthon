@@ -330,6 +330,7 @@
     font-size: 13px;
     line-height: 21px;
     letter-spacing: -0.035em;
+    margin-top: 30px;
 }
 
 .enroll-btn {
@@ -484,8 +485,10 @@ h4.title-tmi {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start;
     box-sizing: border-box;
-    margin: 0 0 0 10px;
+    margin: 0 0 30px 10px;
+
 }
 
 .image-input {
@@ -502,8 +505,9 @@ h4.title-tmi {
 }
 
 h4.title-image {
-    margin: 0 0 5px 8px;
-    text-align: start;
+    margin: 10px 0 10px 0;
+    display: flex;
+    align-items: flex-end;
 }
 
 input#file-upload-button {
@@ -511,14 +515,18 @@ input#file-upload-button {
 }
 
 .label-file{
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: rgb(182, 182, 182);
     color: white;
-    padding: 7px 10px;
+    margin-left: 10px;
     font-family: sans-serif;
     border-radius: 5px;
     cursor: pointer;
     font-weight: 600;
+    width: 80px;
+    height: 30px;
 }
 
 .label-file:hover {
@@ -527,10 +535,10 @@ input#file-upload-button {
 
 #preview {
     border-radius: 5px;
-    margin-top: 15px;
+    margin-bottom: 15px;
     z-index: 30;
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: auto;
     display: none;
 }
 
