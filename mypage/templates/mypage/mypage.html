@@ -20,14 +20,8 @@
                     <div class="profile-box">
                         <h1 class="workbook">📒&nbsp;&nbsp;{{user.profile.username}}의 워크북{%comment%}<img class="book-img" src="{% static 'maps/img/book.png' %}">{%endcomment%} </h1>
                         <div class="profile-box-container">
-                            {% if user.id == 2 %}
-                            <img class="profile-img" src="{% static 'mypage/img/yeji.png' %}">
-                            {% elif user.id == 3 %}
-                            <img class="profile-img" src="{% static 'mypage/img/nayoung.png' %}">
-                            {% elif user.id == 4 %}
-                            <img class="profile-img" src="{% static 'mypage/img/star.png' %}">
-                            {% elif user.id == 5 %}
-                            <img class="profile-img" src="{% static 'mypage/img/sewon.png' %}">
+                            {% if user.profile.avatar %}
+                            <img class="profile-img" src="{{ user.profile.avatar.url }}">
                             {% else %}
                             <img class="profile-img" src="{% static 'mypage/img/profileimg.png' %}">        
                             {% endif %}
@@ -81,25 +75,9 @@
                     <div id="registered-posts-box" class="registered-posts posts-box" style="display: flex;">
                         {% for walkroad in registeredWalkroads %}
                             <div class="registered-post">
-                                {% if walkroad.id == 1 %}
-                                <img class="registered-img" src="{% static 'maps/img/walkroad1.png' %}">
-                                {% elif walkroad.id == 2 %}
-                                <img class="registered-img" src="{% static 'maps/img/walkroad2.png' %}">
-                                {% elif walkroad.id == 3 %}
-                                <img class="registered-img" src="{% static 'maps/img/walkroad3.png' %}">
-                                {% elif walkroad.id == 4 %}
-                                <img class="registered-img" src="{% static 'maps/img/walkroad4.png' %}">
-                                {% elif walkroad.id == 5 %}
-                                <img class="registered-img" src="{% static 'maps/img/walkroad5.png' %}">
-                                {% elif walkroad.id == 6 %}
-                                <img class="registered-img" src="{% static 'maps/img/walkroad6.png' %}">
-                                {% elif walkroad.id == 7 %}
-                                <img class="registered-img" src="{% static 'maps/img/walkroad7.png' %}">
-                                {% elif walkroad.id == 8 %}
-                                <img class="registered-img" src="{% static 'maps/img/walkroad8.png' %}">
-                                {% elif walkroad.id == 9 %}
-                                <img class="registered-img" src="{% static 'maps/img/walkroad9.png' %}">
-                                {% else %}                        
+                                {% if walkroad.thumbnail %}
+                                <img class="registered-img" src="{{ walkroad.thumbnail.url }}">
+                                {% else %}
                                 <img class="registered-img" src="{% static 'mypage/img/pathex.png' %}">
                                 {% endif %}
                                 <div class="post-txt">
@@ -114,25 +92,9 @@
                     <div id="liked-posts-box" class="liked-posts posts-box">
                         {% for walkroad in likedWalkroads %}
                             <div class="liked-post hide">
-                                {% if walkroad.id == 1 %}
-                                <img class="liked-img" src="{% static 'maps/img/walkroad1.png' %}">
-                                {% elif walkroad.id == 2 %}
-                                <img class="liked-img" src="{% static 'maps/img/walkroad2.png' %}">
-                                {% elif walkroad.id == 3 %}
-                                <img class="liked-img" src="{% static 'maps/img/walkroad3.png' %}">
-                                {% elif walkroad.id == 4 %}
-                                <img class="liked-img" src="{% static 'maps/img/walkroad4.png' %}">
-                                {% elif walkroad.id == 5 %}
-                                <img class="liked-img" src="{% static 'maps/img/walkroad5.png' %}">
-                                {% elif walkroad.id == 6 %}
-                                <img class="liked-img" src="{% static 'maps/img/walkroad6.png' %}">
-                                {% elif walkroad.id == 7 %}
-                                <img class="liked-img" src="{% static 'maps/img/walkroad7.png' %}">
-                                {% elif walkroad.id == 8 %}
-                                <img class="liked-img" src="{% static 'maps/img/walkroad8.png' %}">
-                                {% elif walkroad.id == 9 %}
-                                <img class="liked-img" src="{% static 'maps/img/walkroad9.png' %}">
-                                {% else %}                        
+                                {% if walkroad.thumbnail %}
+                                <img class="liked-img" src="{{ walkroad.thumbnail.url }}">
+                                {% else %}
                                 <img class="liked-img" src="{% static 'mypage/img/pathex.png' %}">
                                 {% endif %}
                                 <div class="post-txt">

@@ -18,4 +18,6 @@
 
 label.profile-desc { display: flex; font-size: 12px; color: var(--yellow); justify-content: flex-start; align-items: flex-end; height: 10px; }
 
+input#profile-avatar { width: 380px; height: auto; border: none; background: #F3F1F2; border-radius: 10px; padding: 15px; }
+
 /*# sourceMappingURL=profile.css.map */

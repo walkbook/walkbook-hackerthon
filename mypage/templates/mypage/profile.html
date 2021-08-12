@@ -7,13 +7,30 @@
 
 
 {% block content %}
+<script src="{% static 'mypage/js/profile.js' %}"></script>
+
 <center>
 <div class="profile-container">
 <p> PROFILE </p>
 <img class="line-mid" src="{% static 'maps/img/line.png' %}">
 
-<form id="profile-form" method="POST" action="{%url 'mypage:profile' user.id %}">
+<form id="profile-form" method="POST" action="{%url 'mypage:profile' user.id %}" enctype="multipart/form-data">
     {% csrf_token %}
+    <div class="profile-avatar">
+        <h3 class="profile-avatar">
+            <label class="label-avatar" for="avatar">
+                프로필 사진
+                <input type="file" id="file" name="avatar" accept="image/*" hidden>
+                <label class="label-file label-profile" for="file">choose file</label>
+            </label>
+        </h3>
+        
+            {% if user.profile.avatar %}
+                <img class="preview" src="{{ user.profile.avatar.url }}" >
+            {% endif %}
+            
+        
+    </div>
     <div class="profile-feature">
         <h3 class="profile-feature">
           <label for="feature">선호하는 산책로 특징</label>
@@ -38,4 +55,20 @@
 </form>
 </div>
 <center>
+
+<script>
+    const reader = new FileReader();
+
+    reader.onload = (readerEvent) => {
+        document.querySelector(".preview").setAttribute("src", readerEvent.target.result);
+        //파일을 읽는 이벤트가 발생하면 .preview의 src 속성을 readerEvent의 결과물로 대체
+    };
+
+    document.querySelector("#file").addEventListener("change", (changeEvent) => {
+
+        const imgFile = changeEvent.target.files[0];
+        reader.readAsDataURL(imgFile);
+        document.querySelector("#preview").style.display = "block";
+    })
+</script>
 {% endblock content %}

@@ -1,3 +1,5 @@
+import os
+from uuid import uuid4
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -8,11 +10,17 @@ class Tag(models.Model):
     def __str__(self):
         return self.content
 
-class MapImage(models.Model):
-    url = models.TextField(blank=True)
-    created_at = models.DateTimeField(default=timezone.now)
-
 class Walkroad(models.Model):
+    def date_upload_to(instance, filename):
+      ymd_path = timezone.now().strftime('%Y/%m/%d') 
+      uuid_name = uuid4().hex
+      extension = os.path.splitext(filename)[-1].lower()
+      return '/'.join([
+        'walkroad/thumbnail',
+        ymd_path,
+        uuid_name + extension,
+      ])
+
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.TextField(max_length=100, blank=True)
     description = models.TextField(blank=True)
@@ -25,17 +33,17 @@ class Walkroad(models.Model):
     infowindow = models.JSONField(default=dict)
     like_users = models.ManyToManyField(User, blank=True, related_name='like_walkroads', through='Like')
     tags = models.ManyToManyField(Tag, blank=True, related_name='walkroads')
-    images = models.ManyToManyField(MapImage, blank=True, related_name='walkroads')
+    thumbnail = models.ImageField(upload_to=date_upload_to, null=True)
 
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(blank=True, null=True)
-    
+
     def update_date(self):
         self.update_at = timezone.now()
         self.save()
 
     def __str__(self):
-            return f'walkroad id={self.id}, user_id={self.author.id}, username={self.author.profile.username}, title={self.title}, description={self.description}, tmi={self.tmi}'
+            return f'walkroad id={self.id}, user_id={self.author.id}, title={self.title}'
 
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
