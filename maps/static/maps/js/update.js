@@ -8,7 +8,7 @@ const getTagElement = (tagContent) => {
     newTagElement.setAttribute('type', 'text');
     newTagElement.setAttribute('name', 'tags');
     newTagElement.setAttribute('class', 'tag-created');
-    newTagElement.setAttribute('style', `width: ${(tagContent.length+1)*13}px`);
+    newTagElement.setAttribute('style', `width: ${(tagContent.length+1)*15}px`);
     newTagElement.setAttribute('onclick', 'removeTag(this)');
     newTagElement.setAttribute('readonly', 'True');
     newTagElement.setAttribute('value', `${tagContent}`);
@@ -38,7 +38,7 @@ tagInputElement.onkeydown = (e) => {
 
 //태그 생성
 createTag = async () => {
-    tagList = document.querySelectorAll('input[name=tags]');
+    
     for (var i = 0; i < tagList.length; i++) {
         let tagData = new FormData();
         tagData.append("content", tagList[i].value);
@@ -46,5 +46,8 @@ createTag = async () => {
     }
 }
 
-element = document.getElementById('tag-created-input');
-element.setAttribute('style', `width: ${(element.length+1)*13}px`);
+tagCreatedList = document.querySelectorAll('.tag-created');
+for(var i = 0; i < tagCreatedList.length; i++) {
+    var tagCreated = tagCreatedList.item(i);
+    tagCreated.style.width = `${(tagCreated.value.length+1)*15}px`;
+}
