@@ -79,7 +79,7 @@
     background: #FFFFFF;
     border: 0.5px solid #ECECEC;
     box-sizing: border-box;
-    padding: 30px 20px 30px 20px;
+    padding: 10px 20px 30px 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
@@ -100,6 +100,23 @@
     height: auto;
 }
 
+.title-left {
+    padding: 20px 8px 0 0;
+}
+
+.title-right {
+    padding-top: 20px;
+}
+
+.thumnail-imgbox {
+    margin-bottom: 20px;
+    padding-top: 15px;
+    
+    img {
+        border-radius: 5px;
+    }
+}
+
 .enroll-title {
     color: var(--yellow);
     font-family: 'Nanum Gothic', sans-serif;
@@ -107,13 +124,13 @@
     font-weight: 600;
     text-align: start;
     margin: 0 0 15px 10px;
-    width: 340px;
+    width: 230px;
     height: auto;
     white-space: pre-wrap;
 }
 
 .enroll-desc {
-    width: 340px;
+    width: 230px;
     height: auto;
     font-size: 16px !important;
     color: #8b8b8b;
@@ -409,3 +426,59 @@ a.mypage:hover {
     color: #F44337;
     font-size: 18px !important;
 }
+
+
+// 모달
+ /* Modal (배경) */
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 15; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    animation: fadein 0.5s;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #ffffff00;
+    margin: 8% auto; 
+    padding: 20px;
+    width: 60%;  
+    border-radius: 5px;                       
+}
+/* The Close Button */
+.close {
+    color: rgb(255, 255, 255);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: var(--deepgreen);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-img {
+    margin-left: 2%;
+    border-radius: 5px;
+}
+
+#myBtn {
+    border: none;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+
+    img:hover {
+        transform: scale(1.02);
+        transition: transform 0.5s ease 0s;
+    }
+}
+

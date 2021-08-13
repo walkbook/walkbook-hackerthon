@@ -1,3 +1,4 @@
+from os import walk
 from django.http.response import JsonResponse
 from maps.models import Walkroad, Like, Comment, CommentLike, Tag
 from django.shortcuts import redirect, render
@@ -109,7 +110,7 @@ def new(request):
             distance = distance,
             time = time,
             path = path,
-            infowindow = infowindow
+            infowindow = infowindow,
             )
 
         tags = request.POST.getlist('tags')
@@ -117,6 +118,12 @@ def new(request):
             newTag = Tag.objects.get(id = tag)
             walkroad.tags.add(newTag)
         deleteUnusedTag()
+        images = request.FILES.getlist('images')
+
+        if len(images) > 0:
+            walkroad.thumbnail = images[0]
+            walkroad.save()
+
         return JsonResponse({
             'id': walkroad.id
         })
@@ -148,6 +155,13 @@ def update(request, id):
             walkroad.first().tags.add(newTag)
 
         deleteUnusedTag()
+
+        thumbnail = request.FILES['thumbnail']
+        if thumbnail:
+            walkroad = Walkroad.objects.get(id=id)
+            walkroad.thumbnail = thumbnail
+            walkroad.save()
+            
         return redirect('maps:show', id)
         
     walkroad = Walkroad.objects.get(id=id)

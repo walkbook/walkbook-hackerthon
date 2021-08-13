@@ -127,6 +127,17 @@
 							<div id = "tag-list"></div>
 						</div>
 					</div>
+                    <form>
+                        <div class="image-box">
+                            <h4 class="title-image">
+								썸네일
+								<input type="file" name="image" id="file" accept="image/*" hidden onchange="readURL(this);">
+								<label class="label-file" for="file">choose file</label>
+							</h4>
+							<img src="" id="preview" />
+							
+                        </div>
+                    </form>
 					<div class="enroll-btn">
 						<button type="submit" id="save-walkroad-button">등록하기</button> 
 					</div>
@@ -162,6 +173,21 @@
         let currentLocationInfowindow;
 
 		const setCenterByCurrentLocation = true;
+    </script>
+	<script>
+        const reader = new FileReader();
+
+        reader.onload = (readerEvent) => {
+            document.querySelector("#preview").setAttribute("src", readerEvent.target.result);
+            //파일을 읽는 이벤트가 발생하면 #preview의 src 속성을 readerEvent의 결과물로 대체
+        };
+
+        document.querySelector("#file").addEventListener("change", (changeEvent) => {
+
+            const imgFile = changeEvent.target.files[0];
+            reader.readAsDataURL(imgFile);
+			document.querySelector("#preview").style.display = "block";
+        })
     </script>
     <script src="{% static 'maps/js/initial.js' %}"></script>
     <script src="{% static 'maps/js/new.js' %}"></script>

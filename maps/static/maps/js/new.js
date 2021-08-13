@@ -23,7 +23,7 @@ const drawingOptions = { // Drawing Manager를 생성할 때 사용할 옵션입
         removable: true, // 마커를 삭제 할 수 있도록 x 버튼이 표시됩니다  
         markerImages: [
             {
-                src: '/static/maps/img/draw_marker.png',
+                src: 'https://walkbook.s3.ap-northeast-2.amazonaws.com/static/maps/img/draw_marker.png',
                 width: 30,
                 height: 50,
                 shape: 'rect',
@@ -261,11 +261,12 @@ saveWalkroadBtn.addEventListener('click', async () => {
     const path = manager.getData();
     const infowindow = [];
 
-    const title = document.getElementById('title-input');
-    const description = document.getElementById('description-input');
-    const start = document.getElementById('start-input');
-    const finish = document.getElementById('finish-input');
-    const tmi = document.getElementById('tmi-input');
+    const titleInput = document.getElementById('title-input');
+    const descriptionInput = document.getElementById('description-input');
+    const startInput = document.getElementById('start-input');
+    const finishInput = document.getElementById('finish-input');
+    const tmiInput = document.getElementById('tmi-input');
+    const imageInput = document.getElementById('image-input');
 
     for (let i = 0; i < mappingId; i++) {
         if (mappingData[i].marker.getMap()) {
@@ -279,15 +280,16 @@ saveWalkroadBtn.addEventListener('click', async () => {
     }
 
     let data = new FormData();
-    data.append("title", title.value);
-    data.append("description", description.value);
-    data.append("start", start.value);
-    data.append("finish", finish.value);
-    data.append("tmi", tmi.value);
+    data.append("title", titleInput.value);
+    data.append("description", descriptionInput.value);
+    data.append("start", startInput.value);
+    data.append("finish", finishInput.value);
+    data.append("tmi", tmiInput.value);
     data.append("path", JSON.stringify(path));
     data.append("infowindow", JSON.stringify(infowindow));
     data.append("distance", totalDistance);
     data.append("time", totalTime);
+    data.append(`images`, imageInput.files[0]);
 
     //태그 생성
     tagList = document.querySelectorAll('input[name=tags]');

@@ -6,7 +6,7 @@
 <center>
     <div class="update_wrap">
         <p class="enroll-announce">🌱 산책로 정보 수정</p>
-        <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}" onsubmit="createTag()">
+        <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}" onsubmit="createTag()" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="input-box">
                 <div class="input-box_wrap">
@@ -49,6 +49,20 @@
                             </div>
 						</div>
 					</div>
+                    <div class="thumbnail-box">
+                        <h4 class="title-thumbnail">
+                            썸네일
+                            <input type="file" id="file" name="thumbnail" accept="image/*" hidden>
+                            <label class="label-file" for="file">choose file</label>
+                        </h4>
+                        
+                            {% if walkroad.thumbnail %}
+                                <img class="preview" src="{{ walkroad.thumbnail.url }}" width="300">
+                            {% else %}
+                                <img class="preview" width="300">
+                            {% endif %}
+                        
+                    </div>
                     <div class="enroll-btn">
                         <button type="submit" id="save-walkroad-button">수정하기</button> 
                     </div>
@@ -58,5 +72,19 @@
     </div>
 </center>
 <script src="{% static 'maps/js/update.js' %}"></script>
+<script>
+    const reader = new FileReader();
+
+    reader.onload = (readerEvent) => {
+        document.querySelector(".preview").setAttribute("src", readerEvent.target.result);
+    };
+
+    document.querySelector("#file").addEventListener("change", (changeEvent) => {
+
+        const imgFile = changeEvent.target.files[0];
+        reader.readAsDataURL(imgFile);
+        document.querySelector(".preview").style.display = "block";
+    })
+</script>
 {% endblock content %}
 

@@ -12,3 +12,40 @@
     font-weight: 600;
 }
 
+.title-thumbnail {
+    display: flex;
+    margin: 11px 0 10px 7px !important;
+    text-align: start;
+}
+
+.thumbnail-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+.image-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 485px;
+    height: auto;
+    border: none;
+    background: #F3F1F2;
+    border-radius: 10px;
+    padding: 20px 15px;
+
+    img {
+        width: 300px;
+        margin-top: 15px;
+        border-radius: 5px;
+        
+    }
+}
+
+.preview {
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+}
