@@ -6,7 +6,7 @@
 <center>
     <div class="update_wrap">
         <p class="enroll-announce">🌱 산책로 정보 수정</p>
-        <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}" onsubmit="createTag()" enctype="multipart/form-data">
+        <form id="update-form" method="POST" action="{%url 'maps:update' id=walkroad.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="input-box">
                 <div class="input-box_wrap">
@@ -64,7 +64,7 @@
                         
                     </div>
                     <div class="enroll-btn">
-                        <button type="submit" id="save-walkroad-button">수정하기</button> 
+                        <button onclick="createTag()" id="save-walkroad-button">수정하기</button> 
                     </div>
                 </div>
             </div>
@@ -81,6 +81,8 @@
             tagData.append("content", tagList[i].value);
             let response = await axios.post(`/maps/tag/`, tagData);
         }
+        updateForm = document.getElementById('update-form');
+        updateForm.submit();
     }
     
     const reader = new FileReader();
