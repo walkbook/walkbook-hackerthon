@@ -224,7 +224,7 @@ const getTagElement = (tagContent) => {
     newTagElement.setAttribute('type', 'text');
     newTagElement.setAttribute('name', 'tags');
     newTagElement.setAttribute('class', 'tag-created');
-    //newTagElement.setAttribute('size', `${tagContent}.val().length`);
+    newTagElement.setAttribute('style', `width: ${(tagContent.length+1)*13}px`);
     newTagElement.setAttribute('onclick', 'removeTag(this)');
     newTagElement.setAttribute('readonly', 'True');
     newTagElement.setAttribute('value', `${tagContent}`);

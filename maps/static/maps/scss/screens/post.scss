@@ -1,26 +1,6 @@
 @font-face {
-    font-family: 'Uiyeun';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'YanoljaYacheR';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/YanoljaYacheR.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'IM_Hyemin-Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Binggrae';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae.woff') format('woff');
+    font-family: 'SlowSlow';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_10@1.0/SlowSlow.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -71,7 +51,7 @@
             padding: 3px 5px;
             margin: 2px;
             background: rgba(97, 97, 97, 0.05);
-            font-family: 'Uiyeun';
+            font-family: 'SlowSlow';
             font-size: 23px;
             letter-spacing: 0.05em;
             color: #49a59a;
@@ -302,16 +282,33 @@ select {
 // 포스트 오른쪽 박스
 .post-others {
     width: 70%;
-    padding: 10px 0 10px 15px;
+    padding: 5px 0 10px 15px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 
+    .time-desc-box-tag {
+        max-height: 125px;
+        overflow: scroll;
+    }
+    .time-desc-box-tag::-webkit-scrollbar {
+        width: 3px;
+        height: 0px;
+      }
+    .time-desc-box-tag::-webkit-scrollbar-thumb {
+        background-color:gainsboro;
+        border-radius: 10px;
+      }
+    .time-desc-box-tag::-webkit-scrollbar-track {
+        background-color:transparent;
+        border-radius: 10px;
+      }
+      .time-desc-box-tag::-webkit-scrollbar-button {
+        display: none;
+      }
     .time-desc-box {
-        max-height: 60px;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         font-family: 'Nanum Gothic', sans-serif;
-        
     }
 
     .total-time-class {
@@ -330,28 +327,24 @@ select {
     .mdl-card__supporting-text {
         display: inline-block;
         white-space: pre-wrap;
-        overflow: hidden;
-        
         width: 100%;
-        height: 45px;
+        height: auto;
         padding: 0 0 5px 0;
         color: var(--green);
         font-weight: 600;
         font-size: 13px;
+        overflow: visible;
 
         span {
+            max-height: 30px;
             color: gray;
             font-weight: 400;
             font-size: 13px;
-            height: 45px;
-            text-overflow: ellipsis;
         }
     }
 
-    .mdl-tag {
-        overflow: hidden;
-        max-height: 29px; //폰트 없애면 44로
-        margin-top: 3px;
+    .mdl-tag { 
+        margin-top: 5px;
         margin-bottom: 5px;
 
         input {
@@ -359,8 +352,8 @@ select {
             padding: 2px 5px;
             margin: 1px;
             background: rgba(97, 97, 97, 0.05);
-            font-family: 'Uiyeun';
-            font-size: 20px;
+            font-family: 'SlowSlow';
+            font-size: 16px;
             letter-spacing: 0.09em;
             color: #49a59a;
             border-radius: 15px;

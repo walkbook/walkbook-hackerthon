@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@font-face {
+    font-family: 'SlowSlow';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_10@1.0/SlowSlow.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .body-layout {
     font-family: 'Nanum Gothic', sans-serif;
@@ -321,10 +327,24 @@
     margin-bottom: 60px;
 
     .tags-box{
-        display: flex;
 
         #tag-list{
+            max-width: 1000px;
+            flex-wrap: wrap;
             display: flex;
+            justify-content: flex-start;
+        }
+
+        .tag-created {
+            width: auto;
+            font-family: 'SlowSlow';
+            font-size: 20px;
+            letter-spacing: 0.09em;
+            color: #49a59a;
+            height: 23px;
+            border: none;
+            margin: 0px;
+            padding: 0px;
         }
     }
 }

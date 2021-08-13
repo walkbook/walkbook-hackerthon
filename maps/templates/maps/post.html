@@ -72,6 +72,7 @@
       <div class="post-img"><img class="post-img-basic" src="{% static 'maps/img/image-gallery.png' %}"></div>
       {% endif %}
       <div class="post-others">
+      <div class="time-desc-box-tag">
         <div class="time-desc-box">
           <p id="total-time" class="total-time-class">소요 시간 <span>: {{ walkroad.time }}분</span></p>
           <div class="mdl-card__supporting-text">소개 <span>: {{ walkroad.description}}</span></div>
@@ -82,6 +83,7 @@
             <input name="tag" type="submit" value="{{ tag }}"/>
           {% endfor %}
           </form>
+        </div>
         </div>
         <div class="more-like-box">       
           <div class="like-container">
