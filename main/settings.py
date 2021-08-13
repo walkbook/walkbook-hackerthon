@@ -160,9 +160,9 @@ DEFAULT_FILE_STORAGE = 'main.storages.MediaStorage'
 MEDIAFILES_LOCATION = 'media'
 
 ############## LOCAL static 사용시 주석 해제 #################
-if DEBUG:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# if DEBUG:
+#     STATIC_URL = '/static/'
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 ##########################################################
 
 
