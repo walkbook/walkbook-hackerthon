@@ -73,6 +73,16 @@
 </center>
 <script src="{% static 'maps/js/update.js' %}"></script>
 <script>
+    //태그 생성
+    createTag = async () => {
+        tagList = document.querySelectorAll('input[name=tags]');    
+        for (var i = 0; i < tagList.length; i++) {
+            let tagData = new FormData();
+            tagData.append("content", tagList[i].value);
+            let response = await axios.post(`/maps/tag/`, tagData);
+        }
+    }
+    
     const reader = new FileReader();
 
     reader.onload = (readerEvent) => {

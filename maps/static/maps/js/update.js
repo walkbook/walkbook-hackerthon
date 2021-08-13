@@ -36,16 +36,6 @@ tagInputElement.onkeydown = (e) => {
     }
 }
 
-//태그 생성
-createTag = async () => {
-    tagList = document.querySelectorAll('input[name=tags]');    
-    for (var i = 0; i < tagList.length; i++) {
-        let tagData = new FormData();
-        tagData.append("content", tagList[i].value);
-        let response = await axios.post(`/maps/tag/`, tagData);
-    }
-}
-
 tagCreatedList = document.querySelectorAll('.tag-created');
 for(var i = 0; i < tagCreatedList.length; i++) {
     var tagCreated = tagCreatedList.item(i);
