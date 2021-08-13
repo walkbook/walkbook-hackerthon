@@ -2,8 +2,7 @@
 
 {% load static %}
 {% block style %}
-{% load sass_tags %}
-<link rel="stylesheet" type="text/css" href="{% sass_src 'accounts/scss/checkpw.scss' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/scss/checkpw.css' %}"/>
 {% endblock style %}
 {% block content %}
 <center><div class="checkpw-container">

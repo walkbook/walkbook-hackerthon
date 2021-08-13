@@ -2,8 +2,7 @@
 
 {% load static %}
 {% block style %}
-{% load sass_tags%}
-<link rel="stylesheet" type="text/css" href="{% sass_src 'accounts/scss/signup.scss' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/scss/signup.css' %}"/>
 {% endblock style %}
 {% block content %}
 <center>

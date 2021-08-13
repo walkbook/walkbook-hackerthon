@@ -4,29 +4,28 @@
     <meta charset="utf-8"/>
     <title>WalkBook</title>
     {% load static %}
-    {% load sass_tags %}
     {% comment %} 파비콘 {% endcomment %}
-    <link rel="icon" type="image/x-icon" href="{% sass_src 'maps/img/fav/favicon.ico' %}">
-    <link rel="shortcut icon" type="image/x-icon" href="{% sass_src 'maps/img/fav/favicon.ico' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'maps/img/fav/favicon.ico' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'maps/img/fav/favicon.ico' %}">
     {% comment %} 기본 {% endcomment %}
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/style.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/reset.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/variables.scss' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/reset.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/variables.css' %}"/>
     {% comment %} 컴포넌트 {% endcomment %}
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/components/nav_bar/nav_bar.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/components/components.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/components/line/line-short.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/components/line/line-mid.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/components/line/line-long.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/components/input/input-short.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/components/input/input-mid.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/components/input/input-long.scss' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/components/nav_bar/nav_bar.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/components/components.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/components/line/line-short.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/components/line/line-mid.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/components/line/line-long.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/components/input/input-short.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/components/input/input-mid.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/components/input/input-long.css' %}"/>
     {% comment %} 스크린 {% endcomment %}
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/screens/index.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/screens/map.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/screens/new.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/screens/show.scss' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% sass_src 'maps/scss/screens/update.scss' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/screens/index.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/screens/map.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/screens/new.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/screens/show.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'maps/scss/screens/update.css' %}"/>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-deep_purple.min.css" />

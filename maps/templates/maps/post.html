@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block content %} 
-{% load sass_tags %} {% block style %}
+{% block style %}
 <link
   rel="stylesheet"
   type="text/css"
-  href="{% sass_src 'maps/scss/screens/post.scss' %}"
+  href="{% static 'maps/scss/screens/post.css' %}"
 />
 {% endblock style %}
 
