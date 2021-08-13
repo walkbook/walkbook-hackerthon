@@ -163,3 +163,30 @@
 //     justify-content: flex-start;
 //     height: 20px;
 // }
+
+.label-signup{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: rgb(182, 182, 182);
+    color: white !important;
+    margin-left: 10px;
+    font-family: sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 80px !important;
+    height: 30px !important;    
+    text-align: center;
+}
+
+.label-signup:hover {
+    background-color: var(--deepgreen);
+}
+.signup-profile {
+    margin-top: 40px;
+}
+
+.signup_title label {
+    align-items: center;
+}
