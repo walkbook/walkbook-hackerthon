@@ -124,8 +124,8 @@
                         <div class="image-box">
                             <h4 class="title-image">
 								썸네일
-								<input type="file" name="image" id="file" accept="image/*" hidden onchange="readURL(this);">
-								<label class="label-file" for="file">choose file</label>
+								<input type="file" name="image" class="file" id="image-input" accept="image/*" hidden>
+								<label class="label-file" for="image-input">choose file</label>
 							</h4>
 							<img src="" id="preview" />
 							
@@ -175,7 +175,7 @@
             //파일을 읽는 이벤트가 발생하면 #preview의 src 속성을 readerEvent의 결과물로 대체
         };
 
-        document.querySelector("#file").addEventListener("change", (changeEvent) => {
+        document.querySelector(".file").addEventListener("change", (changeEvent) => {
 
             const imgFile = changeEvent.target.files[0];
             reader.readAsDataURL(imgFile);
