@@ -87,10 +87,16 @@
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       </div>
       <div class="signup">
-        <h3 class="signup_title">
-            <label for="avatar">프로필 사진</label>
+        <h3 class="signup_title signup-profile">
+            <label for="avatar">
+              프로필 사진
+              <input type="file" name="avatar" accept="image/*" hidden id="image-input" class="file">
+              <label class="label-signup" for="image-input">choose file</label>
+            </label>
+            <img src="" id="preview" />
+            
         </h3>
-        <input type="file" name="avatar" accept="image/*">
+        
       </div>
       <div>
         <input class="signupbtn" type="submit" value="SIGN UP"/>
@@ -98,6 +104,21 @@
     </div>
   </form>
   <script type="module" src="{% static 'accounts/js/signup.js' %}"></script>
+  <script>
+    const reader = new FileReader();
+
+    reader.onload = (readerEvent) => {
+        document.querySelector("#preview").setAttribute("src", readerEvent.target.result);
+        //파일을 읽는 이벤트가 발생하면 #preview의 src 속성을 readerEvent의 결과물로 대체
+    };
+
+    document.querySelector(".file").addEventListener("change", (changeEvent) => {
+
+      const imgFile = changeEvent.target.files[0];
+      reader.readAsDataURL(imgFile);
+      document.querySelector("#preview").style.display = "block";
+    })
+  </script>
 </div>
 </center>
 {% endblock content %}

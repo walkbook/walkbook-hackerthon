@@ -361,6 +361,10 @@
     font-size: 13px;
     line-height: 21px;
     letter-spacing: -0.035em;
+
+}
+#save-walkroad-button:hover {
+    cursor: pointer;
 }
 
 .enroll-btn {
@@ -510,5 +514,54 @@ h4.title-tag {
             
         }
     }
+}
+
+
+.image-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+    margin: 0 0 30px 10px;
+
+}
+
+h4.title-image {
+    margin: 10px 0 10px 0;
+    display: flex;
+    align-items: flex-end;
+}
+
+input#file-upload-button {
+    border: none;
+}
+
+.label-file{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(182, 182, 182);
+    color: white;
+    margin-left: 10px;
+    font-family: sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 80px;
+    height: 30px;
+}
+
+.label-file:hover {
+    background-color: var(--deepgreen);
+}
+
+#preview {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    z-index: 30;
+    width: 300px;
+    height: auto;
+    display: none;
 }
 
