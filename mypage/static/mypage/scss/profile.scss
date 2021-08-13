@@ -107,15 +107,6 @@ h3.profile-avatar {
     }
 }
 
-.label-profile {
-    color: white !important;
-    text-align: center;
-    width: 80px !important;
-    height: 20px !important;
-    display: flex;
-    justify-content: center;
-    align-items: center !important;
-}
 
 .label-avatar {
     display: flex;
@@ -124,4 +115,31 @@ h3.profile-avatar {
 
 .preview {
     margin-left: -80px;
+}
+
+.label-profile{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: rgb(182, 182, 182);
+    color: white !important;
+    margin-left: 10px;
+    font-family: sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 80px !important;
+    height: 20px !important;    
+    text-align: center;
+}
+
+.label-profile:hover {
+    background-color: var(--deepgreen);
+}
+.profile-profile {
+    margin-top: 40px;
+}
+
+.profile-container label {
+    align-items: center;
 }

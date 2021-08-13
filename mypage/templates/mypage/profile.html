@@ -17,11 +17,11 @@
 <form id="profile-form" method="POST" action="{%url 'mypage:profile' user.id %}" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="profile-avatar">
-        <h3 class="profile-avatar">
+        <h3 class="profile-avatar profile-profile">
             <label class="label-avatar" for="avatar">
                 프로필 사진
                 <input type="file" id="file" name="avatar" accept="image/*" hidden>
-                <label class="label-file label-profile" for="file">choose file</label>
+                <label class="label-profile" for="file">choose file</label>
             </label>
         </h3>
         
