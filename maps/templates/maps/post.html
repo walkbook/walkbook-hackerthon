@@ -10,16 +10,24 @@
 <div class="post-all">
   <form action="{%url 'maps:post' %}" method="GET">
     <center>
-      <div class="search-post">
-        <select class="type-select" name="type">
-            <option value="all">전체</option>
-            <option value="title">제목</option>
-            <option value="titlecontent">제목+내용</option>
-        </select>
-        <input name="keyword" id="keyword" type="text" />
-        <button name="search-btn" id="search-btn" type="submit"><img class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
-    </div>
-    </center>
+      <div class="search-post-tags">
+        <div class="search-post">
+          <select class="type-select" name="type">
+              <option value="all">전체</option>
+              <option value="title">제목</option>
+              <option value="titlecontent">제목+내용</option>
+          </select>
+            <input name="keyword" id="keyword" type="text" />
+            <button name="search-btn" id="search-btn" type="submit"><img class="searchimg" src="{% static 'maps/img/search.png' %}"></button>
+        </div>
+        <div class="tag-list">
+        {% for tag in tags %}
+          <input name="tag" type="submit" value="{{ tag }}"/>
+        {% endfor %}
+        </div>
+      </div>
+      </center>
+    
     <select class="sort-post" name="sort" onchange="form.submit();">
       <option value="like">좋아요순</option>
       <option value="date">최신순</option>
@@ -48,9 +56,18 @@
       <div class="post-img"><img class="post-img-basic" src="{% static 'maps/img/image-gallery.png' %}"></div>
       {% endif %}
       <div class="post-others">
+      <div class="time-desc-box-tag">
         <div class="time-desc-box">
           <p id="total-time" class="total-time-class">소요 시간 <span>: {{ walkroad.time }}분</span></p>
           <div class="mdl-card__supporting-text">소개 <span>: {{ walkroad.description}}</span></div>
+        </div>
+        <div class="mdl-tag">
+          <form action="{%url 'maps:post' %}" method="GET">
+          {% for tag in walkroad.tags.all %}
+            <input name="tag" type="submit" value="{{ tag }}"/>
+          {% endfor %}
+          </form>
+        </div>
         </div>
         <div class="more-like-box">       
           <div class="like-container">
@@ -96,7 +113,8 @@
   var type = "";
   var keyword = "";
   var sort = "";
-
+  var tag = "";
+  
   if (window.location.search != "") {
     if (window.location.search.indexOf("type") != -1)
       type = window.location.search
@@ -115,7 +133,13 @@
         .substring(window.location.search.indexOf("sort"))
         .split("=")[1]
         .split("&")[0];
-
+    if (window.location.search.indexOf("tag") != -1)
+      tag = decodeURI(
+        window.location.search
+        .substring(window.location.search.indexOf("tag"))
+        .split("=")[1]
+        .split("&")[0]
+      );
     const option = document.getElementsByTagName("option");
     for (var i = 0; i < option.length; i++) {
       if (option[i].value === type || option[i].value === sort) {
@@ -124,6 +148,15 @@
     }
     const input = document.getElementById("keyword");
     input.value = keyword;
+
+    const tags = document.getElementsByName("tag");
+    console.log(tag);
+    for (var i = 0; i < tags.length; i++) {
+      if (tags[i].value === tag) {
+        console.log(tags[i]);
+        tags[i].setAttribute("style", "color: #Daa520;");
+      }
+    }
   }
 </script>
 <script src="{% static 'maps/js/post.js' %}"></script>

@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'SlowSlow';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_10@1.0/SlowSlow.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 .post-all {
     padding-top: 110px;
 
@@ -12,7 +18,6 @@
         select::-ms-expand {
             display: none;
         }
-        
 
         #keyword {
             width: 500px;
@@ -36,23 +41,49 @@
         }
     }
 
-    .sort-post {
-        position: relative;
-        left: 80%;
-        margin-top: 30px;
-        width: 90px;
-        height: 30px;
-        border: 0.3px solid #dddddd;
-        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
-        background: #fafafa;
-        font-size: 12px;
-        font-weight: 600;
-        font-family: 'Nanum Gothic', sans-serif;
-        text-align-last: center;
-        text-align: center;
-        -ms-text-align-last: center;
-        -moz-text-align-last: center;
+    .tag-list {
+        margin-top: 15px;
+        max-width: 500px;
+        overflow: hidden;
+
+        input {
+            display: inline-block;
+            padding: 3px 5px;
+            margin: 2px;
+            background: rgba(97, 97, 97, 0.05);
+            font-family: 'SlowSlow';
+            font-size: 23px;
+            letter-spacing: 0.05em;
+            color: #49a59a;
+            border-radius: 15px;
+            border: 0px;
+            cursor: pointer;
+        }
+        input:hover {
+            color: goldenrod;
+        }
     }
+
+
+
+
+.sort-post {
+    position: relative;
+    left: 80%;
+    margin-top: 30px;
+    width: 90px;
+    height: 30px;
+    border: 0.3px solid #dddddd;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+    background: #fafafa;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align-last: center;
+    text-align: center;
+    -ms-text-align-last: center;
+    -moz-text-align-last: center;
+}
 }
 
 select.type-select {
@@ -120,18 +151,19 @@ select:focus {
             }
         }
 
-        
+
     }
 }
 
 .mdl-card__title-text {
-            font-family: Montserrat;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 20px;
-            letter-spacing: -0.015em;
-            color: #000000 !important;
-        }
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: -0.015em;
+    color: #000000 !important;
+}
+
 select {
     -webkit-appearance: button;
     -moz-appearance: button;
@@ -197,7 +229,7 @@ select {
         width: 30%;
         height: 23%;
     }
-    
+
     .temp {
         width: 100%;
         height: 100%;
@@ -214,20 +246,21 @@ select {
 .mdl-card--expand {
     padding: 24px 0 20px 3px;
     width: auto;
-    display: block; 
-    white-space: nowrap; 
-    overflow: hidden; 
+    display: block;
+    white-space: nowrap;
+    overflow: auto;
     text-overflow: ellipsis;
 
     a {
         color: black;
         font-family: 'Nanum Gothic', sans-serif;
-        font-size: 15px;
+        font-size: 16px;
+        font-weight: 700;
     }
-    
+
     a:hover {
         color: var(--deepgreen);
-        
+
     }
 }
 
@@ -236,6 +269,7 @@ select {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
     span {
         font-size: 12px;
         color: #B8B8B8;
@@ -248,41 +282,87 @@ select {
 // 포스트 오른쪽 박스
 .post-others {
     width: 70%;
-    padding: 10px 0 10px 15px;
+    padding: 5px 0 10px 15px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+
+    .time-desc-box-tag {
+        max-height: 125px;
+        overflow: scroll;
+    }
+    .time-desc-box-tag::-webkit-scrollbar {
+        width: 3px;
+        height: 0px;
+      }
+    .time-desc-box-tag::-webkit-scrollbar-thumb {
+        background-color:gainsboro;
+        border-radius: 10px;
+      }
+    .time-desc-box-tag::-webkit-scrollbar-track {
+        background-color:transparent;
+        border-radius: 10px;
+      }
+      .time-desc-box-tag::-webkit-scrollbar-button {
+        display: none;
+      }
+    .time-desc-box {
+        margin-bottom: 10px;
+        font-family: 'Nanum Gothic', sans-serif;
+    }
 
     .total-time-class {
         margin: 5px 0 0 0;
         color: var(--green);
         font-weight: 600;
-        font-size: 14px;
-
+        font-size: 13px;
+        
         span {
             color: gray;
             font-weight: 400;
-            font-size: 12px;
+            font-size: 13px;
         }
     }
 
     .mdl-card__supporting-text {
-        display: inline-block; 
+        display: inline-block;
         white-space: pre-wrap;
-        overflow: auto; 
-        text-overflow: ellipsis;
         width: 100%;
-        height: 80px;
+        height: auto;
         padding: 0 0 5px 0;
         color: var(--green);
         font-weight: 600;
-        font-size: 14px;
+        font-size: 13px;
+        overflow: visible;
 
         span {
+            max-height: 30px;
             color: gray;
             font-weight: 400;
-            font-size: 12px;
-            height: 70px;
+            font-size: 13px;
+        }
+    }
+
+    .mdl-tag { 
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        input {
+            display: inline-block;
+            padding: 2px 5px;
+            margin: 1px;
+            background: rgba(97, 97, 97, 0.05);
+            font-family: 'SlowSlow';
+            font-size: 16px;
+            letter-spacing: 0.09em;
+            color: #49a59a;
+            border-radius: 15px;
+            border: 0px;
+            cursor: pointer;
+        }
+
+        input:hover {
+            color: goldenrod;
         }
     }
 
@@ -305,6 +385,7 @@ select {
     justify-content: flex-end;
     margin: 7px 0;
 }
+
 .like-container {
     display: flex;
     justify-content: flex-end;
@@ -343,7 +424,7 @@ select {
         width: 16px;
     }
 
-    span{
+    span {
         margin-left: 0px;
         font-size: 12px;
         color: rgb(94, 94, 94);
@@ -353,7 +434,7 @@ select {
 }
 
 // 좋아요 하트
-.material-icons mdl-badge, 
+.material-icons mdl-badge,
 .mdl-badge--overlap {
     cursor: pointer;
     color: #F44337;

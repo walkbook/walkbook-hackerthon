@@ -1,3 +1,5 @@
+@font-face { font-family: 'SlowSlow'; src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_10@1.0/SlowSlow.woff") format("woff"); font-weight: normal; font-style: normal; }
+
 .post-all { padding-top: 110px; }
 
 .post-all .search-post { display: inline-flex; flex-wrap: nowrap; align-items: center; position: relative; border-radius: 30px 30px 30px 30px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); }
@@ -7,6 +9,12 @@
 .post-all .search-post #keyword { width: 500px; height: 44px; background: #fafafa; border-radius: 0px 30px 30px 0px; border: none; box-sizing: border-box; padding-left: 10px; }
 
 .post-all .search-post #search-btn { position: absolute; bottom: 13px; right: 23px; width: 20px; height: 20px; border: none; background: transparent; cursor: pointer; }
+
+.post-all .tag-list { margin-top: 15px; max-width: 500px; overflow: hidden; }
+
+.post-all .tag-list input { display: inline-block; padding: 3px 5px; margin: 2px; background: rgba(97, 97, 97, 0.05); font-family: 'SlowSlow'; font-size: 23px; letter-spacing: 0.05em; color: #49a59a; border-radius: 15px; border: 0px; cursor: pointer; }
+
+.post-all .tag-list input:hover { color: goldenrod; }
 
 .post-all .sort-post { position: relative; left: 80%; margin-top: 30px; width: 90px; height: 30px; border: 0.3px solid #dddddd; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25); background: #fafafa; font-size: 12px; font-weight: 600; font-family: 'Nanum Gothic', sans-serif; text-align-last: center; text-align: center; -ms-text-align-last: center; -moz-text-align-last: center; }
 
@@ -40,9 +48,9 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 
 .mdl-card__actions, .mdl-card--border, .post-box { height: 100%; }
 
-.mdl-card__title, .mdl-card--expand { padding: 24px 0 20px 3px; width: auto; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mdl-card__title, .mdl-card--expand { padding: 24px 0 20px 3px; width: auto; display: block; white-space: nowrap; overflow: auto; text-overflow: ellipsis; }
 
-.mdl-card__title a, .mdl-card--expand a { color: black; font-family: 'Nanum Gothic', sans-serif; font-size: 15px; }
+.mdl-card__title a, .mdl-card--expand a { color: black; font-family: 'Nanum Gothic', sans-serif; font-size: 16px; font-weight: 700; }
 
 .mdl-card__title a:hover, .mdl-card--expand a:hover { color: var(--deepgreen); }
 
@@ -50,15 +58,33 @@ select { -webkit-appearance: button; -moz-appearance: button; -webkit-user-selec
 
 .author-container span { font-size: 12px; color: #B8B8B8; margin: 10px 0 0 0; box-sizing: border-box; }
 
-.post-others { width: 70%; padding: 10px 0 10px 15px; display: flex; justify-content: space-between; flex-direction: column; }
+.post-others { width: 70%; padding: 5px 0 10px 15px; display: flex; justify-content: space-between; flex-direction: column; }
 
-.post-others .total-time-class { margin: 5px 0 0 0; color: var(--green); font-weight: 600; font-size: 14px; }
+.post-others .time-desc-box-tag { max-height: 125px; overflow: scroll; }
 
-.post-others .total-time-class span { color: gray; font-weight: 400; font-size: 12px; }
+.post-others .time-desc-box-tag::-webkit-scrollbar { width: 3px; height: 0px; }
 
-.post-others .mdl-card__supporting-text { display: inline-block; white-space: pre-wrap; overflow: auto; text-overflow: ellipsis; width: 100%; height: 80px; padding: 0 0 5px 0; color: var(--green); font-weight: 600; font-size: 14px; }
+.post-others .time-desc-box-tag::-webkit-scrollbar-thumb { background-color: gainsboro; border-radius: 10px; }
 
-.post-others .mdl-card__supporting-text span { color: gray; font-weight: 400; font-size: 12px; height: 70px; }
+.post-others .time-desc-box-tag::-webkit-scrollbar-track { background-color: transparent; border-radius: 10px; }
+
+.post-others .time-desc-box-tag::-webkit-scrollbar-button { display: none; }
+
+.post-others .time-desc-box { margin-bottom: 10px; font-family: 'Nanum Gothic', sans-serif; }
+
+.post-others .total-time-class { margin: 5px 0 0 0; color: var(--green); font-weight: 600; font-size: 13px; }
+
+.post-others .total-time-class span { color: gray; font-weight: 400; font-size: 13px; }
+
+.post-others .mdl-card__supporting-text { display: inline-block; white-space: pre-wrap; width: 100%; height: auto; padding: 0 0 5px 0; color: var(--green); font-weight: 600; font-size: 13px; overflow: visible; }
+
+.post-others .mdl-card__supporting-text span { max-height: 30px; color: gray; font-weight: 400; font-size: 13px; }
+
+.post-others .mdl-tag { margin-top: 5px; margin-bottom: 5px; }
+
+.post-others .mdl-tag input { display: inline-block; padding: 2px 5px; margin: 1px; background: rgba(97, 97, 97, 0.05); font-family: 'SlowSlow'; font-size: 16px; letter-spacing: 0.09em; color: #49a59a; border-radius: 15px; border: 0px; cursor: pointer; }
+
+.post-others .mdl-tag input:hover { color: goldenrod; }
 
 .post-others .more-btn { color: gray; font-size: 12px; width: 60px; text-decoration: underline; }
 

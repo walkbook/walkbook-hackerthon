@@ -1,9 +1,10 @@
 from os import walk
 from django.http.response import JsonResponse
-from maps.models import Walkroad, Like, Comment, CommentLike
+from maps.models import Walkroad, Like, Comment, CommentLike, Tag
 from django.shortcuts import redirect, render
 from django.db.models import Q, Count
 from django.views.generic import ListView
+from itertools import chain
 import json
 
 def index(request):
@@ -41,11 +42,18 @@ class PostView(ListView):
         type = self.request.GET.get('type', '')
         keyword = self.request.GET.get('keyword', '')
         sort = self.request.GET.get('sort', '')
+        tag_content = self.request.GET.get('tag', '')
+
+        if tag_content != '':
+            tag = Tag.objects.get(content=tag_content)
+            walkroads = Walkroad.objects.filter(tags=tag)
+        else:
+            walkroads = Walkroad.objects.all()
 
         if sort == 'date':
-            walkroads = Walkroad.objects.all().annotate(count=Count('like_users')).order_by('-created_at', '-count')
+            walkroads = walkroads.annotate(count=Count('like_users')).order_by('-created_at', '-count')
         else :
-            walkroads = Walkroad.objects.all().annotate(count=Count('like_users')).order_by('-count', '-created_at')
+            walkroads = walkroads.annotate(count=Count('like_users')).order_by('-count', '-created_at')
         
         if type == 'all':
             walkroads = walkroads.filter(Q(title__icontains=keyword) | Q(description__icontains=keyword) | Q(tmi__icontains=keyword))
@@ -58,21 +66,26 @@ class PostView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
         type = self.request.GET.get('type', '')
         keyword = self.request.GET.get('keyword', '')
         sort = self.request.GET.get('sort', '')
+        tag_content = self.request.GET.get('tag', '')
 
         context['keyword'] = keyword
         context['type'] = type
         context['sort'] = sort
+        context['tag_content'] = tag_content
+
+        context['tags'] = Tag.objects.all().annotate(count=Count('walkroads')).order_by('-count')[:8]
         
         return context
 
 def show(request, id):
     walkroad = Walkroad.objects.get(id=id)
+    tags = Tag.objects.filter(walkroads=walkroad)
     return render(request, 'maps/show.html', { 
         'walkroad': walkroad,
+        'tags': tags,
         })
 
 def new(request):
@@ -100,6 +113,11 @@ def new(request):
             infowindow = infowindow,
             )
 
+        tags = request.POST.getlist('tags')
+        for tag in tags:
+            newTag = Tag.objects.get(id = tag)
+            walkroad.tags.add(newTag)
+        deleteUnusedTag()
         images = request.FILES.getlist('images')
 
         if len(images) > 0:
@@ -115,6 +133,11 @@ def new(request):
     else:
         return render(request, 'maps/new.html')
 
+def deleteUnusedTag():
+    for tag in Tag.objects.all():
+        if tag.walkroads.count() == 0:
+            tag.delete()
+
 def update(request, id):
     if request.method == 'POST':
         title = request.POST['title']
@@ -122,7 +145,16 @@ def update(request, id):
         start = request.POST['start']
         finish = request.POST['finish']
         tmi = request.POST['tmi']
-        Walkroad.objects.filter(id=id).update(title=title, description=description, start=start, finish=finish, tmi=tmi)
+        walkroad = Walkroad.objects.filter(id=id)
+        walkroad.update(title=title, description=description, start=start, finish=finish, tmi=tmi)
+
+        tags = request.POST.getlist('tags')
+        walkroad.first().tags.clear()
+        for tag in tags:
+            newTag = Tag.objects.get(content = tag)
+            walkroad.first().tags.add(newTag)
+
+        deleteUnusedTag()
 
         thumbnail = request.FILES['thumbnail']
         if thumbnail:
@@ -133,14 +165,16 @@ def update(request, id):
         return redirect('maps:show', id)
         
     walkroad = Walkroad.objects.get(id=id)
+    tags = Tag.objects.filter(walkroads=walkroad)
     if request.user == walkroad.author:
-        return render(request, 'maps/update.html', { 'walkroad': walkroad })
+        return render(request, 'maps/update.html', { 'walkroad': walkroad, 'tags': tags })
     else:
         return redirect('maps:show', id)
 
 def delete(request, id):
     walkroad = Walkroad.objects.get(id=id)
     walkroad.delete()
+    deleteUnusedTag()
     return redirect('maps:post')
 
 class LikeView:
@@ -186,3 +220,16 @@ class CommentLikeView:
         else:
             CommentLike.objects.create(user=request.user, comment=comment)
         return JsonResponse({'commentLikeCount': comment.commentlike_set.count()})
+
+class TagView:
+    def create(request):
+        tag = Tag.objects.filter(content=request.POST['content'])
+        if tag.count() == 0:
+            newTag = Tag.objects.create(content=request.POST['content'])
+            return JsonResponse({
+                'tag': newTag.id
+            })
+        return JsonResponse({
+                'tag': tag.first().id
+        })
+            

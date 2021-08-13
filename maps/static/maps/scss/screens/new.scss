@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@font-face {
+    font-family: 'SlowSlow';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_10@1.0/SlowSlow.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .body-layout {
     font-family: 'Nanum Gothic', sans-serif;
@@ -314,7 +320,32 @@
 }
 
 .tmi-box {
-    margin-bottom: 25px;
+    margin-bottom: 10px;
+}
+
+.tag-box {
+    margin-bottom: 60px;
+
+    .tags-box{
+
+        #tag-list{
+            max-width: 1000px;
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .tag-created {
+            font-family: 'SlowSlow';
+            font-size: 24px;
+            letter-spacing: 0.09em;
+            color: #49a59a;
+            height: 23px;
+            border: none;
+            margin: 0px;
+            padding: 0px;
+        }
+    }
 }
 
 #save-walkroad-button {
@@ -330,6 +361,7 @@
     font-size: 13px;
     line-height: 21px;
     letter-spacing: -0.035em;
+
 }
 #save-walkroad-button:hover {
     cursor: pointer;
@@ -352,7 +384,8 @@ h4.title-title,
 h4.title-desc,
 h4.title-start,
 h4.title-fin,
-h4.title-tmi {
+h4.title-tmi,
+h4.title-tag {
     margin: 11px 0 5px 18px;
     text-align: start;
 }
@@ -482,6 +515,7 @@ h4.title-tmi {
         }
     }
 }
+
 
 .image-box {
     display: flex;
