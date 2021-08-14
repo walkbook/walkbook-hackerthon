@@ -131,4 +131,52 @@ h4.title-name, h4.title-title, h4.title-desc, h4.title-start, h4.title-fin, h4.t
 
 .marker-info .marker-info_location button { margin-top: 10px; width: 50px; height: 50px; border-radius: 100px; border: none; font-family: 'Nanum Gothic', sans-serif; font-weight: 600; background: black; color: white; cursor: pointer; }
 
+.image-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-sizing: border-box;
+  margin: 0 0 30px 20px;
+
+}
+
+h4.title-image {
+  margin: 10px 0 10px 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+input#file-upload-button {
+  border: none;
+}
+
+.label-file{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(182, 182, 182);
+  color: white;
+  margin-left: 10px;
+  font-family: sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 80px;
+  height: 30px;
+}
+
+.label-file:hover {
+  background-color: var(—deepgreen);
+}
+
+#preview {
+  border-radius: 5px;
+  margin-bottom: 15px;
+  z-index: 30;
+  width: 300px;
+  height: auto;
+  display: none;
+}
+
 /*# sourceMappingURL=new.css.map */
