@@ -156,10 +156,9 @@ def update(request, id):
 
         deleteUnusedTag()
 
-        thumbnail = request.FILES['thumbnail']
-        if thumbnail:
+        if bool(request.FILES.get('thumbnail', False)) == True:
             walkroad = Walkroad.objects.get(id=id)
-            walkroad.thumbnail = thumbnail
+            walkroad.thumbnail = request.FILES['thumbnail']
             walkroad.save()
             
         return redirect('maps:show', id)
