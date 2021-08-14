@@ -151,7 +151,7 @@ def update(request, id):
         tags = request.POST.getlist('tags')
         walkroad.first().tags.clear()
         for tag in tags:
-            newTag = Tag.objects.get(content = tag)
+            newTag = Tag.objects.filter(content = tag).first()
             walkroad.first().tags.add(newTag)
 
         deleteUnusedTag()

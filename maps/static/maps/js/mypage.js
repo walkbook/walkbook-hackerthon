@@ -1,5 +1,6 @@
 let selected = 'register';
 
+onClickRegisteredPosts();
 function onClickRegisteredPosts() {
     const registeredPosts = GetAllRegisteredPosts();
     const likedPosts = GetAllLikedPosts();
